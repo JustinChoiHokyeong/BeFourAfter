@@ -11,7 +11,7 @@
 	<li><a href="">로그인</a></li>
 	<li><a href="">예약</a></li>
 	<li><a href="">리뷰</a></li>
-	<li><a href="">고객센터</a></li>
+	<li><a href="${pageContext.request.contextPath}/cs/list.do">고객센터</a></li>
 </ul>
 
 

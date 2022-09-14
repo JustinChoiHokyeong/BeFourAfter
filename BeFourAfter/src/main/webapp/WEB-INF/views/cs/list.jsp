@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>views/cs/list.jsp</title>
+<title>/views/cs/list.jsp</title>
 </head>
 <body>
 
