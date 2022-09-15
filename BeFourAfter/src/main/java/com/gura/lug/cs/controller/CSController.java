@@ -1,4 +1,4 @@
-package com.gura.lug.cs;
+package com.gura.lug.cs.controller;
 
 
 

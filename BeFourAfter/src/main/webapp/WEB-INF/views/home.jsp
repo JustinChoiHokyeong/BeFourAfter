@@ -12,14 +12,10 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 </head>
 <body>
-<!-- 질문: 지금 id=body - wrapper를 넣은 이유는? 그리고 nav가 안에 자식요소로 있는 이유는? -->
-	<div id="body-wrapper">
-		<div id="body-content">
-			<jsp:include page="navbar.jsp"></jsp:include>	
-			<h1>여러분의 무거운 짐, 굿럭이 덜어드리겠습니다.</h1>
-		</div>
+	<div class="container">
+		<jsp:include page="navbar.jsp"></jsp:include>	
+		<h1>여러분의 무거운 짐, 굿럭이 덜어드리겠습니다.</h1>
 		<li><a href="${pageContext.request.contextPath}/cs/list.do">고객게시판</a></li>
-
 	</div>
 </body>
 </html>
