@@ -24,10 +24,10 @@
 			</p>
 			<p>
 			<label for="rname">수령인</label>
-			<input type="text" name="rname" id="rname"/>
+			<input type="text" name="rname" id="rname" value=""/>
 			<br />
 			<label for="rphone">핸드폰번호</label>
-			<input type="text" name="rphone" id="rphone"/>
+			<input type="text" name="rphone" id="rphone" value=""/>
 			<br />
 			<label for="same"> <small> 예약자와 동일 </small>
          	<input type="checkbox" name="same" value="same" onClick="check(this)"/>
@@ -35,7 +35,7 @@
 			</p>
 			<p>
 			<label for="rsdate">수령 날짜 및 시간</label><br />
-			<input type="datetime-local" name="rsdate" id="rsdate"/>
+			<input type="datetime-local" name="rsdate" id="rsdate" value=""/>
 			</p>
 			<fieldset>
 				<legend>수령장소</legend>
@@ -66,7 +66,7 @@
 			</p>
 			<p>
 			<label for="agree"> <small> 개인정보수집 동의 </small>
-			<input type="checkbox" name="agree" value="agree"/>
+			<input type="checkbox" name="agree" value="" id="agree"/>
 			</label>
 			</p>
 			<p>
@@ -86,5 +86,21 @@
 	      document.getElementById('rphone').value = phone;
 	   }
 	};
+	
+	//3. 입력 되지않은 정보가 있으면 제출 x
+	document.querySelector("#leave_insertform").addEventListener("submit", function(e){
+		let basic=document.querySelector("#basic").value;
+		let big=document.querySelector("#big").value;
+		let over=document.querySelector("#over").value;
+		
+		let rname=document.querySelector("#rname").value;
+		let rphone=document.querySelector("#rphone").value;
+		let rsdate=document.querySelector("#rsdate").value;
+		
+		if(basic+big+over<=0 || rname=="" || rphone=="" || rsdate==""){
+			alert("정보를 모두 입력해주세요.");
+			e.preventDefault();
+		}
+	});
 </script>
 </html>

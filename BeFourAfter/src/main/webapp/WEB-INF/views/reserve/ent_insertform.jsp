@@ -37,7 +37,7 @@
 			</fieldset>
 			<p>
 			<label for="addr">수하물 보낼 주소</label>
-			<input type="text" name="addr" id="addr" placeholder="주소를 정확히 입력해주세요 (시/군/구 + 상세주소)"/>
+			<input type="text" name="addr" id="addr" value="" placeholder="주소를 정확히 입력해주세요 (시/군/구 + 상세주소)"/>
 			</p>
 			<p>
 			<label for="basic">기본 수하물</label>
@@ -69,4 +69,20 @@
 		</form>
 	</div>
 </body>
+<script>
+	//3. 입력 되지않은 정보가 있으면 제출 x
+	document.querySelector("#ent_insertform").addEventListener("submit", function(e){
+		let basic=document.querySelector("#basic").value;
+		let big=document.querySelector("#big").value;
+		let over=document.querySelector("#over").value;
+		
+		let addr=document.querySelector("#addr").value;
+		let rsdate=document.querySelector("#rsdate").value;
+		
+		if(basic+big+over<=0 || addr=="" || rsdate==""){
+			alert("정보를 모두 입력해주세요.");
+			e.preventDefault();
+		}
+	});
+</script>
 </html>
