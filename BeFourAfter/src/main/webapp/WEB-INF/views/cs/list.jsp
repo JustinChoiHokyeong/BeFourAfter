@@ -62,6 +62,5 @@
 	<a href="${pageContext.request.contextPath}/cs/ask.do">
 		<button>질문 하기</button>
 	</a>
-
 </body>
 </html>
