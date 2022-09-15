@@ -17,10 +17,10 @@
 					class="nav-link dropdown-toggle" href="#" role="button"
 					data-bs-toggle="dropdown" aria-expanded="false">예약하기</a>
 					<ul class="dropdown-menu">
-						<li><a class="dropdown-item" href="#">출국 서비스</a></li>
-						<li><a class="dropdown-item" href="#">입국 서비스</a></li>
+						<li><a class="dropdown-item" href="${pageContext.request.contextPath }/reserve/leave_insertform.do">출국 서비스</a></li>
+						<li><a class="dropdown-item" href="${pageContext.request.contextPath }/reserve/ent_insertform.do">입국 서비스</a></li>
 						<li><hr class="dropdown-divider"></li>
-						<li><a class="dropdown-item" href="#">나의 예약 현황</a></li>
+						<li><a class="dropdown-item" href="${pageContext.request.contextPath }/reserve/list.do">나의 예약 현황</a></li>
 					</ul>
 				</li>
 				<li class="nav-item"> <a class="nav-link" href="#">리뷰</a>
