@@ -62,5 +62,7 @@
 	<a href="${pageContext.request.contextPath}/cs/ask.do">
 		<button>질문 하기</button>
 	</a>
+	<!-- 푸터 들어간다 -->
+	<jsp:include page="../footer.jsp"></jsp:include>
 </body>
 </html>
