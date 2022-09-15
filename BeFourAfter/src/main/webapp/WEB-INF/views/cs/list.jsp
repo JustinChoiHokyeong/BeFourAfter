@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,12 +23,12 @@
 	<!-- details, summary 클릭 토글 메뉴-->
 	<details class="csBox">
 		<summary>[예약] 예약을 변경하고 싶어요</summary>
-		<p>여행 일정이 변경되셨나요? 숙소명을 잘못 기재하셨거나 숙소 또는 이용일자에 변동이 있으신 경우 0000-0000
+		<br /><p>여행 일정이 변경되셨나요? <br />숙소명을 잘못 기재하셨거나 숙소 또는 이용일자에 변동이 있으신 경우 0000-0000
 			로 전화주시거나 카카오톡 채널 '굿럭' 으로 문의주시면 예약 내용을 도와드리겠습니다.</p>
 	</details>
 	<details>
 		<summary>[예약] 예약을 취소/환불 하고 싶어요</summary>
-		<p>
+		<br /><p>
 			여행 일정에 차질이 생기셨나요?<br>
 			<br> 굿럭의 예약 취소/환불은 아래와 같이 이루어집니다.
 		<ol>
@@ -40,9 +41,8 @@
 	</details>
 	<details>
 		<summary>[예약] 굿럭 운송 예약 마감은 언제인가요?</summary>
-		<p>
+		<br /><p>
 			굿럭 운송예약은 아래와 같이 이루어 집니다 <br>
-			<br>
 		<ol>
 			<li>홈페이지 예약 : 서비스 이용 전날 21시까지 홈페이지에서 예약할 수 있습니다.</li>
 			<li>당일 현장 접수 : 굿럭 매장에서 오후 3시 이전까지 현장 접수 가능합니다. <br>※단, 당일
