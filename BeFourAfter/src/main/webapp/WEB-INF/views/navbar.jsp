@@ -2,10 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>   
 
-<nav class="navbar navbar-light bg-light navbar-expand-lg">
+<nav class="navbar navbar-light bg-light navbar-expand-lg" >
 		<div class="container-fluid">
 		    <a class="navbar-brand" href="${pageContext.request.contextPath}/">
-		      	가벼운 여행, Good Lugg!
+		      	가벼운 여행 <strong>Good Lugg!</strong>
 		    </a>
 		    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
 		    	data-bs-target="#navbarNav">
@@ -26,7 +26,7 @@
 				<li class="nav-item"> <a class="nav-link" href="#">리뷰</a>
 				</li> 
 				</li>
-				<li class="nav-item"> <a class="nav-link" href="#">고객센터</a>
+				<li class="nav-item"> <a class="nav-link" href="${pageContext.request.contextPath}/cs/list.do">고객센터</a>
 				</li> 
 				
 				
