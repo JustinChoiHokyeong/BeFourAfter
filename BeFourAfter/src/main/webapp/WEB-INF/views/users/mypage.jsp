@@ -48,6 +48,14 @@
 					href="${pageContext.request.contextPath}/users/pwd_updateform.do">수정하기</a></td>
 			</tr>
 			<tr>
+				<th>이름</th>
+				<td>${dto.name }</td>
+			</tr>
+			<tr>
+				<th>핸드폰 번호</th>
+				<td>${dto.phone }</td>
+			</tr>
+			<tr>
 				<th>이메일</th>
 				<td>${dto.email }</td>
 			</tr>
