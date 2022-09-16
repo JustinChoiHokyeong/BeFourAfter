@@ -17,14 +17,14 @@
 			<form action="update.do" method="post" id="leave_insertform">
 				<input type="hidden" name="leave_insertform" id="leave_insertform" value="leave_insertform"/>
 				<input type="hidden" name="num" id="num" value="${dto.num }"/>
-				<input type="hidden" name="name" id="name"/>
-				<input type="hidden" name="phone" id="phone"/>
+				<input type="hidden" name="name" id="name" value="${dto.name }"/>
+				<input type="hidden" name="phone" id="phone" value="${dto.phone }"/>
 				<p>
 				<label for="name">예약자이름</label>
-				<input type="text" name="name" id="name" disabled/>
+				<input type="text" name="name" id="name" value="${dto.name }"disabled/>
 				<br />
 				<label for="phone">핸드폰번호</label>
-				<input type="text" name="phone" id="phone" disabled/>
+				<input type="text" name="phone" id="phone" value="${dto.phone }"disabled/>
 				</p>
 				<p>
 				<label for="rname">수령인</label>
@@ -95,14 +95,14 @@
 			<form action="update2.do" method="post" id="ent_insertform">
 				<input type="hidden" name="ent_insertform" id="ent_insertform" value="ent_insertform"/>
 				<input type="hidden" name="num" id="num" value="${dto.num }"/>
-				<input type="hidden" name="name" id="name"/>
-				<input type="hidden" name="phone" id="phone"/>
+				<input type="hidden" name="name" id="name" value="최현호"/>
+				<input type="hidden" name="phone" id="phone" value="01048462650"/>
 				<p>
 				<label for="name">예약자이름</label>
-				<input type="text" name="name" id="name" disabled/>
+				<input type="text" name="name" id="name" value="최현호"disabled/>
 				<br />
 				<label for="phone">핸드폰번호</label>
-				<input type="text" name="phone" id="phone" disabled/>
+				<input type="text" name="phone" id="phone" value="01048462650"disabled/>
 				</p>
 				<p>
 				<label for="rsdate">맡기는 날짜 및 시간</label><br />
@@ -160,4 +160,68 @@
 	</c:otherwise>
 </c:choose>
 </body>
+<script>
+
+	//1. 회원정보 넘기기 수령인 정보에 예약자 정보 
+	var checkbox = document.querySelector("input[name=same]");
+	
+	checkbox.addEventListener('change', function() {
+	   if(checkbox.checked==true){
+		   let name= document.getElementById('name').value;
+		   let phone=document.getElementById('phone').value;
+		   
+		   document.getElementById('rname').value = name;
+		   document.getElementById('rphone').value = phone;
+	   } else {
+		   document.getElementById('rname').value = "";
+		   document.getElementById('rphone').value = "";
+	   }
+	   
+	   });
+	
+	// 개인정보제공동의
+	var checkbox2 = document.querySelector("input[name=agree]");
+		
+	// (출국)입력 되지않은 정보가 있으면 제출 x
+	document.querySelector("#leave_insertform").addEventListener("submit", function(e){
+		let basic=document.querySelector("#basic").value;
+		let big=document.querySelector("#big").value;
+		let over=document.querySelector("#over").value;
+		
+		let rname=document.querySelector("#rname").value;
+		let rphone=document.querySelector("#rphone").value;
+		let rsdate=document.querySelector("#rsdate").value;
+		
+		if(basic+big+over<=0 || rname=="" || rphone=="" || rsdate==""){
+			alert("정보를 모두 입력해주세요.");
+			e.preventDefault();
+		}
+		
+		if(checkbox2.checked!=true){
+			alert("개인정보 제공에 동의를 해주세요.");
+			e.preventDefault();
+		}
+		
+	});
+	
+	// (입국)입력 되지않은 정보가 있으면 제출 x
+	document.querySelector("#ent_insertform").addEventListener("submit", function(e){
+		let basic=document.querySelector("#basic").value;
+		let big=document.querySelector("#big").value;
+		let over=document.querySelector("#over").value;
+		
+		let addr=document.querySelector("#addr").value;
+		let rsdate=document.querySelector("#rsdate").value;
+		
+		if(basic+big+over<=0 || addr=="" || rsdate==""){
+			alert("정보를 모두 입력해주세요.");
+			e.preventDefault();
+		}
+		
+		if(checkbox2.checked!=true){
+			alert("개인정보 제공에 동의를 해주세요.");
+			e.preventDefault();
+		}
+	});
+</script>
 </html>

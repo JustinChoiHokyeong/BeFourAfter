@@ -30,7 +30,7 @@
 			<input type="text" name="rphone" id="rphone" value=""/>
 			<br />
 			<label for="same"> <small> 예약자와 동일 </small>
-         	<input type="checkbox" name="same" value="same" onClick="check(this)"/>
+         	<input type="checkbox" name="same" value="same"/>
 			</label>
 			</p>
 			<p>
@@ -77,16 +77,27 @@
 	</div>
 </body>
 <script>
+
 	//1. 회원정보 넘기기 수령인 정보에 예약자 정보 
-	function check(box){
-	   let name= document.getElementById('name').value;
-	   let phone=document.getElementById('phone').value;
-	   if(box.checked == true){
-	      document.getElementById('rname').value = name;
-	      document.getElementById('rphone').value = phone;
-	   }
-	};
+	var checkbox = document.querySelector("input[name=same]");
 	
+	checkbox.addEventListener('change', function() {
+	   if(checkbox.checked==true){
+		   let name= document.getElementById('name').value;
+		   let phone=document.getElementById('phone').value;
+		   
+		   document.getElementById('rname').value = name;
+		   document.getElementById('rphone').value = phone;
+	   } else {
+		   document.getElementById('rname').value = "";
+		   document.getElementById('rphone').value = "";
+	   }
+	   
+	   });
+	
+	//2. 개인정보제공동의
+	var checkbox2 = document.querySelector("input[name=agree]");
+		
 	//3. 입력 되지않은 정보가 있으면 제출 x
 	document.querySelector("#leave_insertform").addEventListener("submit", function(e){
 		let basic=document.querySelector("#basic").value;
@@ -101,6 +112,12 @@
 			alert("정보를 모두 입력해주세요.");
 			e.preventDefault();
 		}
+		
+		if(checkbox2.checked!=true){
+			alert("개인정보 제공에 동의를 해주세요.");
+			e.preventDefault();
+		}
+		
 	});
 </script>
 </html>

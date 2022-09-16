@@ -70,6 +70,9 @@
 	</div>
 </body>
 <script>
+	//2. 개인정보제공동의
+	var checkbox2 = document.querySelector("input[name=agree]");
+	
 	//3. 입력 되지않은 정보가 있으면 제출 x
 	document.querySelector("#ent_insertform").addEventListener("submit", function(e){
 		let basic=document.querySelector("#basic").value;
@@ -81,6 +84,11 @@
 		
 		if(basic+big+over<=0 || addr=="" || rsdate==""){
 			alert("정보를 모두 입력해주세요.");
+			e.preventDefault();
+		}
+		
+		if(checkbox2.checked!=true){
+			alert("개인정보 제공에 동의를 해주세요.");
 			e.preventDefault();
 		}
 	});
