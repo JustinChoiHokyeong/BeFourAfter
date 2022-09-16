@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="csComment">
+	<select id="getList" parameterType="csCommentDto" resultType="csCommentDto">
+		SELECT *
+		FROM
+			(SELECT result1.*, ROWNUM AS rnum
+			FROM
+				(SELECT num, writer, content, target_id, ref_group,
+					comment_group, deleted, comment_cs.regdate, profile
+				FROM comment_cs
+				INNER JOIN users
+				ON comment_cs.writer=users.id
+				WHERE ref_group=#{ref_group}
+				ORDER BY comment_group ASC, num ASC) result1)
+		WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum}	
+	</select>
+	<update id="delete" parameterType="int">
+		UPDATE comment_cs
+		SET deleted='yes'
+		WHERE num=#{num}
+	</update>
+	<insert id="insert" parameterType="csCommentDto">
+		INSERT INTO comment_cs
+		(num, writer, content, target_id, ref_group, comment_group, regdate)
+		VALUES(#{num}, #{writer}, #{content}, #{target_id}, #{ref_group},
+			#{comment_group}, SYSDATE)
+	</insert>
+	<select id="getSequence" resultType="int">
+		SELECT board_cs_comment_seq.NEXTVAL
+		FROM DUAL
+	</select>
+	<update id="update" parameterType="csCommentDto">
+		UPDATE comment_cs
+		SET content=#{content}
+		WHERE num=#{num}
+	</update>
+	<select id="getData" parameterType="int" resultType="csCommentDto">
+		SELECT num, writer, content, ref_group, comment_group, deleted, regdate
+		FROM comment_cs
+		WHERE num=#{num}
+	</select>
+	<select id="getCount" parameterType="int" resultType="int">
+		SELECT NVL(MAX(ROWNUM), 0)
+		FROM comment_cs
+		WHERE ref_group=#{ref_group}
+	</select>	
+</mapper>
+
+
+
+
+
+

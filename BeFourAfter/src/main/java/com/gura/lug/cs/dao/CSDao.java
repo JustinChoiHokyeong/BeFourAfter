@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.gura.lug.cs.dto.CSDto;
 
-
 public interface CSDao {
 	//글목록
 	public List<CSDto> getList(CSDto dto);
@@ -22,6 +21,4 @@ public interface CSDao {
 	public void delete(int num);
 	//글 수정
 	public void update(CSDto dto);
-	
-	
 }

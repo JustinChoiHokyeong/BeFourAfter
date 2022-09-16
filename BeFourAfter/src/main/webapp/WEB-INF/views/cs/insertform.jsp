@@ -8,14 +8,23 @@
 <title>/views/cs/insertform.jsp</title>
 </head>
 <body>
-	<ul>
-		<ol>제목</ol>
-		<ol>본문</ol>
-		<ol>첨부파일</ol>
-		<ol>공개글/비밀글 여부</ol>
-	</ul>
-	<mark>비밀글 선택시 비밀번호 or ID 확인</mark>
-	<br />
-	<a href="${pageContext.request.contextPath}/cs/insert.do">질문 등록하기</a>
+<div class="container">
+   <h1>새글 작성 폼</h1>
+   <form action="${pageContext.request.contextPath}/cs/insert.do" method="post" id="insertForm">
+      <div>
+         <label for="title">제목</label>
+         <input type="text" name="title" id="title"/>
+      </div>
+      <div>
+         <label for="content">내용</label>
+         <textarea name="content" id="content"></textarea>
+      </div>
+      <div>
+         <label for="isSecret">비밀글로 문의하기</label>
+         <input type="checkbox" name="isSecret" />
+      </div>
+      <button type="submit">등록</button>
+   </form>
+</div>
 </body>
 </html>

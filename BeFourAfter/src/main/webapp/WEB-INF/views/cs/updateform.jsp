@@ -8,6 +8,27 @@
 </head>
 <body>
 	<h1>질문 수정폼 페이지 입니다.</h1>
-	<a href="${pageContext.request.contextPath}/cs/update.do">수정완료</a>
+	<form action="update.do" method="post">
+		<input type="hidden" name="num" value="${dto.num }" />
+		<div>
+			<label for="writer">작성자</label>
+			<input type="text" id="writer" value="${dto.writer }" disabled/>
+		</div>
+		<div>
+			<label for="title">제목</label>
+			<input type="text" name="title" id="title" value="${dto.title }"/>
+		</div>
+		<div>
+			<label for="content">내용</label>
+			<textarea name="content" id="content">${dto.content }</textarea>
+		</div>
+	      <div>
+	         <label for="isSecret">비밀글로 문의하기</label>
+	         <input type="checkbox" name="isSecret" />
+	      </div>
+		<button type="submit" >수정확인</button>
+		<button type="reset">취소</button>
+	</form>
+	
 </body>
 </html>

@@ -1,8 +1,8 @@
-package com.gura.lug.cs.comment.dao;
+package com.gura.lug.cs.dao;
 
 import java.util.List;
 
-import com.gura.lug.cs.comment.dto.CSCommentDto;
+import com.gura.lug.cs.dto.CSCommentDto;
 
 
 public interface CSCommentDao {
