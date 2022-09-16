@@ -44,20 +44,20 @@
 	</div>
 	
 	<div class="container">
-		<table>
+		<table class="table table-striped align-middle">
 			<thead>
 				<tr>
+					<th>서비스</th>
 					<th>예약자</th>
 					<th>예약자 연락처</th>
 					<th>수령자</th>
 					<th>수령자 연락처</th>
-					<th>주소</th>
+					<th>수하물 보낼 주소</th>
 					<th>수령일</th>
 					<th>수령장소</th>
 					<th>기본형</th>
 					<th>대   형</th>
 					<th>25kg초과</th>
-					<th>서비스</th>
 					<th></th>
 					<th></th>
 				</tr>
@@ -65,6 +65,14 @@
 			<tbody>
 				<c:forEach var="tmp" items="${list }">
 				<tr>
+					<c:choose>
+						<c:when test="${tmp.reservetype eq 'leave_insertform'}">
+							<td>출국</td>
+						</c:when>
+						<c:otherwise>
+							<td>입국</td>
+						</c:otherwise>
+					</c:choose>
 					<td>${tmp.name }</td>
 					<td>${tmp.phone }</td>
 					<td>${tmp.rname }</td>
@@ -82,14 +90,6 @@
 					<td>${tmp.basic }개</td>
 					<td>${tmp.big }개</td>
 					<td>${tmp.over }개</td>
-					<c:choose>
-						<c:when test="${tmp.reservetype eq 'leave_insertform'}">
-							<td>출국</td>
-						</c:when>
-						<c:otherwise>
-							<td>입국</td>
-						</c:otherwise>
-					</c:choose>
 					<td><a href="${pageContext.request.contextPath }/reserve/updateform.do?num=${ tmp.num}">일정 수정</a></td>
 					<td><a href="${pageContext.request.contextPath }/reserve/delete.do?num=${ tmp.num}" onclick="return confirm('예약을 취소하시겠습니까?')">삭제</a></td>
 				</tr>

@@ -23,17 +23,17 @@
 				<input type="hidden" name="name" id="name" value="${dto.name }"/>
 				<input type="hidden" name="phone" id="phone" value="${dto.phone }"/>
 				<p>
-				<label for="name">예약자이름</label>
+				<label for="name">예약자 이름</label>
 				<input type="text" name="name" id="name" value="${dto.name }"disabled/>
 				<br />
-				<label for="phone">핸드폰번호</label>
+				<label for="phone">핸드폰 번호</label>
 				<input type="text" name="phone" id="phone" value="${dto.phone }"disabled/>
 				</p>
 				<p>
-				<label for="rname">수령인</label>
+				<label for="rname">수령인 이름</label>
 				<input type="text" name="rname" id="rname" value="${dto.rname }" />
 				<br />
-				<label for="rphone">핸드폰번호</label>
+				<label for="rphone">핸드폰 번호</label>
 				<input type="text" name="rphone" id="rphone" value="${dto.rphone } " maxlength="11" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
 				<br />
 				<label for="same"> <small> 예약자와 동일 </small>
@@ -139,10 +139,10 @@
 				<input type="hidden" name="name" id="name" value="최현호"/>
 				<input type="hidden" name="phone" id="phone" value="01048462650"/>
 				<p>
-				<label for="name">예약자이름</label>
+				<label for="name">예약자 이름</label>
 				<input type="text" name="name" id="name" value="최현호"disabled/>
 				<br />
-				<label for="phone">핸드폰번호</label>
+				<label for="phone">핸드폰 번호</label>
 				<input type="text" name="phone" id="phone" value="01048462650"disabled/>
 				</p>
 				<p>

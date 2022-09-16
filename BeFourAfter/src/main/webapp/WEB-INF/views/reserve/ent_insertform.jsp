@@ -18,10 +18,10 @@
 			<input type="hidden" name="name" id="name" value="최현호"/>
 			<input type="hidden" name="phone" id="phone" value="01048462650"/>
 			<p>
-			<label for="name">예약자이름</label>
+			<label for="name">예약자 이름</label>
 			<input type="text" name="name" id="name" value="최현호" disabled/>
 			<br />
-			<label for="phone">핸드폰번호</label>
+			<label for="phone">핸드폰 번호</label>
 			<input type="text" name="phone" id="phone" value="01048462650" disabled/>
 			</p>
 			<p>

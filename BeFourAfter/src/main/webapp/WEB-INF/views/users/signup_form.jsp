@@ -15,6 +15,7 @@
 <div class="container">
 	<h1>회원 가입 폼 입니다.</h1>
 	<form class="animate__animated animate__bounceInDown" action="${pageContext.request.contextPath}/users/signup.do" method="post" id="myForm">
+		
 		<div>
 			<label class="control-label" for="id">아이디</label>
 			<input class="form-control" type="text" name="id" id="id"/>
@@ -30,6 +31,12 @@
 		<div>
 			<label class="control-label" for="pwd2">비밀번호 확인</label>
 			<input class="form-control" type="password" name="pwd2" id="pwd2"/>
+		</div>
+		<div>
+			<label class="control-label" for="name">이름</label>
+			<input class="form-control" type="text" name="name" id="name"/>
+			<label class="control-label" for="phone">핸드폰 번호</label>
+			<input class="form-control" type="text" name="phone" id="phone" maxlength="11" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
 		</div>
 		<div>
 			<label class="control-label" for="email">이메일</label>

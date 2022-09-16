@@ -9,12 +9,12 @@ WHERE id=#{id}
 
 <insert id="insert" parameterType="usersDto">
 	INSERT INTO users
-	(id, pwd, email, regdate)
-	VALUES(#{id }, #{pwd }, #{email }, SYSDATE)
+	(id, pwd, email, regdate, phone, name)
+	VALUES(#{id }, #{pwd }, #{email }, SYSDATE, #{phone }, #{name })
 </insert>
 
 <select id="getData" parameterType="string" resultType="usersDto">
-	SELECT id, pwd, email, profile, regdate
+	SELECT id, pwd, email, profile, regdate, name, phone
 	FROM users
 	WHERE id=#{id }
 </select>
