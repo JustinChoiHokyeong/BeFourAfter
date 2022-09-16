@@ -6,11 +6,13 @@
 <head>
 <meta charset="UTF-8">
 <title>/views/reserve/leave_insertform.jsp</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 </head>
 <body>
+	<div class="container">
 	<h1>출국서비스</h1>
 	<h2>예약페이지</h2>
-	<div class="container">
 		<form action="leave_insert.do" method="post" id="leave_insertform">
 			<input type="hidden" name="leave_insertform" id="leave_insertform" value="leave_insertform"/>
 			<input type="hidden" name="name" id="name" value="최현호"/>
@@ -24,10 +26,10 @@
 			</p>
 			<p>
 			<label for="rname">수령인</label>
-			<input type="text" name="rname" id="rname" value=""/>
+			<input type="text" name="rname" id="rname" value="" />
 			<br />
 			<label for="rphone">핸드폰번호</label>
-			<input type="text" name="rphone" id="rphone" value=""/>
+			<input type="text" name="rphone" id="rphone" value="" maxlength="11"oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
 			<br />
 			<label for="same"> <small> 예약자와 동일 </small>
          	<input type="checkbox" name="same" value="same"/>
@@ -37,7 +39,7 @@
 			<label for="rsdate">수령 날짜 및 시간</label><br />
 			<input type="datetime-local" name="rsdate" id="rsdate" value=""/>
 			</p>
-			<fieldset>
+			<fieldset style="max-width: 30%">
 				<legend>수령장소</legend>
 				<label for="place">
 					<input type="radio" name="place" value="first" checked="checked"/>제 1 터미널
@@ -48,19 +50,19 @@
 			</fieldset>
 			<p>
 			<label for="basic">기본 수하물</label>
-			<input type="number" name="basic" id="basic" value="0" placeholder="수량입력"/>
+			<input type="number" name="basic" id="basic" value="0" min="0"placeholder="수량입력"/>
 			<br />
 			<small>(캐리어28인치 이하, 백팩, 가방, 20kg 이하)</small>
 			</p>
 			<p>
 			<label for="big">대형 수하물</label>
-			<input type="number" name="big" id="big" value="0" placeholder="수량입력"/>
+			<input type="number" name="big" id="big" value="0" min="0"placeholder="수량입력"/>
 			<br />
 			<small>(캐리어28인치 초과, 박스, 골프백, 20kg 초과)</small>
 			</p>
 			<p>
 			<label for="over">25kg 초과</label>
-			<input type="number" name="over" id="over" value="0" placeholder="수량입력"/>
+			<input type="number" name="over" id="over" value="0" min="0" placeholder="수량입력"/>
 			<br />
 			<small>(개당 5,000원 추가)</small>
 			</p>
@@ -77,7 +79,6 @@
 	</div>
 </body>
 <script>
-
 	//1. 회원정보 넘기기 수령인 정보에 예약자 정보 
 	var checkbox = document.querySelector("input[name=same]");
 	
@@ -120,12 +121,10 @@
 		
 	});
 	
-	var now_utc = Date.now() // 지금 날짜를 밀리초로
-	// getTimezoneOffset()은 현재 시간과의 차이를 분 단위로 반환
-	var timeOff = new Date().getTimezoneOffset()*60000; // 분단위를 밀리초로 변환
-	// new Date(today-timeOff).toISOString()은 '2022-05-11T18:09:38.134Z'를 반환
+	var now_utc = Date.now()
+	var timeOff = new Date().getTimezoneOffset()*60000;
 	var today = new Date(now_utc-timeOff).toISOString().substring(0, 16);
-	 
 	document.getElementById("rsdate").setAttribute("min", today);
+	
 </script>
 </html>
