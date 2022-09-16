@@ -33,19 +33,19 @@
 				
 			</ul>
 			<c:choose>
-				<c:when test="${empty id }">
+				<c:when test="${ empty sessionScope.id}">
 					<a class="btn btn-outline-primary btn-sm me-2"
-						href="">회원가입</a>
+						href="${pageContext.request.contextPath}/users/signup_form.do">회원가입</a>
 					<a class="btn btn-outline-success btn-sm me-2"
-						href="">로그인</a>
+						href="${pageContext.request.contextPath}/users/loginform.do">로그인</a>
 				</c:when>
 				<c:otherwise>
-					<span class="navbar-text me-2"> <a
-						href="">${id }</a>
+					<span class="navbar-text me-2">
+					<a href="${pageContext.request.contextPath}/users/mypage.do">${sessionScope.id }</a>
 						님 환영합니다.
 					</span>
 					<a class="btn btn-outline-danger btn-sm me-2"
-						href="">로그아웃</a>
+						href="{pageContext.request.contextPath}/users/logout.do">로그아웃</a>
 				</c:otherwise>
 			</c:choose>
 		</div>
