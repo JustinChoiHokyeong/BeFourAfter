@@ -14,7 +14,7 @@
 		<li><a href="${pageContext.request.contextPath}/cs/updateform.do">수정</a></li>
 		<li><a href="${pageContext.request.contextPath}/cs/delete.do">삭제</a></li>
 	</ul>
-	<ul>
+	<ul>test
 		<li>댓글</li>
 		<li>댓글</li>
 		<li>댓글</li>
