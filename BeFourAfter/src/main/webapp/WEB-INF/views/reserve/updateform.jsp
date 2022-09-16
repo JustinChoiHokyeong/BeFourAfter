@@ -81,11 +81,49 @@
 				<small>(개당 5,000원 추가)</small>
 				</p>
 				<p>
-				<button type="submit">수정</button>
+				<button type="submit" id="submit1">수정</button>
 				</p>
 				<a href="${pageContext.request.contextPath }/reserve/list.do">목록으로</a>
 			</form>
 		</div>
+		<script>
+		//1. 회원정보 넘기기 수령인 정보에 예약자 정보 
+		var checkbox = document.querySelector("input[name=same]");
+		
+		checkbox.addEventListener('change', function() {
+		   if(checkbox.checked==true){
+			   let name= document.getElementById('name').value;
+			   let phone=document.getElementById('phone').value;
+			   
+			   document.getElementById('rname').value = name;
+			   document.getElementById('rphone').value = phone;
+		   } else {
+			   document.getElementById('rname').value = "";
+			   document.getElementById('rphone').value = "";
+		   }
+		   
+		   });
+		// (출국)입력 되지않은 정보가 있으면 제출 x
+		document.querySelector("#leave_insertform").addEventListener("submit", function(e){
+			let basic=document.querySelector("#basic").value;
+			let big=document.querySelector("#big").value;
+			let over=document.querySelector("#over").value;
+			
+			let rname=document.querySelector("#rname").value;
+			let rphone=document.querySelector("#rphone").value;
+			let rsdate=document.querySelector("#rsdate").value;
+			
+			if(basic+big+over<=0 || rname=="" || rphone=="" || rsdate==""){
+				alert("정보를 모두 입력해주세요.");
+				e.preventDefault();
+			}
+		});
+		
+		var now_utc = Date.now() 
+		var timeOff = new Date().getTimezoneOffset()*60000;
+		var today = new Date(now_utc-timeOff).toISOString().substring(0, 16);
+		document.getElementById("rsdate").setAttribute("min", today);
+		</script>
 	</c:when>
 	<c:otherwise>
 		<h1>입국서비스</h1>
@@ -152,76 +190,46 @@
 				<small>(개당 5,000원 추가)</small>
 				</p>
 				<p>
-				<button type="submit">예약</button>
+				<button type="submit" id="submit2">예약</button>
 				</p>
 				<a href="${pageContext.request.contextPath }/reserve/list.do">목록으로</a>
 			</form>
 		</div>
+		
+		<script>
+		
+		// (입국)입력 되지않은 정보가 있으면 제출 x
+		document.querySelector("#ent_insertform").addEventListener("submit", function(e){
+			let basic=document.querySelector("#basic").value;
+			let big=document.querySelector("#big").value;
+			let over=document.querySelector("#over").value;
+			
+			let addr=document.querySelector("#addr").value;
+			let rsdate=document.querySelector("#rsdate").value;
+			
+			if(basic+big+over<=0 || addr=="" || rsdate==""){
+				alert("정보를 모두 입력해주세요.");
+				e.preventDefault();
+			}
+		});
+		
+		var now_utc = Date.now()
+		var timeOff = new Date().getTimezoneOffset()*60000;
+		var today = new Date(now_utc-timeOff).toISOString().substring(0, 16);
+		document.getElementById("rsdate").setAttribute("min", today);
+		</script>
 	</c:otherwise>
 </c:choose>
 </body>
 <script>
 
-	//1. 회원정보 넘기기 수령인 정보에 예약자 정보 
-	var checkbox = document.querySelector("input[name=same]");
 	
-	checkbox.addEventListener('change', function() {
-	   if(checkbox.checked==true){
-		   let name= document.getElementById('name').value;
-		   let phone=document.getElementById('phone').value;
-		   
-		   document.getElementById('rname').value = name;
-		   document.getElementById('rphone').value = phone;
-	   } else {
-		   document.getElementById('rname').value = "";
-		   document.getElementById('rphone').value = "";
-	   }
-	   
-	   });
 	
-	// 개인정보제공동의
-	var checkbox2 = document.querySelector("input[name=agree]");
-		
-	// (출국)입력 되지않은 정보가 있으면 제출 x
-	document.querySelector("#leave_insertform").addEventListener("submit", function(e){
-		let basic=document.querySelector("#basic").value;
-		let big=document.querySelector("#big").value;
-		let over=document.querySelector("#over").value;
-		
-		let rname=document.querySelector("#rname").value;
-		let rphone=document.querySelector("#rphone").value;
-		let rsdate=document.querySelector("#rsdate").value;
-		
-		if(basic+big+over<=0 || rname=="" || rphone=="" || rsdate==""){
-			alert("정보를 모두 입력해주세요.");
-			e.preventDefault();
-		}
-		
-		if(checkbox2.checked!=true){
-			alert("개인정보 제공에 동의를 해주세요.");
-			e.preventDefault();
-		}
-		
-	});
 	
-	// (입국)입력 되지않은 정보가 있으면 제출 x
-	document.querySelector("#ent_insertform").addEventListener("submit", function(e){
-		let basic=document.querySelector("#basic").value;
-		let big=document.querySelector("#big").value;
-		let over=document.querySelector("#over").value;
 		
-		let addr=document.querySelector("#addr").value;
-		let rsdate=document.querySelector("#rsdate").value;
-		
-		if(basic+big+over<=0 || addr=="" || rsdate==""){
-			alert("정보를 모두 입력해주세요.");
-			e.preventDefault();
-		}
-		
-		if(checkbox2.checked!=true){
-			alert("개인정보 제공에 동의를 해주세요.");
-			e.preventDefault();
-		}
-	});
+	
+	
+	
+	
 </script>
 </html>

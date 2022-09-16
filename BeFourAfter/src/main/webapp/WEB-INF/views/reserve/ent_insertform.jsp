@@ -13,14 +13,14 @@
 	<div class="container">
 		<form action="ent_insert.do" method="post" id="ent_insertform">
 			<input type="hidden" name="ent_insertform" id="ent_insertform" value="ent_insertform"/>
-			<input type="hidden" name="name" id="name"/>
-			<input type="hidden" name="phone" id="phone"/>
+			<input type="hidden" name="name" id="name" value="최현호"/>
+			<input type="hidden" name="phone" id="phone" value="01048462650"/>
 			<p>
 			<label for="name">예약자이름</label>
-			<input type="text" name="name" id="name" disabled/>
+			<input type="text" name="name" id="name" value="최현호" disabled/>
 			<br />
 			<label for="phone">핸드폰번호</label>
-			<input type="text" name="phone" id="phone" disabled/>
+			<input type="text" name="phone" id="phone" value="01048462650" disabled/>
 			</p>
 			<p>
 			<label for="rsdate">맡기는 날짜 및 시간</label><br />
@@ -92,5 +92,13 @@
 			e.preventDefault();
 		}
 	});
+	
+	var now_utc = Date.now() // 지금 날짜를 밀리초로
+	// getTimezoneOffset()은 현재 시간과의 차이를 분 단위로 반환
+	var timeOff = new Date().getTimezoneOffset()*60000; // 분단위를 밀리초로 변환
+	// new Date(today-timeOff).toISOString()은 '2022-05-11T18:09:38.134Z'를 반환
+	var today = new Date(now_utc-timeOff).toISOString().substring(0, 16);
+	 
+	document.getElementById("rsdate").setAttribute("min", today);
 </script>
 </html>
