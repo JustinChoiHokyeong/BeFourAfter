@@ -6,8 +6,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 </head>
 <body>
+<div class="container">
 <c:choose>
 	<c:when test="${dto.reservetype eq 'leave_insertform'}">
 		<h1>출국서비스</h1>
@@ -28,10 +31,10 @@
 				</p>
 				<p>
 				<label for="rname">수령인</label>
-				<input type="text" name="rname" id="rname" value="${dto.rname }"/>
+				<input type="text" name="rname" id="rname" value="${dto.rname }" />
 				<br />
 				<label for="rphone">핸드폰번호</label>
-				<input type="text" name="rphone" id="rphone" value="${dto.rphone }"/>
+				<input type="text" name="rphone" id="rphone" value="${dto.rphone } " maxlength="11" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
 				<br />
 				<label for="same"> <small> 예약자와 동일 </small>
 				<input type="checkbox" name="same" value="same"/>
@@ -41,7 +44,7 @@
 				<label for="rsdate">수령 날짜 및 시간</label><br />
 				<input type="datetime-local" name="rsdate" id="rsdate" value="${dto.rsdate }"/>
 				</p>
-				<fieldset>
+				<fieldset style="max-width: 30%">
 					<legend>수령장소</legend>
 					<c:choose>
 						<c:when test="${dto.place eq 'first'}">
@@ -64,19 +67,19 @@
 				</fieldset>
 				<p>
 				<label for="basic">기본 수하물</label>
-				<input type="number" name="basic" id="basic" value="${dto.basic }" placeholder="수량입력"/>
+				<input type="number" name="basic" id="basic" value="${dto.basic }" min="0"placeholder="수량입력"/>
 				<br />
 				<small>(캐리어28인치 이하, 백팩, 가방, 20kg 이하)</small>
 				</p>
 				<p>
 				<label for="big">대형 수하물</label>
-				<input type="number" name="big" id="big" value="${dto.big }" placeholder="수량입력"/>
+				<input type="number" name="big" id="big" value="${dto.big }" min="0"placeholder="수량입력"/>
 				<br />
 				<small>(캐리어28인치 초과, 박스, 골프백, 20kg 초과)</small>
 				</p>
 				<p>
 				<label for="over">25kg 초과</label>
-				<input type="number" name="over" id="over" value="${dto.over }" placeholder="수량입력"/>
+				<input type="number" name="over" id="over" value="${dto.over }" min="0"placeholder="수량입력"/>
 				<br />
 				<small>(개당 5,000원 추가)</small>
 				</p>
@@ -87,7 +90,7 @@
 			</form>
 		</div>
 		<script>
-		//1. 회원정보 넘기기 수령인 정보에 예약자 정보 
+		// 회원정보 넘기기 수령인 정보에 예약자 정보 
 		var checkbox = document.querySelector("input[name=same]");
 		
 		checkbox.addEventListener('change', function() {
@@ -146,9 +149,9 @@
 				<label for="rsdate">맡기는 날짜 및 시간</label><br />
 				<input type="datetime-local" name="rsdate" id="rsdate" value="${dto.rsdate }"/>
 				</p>
-				<fieldset>
+				<fieldset style="max-width: 30%">
 					<legend>맡길장소</legend>
-					<c:choose>
+					<c:choose >
 						<c:when test="${dto.place eq 'first'}">
 							<label for="place">
 								<input type="radio" name="place" value="first" checked="checked"/>제 1 터미널
@@ -169,23 +172,23 @@
 				</fieldset>
 				<p>
 				<label for="addr">수하물 보낼 주소</label>
-				<input type="text" name="addr" id="addr" value="${dto.addr}" placeholder="주소를 정확히 입력해주세요 (시/군/구 + 상세주소)"/>
+				<input type="text" name="addr" id="addr" value="${dto.addr}" placeholder="주소를 정확히 입력해주세요 (시/군/구 + 상세주소)" style="width: 400px"/>
 				</p>
 				<p>
 				<label for="basic">기본 수하물</label>
-				<input type="number" name="basic" id="basic" value="${dto.basic}" plceholder=""/>
+				<input type="number" name="basic" id="basic" value="${dto.basic}" min="0"plceholder=""/>
 				<br />
 				<small>(캐리어28인치 이하, 백팩, 가방, 20kg 이하)</small>
 				</p>
 				<p>
 				<label for="big">대형 수하물</label>
-				<input type="number" name="big" id="big" value="${dto.big}" plceholder=""/>
+				<input type="number" name="big" id="big" value="${dto.big}" min="0"plceholder=""/>
 				<br />
 				<small>(캐리어28인치 초과, 박스, 골프백, 20kg 초과)</small>
 				</p>
 				<p>
 				<label for="over">25kg 초과</label>
-				<input type="number" name="over" id="over" value="${dto.over}" plceholder=""/>
+				<input type="number" name="over" id="over" value="${dto.over}" min="0"plceholder=""/>
 				<br />
 				<small>(개당 5,000원 추가)</small>
 				</p>
@@ -220,16 +223,6 @@
 		</script>
 	</c:otherwise>
 </c:choose>
+</div>
 </body>
-<script>
-
-	
-	
-	
-		
-	
-	
-	
-	
-</script>
 </html>
