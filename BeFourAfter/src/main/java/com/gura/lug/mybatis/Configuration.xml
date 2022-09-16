@@ -5,8 +5,10 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="com.gura.lug.reserve.dto.ReserveDto" alias="reserveDto"/>
+		<typeAlias type="com.gura.lug.users.dto.UsersDto" alias="usersDto" />
 	</typeAliases>
 	<mappers>
 		<mapper resource="com/gura/lug/mybatis/ReserveMapper.xml"/>
+		<mapper resource="com/gura/lug/mybatis/UsersMapper.xml" />
 	</mappers>
 </configuration>
