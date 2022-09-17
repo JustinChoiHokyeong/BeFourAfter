@@ -21,10 +21,22 @@
       </div>
       <div>
          <label for="isSecret">비밀글로 문의하기</label>
-         <input type="checkbox" name="isSecret" />
+         <input type="hidden" name="isSecret" id="isSecret"/>
+         <input type="checkbox" id="isSecretchbox"/>
       </div>
       <button type="submit">등록</button>
    </form>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   <script>
+		$("#isSecretchbox").change(function(){
+			if($("#isSecretchbox").is(":checked")){
+				$("#isSecret").val('Yes');
+			}else{
+				$("#isSecret").val('No');
+			}
+		})
+   </script>
 </div>
+
 </body>
 </html>

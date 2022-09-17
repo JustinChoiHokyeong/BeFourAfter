@@ -21,4 +21,5 @@ public interface CSDao {
 	public void delete(int num);
 	//글 수정
 	public void update(CSDto dto);
+
 }
