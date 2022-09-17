@@ -1,23 +1,23 @@
-package com.gura.lug.cs.comment.dto;
+package com.gura.lug.cs.dto;
 
 public class CSCommentDto {
-
 	private int num;
 	private String writer;
 	private String content;
 	private String target_id;
 	private int ref_group;
 	private int comment_group;
-	private String delete;
+	private String deleted;
 	private String regdate;
 	private String profile;
 	private int startRowNum;
 	private int endRowNum;
 	
+	//디폴트 생성자
 	public CSCommentDto() {}
 
 	public CSCommentDto(int num, String writer, String content, String target_id, int ref_group, int comment_group,
-			String delete, String regdate, String profile, int startRowNum, int endRowNum) {
+			String deleted, String regdate, String profile, int startRowNum, int endRowNum) {
 		super();
 		this.num = num;
 		this.writer = writer;
@@ -25,7 +25,7 @@ public class CSCommentDto {
 		this.target_id = target_id;
 		this.ref_group = ref_group;
 		this.comment_group = comment_group;
-		this.delete = delete;
+		this.deleted = deleted;
 		this.regdate = regdate;
 		this.profile = profile;
 		this.startRowNum = startRowNum;
@@ -80,12 +80,12 @@ public class CSCommentDto {
 		this.comment_group = comment_group;
 	}
 
-	public String getDelete() {
-		return delete;
+	public String getDeleted() {
+		return deleted;
 	}
 
-	public void setDelete(String delete) {
-		this.delete = delete;
+	public void setDeleted(String deleted) {
+		this.deleted = deleted;
 	}
 
 	public String getRegdate() {
@@ -119,5 +119,6 @@ public class CSCommentDto {
 	public void setEndRowNum(int endRowNum) {
 		this.endRowNum = endRowNum;
 	}
+	
 	
 }
