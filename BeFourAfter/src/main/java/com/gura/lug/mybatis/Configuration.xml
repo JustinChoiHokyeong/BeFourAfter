@@ -5,8 +5,16 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="com.gura.lug.reserve.dto.ReserveDto" alias="reserveDto"/>
+		<typeAlias type="com.gura.lug.users.dto.UsersDto" alias="usersDto" />
+		<typeAlias type="com.gura.lug.cs.dto.CSDto" alias="csDto"/>
+		<typeAlias type="com.gura.lug.cs.dto.CSCommentDto" alias="csCommentDto"/>
+		<typeAlias type="com.gura.lug.review.dto.ReviewDto" alias="reviewDto" />
 	</typeAliases>
 	<mappers>
 		<mapper resource="com/gura/lug/mybatis/ReserveMapper.xml"/>
+		<mapper resource="com/gura/lug/mybatis/UsersMapper.xml" />
+		<mapper resource="com/gura/lug/mybatis/CSMapper.xml"/>
+		<mapper resource="com/gura/lug/mybatis/CSCommentMaper.xml"/>
+		<mapper resource="com/gura/lug/mybatis/ReviewMapper.xml" />
 	</mappers>
 </configuration>

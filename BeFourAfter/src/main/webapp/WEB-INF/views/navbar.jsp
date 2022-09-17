@@ -23,7 +23,7 @@
 						<li><a class="dropdown-item" href="${pageContext.request.contextPath }/reserve/list.do">나의 예약 현황</a></li>
 					</ul>
 				</li>
-				<li class="nav-item"> <a class="nav-link" href="#">리뷰</a>
+				<li class="nav-item"> <a class="nav-link" href="${pageContext.request.contextPath }/review/list.do">리뷰</a>
 				</li> 
 				</li>
 				<li class="nav-item"> <a class="nav-link" href="${pageContext.request.contextPath}/cs/list.do">고객센터</a>
@@ -33,19 +33,18 @@
 				
 			</ul>
 			<c:choose>
-				<c:when test="${empty id }">
+				<c:when test="${ empty sessionScope.id}">
 					<a class="btn btn-outline-primary btn-sm me-2"
-						href="">회원가입</a>
+						href="${pageContext.request.contextPath}/users/signup_form.do">회원가입</a>
 					<a class="btn btn-outline-success btn-sm me-2"
-						href="">로그인</a>
+						href="${pageContext.request.contextPath}/users/loginform.do">로그인</a>
 				</c:when>
 				<c:otherwise>
-					<span class="navbar-text me-2"> <a
-						href="">${id }</a>
+					<span class="navbar-text me-2">
+					<a href="${pageContext.request.contextPath}/users/mypage.do">${sessionScope.id }</a>
 						님 환영합니다.
 					</span>
-					<a class="btn btn-outline-danger btn-sm me-2"
-						href="">로그아웃</a>
+					<a class="btn btn-outline-danger btn-sm me-2" href="${pageContext.request.contextPath}/users/logout.do">로그아웃</a>
 				</c:otherwise>
 			</c:choose>
 		</div>
