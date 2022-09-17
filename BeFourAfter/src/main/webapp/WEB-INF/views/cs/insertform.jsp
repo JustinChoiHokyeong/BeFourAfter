@@ -12,25 +12,28 @@
 </head>
 <body>
 <div class="container">
-   <h1>새글 작성 폼</h1>
-   <form action="${pageContext.request.contextPath}/cs/insert.do" method="post" id="insertForm">
-      <div>
-         <label for="title">제목</label>
-         <input type="text" name="title" id="title"/>
-      </div>
-      <div>
-         <label for="content">내용</label>
-         <textarea name="content" id="content"></textarea>
-      </div>
-      <div>
-         <label for="isSecret">비밀글로 문의하기</label>
-         <input type="hidden" name="isSecret" id="isSecret"/>
-         <input type="checkbox" id="isSecretchbox"/>
-      </div>
-      <button type="submit">등록</button>
-   </form>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-   <script>
+		<div class="p-5">
+		   <h3 class="text-center">문의하기</h3>
+		   <form action="${pageContext.request.contextPath}/cs/insert.do" method="post" id="insertForm">
+		      <div class="mb-3">
+		         <label for="title">제목</label>
+		         <input class="form-control" type="text" name="title" id="title"/>
+		      </div>
+		      <div class="mb-3">
+		         <label for="content">내용</label>
+		         <textarea class="form-control" style="height:300px;" name="content" id="content"></textarea>
+		      </div>
+		      <div class="mb-3 form-check">
+		         <input type="hidden" name="isSecret" id="isSecret"/>
+		         <input class="form-check-input" type="checkbox" id="isSecretchbox"/>
+		         <label for="isSecret">비밀글로 문의하기</label>
+		         <p class="fw-light"><i class="bi bi-info-lg"></i>비밀글 적용 시 작성자 본인 및 관리자에게만 공개됩니다.</p>
+		      </div>
+		      <button class="btn btn-outline-secondary" type="submit">문의 등록</button>
+		   </form>
+		</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
 		$("#isSecretchbox").change(function(){
 			if($("#isSecretchbox").is(":checked")){
 				$("#isSecret").val('Yes');
@@ -38,7 +41,7 @@
 				$("#isSecret").val('No');
 			}
 		})
-   </script>
+    </script>
 </div>
 
 </body>

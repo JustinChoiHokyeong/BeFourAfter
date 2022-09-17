@@ -100,7 +100,7 @@ public class CSController {
 		
 		service.deleteContent(num, request);
 		
-		return new ModelAndView("redirect:/cs/list.do");
+		return new ModelAndView("redirect:/cs/ask.do");
 	}
 	
 	@RequestMapping("/cs/updateform")

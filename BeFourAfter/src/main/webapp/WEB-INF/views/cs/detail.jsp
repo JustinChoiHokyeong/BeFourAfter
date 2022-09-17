@@ -12,59 +12,65 @@
 </head>
 <body>
    <div class="container">
-   <h1>Q&A</h1>
-   <div>상품에 대한 문의를 남기는 공간입니다 해당 게시판의 성격과 다른 글은 사전동의 없이 담당 게시판으로 이동될 수 있습니다.</div>
-   <div>배송관련, 주문(취소/교환/환불)관련 문의 및 요청사항의 마이페이지 내 1:1문의에 남겨주세요</div>
-   <table>
-      <tr>
-         <th>글번호</th>
-         <td>${dto.num }</td>
-      </tr>
-      <tr>
-         <th>작성자</th>
-         <td>${dto.writer }</td>
-      </tr>
-      <tr>
-         <th>제목</th>
-         <td>${dto.title }</td>
-      </tr>
-      <tr>
-         <th>등록일</th>
-         <td>${dto.regdate }</td>
-      </tr>
-      <tr>
-         <th>비밀글여부</th>
-         <td>${dto.isSecret }</td>
-      </tr>
+		<div class="p-5">
+		</div>
+		<h1 class="text-center">문의하기</h1>
+	   <table class="table">
+	      <c:choose>
+	      	<c:when test="${dto.isSecret eq 'Yes'}">
+				<tr >
+					<th style="width:100px;">제목</th>
+					<td colspan="3"><span class="text-muted" style="font-size:12px;"><i class="bi bi-lock-fill"></i>비밀글</span> ${dto.title }</td>
+	    		</tr>
+	      	</c:when>
+	      	<c:otherwise>
+				<tr>
+					<th style="width:100px;">제목</th>
+					<td colspan="3">${dto.title }</td>
+	    		</tr>
+	      	</c:otherwise>
+	      </c:choose>
 
-      <tr>
-         <td colspan="2">
-            <div class="content">${dto.content }</div>
-         </td>
-      </tr>
-   </table>
-   <ul>
-      <li><a href="list.do">목록보기</a></li>
-      <c:if test="${dto.writer eq id }">
-         <li><a href="updateform.do?num=${dto.num }">수정</a></li>
-         <li><a href="delete.do?num=${dto.num }">삭제</a></li>
-      </c:if>
-   </ul>
-   	<c:if test="${dto.prevNum ne 0 }">
-		<a href="detail.do?num=${dto.prevNum }&keyword=${encodedK }&condition=${condition }">이전글</a>
-	</c:if>
-	<c:if test="${dto.nextNum ne 0 }">
-		<a href="detail.do?num=${dto.nextNum }&keyword=${encodedK }&condition=${condition }">다음글</a>
-	</c:if>
-	<c:if test="${ not empty keyword }">
-		<p>	
-			<strong>${condition }</strong> 조건, 
-			<strong>${keyword }</strong> 검색어로 검색된 내용 자세히 보기 
-		</p>
-	</c:if>
-   댓글
-   
-   
+	      <tr>
+	         <th style="width:100px;">작성자</th>
+	         <td>${dto.writer }</td>
+	         <th style="width:100px;">등록일</th>
+	         <td>${dto.regdate }</td>
+	      </tr>	
+	      <tr style="height:300px;">
+	         <td colspan="4">
+	            <div >${dto.content }</div>
+	         </td>
+	      </tr>
+	   </table>
+	   <div class="text-end">
+	      <span><a class="btn text-decoration-none text-dark btn-outline-secondary" href="list.do"><i class="bi bi-list"></i>목록보기</a></span>
+	      <c:if test="${dto.writer eq id }">
+	         <sapn><a class="btn text-decoration-none text-dark btn-outline-secondary" href="updateform.do?num=${dto.num }"><i class="bi bi-pencil-fill"></i>수정</a></span>
+	         <span><a class="btn text-decoration-none text-dark btn-outline-secondary" href="delete.do?num=${dto.num }"><i class="bi bi-trash3"></i>삭제</a></span>
+	      </c:if>
+	   </div>
+	   <table class="table">
+		   	<c:if test="${dto.prevNum ne 0 }">
+				<tr><td>
+					<a class="text-decoration-none text-dark" href="detail.do?num=${dto.prevNum }&keyword=${encodedK }&condition=${condition }"><i class="bi bi-caret-up-fill"></i>다음글</a>
+				</td></tr>
+			</c:if>
+			<c:if test="${dto.nextNum ne 0 }">
+				<tr><td>
+					<a class="text-decoration-none text-dark"href="detail.do?num=${dto.nextNum }&keyword=${encodedK }&condition=${condition }"><i class="bi bi-caret-down-fill"></i>이전글</a>
+				</td></tr>
+			</c:if>
+			<c:if test="${ not empty keyword }">
+			<p>	
+				<strong>${condition }</strong> 조건, 
+				<strong>${keyword }</strong> 검색어로 검색된 내용 자세히 보기 
+			</p>
+		</c:if>
+	   </table>
+	   댓글
+	   
+	   
 </div>
 </body>
 </html>
