@@ -1,0 +1,107 @@
+@charset "utf-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap');
+
+/**배경색, 폰트 바꾸기*/
+body {
+  background-color: white;
+  font-family: 'rubik', sans-serif;
+}
+
+/** h1 가운데 정렬*/
+h1 {
+  text-align: center;
+}
+aq
+/** .accordion 사이즈 탑,바텀 마진 90px 나머지 자동
+    글자색 검정 배경색 흰색 패딩 45px 45px
+*/
+.accordion {
+  width: 800px;
+  margin: 90px auto;
+  color: black;
+  background-color: white;
+  padding: 45px 45px;
+}
+
+/** .accordion에 있는 .container 포지션 상대적 마진10px10px*/
+.accordion .container {
+    position: relative;
+    margin: 10px 10px;
+    
+  }
+    /** 
+      .accordion에 있는 .label 포지션을 .container에 맞춰 상대적으로 정리
+      탑바텀 패딩, 글씨크기, 커서변경
+    */
+  .accordion .label {
+    position: relative;
+    padding: 10px 0;
+    font-size: 20px;
+    color: black;
+    cursor: pointer;
+  }
+  
+
+/** +옆에 붙여주고 자리 정렬  */
+.accordion .label::before {
+    content: '+';
+    color: black;
+    position: absolute;
+    top: 50%;
+    right: -5px;
+    font-size: 30px;
+    transform: translateY(-50%); /*세로중앙정렬*/
+  }
+  
+  /** content 숨기기  글씨크기 조정*/
+  .accordion .content {
+    position: relative;
+    background: white;
+    height: 0;
+    font-size: 17px;
+    text-align: justify;
+    width: auto;
+    overflow: hidden; 
+    transition: 1s;
+  }
+  
+  /** accordion들 사이에 가로줄 만들어주기*/
+  .accordion hr {
+    width: 100;
+    margin-left: 0;
+    border: 1px solid grey;
+  }
+
+  /* 실행시 보이기 */
+.accordion .container.active #q1 {
+  height: 110px;
+  transition: 1s;
+}
+.accordion .container.active #q2{
+  height: 210px;
+  transition: 1s;
+}
+.accordion .container.active #q3{
+  height: 110px;
+  transition: 1s;
+}
+.accordion .container.active #q4{
+  height: 140px;
+  transition: 1s;
+}
+.accordion .container.active #q5{
+  height: 140px;
+  transition: 1s;
+}
+.accordion .container.active #q6{
+  height: 140px;
+  transition: 1s;
+}
+
+/* 실행시 +를 -로 바꾸기*/
+
+.accordion .container.active .label::before {
+  content: '-';
+  font-size: 30px;
+}

@@ -7,12 +7,21 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 
-//패키지 이름 cs.controller라고 수정어떨까요
+//패키지 이름 cs.controller라고 수정어떨까요좋습니다.
 
 @Controller
 public class CSController {
+	
+	@RequestMapping(value = {"/", "/cs/list"}, method = RequestMethod.GET)
+	public ModelAndView list() {
+		ModelAndView model = new ModelAndView();
+		model.setViewName("list");
+		return model;
+	}
 
 	
 	@RequestMapping("/cs/list.do")
