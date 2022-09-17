@@ -45,7 +45,7 @@
 						님 환영합니다.
 					</span>
 					<a class="btn btn-outline-danger btn-sm me-2"
-						href="{pageContext.request.contextPath}/users/logout.do">로그아웃</a>
+						href="${pageContext.request.contextPath}/users/logout.do">로그아웃</a>
 				</c:otherwise>
 			</c:choose>
 		</div>

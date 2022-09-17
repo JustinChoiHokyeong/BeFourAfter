@@ -76,6 +76,7 @@ public class UsersServiceImpl implements UsersService{
 		//ModelAndView 객체에 담아준다.
 		mView.addObject("dto", dto);
 	}
+	
 
 	@Override
 	public void updateUserPwd(HttpSession session, UsersDto dto, ModelAndView mView) {
@@ -163,5 +164,5 @@ public class UsersServiceImpl implements UsersService{
 		//ModelAndView 객체에 탈퇴한 회원의 아이디를 담아준다.
 		mView.addObject("id", id);
 	}
-
+	
 }

@@ -44,15 +44,25 @@
 			method="post">
 			<input type="hidden" name="profile"
 				value="${ empty dto.profile ? '' : dto.profile}" />
+			<input type="hidden" name="name"
+				value="${dto.name }" />
 			<div>
 				<label for="id">아이디</label> <input type="text" id="id"
 					value="${id }" disabled />
 			</div>
 			<div>
+				<label for="name">이름</label> <input type="text" name="name"
+					id="name" value="${dto.name }" disabled/>
+			</div>
+			<div>
+				<label for="phone">핸드폰 번호</label> <input type="text" name="phone"
+					id="phone" value="${dto.phone }" maxlength="11" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
+			</div>
+			<div>
 				<label for="email">이메일</label> <input type="text" name="email"
 					id="email" value="${dto.email }" />
 			</div>
-			<button type="submit">수정반영</button>
+			<button type="submit">수정</button>
 		</form>
 
 		<form
