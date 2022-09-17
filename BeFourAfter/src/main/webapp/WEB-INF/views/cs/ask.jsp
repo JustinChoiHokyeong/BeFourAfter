@@ -15,8 +15,8 @@
 		<thead>
 			<tr>
 				<th>글번호</th>
-				<th>작성자</th>
 				<th>제목</th>
+				<th>작성자</th>
 				<th>조회수</th>
 				<th>등록일</th>
 			</tr>
@@ -25,10 +25,25 @@
 		<c:forEach var="tmp" items="${list}">
 			<tr>
 				<td>${tmp.num }</td>
+				<c:choose>
+					<c:when test="${tmp.isSecret eq 'Yes' && tmp.writer ne id }">
+						<td>
+							비밀글 입니다.
+						</td>	
+					</c:when>
+					<c:when  test="${tmp.isSecret eq 'Yes' && tmp.writer eq id }">
+						<td>
+							(비밀글)
+							<a href="detail.do?num=${tmp.num }&keyword=${encodedK }&condition=${condition}">${tmp.title }</a>
+						</td>
+					</c:when>
+					<c:otherwise>
+						<td>
+							<a href="detail.do?num=${tmp.num }&keyword=${encodedK }&condition=${condition}">${tmp.title }</a>
+						</td>
+					</c:otherwise>
+				</c:choose>
 				<td>${tmp.writer }</td>
-				<td>
-					<a href="detail.do?num=${tmp.num }&keyword=${encodedK }&condition=${condition}">${tmp.title }</a>
-				</td>
 				<td>${tmp.viewCount }</td>
 				<td>${tmp.regdate }</td>
 			</tr>
