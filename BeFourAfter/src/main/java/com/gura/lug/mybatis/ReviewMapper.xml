@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="review">
+	<select id="getList" parameterType="reviewDto" resultType="reviewDto">
+		SELECT *
+		FROM	
+			(SELECT result1.*, ROWNUM as rnum
+			FROM
+				(SELECT num, writer, title, imagePath, regdate
+				FROM board_review
+				ORDER BY num DESC) result1)
+		WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum}
+	</select>
+	<select id="getCount" resultType="int">
+		SELECT NVL(MAX(ROWNUM), 0)
+		FROM board_review
+	</select>
+	<insert id="insert" parameterType="reviewDto">
+		INSERT INTO board_review
+		(num, writer, title, imagePath, regdate)
+		VALUES(board_review_seq.NEXTVAL, #{writer}, #{title}, #{imagePath}, SYSDATE)
+	</insert>
+	<select id="getData" parameterType="int" resultType="reviewDto">
+		SELECT *
+		FROM
+			(SELECT num, writer, title, imagePath, regdate, 
+				LAG(num, 1, 0) OVER (ORDER BY num DESC) AS prevNum,
+				LEAD(num, 1, 0) OVER (ORDER BY num DESC) AS nextNum
+			FROM board_review
+			ORDER BY num DESC)
+		WHERE num = #{num}
+	</select>
+</mapper>
