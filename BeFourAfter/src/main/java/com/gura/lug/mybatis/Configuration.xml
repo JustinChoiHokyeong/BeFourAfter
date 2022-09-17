@@ -6,9 +6,11 @@
 	<typeAliases>
 		<typeAlias type="com.gura.lug.reserve.dto.ReserveDto" alias="reserveDto"/>
 		<typeAlias type="com.gura.lug.users.dto.UsersDto" alias="usersDto" />
+		<typeAlias type="com.gura.lug.review.dto.ReviewDto" alias="reviewDto" />
 	</typeAliases>
 	<mappers>
 		<mapper resource="com/gura/lug/mybatis/ReserveMapper.xml"/>
 		<mapper resource="com/gura/lug/mybatis/UsersMapper.xml" />
+		<mapper resource="com/gura/lug/mybatis/ReviewMapper.xml" />
 	</mappers>
 </configuration>

@@ -10,6 +10,7 @@
 		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+
 	<!-- 
 		JNDI 데이터 소스 객체 얻어오는 설정   
 		Servers/context.xml 에 설정된 oracle 접속정보 가 있어야 된다. 
@@ -30,9 +31,9 @@
 		dataSource = new JndiObjectFactoryBean();
 		dataSource.setJndiName("java:comp/env/jdbc/myoracle");
 	 -->
-	
-	
-	<!-- 
+	 
+	 
+	 <!-- 
 		SqlSessionFactory 객체 
 		Configuration.xml 문서가 어디에 있는지 알려야 한다. 
 	-->
@@ -48,7 +49,7 @@
 		sessionFactory.setConfigLocation("classpath:com/gura/xxx");
 	 -->
 	
-
+	
 	<!-- 
 		SqlSession 인터페이스를 구현한 
 		SqlSessionTemplate(SqlSession) 객체 
@@ -58,6 +59,7 @@
 		<beans:constructor-arg name="sqlSessionFactory" 
 			ref="sessionFactory"/>
 	</beans:bean>
+	
 	
 	<!-- Spring Transaction Manager 설정 -->
 	<beans:bean id="txManager" 
@@ -75,22 +77,14 @@
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
-
+	
+	
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
-	<!--
-		com.gura.step04 패키지를 포함한 하위 패키지를 모두 scan 해서 spring이 관리하는
-		bean으로 만들것들은 만들어서 관리하기 
-		@Controller
-		@Service
-		@Repository
-		@Component
-		@Aspect
-		@ControllerAdvice ... 등등의 어노테이션이 붙어 있으면 된다 
-	 -->
+	
 	<context:component-scan base-package="com.gura.lug" />
 	<context:component-scan base-package="com.gura.lug.aspect" />
 	
@@ -99,17 +93,20 @@
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<beans:property name="maxUploadSize" value="102400000"/>
 	</beans:bean>	
-
+	
 	<!-- 
 		bean 의 이름을 이용해서 view 로 이동할수 있도록 설정 
-		setOrder(0) 는 0 순위로 찾아 가겠다는 의미 
+		setOrder(0) 는 0 순위로 찾아 가겠다는 의미
+		(우선 순위를 지정해줌)
 		0 순위로 찾아서 없으면 
 		views 폴더 안에서 jsp 페이지를 찾게 된다. 	
 	-->
 	<beans:bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
 		<beans:property name="order" value="0"/>
 	</beans:bean>
+
 	
 	<!-- 어노테이션 기반으로 aop 적용할수 있도록 설정 -->
 	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+	
 </beans:beans>

@@ -23,7 +23,7 @@
 						<li><a class="dropdown-item" href="${pageContext.request.contextPath }/reserve/list.do">나의 예약 현황</a></li>
 					</ul>
 				</li>
-				<li class="nav-item"> <a class="nav-link" href="#">리뷰</a>
+				<li class="nav-item"> <a class="nav-link" href="${pageContext.request.contextPath }/review/list.do">리뷰</a>
 				</li> 
 				</li>
 				<li class="nav-item"> <a class="nav-link" href="${pageContext.request.contextPath}/cs/list.do">고객센터</a>
