@@ -23,7 +23,7 @@
 						<li><a class="dropdown-item" href="${pageContext.request.contextPath }/reserve/list.do">나의 예약 현황</a></li>
 					</ul>
 				</li>
-				<li class="nav-item"> <a class="nav-link" href="#">리뷰</a>
+				<li class="nav-item"> <a class="nav-link" href="${pageContext.request.contextPath }/review/list.do">리뷰</a>
 				</li> 
 				</li>
 				<li class="nav-item"> <a class="nav-link" href="${pageContext.request.contextPath}/cs/list.do">고객센터</a>
@@ -44,8 +44,10 @@
 					<a href="${pageContext.request.contextPath}/users/mypage.do">${sessionScope.id }</a>
 						님 환영합니다.
 					</span>
+
 					<a class="btn btn-outline-danger btn-sm me-2"
 						href="${pageContext.request.contextPath}/users/logout.do">로그아웃</a>
+
 				</c:otherwise>
 			</c:choose>
 		</div>
