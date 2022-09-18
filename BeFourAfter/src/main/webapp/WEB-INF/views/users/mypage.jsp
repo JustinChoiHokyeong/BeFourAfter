@@ -21,10 +21,6 @@
 		<h1>가입 정보 입니다.</h1>
 		<table>
 			<tr>
-				<th>아이디</th>
-				<td>${id }</td>
-			</tr>
-			<tr>
 				<th>프로필 이미지</th>
 				<td><c:choose>
 						<c:when test="${empty dto.profile }">
@@ -41,6 +37,10 @@
 								src="${pageContext.request.contextPath}${dto.profile}" />
 						</c:otherwise>
 					</c:choose></td>
+			</tr>
+			<tr>
+				<th>아이디</th>
+				<td>${id }</td>
 			</tr>
 			<tr>
 				<th>비밀번호</th>
@@ -64,6 +64,7 @@
 				<td>${dto.regdate }</td>
 			</tr>
 		</table>
+		<a href="${pageContext.request.contextPath }/users/myreserve.do">예약 확인 내역</a>
 		<a href="${pageContext.request.contextPath}/users/updateform.do">개인정보수정</a>
 		<a href="javascript:deleteConfirm()">탈퇴</a>
 	</div>
