@@ -36,7 +36,8 @@
 		<servlet-name>appServlet</servlet-name>
 		<url-pattern>*.do</url-pattern>
 	</servlet-mapping>
-	
+
+
 	<!-- post 방식 전송될때  한글 깨지지 않도록 Spring 인코딩 필터 정의하기  -->
 	<filter>
 		<filter-name>EncodingFilter</filter-name>
