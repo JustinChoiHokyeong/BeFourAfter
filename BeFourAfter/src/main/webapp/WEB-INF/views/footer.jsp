@@ -3,7 +3,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!-- Footer -->
-    <footer class="footer">
+    <footer class="footer container-fluid">
         <span>상호명: Good Lugg!</span><br> 
         <span>대표: Be Four & After Corp. <span class="hipen">|</span>사업자등록번호:000-0000-0000<span class="hipen"></span>        <br>
         <span>주소: 인천공항 Gate B 좌측 남자화장실</span>        <br> 
