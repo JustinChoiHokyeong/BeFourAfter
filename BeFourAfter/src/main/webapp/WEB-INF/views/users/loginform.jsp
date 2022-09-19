@@ -9,7 +9,7 @@
 </head>
 <body>
 <div class="container">
-	<h1>로그인 폼 입니다.</h1>
+	<h4>Sign in to start your session</h4>
 	<form action="${pageContext.request.contextPath}/users/login.do" method="post">
 		<c:choose>
 			<c:when test="${ empty param.url }">
@@ -20,14 +20,15 @@
 			</c:otherwise>
 		</c:choose>
 		<div>
-			<label for="id">아이디</label>
-			<input type="text" name="id" id="id"/>
+			<label for="id"> </label>
+			<input type="text" name="id" id="id" placeholder="아이디"/>
 		</div>
 		<div>
-			<label for="pwd">비밀번호</label>
-			<input type="password" name="pwd" id="pwd"/>
+			<label for="pwd"> </label>
+			<input type="password" name="pwd" id="pwd" placeholder="비밀번호"/>
 		</div>
 		<button type="submit">로그인</button>
+		<a href="${pageContext.request.contextPath}/users/signup_form.do">회원가입</a>
 	</form>
 </div>
 </body>
