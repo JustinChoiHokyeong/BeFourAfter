@@ -34,7 +34,7 @@ public class UsersServiceImpl implements UsersService{
 	}
 
 	@Override
-	public void addUser(UsersDto dto) {
+	public void addUser(UsersDto dto, HttpSession session) {
 		//사용자가 입력한 비밀 번호를 읽어와서
 		String pwd=dto.getPwd();
 		//암호화 한 후에
@@ -44,6 +44,7 @@ public class UsersServiceImpl implements UsersService{
 		dto.setPwd(encodedPwd);
 
 		dao.insert(dto);
+		session.setAttribute("id", dto.getId());
 	}
 
 	@Override
@@ -66,7 +67,7 @@ public class UsersServiceImpl implements UsersService{
 			session.setAttribute("id", dto.getId());
 		}
 	}
-
+	
 	@Override
 	public void getMypage(HttpSession session, ModelAndView mView) {
 		//로그인된 아이디를 읽어온다.
@@ -76,6 +77,7 @@ public class UsersServiceImpl implements UsersService{
 		//ModelAndView 객체에 담아준다.
 		mView.addObject("dto", dto);
 	}
+	
 
 	@Override
 	public void updateUserPwd(HttpSession session, UsersDto dto, ModelAndView mView) {
@@ -163,5 +165,5 @@ public class UsersServiceImpl implements UsersService{
 		//ModelAndView 객체에 탈퇴한 회원의 아이디를 담아준다.
 		mView.addObject("id", id);
 	}
-
+	
 }

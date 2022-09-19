@@ -13,35 +13,41 @@
 </head>
 <body>
 <div class="container">
-	<h1>회원 가입 폼 입니다.</h1>
+	<h1>GOOD LUGG 계정 만들기</h1>
 	<form class="animate__animated animate__bounceInDown" action="${pageContext.request.contextPath}/users/signup.do" method="post" id="myForm">
 		
 		<div>
 			<label class="control-label" for="id">아이디</label>
-			<input class="form-control" type="text" name="id" id="id"/>
-			<small class="form-text text-muted">영문자 소문자로 시작하고 5글자~10글자 이내로 입력하세요.</small>
-			<div class="invalid-feedback">사용할수 없는 아이디 입니다.</div>
+			<input class="form-control" type="text" name="id" id="id" placeholder="Id"/>
+			<small class="form-text text-muted">영문자 소문자로 시작하고 5글자~10글자 이내로 입력해주세요</small>
+			<div class="invalid-feedback">사용할 수 없는 아이디입니다</div>
 		</div>
 		<div>
 			<label class="control-label" for="pwd">비밀번호</label>
-			<input class="form-control" type="password" name="pwd" id="pwd"/>
-			<small class="form-text text-muted">5글자~10글자 이내로 입력하세요.</small>
-			<div class="invalid-feedback">비밀번호를 확인 하세요.</div>
+			<input class="form-control" type="password" name="pwd" id="pwd" placeholder="Password"/>
+			<small class="form-text text-muted">5글자~10글자 이내로 입력해 주세요</small>
+			<div class="invalid-feedback">비밀번호를 확인해 주세요</div>
 		</div>
 		<div>
-			<label class="control-label" for="pwd2">비밀번호 확인</label>
-			<input class="form-control" type="password" name="pwd2" id="pwd2"/>
+			<label class="control-label" for="pwd2">비밀번호 재확인</label>
+			<input class="form-control" type="password" name="pwd2" id="pwd2" placeholder="Confirm Password"/>
 		</div>
 		<div>
 			<label class="control-label" for="name">이름</label>
-			<input class="form-control" type="text" name="name" id="name"/>
+			<input class="form-control" type="text" name="name" id="name" placeholder="Name"/>
+			<small class="form-text text-muted">한글과 영문명으로 입력해 주세요</small>
+			<div class="invalid-feedback">이름을 확인해 주세요</div>
+		</div>
+		<div>	
 			<label class="control-label" for="phone">핸드폰 번호</label>
-			<input class="form-control" type="text" name="phone" id="phone" maxlength="11" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
+			<input class="form-control" type="text" name="phone" id="phone" maxlength="11" placeholder="Phone Number"/>
+			<small class="form-text text-muted">숫자로 입력해 주세요</small>
+			<div class="invalid-feedback">'-'없이 번호만 입력해 주세요</div>
 		</div>
 		<div>
 			<label class="control-label" for="email">이메일</label>
-			<input class="form-control" type="text" name="email" id="email"/>
-			<div class="invalid-feedback">이메일 형식을 확인 하세요.</div>
+			<input class="form-control" type="text" name="email" id="email" placeholder="Email"/>
+			<div class="invalid-feedback">이메일 형식을 확인해 주세요</div>
 		</div>
 		<button class="btn btn-primary" type="submit">가입</button>
 	</form>
@@ -52,6 +58,8 @@
 	let isIdValid=false;
 	let isPwdValid=false;
 	let isEmailValid=false;
+	let isNameValid=false;
+	let isPhoneValid=false;
 
 	//아이디를 입력했을때(input) 실행할 함수 등록 
 	document.querySelector("#id").addEventListener("input", function(){
@@ -128,8 +136,9 @@
 		
 		//1. 입력한 이메일을 읽어와서
 		const inputEmail=this.value;
-		//2. 이메일을 검증할 정규 표현식 객체를 만들어서
-		const reg_email=/@/;
+		//2. 이메일을 검증할 정규 표현식 객체를 만들어서  // /@/;
+		const reg_email=/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
+		
 		//3. 정규표현식 매칭 여부에 따라 분기하기
 		if(reg_email.test(inputEmail)){//만일 매칭된다면
 			isEmailValid=true;
@@ -140,22 +149,47 @@
 		}
 	});
 	
-	
-	//폼에 submit 이벤트가 발생했을때 실행할 함수 등록
-	document.querySelector("#myForm").addEventListener("submit", function(e){
-		//console.log(e);
-		/*
-			입력한 아이디, 비밀번호, 이메일의 유효성 여부를 확인해서 하나라도 유효 하지 않으면
-			e.preventDefault(); 
-			가 수행 되도록 해서 폼의 제출을 막아야 한다. 
-		*/
-		//폼 전체의 유효성 여부 알아내기 
-		let isFormValid = isIdValid && isPwdValid && isEmailValid;
-		if(!isFormValid){//폼이 유효하지 않으면
-			//폼 전송 막기 
-			e.preventDefault();
-		}	
+	//Name 함수 등록 
+	document.querySelector("#name").addEventListener("input", function(){
+		//일단 is-valid,  is-invalid 클래스를 제거한다.
+		document.querySelector("#name").classList.remove("is-valid");
+		document.querySelector("#name").classList.remove("is-invalid");
+		
+		//1. value 값 읽어오기  
+		const inputName=this.value;
+		//입력한 아이디를 검증할 정규 표현식
+		const reg_name=/^[가-힣a-zA-Z]+$/;
+		//만일 입력값이 정규표현식과 매칭되지 않는다면
+		if(reg_name.test(inputName)){
+			isNamelValid=true;
+			document.querySelector("#name").classList.add("is-valid");
+		}else{
+			isNameValid=false;
+			document.querySelector("#name").classList.add("is-invalid");
+		}
 	});
+	
+	//Phone 함수 등록 
+	document.querySelector("#phone").addEventListener("input", function(){
+		//일단 is-valid,  is-invalid 클래스를 제거한다.
+		document.querySelector("#phone").classList.remove("is-valid");
+		document.querySelector("#phone").classList.remove("is-invalid");
+		
+		//1. value 값 읽어오기  
+		const inputPhone=this.value;
+		//입력한값을 검증할 정규 표현식
+		const reg_phone=/^[0-9]{2,3}[0-9]{3,4}[0-9]{4}/;
+
+		//만일 입력값이 정규표현식과 매칭되지 않는다면
+		if(reg_phone.test(inputPhone)){
+			isPhonelValid=true;
+			document.querySelector("#phone").classList.add("is-valid");
+		}else{
+			isNameValid=false;
+			document.querySelector("#phone").classList.add("is-invalid");
+		}
+	});
+
 </script>
 </body>
 </html>
