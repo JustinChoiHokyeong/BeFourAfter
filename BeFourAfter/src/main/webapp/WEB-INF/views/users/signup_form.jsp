@@ -19,14 +19,14 @@
 		<div>
 			<label class="control-label" for="id">아이디</label>
 			<input class="form-control" type="text" name="id" id="id" placeholder="Id"/>
-			<small class="form-text text-muted">영문자 소문자로 시작하고 5글자~10글자 이내로 입력하세요</small>
-			<div class="invalid-feedback">사용할수 없는 아이디 입니다.</div>
+			<small class="form-text text-muted">영문자 소문자로 시작하고 5글자~10글자 이내로 입력해주세요</small>
+			<div class="invalid-feedback">사용할 수 없는 아이디입니다</div>
 		</div>
 		<div>
 			<label class="control-label" for="pwd">비밀번호</label>
 			<input class="form-control" type="password" name="pwd" id="pwd" placeholder="Password"/>
-			<small class="form-text text-muted">5글자~10글자 이내로 입력하세요</small>
-			<div class="invalid-feedback">비밀번호를 확인 하세요.</div>
+			<small class="form-text text-muted">5글자~10글자 이내로 입력해 주세요</small>
+			<div class="invalid-feedback">비밀번호를 확인해 주세요</div>
 		</div>
 		<div>
 			<label class="control-label" for="pwd2">비밀번호 재확인</label>
@@ -35,25 +35,19 @@
 		<div>
 			<label class="control-label" for="name">이름</label>
 			<input class="form-control" type="text" name="name" id="name" placeholder="Name"/>
-			<small class="form-text text-muted">한글과 영문명으로 입력하세요 </small>
+			<small class="form-text text-muted">한글과 영문명으로 입력해 주세요</small>
 			<div class="invalid-feedback">이름을 확인해 주세요</div>
 		</div>
 		<div>	
 			<label class="control-label" for="phone">핸드폰 번호</label>
 			<input class="form-control" type="text" name="phone" id="phone" maxlength="11" placeholder="Phone Number"/>
-			<small class="form-text text-muted">숫자로 입력하세요</small>
-			<div class="invalid-feedback">"-" 없이 입력해 주세요</div>
-		</div>
-		<div>
-			<label class="control-label" for="name">이름</label>
-			<input class="form-control" type="text" name="name" id="name"/>
-			<label class="control-label" for="phone">핸드폰 번호</label>
-			<input class="form-control" type="text" name="phone" id="phone" maxlength="11" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
+			<small class="form-text text-muted">숫자로 입력해 주세요</small>
+			<div class="invalid-feedback">'-'없이 번호만 입력해 주세요</div>
 		</div>
 		<div>
 			<label class="control-label" for="email">이메일</label>
 			<input class="form-control" type="text" name="email" id="email" placeholder="Email"/>
-			<div class="invalid-feedback">이메일 형식을 확인 하세요.</div>
+			<div class="invalid-feedback">이메일 형식을 확인해 주세요</div>
 		</div>
 		<button class="btn btn-primary" type="submit">가입</button>
 	</form>
@@ -142,8 +136,9 @@
 		
 		//1. 입력한 이메일을 읽어와서
 		const inputEmail=this.value;
-		//2. 이메일을 검증할 정규 표현식 객체를 만들어서
-		const reg_email=/@/;
+		//2. 이메일을 검증할 정규 표현식 객체를 만들어서  // /@/;
+		const reg_email=/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
+		
 		//3. 정규표현식 매칭 여부에 따라 분기하기
 		if(reg_email.test(inputEmail)){//만일 매칭된다면
 			isEmailValid=true;

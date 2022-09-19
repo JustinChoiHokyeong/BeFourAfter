@@ -13,7 +13,7 @@ import com.gura.lug.users.dto.UsersDto;
 public interface UsersService {
 	
 	public Map<String, Object> isExistId(String inputId);
-	public void addUser(UsersDto dto);
+	public void addUser(UsersDto dto, HttpSession session);
 	public void loginProcess(UsersDto dto, HttpSession session);
 	public void getMypage(HttpSession session, ModelAndView mView);
 	public void updateUserPwd(HttpSession session, UsersDto dto, ModelAndView mView);
