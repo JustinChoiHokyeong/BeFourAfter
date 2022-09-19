@@ -14,7 +14,7 @@ public class ReviewDaoImpl implements ReviewDao {
 	@Autowired
 	private SqlSession session;
 	
-		//gallery 의 모든 리스트 가져오기
+		//review의 모든 리스트 가져오기
 		@Override
 		public List<ReviewDto> getList(ReviewDto dto) {
 			
@@ -23,8 +23,8 @@ public class ReviewDaoImpl implements ReviewDao {
 		
 		//row 의 총 개수 구하기
 		@Override
-		public int getCount() {
-			return session.selectOne("review.getCount");
+		public int getCount(ReviewDto dto) {
+			return session.selectOne("review.getCount", dto);
 		}
 		
 		
@@ -33,9 +33,16 @@ public class ReviewDaoImpl implements ReviewDao {
 			session.insert("review.insert", dto);
 		}
 		
+		@Override
+		public ReviewDto getData(ReviewDto dto) {
+			return session.selectOne("review.getData", dto);
+		}
+		
 		
 		@Override
-		public ReviewDto getData(int num) {
-			return session.selectOne("review.getData", num);
+		public void addViewCount(int num) {
+			session.update("review.addViewCount", num);
 		}
+
+		
 }

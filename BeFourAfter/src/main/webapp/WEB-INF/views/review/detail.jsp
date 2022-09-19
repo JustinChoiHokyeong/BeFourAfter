@@ -22,12 +22,20 @@
          <li class="breadcrumb-item active">상세보기</li>
       </ul>
    </nav>
+   <c:if test="${ not empty keyword }">
+      <p>   
+         <strong>${condition }</strong> 조건, 
+         <strong>${keyword }</strong> 검색어로 검색된 내용 자세히 보기 
+      </p>
+   </c:if>
    <div class="card mb-3">
       <img class="card-img-top" src="${pageContext.request.contextPath}${dto.imagePath}"/>
       <div class="card-body">
          <p class="card-text">${dto.title}</p>
          <p class="card-text">by <strong>${dto.writer}</strong></p>
          <p><small>${dto.regdate}</small></p>
+         <p><small>${dto.viewCount}</small></p>
+         <p><small>${dto.rating}</small></p>
       </div>
    </div>
    <nav>
