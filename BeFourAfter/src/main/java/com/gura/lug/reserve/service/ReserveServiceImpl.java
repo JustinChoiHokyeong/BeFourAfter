@@ -107,9 +107,8 @@ public class ReserveServiceImpl implements ReserveService{
 		dao.update2(dto);
 	}
 	
-	public void getData(HttpServletRequest request) {
-		int num=Integer.parseInt(request.getParameter("num"));
-		ReserveDto dto=dao.getData(num);
+	public void getData(String id, HttpServletRequest request) {
+		ReserveDto dto=dao.getData(id);
 		request.setAttribute("dto", dto);
 		
 	}

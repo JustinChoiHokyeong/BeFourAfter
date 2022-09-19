@@ -7,8 +7,8 @@ import com.gura.lug.reserve.dto.ReserveDto;
 public interface ReserveDao {
 		//예약목록 전체
 		public List<ReserveDto> getList(ReserveDto dto);
-		//예약목록 한개
-		public ReserveDto getData(int num);
+		//예약자 정보
+		public ReserveDto getData(String id);
 		//예약목록 갯수
 		public int getCount(ReserveDto dto);
 		//예약 추가(출국)

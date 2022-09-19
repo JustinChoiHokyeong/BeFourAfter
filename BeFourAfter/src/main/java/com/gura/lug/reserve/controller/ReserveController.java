@@ -1,11 +1,13 @@
 package com.gura.lug.reserve.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.gura.lug.reserve.dto.ReserveDto;
 import com.gura.lug.reserve.service.ReserveService;
@@ -17,18 +19,24 @@ public class ReserveController {
 	private ReserveService service;
 	
 	@RequestMapping("/reserve/list.do")
-	public String getList(HttpServletRequest request, ReserveDto dto) {
+	public ModelAndView authgetList(HttpServletRequest request, ReserveDto dto,ModelAndView mView) {
 		
+		
+		mView.setViewName("reserve/list");
+		String id=(String)request.getSession().getAttribute("id");
+		mView.addObject("id", id);
 		service.getList(request, dto);
-		
-		return "reserve/list";
+		System.out.println(id);
+		return mView;
 	}
 	
 	@RequestMapping("/reserve/leave_insertform.do")
-	public String leaveinsertform() {
-		
-		
-		return "reserve/leave_insertform";
+	public ModelAndView authleaveinsertform(ModelAndView mView, HttpServletRequest request) {
+		mView.setViewName("reserve/leave_insertform");
+		String id=(String)request.getSession().getAttribute("id");
+		mView.addObject("id", id);
+		service.getData(id, request);
+		return mView;
 	}
 	
 	@RequestMapping("/reserve/leave_insert.do")
@@ -39,9 +47,12 @@ public class ReserveController {
 	}
 	
 	@RequestMapping("/reserve/ent_insertform.do")
-	public String entinsertform() {
-		
-		return "reserve/ent_insertform";
+	public ModelAndView authentinsertform(ModelAndView mView, HttpServletRequest request) {
+		mView.setViewName("reserve/ent_insertform");
+		String id=(String)request.getSession().getAttribute("id");
+		mView.addObject("id", id);
+		service.getData(id, request);
+		return mView;
 	}
 	
 	@RequestMapping("/reserve/ent_insert.do")
@@ -58,8 +69,9 @@ public class ReserveController {
 	}
 	
 	@RequestMapping("/reserve/updateform.do")
-	public String updateform(HttpServletRequest request) {
-		service.getData(request);
+	public String updateform(HttpServletRequest request, HttpSession session) {
+		String id=(String)session.getAttribute("id");
+		service.getData(id, request);
 		
 		return "reserve/updateform";
 	}

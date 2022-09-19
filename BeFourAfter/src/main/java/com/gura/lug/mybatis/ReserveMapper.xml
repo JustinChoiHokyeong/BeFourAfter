@@ -4,15 +4,17 @@
 
 	<select id="getList" parameterType="reserveDto" resultType="reserveDto">
 	SELECT *
-	FROM (SELECT result1.*, ROWNUM AS rnum
-		  FROM (SELECT num, name, phone, rname, rphone, addr, rsdate, place, basic, big, over, reservetype
-				FROM reserve
-				ORDER BY num DESC) result1)
+	FROM SELECT *
+		 FROM SELECT result1.*, rownum as rnum
+	 		  from (SELECT num, users.name, users.phone, rname, rphone, addr, rsdate, place, basic, big, over, reservetype
+	 		  FROM reserve
+	 		  INNER JOIN users ON reserve.name=users.name
+	 		  ORDER BY num DESC) result1
 	WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum}
 	</select>
 	
-	<select id="getData" parameterType="int" resultType="reserveDto">
-	SELECT num, name, phone, rname, rphone, addr, TO_CHAR(rsdate, 'YYYY-MM-DD"T"HH24:MI:SS') AS rsdate, place, basic, big, over, reservetype
+	<select id="getData" parameterType="string" resultType="reserveDto">
+	SELECT num, name, phone, rname, rphone, addr, TO_CHAR(rsdate, 'YYYY-MM-DD"T"HH24:MI:SS') AS rsdate, place, basic, big, over, reservetype, id
 	FROM reserve
 	WHERE num=#{num}
 	</select>
@@ -25,19 +27,19 @@
 	<insert id="insert" parameterType="reserveDto">
 		INSERT INTO reserve
 		(num, name, phone, rname, rphone,
-		rsdate, place, basic, big, over, reservetype)
+		rsdate, place, basic, big, over, reservetype, id)
 		VALUES(reserve_seq.NEXTVAL, #{name}, #{phone},
 			#{rname}, #{rphone}, TO_DATE(#{rsdate}, 'YYYY-MM-DD"T"HH24:MI'), 
-			#{place}, #{basic}, #{big}, #{over}, #{reservetype})
+			#{place}, #{basic}, #{big}, #{over}, #{reservetype}, #{id})
 	</insert>
 	
 	<insert id="insert2" parameterType="reserveDto">
 		INSERT INTO reserve
 		(num, name, phone, rsdate, addr,
-		place, basic, big, over, reservetype)
+		place, basic, big, over, reservetype, id)
 		VALUES(reserve_seq.NEXTVAL, #{name}, #{phone},
 			TO_DATE(#{rsdate}, 'YYYY-MM-DD"T"HH24:MI'),#{addr}, 
-			#{place}, #{basic}, #{big}, #{over}, #{reservetype})
+			#{place}, #{basic}, #{big}, #{over}, #{reservetype}, #{id})
 	</insert>
 	
 	<delete id="delete" parameterType="int">

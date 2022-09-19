@@ -17,6 +17,7 @@
 			<input type="hidden" name="leave_insertform" id="leave_insertform" value="leave_insertform"/>
 			<input type="hidden" name="name" id="name" value="최현호"/>
 			<input type="hidden" name="phone" id="phone" value="01048462650"/>
+			<input type="hidden" name="id" id="id" value="${session.id}"/>
 			<p>
 			<label for="name">예약자 이름</label>
 			<input type="text" name="name" id="name" value="최현호" disabled/>

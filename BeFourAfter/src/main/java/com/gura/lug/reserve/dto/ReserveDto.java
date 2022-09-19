@@ -5,6 +5,7 @@ public class ReserveDto {
 	//예약자
 	private String name;
 	private String phone;
+	private String id;
 	//수령자
 	private String rname;
 	private String rphone;
@@ -26,12 +27,14 @@ public class ReserveDto {
 	
 	public ReserveDto() {}
 
-	public ReserveDto(int num, String name, String phone, String rname, String rphone, String addr, String rsdate,
-			String place, int basic, int big, int over, String reservetype, int startRowNum, int endRowNum) {
+	public ReserveDto(int num, String name, String phone, String id, String rname, String rphone, String addr,
+			String rsdate, String place, int basic, int big, int over, String reservetype, int startRowNum,
+			int endRowNum) {
 		super();
 		this.num = num;
 		this.name = name;
 		this.phone = phone;
+		this.id = id;
 		this.rname = rname;
 		this.rphone = rphone;
 		this.addr = addr;
@@ -67,6 +70,14 @@ public class ReserveDto {
 
 	public void setPhone(String phone) {
 		this.phone = phone;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public String getRname() {
@@ -156,7 +167,5 @@ public class ReserveDto {
 	public void setEndRowNum(int endRowNum) {
 		this.endRowNum = endRowNum;
 	}
-
-	
 	
 }

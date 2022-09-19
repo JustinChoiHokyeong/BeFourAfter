@@ -22,8 +22,8 @@ public class ReserveDaoImpl implements ReserveDao{
 	}
 
 	@Override
-	public ReserveDto getData(int num) {
-		ReserveDto dto=session.selectOne("reserve.getData", num);
+	public ReserveDto getData(String id) {
+		ReserveDto dto=session.selectOne("reserve.getData", id);
 		
 		return dto;
 	}
