@@ -14,7 +14,7 @@
 		<c:when test="${not empty sessionScope.id }">
 			<script type="text/javascript">
 				alert("로그인되었습니다.");
-				location.href="${pageContext.request.contextPath }/";
+				location.href="${requestScope.url }";
 			</script>
 		</c:when>
 		<c:otherwise>

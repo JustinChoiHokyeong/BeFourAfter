@@ -112,11 +112,12 @@ public class UsersController {
 		//UsersService 가 리턴해주는 Map 을 리턴해서 json 문자열을 응답한다. 
 		return service.isExistId(inputId);
 	}
+	
 	//회원 가입 요청 처리 ( post 방식 요청은 요청 method 를 명시하는것이 좋다.
 	@RequestMapping(value = "/users/signup", method = RequestMethod.POST)
-	public ModelAndView signup(ModelAndView mView, UsersDto dto) {
+	public ModelAndView signup(ModelAndView mView, UsersDto dto, HttpSession session) {
 		
-		service.addUser(dto);
+		service.addUser(dto, session);
 		
 		mView.setViewName("users/signup");
 		return mView;
@@ -147,9 +148,3 @@ public class UsersController {
 		return mView;
 	}
 }
-
-
-
-
-
-
