@@ -33,8 +33,8 @@
 	<div class="accordion container p-5" id="accordion">
 		<div class=" accordion-item"
 			style="border-top: none; border-left: none; border-right: none;">
-			<h1 class="text-center">FAQ</h1>
-			<div class="text-muted text-center fs-6">
+			<h1 class="text-center" alt="FAQ">FAQ</h1>
+			<div class="text-muted text-center fs-6"alt="자주 묻는 질문들 입니다.">
 				자주 묻는 질문들 입니다. <br> <br>
 			</div>
 		</div>
@@ -42,7 +42,7 @@
 			<h2 class="accordion-header" id="headingOne">
 				<button class="accordion-button collapsed" type="button"
 					data-bs-toggle="collapse" data-bs-target="#collapseOne"
-					aria-expanded="false" aria-controls="collapseOne">[예약] 예약을
+					aria-expanded="false" aria-controls="collapseOne" >[예약] 예약을
 					변경하고 싶어요</button>
 
 
@@ -67,10 +67,10 @@
 			<div id="collapseTwo" class="accordion-collapse collapse"
 				aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
 				<div class="accordion-body">
-					<strong>여행 일정에 차질이 생기셨나요?</strong><br> <br>
+					<strong >여행 일정에 차질이 생기셨나요?</strong><br> <br>
 					<p>굿럭의 예약 취소/환불은 아래와 같이 이루어집니다.
 					<ol>
-						<li>홈페이지 예약 : 서비스 이용 전날 21시 전까지 예약을 취소한 경우, 결제 금액의 90%를 환불받으실
+						<li >홈페이지 예약 : 서비스 이용 전날 21시 전까지 예약을 취소한 경우, 결제 금액의 90%를 환불받으실
 							수 있습니다. 서비스 이용 전날 21시 이후에는 취소는 가능하지만 환불은 불가합니다.</li>
 						<li>굿럭 매장 현장접수: 영수증을 지참하신 경우 취소/환불이 가능합니다. 단, 고객님의 수화물 운송이
 							시작되면 취소/환불이 불가합니다.</li>
@@ -130,8 +130,20 @@
 				<div class="accordion-body">
 					<strong>질문5 말입니까?</strong> <br>
 					<p>대답5</p>
-
-
+				</div>
+			</div>
+		</div>
+		<div class="accordion-item">
+			<h2 class="accordion-header" id="headingSix">
+				<button class="accordion-button collapsed" type="button"
+					data-bs-toggle="collapse" data-bs-target="#collapseFive"
+					aria-expanded="false" aria-controls="collapseSix">질문6</button>
+			</h2>
+			<div id="collapseSix" class="accordion-collapse collapse"
+				aria-labelledby="headingSix" data-bs-parent="#accordionExample">
+				<div class="accordion-body">
+					<strong>질문6 말입니까?</strong> <br>
+					<p>대답6</p>
 				</div>
 			</div>
 		</div>
@@ -150,6 +162,9 @@
 		type="text/javascript"></script>
 	<!-- 본문 -->
 
+	<!-- 네비게이션 -->
+	<jsp:include page="../toTop.jsp"></jsp:include>	
+	<!-- /네비게이션  -->
 	<!-- 푸터 -->
 	<footer class="container-fluid navbar-fixed-bottom">
 		<jsp:include page="../footer.jsp"></jsp:include>
