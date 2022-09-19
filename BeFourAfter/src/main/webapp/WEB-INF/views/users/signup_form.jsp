@@ -45,6 +45,12 @@
 			<div class="invalid-feedback">'-'없이 번호만 입력해 주세요</div>
 		</div>
 		<div>
+			<label class="control-label" for="name">이름</label>
+			<input class="form-control" type="text" name="name" id="name"/>
+			<label class="control-label" for="phone">핸드폰 번호</label>
+			<input class="form-control" type="text" name="phone" id="phone" maxlength="11" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
+		</div>
+		<div>
 			<label class="control-label" for="email">이메일</label>
 			<input class="form-control" type="text" name="email" id="email" placeholder="Email"/>
 			<div class="invalid-feedback">이메일 형식을 확인해 주세요</div>
