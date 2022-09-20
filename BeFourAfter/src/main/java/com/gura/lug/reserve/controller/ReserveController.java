@@ -1,5 +1,7 @@
 package com.gura.lug.reserve.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -25,6 +27,7 @@ public class ReserveController {
 		String id=(String)request.getSession().getAttribute("id");
 		mView.addObject("id", id);
 		service.getList(request, dto);
+		System.out.println(dto.getId());
 		return mView;
 	}
 	

@@ -35,6 +35,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 </head>
 <body>
+	<h1>${sessionScope.id }</h1>
 	<div class="container">
 	<h1>예약내역</h1>
 		<ul>
@@ -42,6 +43,8 @@
 			<li><a href="${pageContext.request.contextPath }/reserve/ent_insertform.do">입국서비스 예약하기</a></li>
 		</ul>
 	</div>
+	
+	
 	<div class="container">
 	<h2>출국서비스 예약 내역</h2>
 		<table class="table align-middle">
