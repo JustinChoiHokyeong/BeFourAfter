@@ -13,7 +13,21 @@
 	<jsp:include page="/WEB-INF/views/funcs/navbar.jsp"></jsp:include>
 	<!-- /네비바 -->
 
-	<!-- /본문 -->
+<!-- ajax해보기 -->
+	﻿<div class=top>고정 상단 내용</div>
+<div class=contentwrap>
+   <div class=content>본문 내용</div>
+   <div class=pages><a href='url1'>번호1</a><a href='url2'>번호2</a>...</div>
+</div>
+<div class=bottom>고정 하단 내용</div>
+<script>
+
+</script>
+<!-- /ajax해보기 -->
+
+
+
+	<!-- 본문 -->
 	<!--바로가기-->
 	<div>
 		<div class="container p-5">

@@ -51,8 +51,7 @@
 	<!-- /네비바 -->
 	<div class="container p-5">
 
-		<div class="container">
-			<br />
+		<div class="container">		<br />
 			<form action="list.do" method="get">
 				<label for="condition">검색조건</label> <select name="condition"
 					id="condition">
