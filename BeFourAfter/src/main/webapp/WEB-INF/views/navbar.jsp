@@ -34,8 +34,8 @@
 			</ul>
 			<c:choose>
 				<c:when test="${ empty sessionScope.id}">
-					<a class="btn btn-outline-primary btn-sm me-2"
-						href="${pageContext.request.contextPath}/users/signup_form.do">회원가입</a>
+						<a class="btn btn-outline-primary btn-sm me-2"
+						href="${pageContext.request.contextPath}/users/agree.do">회원가입</a>
 					<a class="btn btn-outline-success btn-sm me-2"
 						href="${pageContext.request.contextPath}/users/loginform.do">로그인</a>
 				</c:when>

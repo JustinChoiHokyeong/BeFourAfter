@@ -45,25 +45,71 @@
 </head>
 <body>
 <div class="container">
+	<br />
+	<form action="list.do" method="get"> 
+		<label for="condition">검색조건</label>
+		<select name="condition" id="condition">
+			<option value="reservetype" ${condition eq 'reservetype' ? 'selected' : '' }>예약 타입</option>
+			<option value="title" ${condition eq 'title' ? 'selected' : '' }>제목</option>
+			<option value="rating" ${condition eq 'rating' ? 'selected' : '' }>평점</option>
+		</select>
+		<input type="text" id="keyword" name="keyword" placeholder="검색어..." value="${keyword }"/>
+		<button type="submit">검색</button>
+	</form>	
+	<c:if test="${ not empty condition }">
+		<p>
+			<strong>${totalRow }</strong> 개의 글이 검색 되었습니다.
+		</p>
+	</c:if>
+
    	<a href="${pageContext.request.contextPath}/review/upload_form.do">리뷰 업로드 하러 가기</a><br/>
-   	<!-- <a href="${pageContext.request.contextPath}/review/ajax_form.do">리뷰 업로드 하러 가기2</a> -->
    	<a href="${pageContext.request.contextPath}/">홈으로 가기</a>
    	<h1>리뷰 목록 입니다.</h1>
    	<div class="row">
 		<c:forEach var="tmp" items="${list }">
 			<div class="col-6 col-md-4 col-lg-3">
          		<div class="card mb-3">
-            		<a href="${pageContext.request.contextPath}/review/detail.do?num=${tmp.num}">
+            		<a href="${pageContext.request.contextPath}/review/detail.do?num=${tmp.num}&keyword=${encodedK }&condition=${condition}">
 	               		<div class="img-wrapper">
 	                  		<img class="card-img-top" src="${pageContext.request.contextPath }${tmp.imagePath}" />
 	               		</div>
             		</a>
-            		<div class="card-body">
-               			<p class="card-text">${tmp.title}</p>
-               			<p class="card-text">by <strong>${tmp.writer}</strong></p>
-               			<p><small>${tmp.regdate}</small></p>
-            		</div>
-         		</div>
+						<div class="card-body">
+							<p class="card-text">${tmp.title}</p>
+							<p class="card-text">
+								by <strong>${tmp.writer}</strong>
+							</p>
+							<p>
+								<small>${tmp.regdate}</small>
+							</p>
+							<p>
+								<small>${tmp.viewCount}</small>
+							</p>
+
+							<c:choose>
+								<c:when test="${tmp.rating eq '5점' }">
+									<p>5점</p>
+								</c:when>
+								<c:when test="${tmp.rating eq '4점' }">
+									<p>4점</p>
+								</c:when>
+								<c:when test="${tmp.rating eq '3점' }">
+									<p>3점</p>
+								</c:when>
+								<c:when test="${tmp.rating eq '2점' }">
+									<p>2점</p>
+								</c:when>
+								<c:when test="${tmp.rating eq '1점' }">
+									<p>1점</p>
+								</c:when>
+							</c:choose>
+							
+							<p>
+								<small>${tmp.reservetype}</small>
+							</p>
+
+						</div>
+					</div>
       		</div>
 		</c:forEach>
    	</div>
@@ -108,8 +154,18 @@
 			</c:otherwise>
 		</c:choose>
       </ul>
-   </nav>   
+   </nav>  
+   
+   
+   
+   
+   
+    
 </div>
+
+
+
+
 <%-- <script>
    // card 이미지의 부모 요소를 선택해서 imgLiquid  동작(jquery plugin 동작) 하기 
    $(".img-wrapper").imgLiquid();

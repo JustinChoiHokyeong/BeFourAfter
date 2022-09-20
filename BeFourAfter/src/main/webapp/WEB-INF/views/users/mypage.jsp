@@ -64,6 +64,8 @@ img {
 		</table>
 		<a href="${pageContext.request.contextPath }/reserve/list.do">예약 정보 확인</a>
 		<a href="${pageContext.request.contextPath}/users/updateform.do">개인정보수정</a>
+		<a href="${pageContext.request.contextPath }/users/updateform.do">개인정보수정</a>
+		<a href="${pageContext.request.contextPath }/users/test.do">test</a>
 		<a href="javascript:deleteConfirm()">탈퇴</a>
 	</div>
 	<script>
