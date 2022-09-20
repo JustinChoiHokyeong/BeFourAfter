@@ -18,7 +18,7 @@
 		
 		<div>
 			<label class="control-label" for="id">아이디</label>
-			<input class="form-control" type="text" name="id" id="id" placeholder="Id"/>
+			<input class="form-control" type="text" name="id" id="id" placeholder="ID"/>
 			<small class="form-text text-muted">영문자 소문자로 시작하고 5글자~10글자 이내로 입력해주세요</small>
 			<div class="invalid-feedback">사용할 수 없는 아이디입니다</div>
 		</div>
@@ -40,7 +40,7 @@
 		</div>
 		<div>	
 			<label class="control-label" for="phone">핸드폰 번호</label>
-			<input class="form-control" type="text" name="phone" id="phone" maxlength="11" placeholder="Phone Number"/>
+			<input class="form-control" type="text" name="phone" id="phone" maxlength="11" placeholder="00000000000"/>
 			<small class="form-text text-muted">숫자로 입력해 주세요</small>
 			<div class="invalid-feedback">'-'없이 번호만 입력해 주세요</div>
 		</div>
