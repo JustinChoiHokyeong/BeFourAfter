@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -99,7 +100,7 @@ public class UsersController {
 		return "users/logout";
 	}
 	
-	@RequestMapping(value = "/users/signup_form", method = RequestMethod.GET)
+	@RequestMapping(value = "/users/signup_form", method = RequestMethod.POST)
 	public String signupForm() {
 		
 		return "users/signup_form";
@@ -146,5 +147,17 @@ public class UsersController {
 		
 		mView.setViewName("users/login");
 		return mView;
+	}
+	
+	@RequestMapping("/users/test")
+	public String test(HttpSession session) {
+
+		return "users/test";
+	}
+	
+	@RequestMapping("/users/agree")
+	public String agree(HttpSession session) {
+		
+		return "users/agree";
 	}
 }
