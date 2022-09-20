@@ -35,7 +35,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 </head>
 <body>
-	<h1>${sessionScope.id }</h1>
 	<div class="container">
 	<h1>예약내역</h1>
 		<ul>
@@ -46,7 +45,10 @@
 	
 	
 	<div class="container">
+	<button>출국서비스예약</button><button>입국서비스예약</button>
+	
 	<h2>출국서비스 예약 내역</h2>
+	<div>
 		<table class="table align-middle">
 			<thead>
 				<tr>
@@ -65,35 +67,41 @@
 			</thead>
 			<tbody>
 				<c:forEach var="tmp" items="${list }">
-				<tr>
 					<c:choose>
 						<c:when test="${tmp.reservetype eq 'leave_insertform'}">
-							<td>${tmp.name }</td>
-							<td>${tmp.phone }</td>
-							<td>${tmp.rname }</td>
-							<td>${tmp.rphone }</td>
-							<td>${tmp.rsdate }</td>
 							<c:choose>
-								<c:when test="${tmp.place eq 'first'}">
-									<td>제 1 터미널</td>
+								<c:when test="${tmp.id eq sessionScope.id }">
+									<tr>
+										<td>${tmp.name }</td>
+										<td>${tmp.phone }</td>
+										<td>${tmp.rname }</td>
+										<td>${tmp.rphone }</td>
+										<td>${tmp.rsdate }</td>
+										<c:choose>
+											<c:when test="${tmp.place eq 'first'}">
+												<td>제 1 터미널</td>
+											</c:when>
+											<c:otherwise>
+												<td>제 2 터미널</td>
+											</c:otherwise>
+										</c:choose>
+										<td>${tmp.basic }개</td>
+										<td>${tmp.big }개</td>
+										<td>${tmp.over }개</td>
+										<td><a href="${pageContext.request.contextPath }/reserve/updateform.do?num=${ tmp.num}">일정 수정</a></td>
+										<td><a href="${pageContext.request.contextPath }/reserve/delete.do?num=${ tmp.num}" onclick="return confirm('예약을 취소하시겠습니까?')">삭제</a></td>
+									</tr>
 								</c:when>
-								<c:otherwise>
-									<td>제 2 터미널</td>
-								</c:otherwise>
 							</c:choose>
-							<td>${tmp.basic }개</td>
-							<td>${tmp.big }개</td>
-							<td>${tmp.over }개</td>
-							<td><a href="${pageContext.request.contextPath }/reserve/updateform.do?num=${ tmp.num}">일정 수정</a></td>
-							<td><a href="${pageContext.request.contextPath }/reserve/delete.do?num=${ tmp.num}" onclick="return confirm('예약을 취소하시겠습니까?')">삭제</a></td>
 						</c:when>
 					</c:choose>
-				</tr>
 				</c:forEach>
 			</tbody>
 		</table>
-		<br />
+		</div>
+		
 		<h2>입국서비스 예약 내역</h2>
+		<div>
 		<table class="table align-middle">
 			<thead>
 				<tr>
@@ -111,35 +119,42 @@
 			</thead>
 			<tbody>
 				<c:forEach var="tmp" items="${list }">
-					<tr>
 					<c:choose>
 						<c:when test="${tmp.reservetype ne 'leave_insertform'}">
-							<td>${tmp.name }</td>
-							<td>${tmp.phone }</td>
-							<td>${tmp.addr }</td>
-							<td>${tmp.rsdate }</td>
 							<c:choose>
-								<c:when test="${tmp.place eq 'first'}">
-									<td>제 1 터미널</td>
+								<c:when test="${tmp.id eq sessionScope.id }">
+									<tr>
+										<td>${tmp.name }</td>
+										<td>${tmp.phone }</td>
+										<td>${tmp.addr }</td>
+										<td>${tmp.rsdate }</td>
+										<c:choose>
+											<c:when test="${tmp.place eq 'first'}">
+												<td>제 1 터미널</td>
+											</c:when>
+											<c:otherwise>
+												<td>제 2 터미널</td>
+											</c:otherwise>
+										</c:choose>
+										<td>${tmp.basic }개</td>
+										<td>${tmp.big }개</td>
+										<td>${tmp.over }개</td>
+										<td><a href="${pageContext.request.contextPath }/reserve/updateform.do?num=${ tmp.num}">일정 수정</a></td>
+										<td><a href="${pageContext.request.contextPath }/reserve/delete.do?num=${ tmp.num}" onclick="return confirm('예약을 취소하시겠습니까?')">삭제</a></td>
+									</tr>
+									
 								</c:when>
-								<c:otherwise>
-									<td>제 2 터미널</td>
-								</c:otherwise>
 							</c:choose>
-							<td>${tmp.basic }개</td>
-							<td>${tmp.big }개</td>
-							<td>${tmp.over }개</td>
-							<td><a href="${pageContext.request.contextPath }/reserve/updateform.do?num=${ tmp.num}">일정 수정</a></td>
-							<td><a href="${pageContext.request.contextPath }/reserve/delete.do?num=${ tmp.num}" onclick="return confirm('예약을 취소하시겠습니까?')">삭제</a></td>
 						</c:when>
 					</c:choose>
-				</tr>
 				</c:forEach>
 			</tbody>
 		</table>
+		</div>
 		<a href="${pageContext.request.contextPath }">홈으로</a>
 	</div>
 	
+	<!-- 페이징 처리 -->
 	<div class="container page-ui">
 		<ul>
 			<c:if test="${startPageNum ne 1 }">
