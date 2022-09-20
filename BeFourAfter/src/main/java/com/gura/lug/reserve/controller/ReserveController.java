@@ -26,7 +26,19 @@ public class ReserveController {
 		mView.setViewName("reserve/list");
 		String id=(String)request.getSession().getAttribute("id");
 		mView.addObject("id", id);
+		dto.setId(id);
 		service.getList(request, dto);
+		return mView;
+	}
+	
+	@RequestMapping("/reserve/list2.do")
+	public ModelAndView authgetList2(HttpServletRequest request, ReserveDto dto,ModelAndView mView) {
+		
+		mView.setViewName("reserve/list2");
+		String id=(String)request.getSession().getAttribute("id");
+		mView.addObject("id", id);
+		dto.setId(id);
+		service.getList2(request, dto);
 		return mView;
 	}
 	

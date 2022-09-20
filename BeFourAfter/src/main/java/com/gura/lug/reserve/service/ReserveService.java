@@ -9,6 +9,7 @@ import com.gura.lug.reserve.dto.ReserveDto;
 public interface ReserveService {
 	
 	public void getList(HttpServletRequest request, ReserveDto dto);
+	public void getList2(HttpServletRequest request, ReserveDto dto);
 	public void insert(ReserveDto dto, HttpServletRequest reqeust);
 	public void insert2(ReserveDto dto, HttpServletRequest reqeust);
 	public void delete(int num, HttpServletRequest request);

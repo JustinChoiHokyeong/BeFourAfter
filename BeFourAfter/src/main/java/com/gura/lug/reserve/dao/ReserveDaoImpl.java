@@ -20,6 +20,12 @@ public class ReserveDaoImpl implements ReserveDao{
 		List<ReserveDto> list=session.selectList("reserve.getList", dto);
 		return list;
 	}
+	@Override
+	public List<ReserveDto> getList2(ReserveDto dto) {
+		
+		List<ReserveDto> list=session.selectList("reserve.getList2", dto);
+		return list;
+	}
 
 	@Override
 	public ReserveDto getData(String id) {
@@ -57,6 +63,13 @@ public class ReserveDaoImpl implements ReserveDao{
 	public int getCount(ReserveDto dto) {
 		
 		int count=session.selectOne("reserve.getCount", dto);
+		return count;
+	}
+	
+	@Override
+	public int getCount2(ReserveDto dto) {
+		
+		int count=session.selectOne("reserve.getCount2", dto);
 		return count;
 	}
 

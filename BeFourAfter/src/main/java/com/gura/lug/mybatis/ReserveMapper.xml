@@ -7,6 +7,17 @@
 		 FROM (SELECT result1.*, rownum as rnum
 	 		  from (SELECT num, name, phone, rname, rphone, addr, rsdate, place, basic, big, over, reservetype, id
 	 		  FROM reserve
+	 		  where id=#{id} and reservetype='leave_insertform'
+	 		  ORDER BY num DESC) result1)
+	WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum}
+	</select>
+	
+	<select id="getList2" parameterType="reserveDto" resultType="reserveDto">
+	SELECT *
+		 FROM (SELECT result1.*, rownum as rnum
+	 		  from (SELECT num, name, phone, rname, rphone, addr, rsdate, place, basic, big, over, reservetype, id
+	 		  FROM reserve
+	 		  where id=#{id} and reservetype='ent_insertform'
 	 		  ORDER BY num DESC) result1)
 	WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum}
 	</select>
@@ -26,6 +37,13 @@
 	<select id="getCount" parameterType="reserveDto" resultType="int">
 		SELECT NVL(MAX(ROWNUM), 0)
 		FROM reserve
+		where id=#{id} and reservetype='leave_insertform'
+	</select>
+	
+	<select id="getCount2" parameterType="reserveDto" resultType="int">
+		SELECT NVL(MAX(ROWNUM), 0)
+		FROM reserve
+		where id=#{id} and reservetype='ent_insertform'
 	</select>	
 	
 	<insert id="insert" parameterType="reserveDto">
