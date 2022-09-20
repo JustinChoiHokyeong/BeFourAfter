@@ -6,7 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Home</title>
-<link href="/CSS/css.jsp" rel="stylesheet" type="text/css" />
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
 	rel="stylesheet"

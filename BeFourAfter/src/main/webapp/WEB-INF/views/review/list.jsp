@@ -44,7 +44,10 @@
 </style>
 </head>
 <body>
-<div class="container">
+	<!-- 네비바 -->
+	<jsp:include page="../navbar.jsp"></jsp:include>
+	<!-- /네비바 -->
+<div class="container p-5">
    	<a href="${pageContext.request.contextPath}/review/upload_form.do">리뷰 업로드 하러 가기</a><br/>
    	<!-- <a href="${pageContext.request.contextPath}/review/ajax_form.do">리뷰 업로드 하러 가기2</a> -->
    	<a href="${pageContext.request.contextPath}/">홈으로 가기</a>
@@ -114,6 +117,11 @@
    // card 이미지의 부모 요소를 선택해서 imgLiquid  동작(jquery plugin 동작) 하기 
    $(".img-wrapper").imgLiquid();
 </script> --%>
+	<!-- 푸터 -->
+	<footer class="container-fluid navbar-fixed-bottom">
+		<jsp:include page="../footer.jsp"></jsp:include>
+	</footer>
+	<!-- /푸터 -->
 </body>
 </html>
 
