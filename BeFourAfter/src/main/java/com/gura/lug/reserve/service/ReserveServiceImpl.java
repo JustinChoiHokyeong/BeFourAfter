@@ -6,6 +6,8 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.HttpServerErrorException;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.gura.lug.reserve.dao.ReserveDao;
 import com.gura.lug.reserve.dto.ReserveDto;
@@ -71,6 +73,7 @@ public class ReserveServiceImpl implements ReserveService{
 
 	@Override
 	public void insert(ReserveDto dto, HttpServletRequest request) {
+		String id=(String)request.getSession().getAttribute("id");
 		String rsdate=(String)request.getParameter("rsdate");
 		String reservetype=request.getParameter("leave_insertform");
 		dto.setReservetype(reservetype);
@@ -79,8 +82,10 @@ public class ReserveServiceImpl implements ReserveService{
 	
 	@Override
 	public void insert2(ReserveDto dto, HttpServletRequest request) {
+		String id=(String)request.getSession().getAttribute("id");
 		String rsdate=(String)request.getParameter("rsdate");
 		String reservetype=request.getParameter("ent_insertform");
+		dto.setId(id);
 		dto.setReservetype(reservetype);
 		dao.insert2(dto);
 	}
@@ -106,12 +111,18 @@ public class ReserveServiceImpl implements ReserveService{
 		dto.setReservetype(reservetype);
 		dao.update2(dto);
 	}
-	
+	@Override
 	public void getData(String id, HttpServletRequest request) {
 		ReserveDto dto=dao.getData(id);
 		request.setAttribute("dto", dto);
+		request.getSession().getAttribute("id");
+	}
+
+	@Override
+	public void updateData(int num, ModelAndView mView) {
+		ReserveDto dto=dao.updateData(num);
+		mView.addObject("dto",dto);
 		
 	}
-	
 
 }

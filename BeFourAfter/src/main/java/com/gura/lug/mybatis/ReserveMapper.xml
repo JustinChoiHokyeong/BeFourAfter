@@ -4,19 +4,23 @@
 
 	<select id="getList" parameterType="reserveDto" resultType="reserveDto">
 	SELECT *
-	FROM SELECT *
-		 FROM SELECT result1.*, rownum as rnum
-	 		  from (SELECT num, users.name, users.phone, rname, rphone, addr, rsdate, place, basic, big, over, reservetype
+		 FROM (SELECT result1.*, rownum as rnum
+	 		  from (SELECT num, name, phone, rname, rphone, addr, rsdate, place, basic, big, over, reservetype, id
 	 		  FROM reserve
-	 		  INNER JOIN users ON reserve.name=users.name
-	 		  ORDER BY num DESC) result1
+	 		  ORDER BY num DESC) result1)
 	WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum}
 	</select>
 	
 	<select id="getData" parameterType="string" resultType="reserveDto">
-	SELECT num, name, phone, rname, rphone, addr, TO_CHAR(rsdate, 'YYYY-MM-DD"T"HH24:MI:SS') AS rsdate, place, basic, big, over, reservetype, id
-	FROM reserve
-	WHERE num=#{num}
+	select name, phone, id
+	from users
+	where id=#{id}
+	</select>
+	
+	<select id="updateData" parameterType="int" resultType="reserveDto">
+		select *
+		from reserve
+		where num=#{num}
 	</select>
 	
 	<select id="getCount" parameterType="reserveDto" resultType="int">

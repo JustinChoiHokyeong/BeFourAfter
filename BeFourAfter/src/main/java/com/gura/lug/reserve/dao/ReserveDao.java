@@ -21,4 +21,6 @@ public interface ReserveDao {
 		public void update(ReserveDto dto);
 		//예약 수정(입국)
 		public void update2(ReserveDto dto);	
+		//예약 수정 데이터
+		public ReserveDto updateData(int num);
 }

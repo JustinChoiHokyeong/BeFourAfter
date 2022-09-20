@@ -15,14 +15,15 @@
 	<h2>예약페이지</h2>
 		<form action="ent_insert.do" method="post" id="ent_insertform">
 			<input type="hidden" name="ent_insertform" id="ent_insertform" value="ent_insertform"/>
-			<input type="hidden" name="name" id="name" value="최현호"/>
-			<input type="hidden" name="phone" id="phone" value="01048462650"/>
+			<input type="hidden" name="name" id="name" value="${dto.name}"/>
+			<input type="hidden" name="phone" id="phone" value="${dto.phone}"/>
+			<input type="hidden" name="id" id="id" value="${dto.id}"/>
 			<p>
 			<label for="name">예약자 이름</label>
-			<input type="text" name="name" id="name" value="최현호" disabled/>
+			<input type="text" name="name" id="name" value="${dto.name}" disabled/>
 			<br />
 			<label for="phone">핸드폰 번호</label>
-			<input type="text" name="phone" id="phone" value="01048462650" disabled/>
+			<input type="text" name="phone" id="phone" value="${dto.phone}" disabled/>
 			</p>
 			<p>
 			<label for="rsdate">맡기는 날짜 및 시간</label><br />

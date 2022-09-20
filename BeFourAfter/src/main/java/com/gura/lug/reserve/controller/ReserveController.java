@@ -21,12 +21,10 @@ public class ReserveController {
 	@RequestMapping("/reserve/list.do")
 	public ModelAndView authgetList(HttpServletRequest request, ReserveDto dto,ModelAndView mView) {
 		
-		
 		mView.setViewName("reserve/list");
 		String id=(String)request.getSession().getAttribute("id");
 		mView.addObject("id", id);
 		service.getList(request, dto);
-		System.out.println(id);
 		return mView;
 	}
 	
@@ -34,7 +32,6 @@ public class ReserveController {
 	public ModelAndView authleaveinsertform(ModelAndView mView, HttpServletRequest request) {
 		mView.setViewName("reserve/leave_insertform");
 		String id=(String)request.getSession().getAttribute("id");
-		mView.addObject("id", id);
 		service.getData(id, request);
 		return mView;
 	}
@@ -50,8 +47,15 @@ public class ReserveController {
 	public ModelAndView authentinsertform(ModelAndView mView, HttpServletRequest request) {
 		mView.setViewName("reserve/ent_insertform");
 		String id=(String)request.getSession().getAttribute("id");
-		mView.addObject("id", id);
 		service.getData(id, request);
+		return mView;
+	}
+	
+	@RequestMapping("/reserve/updateform.do")
+	public ModelAndView updateform(ModelAndView mView,HttpServletRequest request) {
+		mView.setViewName("reserve/updateform");
+		int num=Integer.parseInt(request.getParameter("num"));
+		service.updateData(num, mView);
 		return mView;
 	}
 	
@@ -68,13 +72,7 @@ public class ReserveController {
 		return "redirect:/reserve/list.do";
 	}
 	
-	@RequestMapping("/reserve/updateform.do")
-	public String updateform(HttpServletRequest request, HttpSession session) {
-		String id=(String)session.getAttribute("id");
-		service.getData(id, request);
-		
-		return "reserve/updateform";
-	}
+	
 	
 	@RequestMapping("/reserve/update.do")
 	public String update(ReserveDto dto, HttpServletRequest request) {
