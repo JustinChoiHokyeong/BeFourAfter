@@ -4,9 +4,9 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!-- Footer -->
-<footer class="navbar navbar-light bg-light navbar-expand-xlg"
+<footer class="navbar navbar-light bg-light navbar-expand-xlg mt-auto"
 	style="height: max-content;">
-	<footer class="footer container-fluid ">
+	<footer class="footer container-fluid sticky-bottom">
 		<div>
 			<p>
 				상호명: Good Lugg! <br> <span>대표: Be Four & After Corp.</span> <span>

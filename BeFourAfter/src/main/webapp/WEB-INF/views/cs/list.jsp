@@ -8,23 +8,17 @@
 <head>
 <meta charset="UTF-8">
 <title>/views/cs/list.jsp</title>
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
-	crossorigin="anonymous">
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
-	integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
-	crossorigin="anonymous"></script>
+<jsp:include page="/WEB-INF/views/funcs/bs.jsp"></jsp:include>
 </head>
 
 <body>
 
-
 	<!-- 네비바 -->
-	<jsp:include page="../navbar.jsp"></jsp:include>
+	<jsp:include page="/WEB-INF/views/funcs/navbar.jsp"></jsp:include>
 	<!-- /네비바 -->
+	<!-- 네비게이션 -->
+	<jsp:include page="/WEB-INF/views/funcs/toTop.jsp"></jsp:include>
+	<!-- /네비게이션  -->
 
 	<!-- 본문 -->
 	<!-- 아코디언 메뉴 -->
@@ -32,7 +26,7 @@
 		<div class=" accordion-item"
 			style="border-top: none; border-left: none; border-right: none;">
 			<h1 class="text-center" alt="FAQ">FAQ</h1>
-			<div class="text-muted text-center fs-6"alt="자주 묻는 질문들 입니다.">
+			<div class="text-muted text-center fs-6" alt="자주 묻는 질문들 입니다.">
 				자주 묻는 질문들 입니다. <br> <br>
 			</div>
 		</div>
@@ -40,8 +34,8 @@
 			<h2 class="accordion-header" id="headingOne">
 				<button class="accordion-button collapsed" type="button"
 					data-bs-toggle="collapse" data-bs-target="#collapseOne"
-					aria-expanded="false" aria-controls="collapseOne" >[예약] 예약을
-					변경하고 싶어요</button>
+					aria-expanded="false" aria-controls="collapseOne">[예약]
+					예약을 변경하고 싶어요</button>
 
 
 			</h2>
@@ -65,11 +59,11 @@
 			<div id="collapseTwo" class="accordion-collapse collapse"
 				aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
 				<div class="accordion-body">
-					<strong >여행 일정에 차질이 생기셨나요?</strong><br> <br>
+					<strong>여행 일정에 차질이 생기셨나요?</strong><br> <br>
 					<p>굿럭의 예약 취소/환불은 아래와 같이 이루어집니다.
 					<ol>
-						<li >홈페이지 예약 : 서비스 이용 전날 21시 전까지 예약을 취소한 경우, 결제 금액의 90%를 환불받으실
-							수 있습니다. 서비스 이용 전날 21시 이후에는 취소는 가능하지만 환불은 불가합니다.</li>
+						<li>홈페이지 예약 : 서비스 이용 전날 21시 전까지 예약을 취소한 경우, 결제 금액의 90%를
+							환불받으실 수 있습니다. 서비스 이용 전날 21시 이후에는 취소는 가능하지만 환불은 불가합니다.</li>
 						<li>굿럭 매장 현장접수: 영수증을 지참하신 경우 취소/환불이 가능합니다. 단, 고객님의 수화물 운송이
 							시작되면 취소/환불이 불가합니다.</li>
 					</ol>
@@ -152,22 +146,11 @@
 		</a>
 		<!-- /질문버튼 -->
 	</div>
-
-	</div>
-
-	</div>
-
-	<!-- 본문 -->
-
-	<!-- 네비게이션 -->
-	<jsp:include page="../toTop.jsp"></jsp:include>	
-	<!-- /네비게이션  -->
 	<!-- 푸터 -->
 	<footer class="container-fluid navbar-fixed-bottom">
-		<jsp:include page="../footer.jsp"></jsp:include>
+		<jsp:include page="/WEB-INF/views/funcs/footer.jsp"></jsp:include>
 	</footer>
 	<!-- /푸터 -->
-
 </body>
 
 </html>

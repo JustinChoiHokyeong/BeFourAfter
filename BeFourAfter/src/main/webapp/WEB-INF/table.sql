@@ -32,9 +32,12 @@ CREATE SEQUENCE reserve_num_seq;
 CREATE TABLE board_review(
 	num NUMBER PRIMARY KEY, --글번호
 	writer VARCHAR2(100) NOT NULL, --글쓴이
-	title VARCHAR2(100) NOT NULL, --제목
+	title VARCHAR2(200) NOT NULL, --제목
 	imagePath VARCHAR2(100), -- 업로드된 이미지의 경로
-	regdate DATE -- 이미지 업로드 날짜 
+	regdate DATE, -- 이미지 업로드 날짜 
+	viewcount NUMBER NOT NULL, -- 조회수
+	rating VARCHAR2(50) NOT NULL, -- 평점 (1,2,3,4,5점 중 택)
+	reservetype VARCHAR2(50) NOT NULL
 );
 
 CREATE SEQUENCE board_review_seq; 

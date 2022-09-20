@@ -1,33 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="review">
+
+	<sql id="searchCondition">
+		<choose>
+			<when test="reservetype != null">
+				WHERE reservetype LIKE '%'||#{reservetype}||'%' 
+			</when>
+			<when test="title != null">
+				WHERE title LIKE '%'||#{title}||'%'
+			</when>
+			<when test="rating != null">
+				WHERE rating LIKE '%'||#{rating}||'%'
+			</when>
+		</choose>
+	</sql>
+
 	<select id="getList" parameterType="reviewDto" resultType="reviewDto">
 		SELECT *
 		FROM	
 			(SELECT result1.*, ROWNUM as rnum
 			FROM
-				(SELECT num, writer, title, imagePath, regdate
+				(SELECT num, writer, title, imagePath, regdate, viewCount, rating, reservetype
 				FROM board_review
-				ORDER BY num DESC) result1)
+				<include refid="searchCondition"/>
+				ORDER BY num DESC) result1)		
+				
 		WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum}
+	
+		
 	</select>
+	
 	<select id="getCount" resultType="int">
 		SELECT NVL(MAX(ROWNUM), 0)
 		FROM board_review
+		<include refid="searchCondition"/>
 	</select>
+	
 	<insert id="insert" parameterType="reviewDto">
 		INSERT INTO board_review
-		(num, writer, title, imagePath, regdate)
-		VALUES(board_review_seq.NEXTVAL, #{writer}, #{title}, #{imagePath}, SYSDATE)
+		(num, writer, title, imagePath, regdate, viewCount, rating, reservetype)
+		VALUES(board_review_seq.NEXTVAL, #{writer}, #{title}, #{imagePath}, SYSDATE, #{viewCount}, #{rating}, #{reservetype})
 	</insert>
-	<select id="getData" parameterType="int" resultType="reviewDto">
-		SELECT *
+	
+	<select id="getData" parameterType="reviewDto" resultType="reviewDto">
+		SELECT result1.*
 		FROM
-			(SELECT num, writer, title, imagePath, regdate, 
+			(SELECT num, writer, title, imagePath, 
+				TO_CHAR(regdate,'YY.MM.DD HH24:MI') AS regdate, viewCount, rating, reservetype,
 				LAG(num, 1, 0) OVER (ORDER BY num DESC) AS prevNum,
 				LEAD(num, 1, 0) OVER (ORDER BY num DESC) AS nextNum
 			FROM board_review
-			ORDER BY num DESC)
+			ORDER BY num DESC
+			<include refid="searchCondition"/>
+			) result1
 		WHERE num = #{num}
 	</select>
+	
+	<update id="addViewCount" parameterType="int">
+		UPDATE board_review
+		SET viewCount=viewCount+1
+		WHERE num=#{num}
+	</update>
+	
+	
 </mapper>
