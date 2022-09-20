@@ -37,7 +37,7 @@
 				<input type="text" name="rphone" id="rphone" value="${dto.rphone } " maxlength="11" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
 				<br />
 				<label for="same"> <small> 예약자와 동일 </small>
-				<input type="checkbox" name="same" value="same"/>
+				<input type="checkbox" name="same" value="same" checked/>
 				</label>
 				</p>
 				<p>
