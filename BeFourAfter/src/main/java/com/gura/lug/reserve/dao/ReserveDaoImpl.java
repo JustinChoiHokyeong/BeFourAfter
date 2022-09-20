@@ -48,6 +48,10 @@ public class ReserveDaoImpl implements ReserveDao{
 	public void delete(int num) {
 		session.selectOne("reserve.delete", num);
 	}
+	@Override
+	public void delete2(int num) {
+		session.selectOne("reserve.delete2", num);
+	}
 
 	@Override
 	public void update(ReserveDto dto) {

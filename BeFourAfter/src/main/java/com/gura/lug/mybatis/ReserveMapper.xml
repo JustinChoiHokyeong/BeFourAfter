@@ -69,6 +69,11 @@
 		WHERE num=#{num}
 	</delete>
 	
+	<delete id="delete2" parameterType="int">
+		DELETE FROM reserve
+		WHERE num=#{num}
+	</delete>
+	
 	<update id="update" parameterType="reserveDto">
 		UPDATE reserve
 		SET rname=#{rname}, rphone=#{rphone}, rsdate=TO_DATE(#{rsdate}, 'YYYY-MM-DD"T"HH24:MI'), place=#{place}, basic=#{basic}, big=#{big}, over=#{over}, reservetype=#{reservetype}

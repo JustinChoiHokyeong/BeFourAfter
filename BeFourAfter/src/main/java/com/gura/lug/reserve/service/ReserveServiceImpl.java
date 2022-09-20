@@ -147,6 +147,10 @@ public class ReserveServiceImpl implements ReserveService{
 	public void delete(int num, HttpServletRequest request) {
 		dao.delete(num);
 	}
+	@Override
+	public void delete2(int num, HttpServletRequest request) {
+		dao.delete2(num);
+	}
 
 	@Override
 	public void update(ReserveDto dto, HttpServletRequest request) {

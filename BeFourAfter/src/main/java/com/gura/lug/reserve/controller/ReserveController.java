@@ -77,13 +77,19 @@ public class ReserveController {
 	public String entinsert(ReserveDto dto, HttpServletRequest request) {
 		
 		service.insert2(dto, request);
-		return "redirect:/reserve/list.do";
+		return "redirect:/reserve/list2.do";
 	}
 	@RequestMapping("/reserve/delete.do")
 	public String delete(int num, HttpServletRequest request) {
 		service.delete(num, request);
 		
 		return "redirect:/reserve/list.do";
+	}
+	@RequestMapping("/reserve/delete2.do")
+	public String delete2(int num, HttpServletRequest request) {
+		service.delete2(num, request);
+		
+		return "redirect:/reserve/list2.do";
 	}
 	
 	
@@ -99,6 +105,6 @@ public class ReserveController {
 	public String update2(ReserveDto dto, HttpServletRequest request) {
 		service.update2(dto, request);
 		
-		return "redirect:/reserve/list.do";
+		return "redirect:/reserve/list2.do";
 	}
 }

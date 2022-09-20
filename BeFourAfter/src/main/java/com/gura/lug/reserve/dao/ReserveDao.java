@@ -19,8 +19,10 @@ public interface ReserveDao {
 		public void insert(ReserveDto dto);
 		//예약 추가(입국)
 		public void insert2(ReserveDto dto);
-		//예약 삭제
+		//예약 삭제 (출국)
 		public void delete(int num);
+		//예약 삭제 (입국)
+		public void delete2(int num);
 		//예약 수정(출국)
 		public void update(ReserveDto dto);
 		//예약 수정(입국)

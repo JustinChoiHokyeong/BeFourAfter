@@ -13,6 +13,7 @@ public interface ReserveService {
 	public void insert(ReserveDto dto, HttpServletRequest reqeust);
 	public void insert2(ReserveDto dto, HttpServletRequest reqeust);
 	public void delete(int num, HttpServletRequest request);
+	public void delete2(int num, HttpServletRequest request);
 	public void update(ReserveDto dto, HttpServletRequest request);
 	public void update2(ReserveDto dto, HttpServletRequest request);
 	public void getData(String id, HttpServletRequest request);

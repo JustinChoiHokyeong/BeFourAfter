@@ -88,7 +88,7 @@
 											<td>${tmp.big }개</td>
 											<td>${tmp.over }개</td>
 											<td><a href="${pageContext.request.contextPath }/reserve/updateform.do?num=${ tmp.num}">일정 수정</a></td>
-											<td><a href="${pageContext.request.contextPath }/reserve/delete.do?num=${ tmp.num}" onclick="return confirm('예약을 취소하시겠습니까?')">삭제</a></td>
+											<td><a href="${pageContext.request.contextPath }/reserve/delete2.do?num=${ tmp.num}" onclick="return confirm('예약을 취소하시겠습니까?')">삭제</a></td>
 										</tr>
 										
 									</c:when>
