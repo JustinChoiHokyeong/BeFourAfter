@@ -100,7 +100,7 @@ public class UsersController {
 		return "users/logout";
 	}
 	
-	@RequestMapping(value = "/users/signup_form", method = RequestMethod.POST)
+	@RequestMapping(value = "/users/signup_form", method = RequestMethod.GET)
 	public String signupForm() {
 		
 		return "users/signup_form";
@@ -156,7 +156,7 @@ public class UsersController {
 	}
 	
 	@RequestMapping("/users/agree")
-	public String agree(HttpSession session) {
+	public String agree() {
 		
 		return "users/agree";
 	}
