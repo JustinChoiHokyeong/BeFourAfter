@@ -18,4 +18,8 @@ public interface ReviewService {
 		public void insert(ReviewDto dto, HttpServletRequest request);
 		//리뷰 detail 페이지에 필요한 data를 ModelAndView 에 저장
 		public void getDetail(ModelAndView mView, ReviewDto dto);
+		//리뷰 글 삭제
+		public void deleteReview(ReviewDto dto, HttpServletRequest request);
 }
+
+
