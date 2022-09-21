@@ -9,12 +9,12 @@ WHERE id=#{id}
 
 <insert id="insert" parameterType="usersDto">
 	INSERT INTO users
-	(id, pwd, email, regdate, phone, name)
-	VALUES(#{id }, #{pwd }, #{email }, SYSDATE, #{phone }, #{name })
+	(id, pwd, email, regdate, phone, name, postcode, addr, detailAddr )
+	VALUES(#{id }, #{pwd }, #{email }, SYSDATE, #{phone }, #{name }, #{postcode,jdbcType=VARCHAR }, #{addr,jdbcType=VARCHAR }, #{detailAddr,jdbcType=VARCHAR })
 </insert>
 
 <select id="getData" parameterType="string" resultType="usersDto">
-	SELECT id, pwd, email, profile, regdate, name, phone
+	SELECT id, pwd, email, profile, regdate, name, phone, postcode, addr, detailAddr
 	FROM users
 	WHERE id=#{id }
 </select>
@@ -27,7 +27,7 @@ WHERE id=#{id}
 
 <update id="update" parameterType="usersDto">
 	UPDATE users
-	SET email=#{email }, profile=#{profile }
+	SET email=#{email }, profile=#{profile }, phone=#{phone }, postcode=#{postcode }, addr=#{addr }, detailAddr=#{detailAddr }
 	WHERE id=#{id }
 </update>
 

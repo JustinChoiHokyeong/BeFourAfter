@@ -21,7 +21,7 @@
 		</c:choose>
 		<div>
 			<label for="id"> </label>
-			<input type="text" name="id" id="id" placeholder="아이디"/>
+			<input type="text" name="id" id="id" placeholder="아이디" autofocus/>
 		</div>
 		<div>
 			<label for="pwd"> </label>

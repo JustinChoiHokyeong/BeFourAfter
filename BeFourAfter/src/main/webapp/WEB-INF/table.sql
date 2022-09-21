@@ -6,8 +6,13 @@ CREATE TABLE users(
 	pwd VARCHAR2(100) NOT NULL,
 	profile VARCHAR2(100), -- 프로필 이미지 경로를 저장할 칼럼
 	phone VARCHAR2(50) NOT NULL
+	postcode VARCHAR2(50),
+	addr VARCHAR2(1000),
+	detailAddr VARCHAR2(1000),
 	regdate DATE -- 가입일
+	
 );
+CREATE SEQUENCE users_seq; 
 
 -- 예약 정보 테이블
 CREATE TABLE reserve(

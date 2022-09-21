@@ -5,11 +5,63 @@
 <head>
 <meta charset="UTF-8">
 <title>/views/users/signup_form.jsp</title>
+
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.css" />
 <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
   />
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+function execDaumPostcode() {
+        new daum.Postcode({
+            oncomplete: function(data) {
+                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                var addr = ''; // 주소 변수
+                var extraAddr = ''; // 참고항목 변수
+
+                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                    addr = data.roadAddress;
+                } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                    addr = data.jibunAddress;
+                }
+
+                // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+                if(data.userSelectedType === 'R'){
+                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                        extraAddr += data.bname;
+                    }
+                    // 건물명이 있고, 공동주택일 경우 추가한다.
+                    if(data.buildingName !== '' && data.apartment === 'Y'){
+                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                    }
+                    // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                    if(extraAddr !== ''){
+                        extraAddr = ' (' + extraAddr + ')';
+                    }
+                    // 조합된 참고항목을 해당 필드에 넣는다.
+                    document.getElementById("extraAddr").value = extraAddr;
+                
+                } else {
+                    document.getElementById("extraAddr").value = '';
+                }
+
+                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                document.getElementById('postcode').value = data.zonecode;
+                document.getElementById("addr").value = addr;
+                // 커서를 상세주소 필드로 이동한다.
+                document.getElementById("detailAddr").focus();
+            }
+        }).open();
+}
+</script>
+
 </head>
 <body>
 <div class="container">
@@ -18,7 +70,7 @@
 		
 		<div>
 			<label class="control-label" for="id">아이디</label>
-			<input class="form-control" type="text" name="id" id="id" placeholder="ID"/>
+			<input class="form-control" type="text" name="id" id="id" placeholder="ID" autofocus/>
 			<small class="form-text text-muted">5~10자의 영문소문자, 숫자만 사용 가능합니다</small>
 			<div class="invalid-feedback">사용할 수 없는 아이디입니다</div>
 		</div>
@@ -37,6 +89,13 @@
 			<input class="form-control" type="text" name="name" id="name" placeholder="Name"/>
 			<small class="form-text text-muted">한글과 영문명으로 입력해 주세요</small>
 			<div class="invalid-feedback">이름을 확인해 주세요</div>
+		</div>
+		<div>
+			<input type="text" name="postcode" id="postcode" placeholder="우편번호">
+			<input type="button" onclick="execDaumPostcode()" value="우편번호 찾기"><br>
+			<input type="text" name="addr" id="addr" placeholder="주소"><br>
+			<input type="text" name="detailAddr" id="detailAddr" placeholder="상세주소">
+			<input type="text" name="extraAddr" id="extraAddr" placeholder="참고항목">
 		</div>
 		<div>	
 			<label class="control-label" for="phone">핸드폰 번호</label>
@@ -70,7 +129,7 @@
 		//1. 입력한 아이디 value 값 읽어오기  
 		let inputId=this.value;
 		//입력한 아이디를 검증할 정규 표현식
-		const reg_id=/^[a-z].{4,9}$/;
+		const reg_id=/^[a-zA-z0-9]{4,9}$/;
 		//만일 입력한 아이디가 정규표현식과 매칭되지 않는다면
 		if(!reg_id.test(inputId)){
 			isIdValid=false; //아이디가 매칭되지 않는다고 표시하고 
@@ -190,24 +249,17 @@
 		}
 	});
 	
-	//폼에 submit 이벤트가 발생했을때 실행할 함수 등록
-	   document.querySelector("#myForm").addEventListener("submit", function(e){
-	      //console.log(e);
-	      /*
-	         입력한 아이디, 비밀번호, 이메일의 유효성 여부를 확인해서 하나라도 유효 하지 않으면
-	         e.preventDefault(); 
-	         가 수행 되도록 해서 폼의 제출을 막아야 한다. 
-	      */
-	      //폼 전체의 유효성 여부 알아내기 
-	      let isFormValid = isIdValid && isPwdValid && isEmailValid && isNamelValid  ;
-	      if(!isFormValid){//폼이 유효하지 않으면
-	         //폼 전송 막기 
-	         alert("작성란을 확인해 주세요");
-	         e.preventDefault();
-	         
-	      }   
-	   });
-
+	        
+	   //폼에 submit 이벤트가 발생했을때 실행할 함수 등록
+    	document.querySelector("#myForm").addEventListener("submit", function(e){
+       //폼 전체의 유효성 여부 알아내기 
+       let isFormValid = isIdValid && isPwdValid && isEmailValid ;
+       if(!isFormValid){//폼이 유효하지 않으면
+          //폼 전송 막기 
+          e.preventDefault();
+       }   
+    });
+	   
 </script>
 </body>
 </html>
