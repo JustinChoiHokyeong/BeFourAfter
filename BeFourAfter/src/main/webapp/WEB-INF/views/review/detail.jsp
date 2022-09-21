@@ -8,6 +8,7 @@
 <title>/review/detail.jsp</title>
 <%-- bootstrap --%>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.css" >
+
 </head>
 <body>
 <div class="container">
@@ -38,6 +39,16 @@
          <p><small>${dto.rating}</small></p>
       </div>
    </div>
+   
+     
+    <div id="liveAlertPlaceholder"></div>
+	<a href="list.do" type="button" class="btn btn-success" id="listBtn">목록보기</a>
+	<c:if test="${dto.writer eq id }">
+			<a href="delete.do?num=${dto.num }" type="button" class="btn btn-primary" id="deleteBtn">삭제</a>
+	</c:if>
+	
+		
+	
    <nav>
       <ul class="pagination justify-content-center">
          <c:choose>
@@ -67,6 +78,8 @@
       </ul>
    </nav>      
 </div>
+
+	
 </body>
 </html>
 

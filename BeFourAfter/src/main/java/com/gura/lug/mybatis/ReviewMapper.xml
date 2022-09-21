@@ -63,5 +63,13 @@
 		WHERE num=#{num}
 	</update>
 	
+	<delete id="delete" parameterType="reviewDto">
+		DELETE FROM board_review
+		WHERE num=#{num}
+	</delete>
+	
+	
+	
+	
 	
 </mapper>
