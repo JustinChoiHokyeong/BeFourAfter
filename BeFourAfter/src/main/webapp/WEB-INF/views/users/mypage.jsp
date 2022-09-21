@@ -25,16 +25,18 @@ img {
 		<h1>마이 페이지</h1>
 		<table>
 			<tr></th>
-				<td><c:choose>
+				<td>
+				<c:choose>
 						<c:when test="${empty dto.profile }">
 						<img id="profileImage" style="height: 100%, width: 100%;"
-						src="<c:url value='../airplane_logo1.png'/>">
+						src="<c:url value='../dd_logo.png'/>">
 						</c:when>
 						<c:otherwise>
 							<img id="profileImage"
 								src="${pageContext.request.contextPath}${dto.profile}" />
 						</c:otherwise>
-					</c:choose></td>
+				</c:choose>
+				</td>
 			</tr>
 			<tr>
 				<th>아이디</th>
@@ -56,6 +58,10 @@ img {
 			<tr>
 				<th>이메일</th>
 				<td>${dto.email }</td>
+			</tr>
+			<tr>
+				<th>주소</th>
+				<td>${dto.postcode }${dto.addr }${dto.detailAddr }</td>
 			</tr>
 			<tr>
 				<th>가입일</th>

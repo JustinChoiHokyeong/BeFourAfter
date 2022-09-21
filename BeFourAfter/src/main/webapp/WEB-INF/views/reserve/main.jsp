@@ -18,12 +18,12 @@
 	<div>
 		<div class="container p-5">
 			<div style="width: 100%; min-height: 1px; height: 60px;">
-
+			
 				<a
-					href="${pageContext.request.contextPath }/reserve/ent_insertform.do"><button
-						class="btn">입국 서비스</button></a> <a
 					href="${pageContext.request.contextPath }/reserve/leave_insertform.do"><button
-						class="btn">출국 서비스</button></a> <a
+						class="btn">출국 서비스</button></a>	<a
+					href="${pageContext.request.contextPath }/reserve/ent_insertform.do"><button
+						class="btn">입국 서비스</button></a>  <a
 					href="${pageContext.request.contextPath }/reserve/list.do"><button
 						class="btn">나의 예약</button></a>
 			</div>

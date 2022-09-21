@@ -101,7 +101,10 @@ public class UsersController {
 	}
 	
 	@RequestMapping(value = "/users/signup_form", method = RequestMethod.GET)
-	public String signupForm() {
+	public String signupForm(UsersDto dto) {
+		String postcode=dto.getPostcode();
+		String addr=dto.getAddr();
+		String detailAddr=dto.getDetailAddr();
 		
 		return "users/signup_form";
 	}

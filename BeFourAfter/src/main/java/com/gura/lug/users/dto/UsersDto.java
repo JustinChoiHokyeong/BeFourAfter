@@ -10,19 +10,26 @@ public class UsersDto {
 	private String profile;
 	private String regdate;
 	private String newPwd;
+	private String postcode;
+	private String addr;
+	private String detailAddr;
 
 	public UsersDto() {}
-	public UsersDto(String id, String name, String phone, String email, String pwd, String newPwd, String profile,
-			String regdate) {
+
+	public UsersDto(String id, String pwd, String name, String phone, String email, String profile, String regdate,
+			String newPwd, String postcode, String addr, String detailAddr) {
 		super();
 		this.id = id;
+		this.pwd = pwd;
 		this.name = name;
 		this.phone = phone;
 		this.email = email;
-		this.pwd = pwd;
-		this.newPwd = newPwd;
 		this.profile = profile;
 		this.regdate = regdate;
+		this.newPwd = newPwd;
+		this.postcode = postcode;
+		this.addr = addr;
+		this.detailAddr = detailAddr;
 	}
 
 	public String getId() {
@@ -31,6 +38,14 @@ public class UsersDto {
 
 	public void setId(String id) {
 		this.id = id;
+	}
+
+	public String getPwd() {
+		return pwd;
+	}
+
+	public void setPwd(String pwd) {
+		this.pwd = pwd;
 	}
 
 	public String getName() {
@@ -57,22 +72,6 @@ public class UsersDto {
 		this.email = email;
 	}
 
-	public String getPwd() {
-		return pwd;
-	}
-
-	public void setPwd(String pwd) {
-		this.pwd = pwd;
-	}
-
-	public String getNewPwd() {
-		return newPwd;
-	}
-
-	public void setNewPwd(String newPwd) {
-		this.newPwd = newPwd;
-	}
-
 	public String getProfile() {
 		return profile;
 	}
@@ -89,4 +88,36 @@ public class UsersDto {
 		this.regdate = regdate;
 	}
 
-}
+	public String getNewPwd() {
+		return newPwd;
+	}
+
+	public void setNewPwd(String newPwd) {
+		this.newPwd = newPwd;
+	}
+
+	public String getPostcode() {
+		return postcode;
+	}
+
+	public void setPostcode(String postcode) {
+		this.postcode = postcode;
+	}
+
+	public String getAddr() {
+		return addr;
+	}
+
+	public void setAddr(String addr) {
+		this.addr = addr;
+	}
+
+	public String getDetailAddr() {
+		return detailAddr;
+	}
+
+	public void setDetailAddr(String detailAddr) {
+		this.detailAddr = detailAddr;
+	}
+	
+}	

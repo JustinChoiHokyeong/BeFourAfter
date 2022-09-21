@@ -10,6 +10,26 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 </head>
 <body>
+<!-- 네비바 -->
+	<jsp:include page="/WEB-INF/views/funcs/navbar.jsp"></jsp:include>
+	<!-- /네비바 -->
+	<div>
+		<div class="container p-5">
+			<div style="width: 100%; min-height: 1px; height: 60px;">
+				<a
+					href="${pageContext.request.contextPath }/reserve/leave_insertform.do"><button
+						class="btn">출국 서비스 예약하기</button></a> <a
+					href="${pageContext.request.contextPath }/reserve/ent_insertform.do"><button
+						class="btn">입국 서비스 예약하기</button></a> <br /> <a
+					href="${pageContext.request.contextPath }/reserve/list.do"><button
+						class="btn">출국 예약 내역</button></a> <a
+					href="${pageContext.request.contextPath }/reserve/list2.do"><button
+						class="btn">입국 예약 내역</button></a>
+			</div>
+		</div>
+	</div>
+	<!-- 본문 -->
+<div class="bg-light">
 <div class="container">
 <c:choose>
 	<c:when test="${dto.reservetype eq 'leave_insertform'}">
@@ -86,7 +106,6 @@
 				<p>
 				<button type="submit" id="submit1">수정</button>
 				</p>
-				<a href="${pageContext.request.contextPath }/reserve/list.do">목록으로</a>
 			</form>
 		</div>
 		<script>
@@ -193,9 +212,8 @@
 				<small>(개당 5,000원 추가)</small>
 				</p>
 				<p>
-				<button type="submit" id="submit2">예약</button>
+				<button type="submit" id="submit2">수정</button>
 				</p>
-				<a href="${pageContext.request.contextPath }/reserve/list.do">목록으로</a>
 			</form>
 		</div>
 		
@@ -224,5 +242,15 @@
 	</c:otherwise>
 </c:choose>
 </div>
+</div>
+<!-- /본문 -->
+	<div style="width: 100%; min-height: 1px; height: 60px;"></div>
+	<!-- 네비게이션 -->
+	<jsp:include page="/WEB-INF/views/funcs/toTop.jsp"></jsp:include>
+	<!-- /네비게이션  -->
+	<!-- 푸터 -->
+	<footer class="container-fluid navbar-fixed-bottom">
+		<jsp:include page="/WEB-INF/views/funcs/footer.jsp"></jsp:include>
+	</footer>
 </body>
 </html>
