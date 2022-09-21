@@ -70,5 +70,14 @@ public class ReviewController {
 		
 		return mView;
 	}
+	
+	//리뷰글 삭제 요청 처리
+	@RequestMapping("/review/delete")
+	public ModelAndView authDelete(ReviewDto dto, HttpServletRequest request) {
+		service.deleteReview(dto, request);
+		return new ModelAndView("review/delete");
+	}
+
+
 
 }

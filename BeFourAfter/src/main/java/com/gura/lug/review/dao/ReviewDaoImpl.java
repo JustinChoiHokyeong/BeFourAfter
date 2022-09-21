@@ -38,11 +38,20 @@ public class ReviewDaoImpl implements ReviewDao {
 			return session.selectOne("review.getData", dto);
 		}
 		
-		
 		@Override
 		public void addViewCount(int num) {
 			session.update("review.addViewCount", num);
 		}
+		
+		@Override
+		public void delete(ReviewDto dto) {
+			// TODO Auto-generated method stub
+			session.delete("review.delete", dto);
+			
+		}
+
+	
+
 
 		
 }
