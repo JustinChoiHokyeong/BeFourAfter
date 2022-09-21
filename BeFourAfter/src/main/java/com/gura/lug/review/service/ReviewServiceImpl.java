@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.gura.lug.exception.NotDeleteException;
 import com.gura.lug.review.dao.ReviewDao;
 import com.gura.lug.review.dto.ReviewDto;
 
@@ -181,4 +182,23 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 	
 	
+	@Override
+	public void deleteReview(ReviewDto dto, HttpServletRequest request) {
+		//세션에서 로그인된 아이디를 읽어와서
+		String id=(String)request.getSession().getAttribute("id");
+		//삭제할 글의 작성자
+		String writer=reviewDao.getData(dto).getWriter();
+		//만일 글의 작성자가 로그인된 아이디와 다르다면 
+		if(!writer.equals(id)) {
+			//예외를 발생시켜서 응답을 예외 Controller 에서 하도록 한다.
+			throw new NotDeleteException("다른 사람의 리뷰는 삭제할 수 없습니다.");
+		}
+		//본인이 작성한 글이 아니면 아래의 코드가 실행이 안되야 된다. 
+		reviewDao.delete(dto);
+	}
+	
 }
+
+
+	
+

@@ -7,12 +7,17 @@
 <meta charset="UTF-8">
 <title>/review/detail.jsp</title>
 <%-- bootstrap --%>
+
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.css" >
+
 <jsp:include page="/WEB-INF/views/funcs/bs.jsp"></jsp:include>
+
 </head>
 <body>
 <!-- 네비바 -->
 <jsp:include page="/WEB-INF/views/funcs/navbar.jsp"></jsp:include>
 <!-- /네비바 -->
+
 <div class="container">
    <nav>
       <ul class="breadcrumb">
@@ -41,6 +46,16 @@
          <p><small>${dto.rating}</small></p>
       </div>
    </div>
+   
+     
+    <div id="liveAlertPlaceholder"></div>
+	<a href="list.do" type="button" class="btn btn-success" id="listBtn">목록보기</a>
+	<c:if test="${dto.writer eq id }">
+			<a href="delete.do?num=${dto.num }" type="button" class="btn btn-primary" id="deleteBtn">삭제</a>
+	</c:if>
+	
+		
+	
    <nav>
       <ul class="pagination justify-content-center">
          <c:choose>
@@ -70,6 +85,10 @@
       </ul>
    </nav>      
 </div>
+
+
+	
+
 <!-- 네비게이션 -->
 <jsp:include page="/WEB-INF/views/funcs/toTop.jsp"></jsp:include>	
 <!-- /네비게이션  -->
@@ -79,6 +98,7 @@
     <jsp:include page="/WEB-INF/views/funcs/footer.jsp"></jsp:include>
 </footer>
 <!-- /푸터 -->
+
 </body>
 </html>
 
