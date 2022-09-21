@@ -12,6 +12,7 @@
 	<!-- 네비바 -->
 	<jsp:include page="/WEB-INF/views/funcs/navbar.jsp"></jsp:include>
 	<!-- /네비바 -->
+<<<<<<< HEAD
 	<!--바로가기-->
             <div>
                 <div class="container p-5">
@@ -32,6 +33,23 @@
                 </div>
             </div>
             <!--/바로가기-->
+=======
+	<div>
+		<div class="container p-5">
+			<div style="width: 100%; min-height: 1px; height: 60px;">
+				<a
+					href="${pageContext.request.contextPath }/reserve/leave_insertform.do"><button
+						class="btn">출국 서비스 예약하기</button></a> <a
+					href="${pageContext.request.contextPath }/reserve/ent_insertform.do"><button
+						class="btn">입국 서비스 예약하기</button></a> <br /> <a
+					href="${pageContext.request.contextPath }/reserve/list.do"><button
+						class="btn">출국 예약 내역</button></a> <a
+					href="${pageContext.request.contextPath }/reserve/list2.do"><button
+						class="btn">입국 예약 내역</button></a>
+			</div>
+		</div>
+	</div>
+>>>>>>> branch 'master' of https://github.com/livelikesloth/BeFourAfter.git
 	<!-- 본문 -->
 	<div class="bg-light">
 	<div class="container">
@@ -90,8 +108,7 @@
 			<p>
 				<button type="submit" class="btn">예약</button>
 			</p>
-			<a href="${pageContext.request.contextPath }/reserve/list.do"><button
-					class="btn">예약 목록</button></a>
+			
 		</form>
 	</div>
 	</div>

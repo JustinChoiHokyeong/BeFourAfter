@@ -18,10 +18,13 @@
 	<div>
 		<div class="container p-5">
 			<div style="width: 100%; min-height: 1px; height: 60px;">
+<<<<<<< HEAD
+=======
+			
+>>>>>>> branch 'master' of https://github.com/livelikesloth/BeFourAfter.git
 				<a
-					href="${pageContext.request.contextPath }/reserve/ent_insertform.do"><button
-						class="btn">입국 서비스</button></a> <a
 					href="${pageContext.request.contextPath }/reserve/leave_insertform.do"><button
+<<<<<<< HEAD
 						class="btn">출국 서비스</button></a>
 				<div class="btn-group">
 					<button class="btn" type="button" data-bs-toggle="dropdown"
@@ -35,6 +38,13 @@
 								예약 확인</a></li>
 					</ul>
 				</div>
+=======
+						class="btn">출국 서비스</button></a>	<a
+					href="${pageContext.request.contextPath }/reserve/ent_insertform.do"><button
+						class="btn">입국 서비스</button></a>  <a
+					href="${pageContext.request.contextPath }/reserve/list.do"><button
+						class="btn">나의 예약</button></a>
+>>>>>>> branch 'master' of https://github.com/livelikesloth/BeFourAfter.git
 			</div>
 		</div>
 	</div>
