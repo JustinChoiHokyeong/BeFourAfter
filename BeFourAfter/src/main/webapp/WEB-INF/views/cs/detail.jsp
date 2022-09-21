@@ -28,52 +28,52 @@
       <div class="p-5">
       </div>
       <h1 class="text-center">문의하기</h1>
-      <table class="table">
-           <tr> 
-	            <th style="width:50px;">문의 항목</th>
-	      		<c:choose>
-	      			<c:when  test="${dto.reservetype eq 'ent'}">
-	      				<td colspan="3">[입국서비스]</td>
-	      			</c:when>
-	      			<c:when test="${dto.reservetype eq 'leave'}">
-						<td colspan="3">[출국서비스]</td>
-					</c:when>
-					<c:when test="${dto.reservetype eq 'delivery'}">
-						<td colspan="3">[배송서비스]</td>
-					</c:when>
-					<c:when test="${dto.reservetype eq 'etc'}">
-						<td colspan="3">[기타 서비스]</td>
-					</c:when>
-	      			<c:when test="${dto.reservetype eq ''}">
-						<td colspan="3">[선택안함]</td>
-					</c:when>	      			
-	      		</c:choose>
-      		</tr>
-            <tr>
-	        <c:choose>
-	            <c:when test="${dto.isSecret eq 'Yes'}">
-	               <th style="width:100px;">제목</th>
-	               <td colspan="3"><span class="text-muted" style="font-size:12px;"><i class="bi bi-lock-fill"></i>비밀글</span> ${dto.title }</td>
-	            </c:when>
-	            <c:otherwise>
-	            <tr>
-	               <th style="width:50px;">제목</th>
-	               <td colspan="3">${dto.title }</td>
-	            </c:otherwise>
-         	</c:choose>
-	        </tr>
-         <tr>
-            <th style="width:100px;">작성자</th>
-            <td>${dto.writer }</td>
-            <th style="width:100px;">등록일</th>
-            <td>${dto.regdate }</td>
-         </tr>   
-         <tr style="height:300px;">
-            <td colspan="4">
-               <div >${dto.content }</div>
-            </td>
-         </tr>
-      </table>
+   	  <table class="table">
+	      <c:choose>
+	      	<c:when test="${dto.isSecret eq 'Yes'}">
+				<tr >
+					<th style="width:100px;">제목</th>
+					<td colspan="5"><span class="text-muted" style="font-size:12px;"><i class="bi bi-lock-fill"></i>비밀글</span> ${dto.title }</td>
+	    		</tr>
+	      	</c:when>
+	      	<c:otherwise>
+				<tr>
+					<th style="width:100px;">제목</th>
+					<td colspan="5">${dto.title }</td>
+	    		</tr>
+	      	</c:otherwise>
+	      </c:choose>
+
+	      <tr>
+	         <th style="width:100px;">작성자</th>
+	         <td>${dto.writer }</td>
+	         <th style="width:100px;">등록일</th>
+	         <td>${dto.regdate }</td>
+	         <th style="width:100px;">문의 내용</th>
+	         <c:choose>
+	         	<c:when test="${dto.reserveType == 'ent'}">
+		         	<td>[입국 예약]</td>	         	
+	         	</c:when>
+	         	<c:when test="${dto.reserveType == 'leave'}">
+		         	<td>[출국 예약]</td>	         	
+	         	</c:when>
+	         	<c:when test="${dto.reserveType == 'delivery'}">
+		         	<td>[배송 예약]</td>	         	
+	         	</c:when>
+	         	<c:when test="${dto.reserveType == 'etc'}">
+		         	<td>[기타]</td>	         	
+	         	</c:when>
+	         	<c:otherwise>
+					<td>[선택안함]</td>									
+				</c:otherwise>
+	         </c:choose>
+	      </tr>	
+	      <tr style="height:300px;">
+	         <td colspan="6">
+	            <div class="p-3">${dto.content }</div>
+	         </td>
+	      </tr>
+	  </table>
       <div class="text-end">
          <span><a class="btn text-decoration-none text-dark btn-outline-secondary" href="${pageContext.request.contextPath}/cs/ask.do"><i class="bi bi-list"></i>목록보기</a></span>
          <c:if test="${dto.writer eq id }">
@@ -81,26 +81,27 @@
             <span><a class="btn text-decoration-none text-dark btn-outline-secondary" href="${pageContext.request.contextPath}/cs/delete.do?num=${dto.num }"><i class="bi bi-trash3"></i>삭제</a></span>
          </c:if>
       </div>
+      
       <!-- 댓글 목록 -->
-      <div class="comments">
-      <p>답변</p>
+      <div class="comments" >
          <ul>
             <c:forEach var="tmp" items="${commentList }">
                <c:choose>
                   <c:when test="${tmp.deleted eq 'yes' }">
-                     <p>삭제된 댓글 입니다.</p>
+                     <p class="border rounded-pill text-center" style="background-color:rgba(181, 180, 180, 0.508);">
+                     <i class="bi bi-exclamation-triangle"></i>요청에 의해 삭제된 댓글 입니다.</p>
                   </c:when>
                   <c:otherwise>
                   <%-- 만일 댓글의 글번호가 댓글의 그룹번호와 같다면(원글의 댓글이라면) --%>
                      <c:if test="${tmp.num eq tmp.comment_group }">
                         <p id="reli${tmp.num }">
                      </c:if>
-                     <%-- 만일 댓글의 글번호가 댓글의 그룹번호와 다르다면(댓글의 댓글이라면) 왼쪽 페딩을 50px 주어서 들여쓰기 효과를 주고  화살표 아이콘을 출력한다.--%>
-                     <c:if test="${tmp.num ne tmp.comment_group }">
-                        <p id="reli${tmp.num }" style="padding-left:50px;"><i class="bi bi-arrow-return-right"></i>
-                     </c:if>
                            <dl>
-                              <dt>
+                              <dt class="float-start m-3">
+			                     <%-- 만일 댓글의 글번호가 댓글의 그룹번호와 다르다면(댓글의 댓글이라면) 왼쪽 페딩을 50px 주어서 들여쓰기 효과를 주고  화살표 아이콘을 출력한다.--%>
+			                     <c:if test="${tmp.num ne tmp.comment_group }">
+			                        <p id="reli${tmp.num }" style="padding-left:50px;"><i class="bi bi-arrow-return-right"></i>
+			                     </c:if>
                                  <%-- 만일 프로필 이미지가 없다면  기본 아이콘 출력 --%>
                                  <c:if test="${ empty tmp.profile }">
 									<img class="profile-image" src="../airplane_logo1.png" alt="" />
@@ -111,19 +112,18 @@
                                  </c:if>
                               </dt>
                               <dt>
-                                 <span>${tmp.writer }</span>
+                                 <span >${tmp.writer }</span>
                                  <%-- 만일 글번호가 댓글의 그룹번호와 다르다면(댓글의 댓글이라면) 누구를 향한 댓글인지 출력하기 --%>
                                  <c:if test="${tmp.num ne tmp.comment_group }">
                                     @<i class="text-danger">${tmp.target_id }</i>
                                  </c:if>
-                                 <span class="text-muted">${tmp.regdate }</span>
-                                 
+                                 <span class="text-muted float-end ">${tmp.regdate}</span>
                               </dt>
                               <dd>
                                  <%-- 댓글은 textarea로 입력 받았기 때문에 tab, 공백, 개행 기호도 존재한다. html 에서 pre 요소는 tab, 공백, 개행 기호를 해석해주는 요소이기 때문에
                                      pre 요소의 innerText 로 댓글의 내용을 출력했다. 그리고 해당 댓글의 javascript로 바로 수정할 수 있도록 댓글 번호를 조합해서  아이디를 부여해 놓았다.
                                   --%>
-                                 <pre id="pre${tmp.num }">${tmp.content }</pre>                  
+                                 <pre id="pre${tmp.num }" class="p-3 border border-opacity-25 rounded-4">${tmp.content }</pre>                  
                               </dd>
                               <dt id="udr">
                                  <%-- 만일 로그인을 했고 글 작성자가 로그인된 사용자와 같다면 수정, 삭제 링크를 출력한다. --%>

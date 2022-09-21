@@ -21,7 +21,7 @@
 		      </div>
 		      <div class="mb-3">
 		        <label for="reservetype">서비스 항목</label>
-		      	<select name="reservetype" id="reservetype" class="form-select" id="reservetype">
+		      	<select name="reserveType" id="reserveType" class="form-select" id="reserveType">
 		      		<option value="" selected disabled> 문의 내용을 선택해 주세요.</option>
 		      		<option value="ent">입국 서비스 예약</option>
 		      		<option value="leave">출국 서비스 예약</option>
@@ -42,6 +42,7 @@
 		      <button class="btn btn-outline-secondary" type="submit">문의 등록</button>
 		   </form>
 		</div>
+	</div>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
 		//체크박스 value넣어주기
@@ -79,7 +80,6 @@
 		
 	
     </script>
-</div>
 
 </body>
 </html>
