@@ -48,25 +48,23 @@
 	<!-- 네비바 -->
 	<jsp:include page="/WEB-INF/views/funcs/navbar.jsp"></jsp:include>
 	<!-- /네비바 -->
-	<!--바로가기-->
 	<div>
 		<div class="container p-5">
 			<div style="width: 100%; min-height: 1px; height: 60px;">
-
 				<a
-					href="${pageContext.request.contextPath }/reserve/ent_insertform.do"><button
-						class="btn">입국 서비스</button></a> <a
 					href="${pageContext.request.contextPath }/reserve/leave_insertform.do"><button
-						class="btn">출국 서비스</button></a> <a
+						class="btn">출국 서비스 예약하기</button></a> <a
+					href="${pageContext.request.contextPath }/reserve/ent_insertform.do"><button
+						class="btn">입국 서비스 예약하기</button></a> <br /> <a
 					href="${pageContext.request.contextPath }/reserve/list.do"><button
-						class="btn">나의 예약</button></a>
+						class="btn">출국 예약 내역</button></a> <a
+					href="${pageContext.request.contextPath }/reserve/list2.do"><button
+						class="btn">입국 예약 내역</button></a>
 			</div>
 		</div>
 	</div>
-	
+	<!-- 본문 -->
 	<div class="container">
-	<a href="${pageContext.request.contextPath }/reserve/list.do">출국 예약 내역</a>
-	<a href="${pageContext.request.contextPath }/reserve/list2.do">입국 예약 내역</a>
 	<h2>출국서비스 예약 내역</h2>
 	<div>
 		<table class="table align-middle">
@@ -157,7 +155,6 @@
 	<!-- /네비게이션  -->
 
 	<!-- 푸터 -->
-
 	<footer class="container-fluid navbar-fixed-bottom">
 		<jsp:include page="/WEB-INF/views/funcs/footer.jsp"></jsp:include>
 	</footer>
