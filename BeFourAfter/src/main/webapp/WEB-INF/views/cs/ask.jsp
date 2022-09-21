@@ -103,7 +103,15 @@
 									</td>
 								</c:otherwise>
 							</c:choose>
-							<td class="text-center">${tmp.writer }</td>
+							<c:choose>
+								<c:when test="${tmp.isSecret eq 'Yes' && tmp.writer ne id }">
+									<td class="text-center text-muted">비공개 처리</td>
+								</c:when>
+								<c:otherwise>
+									<td class="text-center">${tmp.writer}</td>
+								</c:otherwise>
+							</c:choose>
+							
 							<td class="text-center">${tmp.viewCount }</td>
 							<td class="text-center">${tmp.regdate }</td>
 						</tr>
