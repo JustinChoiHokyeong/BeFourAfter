@@ -20,6 +20,11 @@ public class ReserveController {
 	@Autowired
 	private ReserveService service;
 	
+	@RequestMapping("/reserve/main.do")
+	public String main() {
+		return "reserve/main";
+	}
+	
 	@RequestMapping("/reserve/list.do")
 	public ModelAndView authgetList(HttpServletRequest request, ReserveDto dto,ModelAndView mView) {
 		

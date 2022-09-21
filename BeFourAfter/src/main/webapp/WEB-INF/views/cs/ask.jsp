@@ -6,22 +6,15 @@
 <head>
 <meta charset="UTF-8">
 <title>/views/cs/ask.jsp</title>
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
-	crossorigin="anonymous">
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
-	integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
-	crossorigin="anonymous"></script>
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+<jsp:include page="/WEB-INF/views/funcs/bs.jsp"></jsp:include>
 </head>
 <body>
 	<!-- 네비바 -->
-	<jsp:include page="../navbar.jsp"></jsp:include>
+	<jsp:include page="/WEB-INF/views/funcs/navbar.jsp"></jsp:include>
 	<!-- /네비바 -->
+	<!-- 네비게이션 -->
+	<jsp:include page="/WEB-INF/views/funcs/toTop.jsp"></jsp:include>
+	<!-- /네비게이션  -->
 	<!-- 본문 -->
 	<div class="container">
 		<div class="p-5">
@@ -30,8 +23,7 @@
 				해당 게시판의 성격과 다른 글은 사전동의 없이 담당 게시판으로 이동될 수 있습니다.</div>
 			<div class="text-muted text-center fs-6">배송관련, 주문(취소/교환/환불)관련
 				문의 및 요청사항의 마이페이지 내 1:1문의에 남겨주세요</div>
-			<br />
-			<br />
+			<br /> <br />
 			<div style="clear: both;"></div>
 			<div class="text-end">
 				<form action="ask.do" method="get">
@@ -119,11 +111,13 @@
 				</c:if>
 			</ul>
 		</div>
-		<!-- 본문 -->
-		<!-- 푸터 -->
-		<footer class="container-fluid navbar-fixed-bottom">
-			<jsp:include page="../footer.jsp"></jsp:include>
-		</footer>
-		<!-- /푸터 -->
+	</div>
+	<!-- 본문 -->
+	<!-- 푸터 -->
+	<footer class="container-fluid navbar-fixed-bottom">
+		<jsp:include page="/WEB-INF/views/funcs/footer.jsp"></jsp:include>
+	</footer>
+	<!-- /푸터 -->
+
 </body>
 </html>
