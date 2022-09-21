@@ -78,7 +78,7 @@
          <span><a class="btn text-decoration-none text-dark btn-outline-secondary" href="${pageContext.request.contextPath}/cs/ask.do"><i class="bi bi-list"></i>목록보기</a></span>
          <c:if test="${dto.writer eq id }">
             <sapn><a class="btn text-decoration-none text-dark btn-outline-secondary" href="${pageContext.request.contextPath}/cs/updateform.do?num=${dto.num }"><i class="bi bi-pencil-fill"></i>수정</a></span>
-            <span><a class="btn text-decoration-none text-dark btn-outline-secondary" href="${pageContext.request.contextPath}/cs/delete.do?num=${dto.num }"><i class="bi bi-trash3"></i>삭제</a></span>
+            <span><a class="btn text-decoration-none text-dark btn-outline-secondary" id="deleteBtn"><i class="bi bi-trash3"></i>삭제</a></span>
          </c:if>
       </div>
       
@@ -125,7 +125,7 @@
                                   --%>
                                  <pre id="pre${tmp.num }" class="p-3 border border-opacity-25 rounded-4">${tmp.content }</pre>                  
                               </dd>
-                              <dt id="udr">
+                              <dt id="udr" class="text-muted float-end ">
                                  <%-- 만일 로그인을 했고 글 작성자가 로그인된 사용자와 같다면 수정, 삭제 링크를 출력한다. --%>
                                  <%-- 답글의 링크를 눌렀을때 해당댓글의 글번호를 얻어오기 위해 data-num 속성에 댓글의 번호 넣어두기 --%>                                 
                                  <c:if test="${tmp.writer eq sessionScope.id }">
@@ -133,37 +133,34 @@
                                     <a data-num="${tmp.num }" class="delete-link" href="javascript:">삭제</a>
                                     <a data-num="${tmp.num }" href="javascript:" class="reply-link">답글</a>
                                  </c:if>
-                                 <!-- 관리자만 답글을 달 수 있도록 -->
-                                 <c:if test="${sessionScope.id eq 'hyun56' }">
-                                    <a data-num="${tmp.num }" href="javascript:" class="reply-link">답글</a>
-                                 </c:if>
                               </dt>
                            </dl>
                            <%-- 댓글의 댓글 폼은 미리 만들어서 숨겨놓았다가 답글 링크를 누르면 보이도록 한다.
-                               javascript 에서 폼을 선택할 수 있도록 댓글 번호를 좋바해서 아이디를 부여해 놓았다.
-                                댓글의 댓글은 고유한 댓글 그룹번호가 있으므로 form 전송될때 같이 전송되도록 해 놓았다.
-                                댓글의 그룹번호는 원글의 댓글 그번호이다.
+                                javascript 에서 폼을 선택할 수 있도록 댓글 번호를 좋바해서 아이디를 부여해 놓았다.
+					                          댓글의 댓글은 고유한 댓글 그룹번호가 있으므로 form 전송될때 같이 전송되도록 해 놓았다.
+					                           댓글의 그룹번호는 원글의 댓글 그번호이다.
                             --%>
                            <form id="reForm${tmp.num }" class="animate__animated comment-form re-insert-form" action="comment_insert.do" method="post">
                               <input type="hidden" name="ref_group" value="${dto.num }"/>
                               <input type="hidden" name="target_id" value="${tmp.writer }"/>
                               <input type="hidden" name="comment_group" value="${tmp.comment_group }"/>
-                              <textarea name="content"></textarea>
-                              <button type="submit">답글 달기</button>
+                              <div class="input-group mb-3">
+                              <textarea  class="form-control" name="content" placeholder="답변"></textarea>
+                              <button type="submit" class="btn btn-outline-secondary">등록</button></div>
                            </form>
-                        <%-- 
-                           만일 글 작성자가 로그인한 작성자면 (본인이 작성한 댓글이라면) 댓글 수정 폼도 미리 준비해 놓고
-                           숨겨 둔다.
-                           javascript 에서 폼을 바로 선택할 수 있도록 댓글 번호를 조합해서 아이디를 부여해 놓았다.
+                        <%--
+                        	 만일 글 작성자가 로그인한 작성자면 (본인이 작성한 댓글이라면) 댓글 수정 폼도 미리 준비해 놓고  숨겨 둔다.
+                            javascript 에서 폼을 바로 선택할 수 있도록 댓글 번호를 조합해서 아이디를 부여해 놓았다.
                          --%>   
-                        <c:if test="${tmp.writer eq id }">
+                        <c:if test="${sessionScope.id eq 'hyun56' }">
                            <form id="updateForm${tmp.num }" class="comment-form update-form" action="comment_update.do" method="post">
                               <input type="hidden" name="num" value="${tmp.num }" />
-                              <textarea name="content">${tmp.content }</textarea>
-                              <button type="submit">수정</button>
+                              <div class="input-group mb-3">
+                              <textarea name="content" class="form-control">${tmp.content }</textarea>
+                              <button type="submit"  class="btn btn-outline-secondary">수정</button></div>
                            </form>
                         </c:if>
-                        </li>      
+                            
                   </c:otherwise>
                </c:choose>
             </c:forEach>
@@ -176,15 +173,29 @@
          <!-- 원글의 작성자가 댓글의 대상자가 된다. -->
          <input type="hidden" name="target_id" value="${dto.writer }"/>
          <!-- 관리자만 댓글 가능하도록 글작성자는 답글만 hyun56 나중에 관리자 아이디로 바꾸기 -->
-         <c:if test="${id eq 'hyun56'}"> 
-            <textarea name="content"></textarea>
-            <button type="submit">댓글 달기</button>
+         <c:if test="${sessionScope.id eq 'hyun56'}">
+       	 <p>답변하기</p>
+         <div class="input-group mb-3">
+            <textarea class="form-control" style="height:100px;" name="content" ></textarea>
+            <button type="submit" class="btn btn-outline-secondary" id="button-addon2">댓글 달기</button>
+         </div>
          </c:if>
       </form>
    </div>
    <script src="${pageContext.request.contextPath}/resources/js/gura_util.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
    <script>
-      
+   	$(document).ready(function(){
+   		$("#deleteBtn").click(function(){
+      	  let isDelete=confirm("게시글을 삭제하시겠습니까?");
+  			if(isDelete){
+  				location.replace("${pageContext.request.contextPath}/cs/delete.do?num=${dto.num }" );
+  			}else{
+  				event.preventDefault();
+  			}
+   		})
+   	});
+   
       //클라이언트가 로그인 했는지 여부
       let isLogin=${ not empty id };
       //원글의 댓글 폼에 submit 이벤트가 일어났을때 실행할 함수 등록
