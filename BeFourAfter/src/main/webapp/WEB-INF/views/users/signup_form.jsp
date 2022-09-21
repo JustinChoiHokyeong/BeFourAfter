@@ -18,8 +18,8 @@
 		
 		<div>
 			<label class="control-label" for="id">아이디</label>
-			<input class="form-control" type="text" name="id" id="id" placeholder="Id"/>
-			<small class="form-text text-muted">영문자 소문자로 시작하고 5글자~10글자 이내로 입력해주세요</small>
+			<input class="form-control" type="text" name="id" id="id" placeholder="ID"/>
+			<small class="form-text text-muted">5~10자의 영문소문자, 숫자만 사용 가능합니다</small>
 			<div class="invalid-feedback">사용할 수 없는 아이디입니다</div>
 		</div>
 		<div>
@@ -40,7 +40,7 @@
 		</div>
 		<div>	
 			<label class="control-label" for="phone">핸드폰 번호</label>
-			<input class="form-control" type="text" name="phone" id="phone" maxlength="11" placeholder="Phone Number"/>
+			<input class="form-control" type="text" name="phone" id="phone" maxlength="11" placeholder="00000000000"/>
 			<small class="form-text text-muted">숫자로 입력해 주세요</small>
 			<div class="invalid-feedback">'-'없이 번호만 입력해 주세요</div>
 		</div>
@@ -189,6 +189,24 @@
 			document.querySelector("#phone").classList.add("is-invalid");
 		}
 	});
+	
+	//폼에 submit 이벤트가 발생했을때 실행할 함수 등록
+	   document.querySelector("#myForm").addEventListener("submit", function(e){
+	      //console.log(e);
+	      /*
+	         입력한 아이디, 비밀번호, 이메일의 유효성 여부를 확인해서 하나라도 유효 하지 않으면
+	         e.preventDefault(); 
+	         가 수행 되도록 해서 폼의 제출을 막아야 한다. 
+	      */
+	      //폼 전체의 유효성 여부 알아내기 
+	      let isFormValid = isIdValid && isPwdValid && isEmailValid && isNamelValid  ;
+	      if(!isFormValid){//폼이 유효하지 않으면
+	         //폼 전송 막기 
+	         alert("작성란을 확인해 주세요");
+	         e.preventDefault();
+	         
+	      }   
+	   });
 
 </script>
 </body>

@@ -7,9 +7,12 @@
 <meta charset="UTF-8">
 <title>/review/detail.jsp</title>
 <%-- bootstrap --%>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.css" >
+<jsp:include page="/WEB-INF/views/funcs/bs.jsp"></jsp:include>
 </head>
 <body>
+<!-- 네비바 -->
+<jsp:include page="/WEB-INF/views/funcs/navbar.jsp"></jsp:include>
+<!-- /네비바 -->
 <div class="container">
    <nav>
       <ul class="breadcrumb">
@@ -67,6 +70,15 @@
       </ul>
    </nav>      
 </div>
+<!-- 네비게이션 -->
+<jsp:include page="/WEB-INF/views/funcs/toTop.jsp"></jsp:include>	
+<!-- /네비게이션  -->
+
+<!-- 푸터 -->
+<footer class="container-fluid navbar-fixed-bottom">
+    <jsp:include page="/WEB-INF/views/funcs/footer.jsp"></jsp:include>
+</footer>
+<!-- /푸터 -->
 </body>
 </html>
 

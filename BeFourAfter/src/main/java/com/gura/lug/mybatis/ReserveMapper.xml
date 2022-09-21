@@ -4,43 +4,72 @@
 
 	<select id="getList" parameterType="reserveDto" resultType="reserveDto">
 	SELECT *
-	FROM (SELECT result1.*, ROWNUM AS rnum
-		  FROM (SELECT num, name, phone, rname, rphone, addr, rsdate, place, basic, big, over, reservetype
-				FROM reserve
-				ORDER BY num DESC) result1)
+		 FROM (SELECT result1.*, rownum as rnum
+	 		  from (SELECT num, name, phone, rname, rphone, addr, rsdate, place, basic, big, over, reservetype, id
+	 		  FROM reserve
+	 		  where id=#{id} and reservetype='leave_insertform'
+	 		  ORDER BY num DESC) result1)
 	WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum}
 	</select>
 	
-	<select id="getData" parameterType="int" resultType="reserveDto">
-	SELECT num, name, phone, rname, rphone, addr, TO_CHAR(rsdate, 'YYYY-MM-DD"T"HH24:MI:SS') AS rsdate, place, basic, big, over, reservetype
-	FROM reserve
-	WHERE num=#{num}
+	<select id="getList2" parameterType="reserveDto" resultType="reserveDto">
+	SELECT *
+		 FROM (SELECT result1.*, rownum as rnum
+	 		  from (SELECT num, name, phone, rname, rphone, addr, rsdate, place, basic, big, over, reservetype, id
+	 		  FROM reserve
+	 		  where id=#{id} and reservetype='ent_insertform'
+	 		  ORDER BY num DESC) result1)
+	WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum}
+	</select>
+	
+	<select id="getData" parameterType="string" resultType="reserveDto">
+	select name, phone, id
+	from users
+	where id=#{id}
+	</select>
+	
+	<select id="updateData" parameterType="int" resultType="reserveDto">
+		select *
+		from reserve
+		where num=#{num}
 	</select>
 	
 	<select id="getCount" parameterType="reserveDto" resultType="int">
 		SELECT NVL(MAX(ROWNUM), 0)
 		FROM reserve
+		where id=#{id} and reservetype='leave_insertform'
+	</select>
+	
+	<select id="getCount2" parameterType="reserveDto" resultType="int">
+		SELECT NVL(MAX(ROWNUM), 0)
+		FROM reserve
+		where id=#{id} and reservetype='ent_insertform'
 	</select>	
 	
 	<insert id="insert" parameterType="reserveDto">
 		INSERT INTO reserve
 		(num, name, phone, rname, rphone,
-		rsdate, place, basic, big, over, reservetype)
+		rsdate, place, basic, big, over, reservetype, id)
 		VALUES(reserve_seq.NEXTVAL, #{name}, #{phone},
 			#{rname}, #{rphone}, TO_DATE(#{rsdate}, 'YYYY-MM-DD"T"HH24:MI'), 
-			#{place}, #{basic}, #{big}, #{over}, #{reservetype})
+			#{place}, #{basic}, #{big}, #{over}, #{reservetype}, #{id})
 	</insert>
 	
 	<insert id="insert2" parameterType="reserveDto">
 		INSERT INTO reserve
 		(num, name, phone, rsdate, addr,
-		place, basic, big, over, reservetype)
+		place, basic, big, over, reservetype, id)
 		VALUES(reserve_seq.NEXTVAL, #{name}, #{phone},
 			TO_DATE(#{rsdate}, 'YYYY-MM-DD"T"HH24:MI'),#{addr}, 
-			#{place}, #{basic}, #{big}, #{over}, #{reservetype})
+			#{place}, #{basic}, #{big}, #{over}, #{reservetype}, #{id})
 	</insert>
 	
 	<delete id="delete" parameterType="int">
+		DELETE FROM reserve
+		WHERE num=#{num}
+	</delete>
+	
+	<delete id="delete2" parameterType="int">
 		DELETE FROM reserve
 		WHERE num=#{num}
 	</delete>
