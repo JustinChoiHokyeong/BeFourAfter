@@ -58,6 +58,7 @@
 				<thead>
 					<tr class="text-center">
 						<th scope="col">글번호</th>
+						<th scope="col">분류</th>
 						<th scope="col">제목</th>
 						<th scope="col">작성자</th>
 						<th scope="col">조회수</th>
@@ -68,6 +69,17 @@
 					<c:forEach var="tmp" items="${list}">
 						<tr>
 							<td class="text-center" scope="row">${tmp.num }</td>
+							<c:choose>
+								<c:when test="${tmp.reservetype eq 'ent'}">
+									<td class="text-center text-muted" scope="row">[입국서비스]</td>
+								</c:when>
+								<c:when test="${tmp.reservetype eq 'leave'}">
+									<td class="text-center text-muted" scope="row">[입국서비스]</td>
+								</c:when>
+								<c:otherwise>
+									<td class="text-center text-muted" scope="row">[선택안함]</td>
+								</c:otherwise>					
+							</c:choose>
 							<c:choose>
 								<c:when test="${tmp.isSecret eq 'Yes' && tmp.writer ne id }">
 									<td class="text-muted"><i class="bi bi-lock-fill"></i> 비밀글
@@ -118,6 +130,7 @@
 							class="bi bi-chevron-double-right"></i></a></li>
 				</c:if>
 			</ul>
+		</div>
 		</div>
 		<!-- 본문 -->
 		<!-- 푸터 -->
