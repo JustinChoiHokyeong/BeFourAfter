@@ -37,7 +37,7 @@
 				<input type="text" name="rphone" id="rphone" value="${dto.rphone } " maxlength="11" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
 				<br />
 				<label for="same"> <small> 예약자와 동일 </small>
-				<input type="checkbox" name="same" value="same"/>
+				<input type="checkbox" name="same" value="same" checked/>
 				</label>
 				</p>
 				<p>
@@ -136,14 +136,14 @@
 			<form action="update2.do" method="post" id="ent_insertform">
 				<input type="hidden" name="ent_insertform" id="ent_insertform" value="ent_insertform"/>
 				<input type="hidden" name="num" id="num" value="${dto.num }"/>
-				<input type="hidden" name="name" id="name" value="최현호"/>
-				<input type="hidden" name="phone" id="phone" value="01048462650"/>
+				<input type="hidden" name="name" id="name" value="${dto.name }"/>
+				<input type="hidden" name="phone" id="phone" value="${dto.phone }"/>
 				<p>
 				<label for="name">예약자 이름</label>
-				<input type="text" name="name" id="name" value="최현호"disabled/>
+				<input type="text" name="name" id="name" value="${dto.name }"disabled/>
 				<br />
 				<label for="phone">핸드폰 번호</label>
-				<input type="text" name="phone" id="phone" value="01048462650"disabled/>
+				<input type="text" name="phone" id="phone" value="${dto.phone }"disabled/>
 				</p>
 				<p>
 				<label for="rsdate">맡기는 날짜 및 시간</label><br />

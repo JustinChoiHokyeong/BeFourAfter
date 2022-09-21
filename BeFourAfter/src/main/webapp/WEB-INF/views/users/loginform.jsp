@@ -28,7 +28,7 @@
 			<input type="password" name="pwd" id="pwd" placeholder="비밀번호"/>
 		</div>
 		<button type="submit">로그인</button>
-		<a href="${pageContext.request.contextPath}/users/signup_form.do">회원가입</a>
+		<a href="${pageContext.request.contextPath}/users/agree.do">회원가입</a>
 	</form>
 </div>
 </body>
