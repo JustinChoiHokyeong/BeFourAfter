@@ -5,10 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>/views/users/signup_form.jsp</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.css" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-
+<%-- bootstrap 읽어오기 --%>
+<jsp:include page="/WEB-INF/views/funcs/bs.jsp"></jsp:include>
 <script>
 function execDaumPostcode() {
         new daum.Postcode({
@@ -38,6 +36,7 @@ function execDaumPostcode() {
 </script>
 </head>
 <body>
+<div class="container p-5">
 <div class="container">
 	<h1>GOOD LUGG 계정 만들기</h1>
 	<form class="animate__animated animate__bounceInDown" action="${pageContext.request.contextPath}/users/signup.do" method="post" id="myForm">
@@ -83,6 +82,7 @@ function execDaumPostcode() {
 		</div>
 		<button class="btn btn-primary" type="submit">가입</button>
 	</form>
+</div>
 </div>
 <script src="${pageContext.request.contextPath}/resources/js/gura_util.js"></script>
 <script>
