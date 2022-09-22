@@ -16,8 +16,8 @@ public class ReserveDaoImpl implements ReserveDao{
 	
 	@Override
 	public List<ReserveDto> getList(ReserveDto dto) {
-		
 		List<ReserveDto> list=session.selectList("reserve.getList", dto);
+		
 		return list;
 	}
 	@Override
@@ -26,7 +26,7 @@ public class ReserveDaoImpl implements ReserveDao{
 		List<ReserveDto> list=session.selectList("reserve.getList2", dto);
 		return list;
 	}
-
+	
 	@Override
 	public ReserveDto getData(String id) {
 		ReserveDto dto=session.selectOne("reserve.getData", id);
