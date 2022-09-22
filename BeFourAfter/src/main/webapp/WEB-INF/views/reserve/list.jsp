@@ -124,14 +124,44 @@
 		</div>
 		<p style=float:right>결제할 금액 : <strong id="price">0</strong>원</p>
 		<p style=clear:both></p>
+		<a class="btn btn-primary" style=float:right href="${pageContext.request.contextPath }/reserve/order.do" onclick="return confirm('결제하시겠습니까?')">결제하기</a>
+		<br />
 		<a href="${pageContext.request.contextPath }">홈으로</a>
+		
 	</div>
-	<script>
+	<!-- 페이징 처리 -->
+	<div class="container page-ui">
+		<ul>
+			<c:if test="${startPageNum ne 1 }">
+				<li>
+					<a href="list.do?pageNum=${startPageNum-1 }">Prev</a>
+				</li>
+			</c:if>
+			<c:forEach var="i" begin="${startPageNum }" end="${endPageNum }">
+				<li>
+					<c:choose>
+						<c:when test="${pageNum eq i }">
+							<a  class="active" href="list.do?pageNum=${i }">${i }</a>
+						</c:when>
+						<c:otherwise>
+							<a href="list.do?pageNum=${i }">${i }</a>
+						</c:otherwise>
+					</c:choose>
+				</li>
+			</c:forEach>
+			<c:if test="${endPageNum lt totalPageCount }">
+				<li>
+					<a href="list.do?pageNum=${endPageNum+1 }">Next</a>
+				</li>
+			</c:if>
+		</ul>
+
+	</div>
+		<script>
 		//모든 체크 박스의 참조값이 담긴 배열
 		const checks=document.querySelectorAll(".price");
 		//전부 체크 박스
 		const checkall=document.querySelector("#checkall");
-		
 		
 		//체크된 체크박스에 있는 가격의 총합을 계산하는 함수 
 		function checkSum(){
@@ -167,34 +197,6 @@
 			
 		};
 	</script>
-	<!-- 페이징 처리 -->
-	<div class="container page-ui">
-		<ul>
-			<c:if test="${startPageNum ne 1 }">
-				<li>
-					<a href="list.do?pageNum=${startPageNum-1 }">Prev</a>
-				</li>
-			</c:if>
-			<c:forEach var="i" begin="${startPageNum }" end="${endPageNum }">
-				<li>
-					<c:choose>
-						<c:when test="${pageNum eq i }">
-							<a  class="active" href="list.do?pageNum=${i }">${i }</a>
-						</c:when>
-						<c:otherwise>
-							<a href="list.do?pageNum=${i }">${i }</a>
-						</c:otherwise>
-					</c:choose>
-				</li>
-			</c:forEach>
-			<c:if test="${endPageNum lt totalPageCount }">
-				<li>
-					<a href="list.do?pageNum=${endPageNum+1 }">Next</a>
-				</li>
-			</c:if>
-		</ul>
-
-	</div>
 	<!-- /본문 -->
 	<div style="width: 100%; min-height: 1px; height: 60px;"></div>
 	<!-- 네비게이션 -->
