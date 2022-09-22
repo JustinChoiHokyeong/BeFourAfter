@@ -90,7 +90,7 @@
 								작성자와 로그인 아이디가 다르면 비공개 / 작성자와 로그인 아디가 동일하면 자물쇠 아이콘과 함께 본인에게만 공개 / 그 외에는 전부 공개
 							 -->
 							<c:choose>
-								<c:when test="${tmp.isSecret eq 'Yes' && tmp.writer ne id  && sessionScope.id ne 'hyun56'}">
+								<c:when test="${tmp.isSecret eq 'Yes' && tmp.writer ne id  && sessionScope.id ne 'GoodLugg'}">
 									<td class="text-muted"><i class="bi bi-lock-fill"></i> 비밀글입니다.</td>
 								</c:when>
 								<c:when test="${tmp.isSecret eq 'Yes' && tmp.writer eq id }">
@@ -99,7 +99,7 @@
 										href="detail.do?num=${tmp.num }&keyword=${encodedK }&condition=${condition}">${tmp.title }</a>
 									</td>
 								</c:when>
-								<c:when test="${tmp.isSecret eq 'Yes' && sessionScope.id eq 'hyun56' }">
+								<c:when test="${tmp.isSecret eq 'Yes' && sessionScope.id eq 'GoodLugg' }">
 									<td><i class="bi bi-lock-fill"></i>
 										<a class="text-decoration-none text-dark"
 										href="detail.do?num=${tmp.num }&keyword=${encodedK }&condition=${condition}">${tmp.title }</a>
@@ -113,10 +113,10 @@
 								</c:otherwise>
 							</c:choose>
 							<c:choose>
-								<c:when test="${tmp.isSecret eq 'Yes' && tmp.writer ne id  && sessionScope.id ne 'hyun56'}">
+								<c:when test="${tmp.isSecret eq 'Yes' && tmp.writer ne id  && sessionScope.id ne 'GoodLugg'}">
 									<td class="text-center text-muted">비공개 처리</td>
 								</c:when>
-								<c:when test="${sessionScope.id eq 'hyun56'}">
+								<c:when test="${sessionScope.id eq 'GoodLugg'}">
 									<td class="text-center">${tmp.writer}</td>
 								</c:when>
 								<c:otherwise>
