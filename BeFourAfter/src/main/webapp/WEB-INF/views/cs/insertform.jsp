@@ -20,6 +20,16 @@
 		         <input class="form-control" type="text" name="title" id="title"/>
 		      </div>
 		      <div class="mb-3">
+		        <label for="reservetype">서비스 항목</label>
+		      	<select name="reserveType" id="reserveType" class="form-select" id="reserveType">
+		      		<option value="" selected disabled> 문의 내용을 선택해 주세요.</option>
+		      		<option value="ent">입국 서비스 예약</option>
+		      		<option value="leave">출국 서비스 예약</option>
+		      		<option value="delivery">배송 서비스 문의</option>
+		      		<option value="etc">기타 서비스 문의</option>
+		      	</select>
+		      </div>
+		      <div class="mb-3">
 		         <label for="content">내용</label>
 		         <textarea class="form-control" style="height:300px;" name="content" id="content"></textarea>
 		      </div>
@@ -27,22 +37,49 @@
 		         <input type="hidden" name="isSecret" id="isSecret"/>
 		         <input class="form-check-input" type="checkbox" id="isSecretchbox"/>
 		         <label for="isSecret">비밀글로 문의하기</label>
-		         <p class="fw-light"><i class="bi bi-info-lg"></i>비밀글 적용 시 작성자 본인 및 관리자에게만 공개됩니다.</p>
+		         <p class="fw-light"><i class="bi bi-info-lg"></i>비밀글 적용 시 작성자 및 관리자에게만 공개됩니다.</p>
 		      </div>
 		      <button class="btn btn-outline-secondary" type="submit">문의 등록</button>
 		   </form>
 		</div>
+	</div>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
-		$("#isSecretchbox").change(function(){
+		//체크박스 value넣어주기
+    	$("#isSecretchbox").change(function(){
 			if($("#isSecretchbox").is(":checked")){
 				$("#isSecret").val('Yes');
 			}else{
 				$("#isSecret").val('No');
 			}
 		})
+		
+		//
+		$("#insertForm").submit(function(){
+			//공란이 있으면 제출을 막는다
+			let title=$("#title").val();
+			let content=$("#content").val();
+			let reservetype=$("#reservetype> option:selected").val();
+			
+			//제목이나 내용이 비어있으면
+			if(title=="" || content=="" || reservetype==false){
+				alert("항목을 모두 입력해주세요")
+				event.preventDefault();
+				return false;
+			}
+			
+			if($("#isSecretchbox").is(":checked")==false){
+				let secretCheck=confirm("비밀글 설정 해제시 게시판의 모든 이용자에게 공개됩니다.");
+				if(secretCheck==false){
+					event.preventDefault();
+				}else{
+					confirm("확인을 누르시면 제출됩니다")
+				}
+			}
+		})
+		
+	
     </script>
-</div>
 
 </body>
 </html>

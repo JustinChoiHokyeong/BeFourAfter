@@ -5,8 +5,13 @@
 <head>
 <meta charset="UTF-8">
 <title>/views/users/delete.jsp</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 </head>
 <body>
+            <!-- 네비바 -->
+            <jsp:include page="/WEB-INF/views/funcs/navbar.jsp"></jsp:include>
+            <!-- /네비바 -->
 <div class="container">
 	<h1>알림</h1>
 	<p>

@@ -5,13 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <title>/views/users/signup_form.jsp</title>
-
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.css" />
-<link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-  />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
 <script>
 function execDaumPostcode() {
         new daum.Postcode({
@@ -30,28 +27,6 @@ function execDaumPostcode() {
                     addr = data.jibunAddress;
                 }
 
-                // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
-                if(data.userSelectedType === 'R'){
-                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
-                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
-                        extraAddr += data.bname;
-                    }
-                    // 건물명이 있고, 공동주택일 경우 추가한다.
-                    if(data.buildingName !== '' && data.apartment === 'Y'){
-                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-                    }
-                    // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-                    if(extraAddr !== ''){
-                        extraAddr = ' (' + extraAddr + ')';
-                    }
-                    // 조합된 참고항목을 해당 필드에 넣는다.
-                    document.getElementById("extraAddr").value = extraAddr;
-                
-                } else {
-                    document.getElementById("extraAddr").value = '';
-                }
-
                 // 우편번호와 주소 정보를 해당 필드에 넣는다.
                 document.getElementById('postcode').value = data.zonecode;
                 document.getElementById("addr").value = addr;
@@ -61,7 +36,6 @@ function execDaumPostcode() {
         }).open();
 }
 </script>
-
 </head>
 <body>
 <div class="container">
@@ -95,7 +69,6 @@ function execDaumPostcode() {
 			<input type="button" onclick="execDaumPostcode()" value="우편번호 찾기"><br>
 			<input type="text" name="addr" id="addr" placeholder="주소"><br>
 			<input type="text" name="detailAddr" id="detailAddr" placeholder="상세주소">
-			<input type="text" name="extraAddr" id="extraAddr" placeholder="참고항목">
 		</div>
 		<div>	
 			<label class="control-label" for="phone">핸드폰 번호</label>
@@ -129,7 +102,7 @@ function execDaumPostcode() {
 		//1. 입력한 아이디 value 값 읽어오기  
 		let inputId=this.value;
 		//입력한 아이디를 검증할 정규 표현식
-		const reg_id=/^[a-zA-z0-9]{4,9}$/;
+		const reg_id=/^[a-zA-z0-9]{5,10}$/g;
 		//만일 입력한 아이디가 정규표현식과 매칭되지 않는다면
 		if(!reg_id.test(inputId)){
 			isIdValid=false; //아이디가 매칭되지 않는다고 표시하고 
