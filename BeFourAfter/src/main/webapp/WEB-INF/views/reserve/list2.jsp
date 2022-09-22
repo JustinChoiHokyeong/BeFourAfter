@@ -114,6 +114,8 @@
 		</div>
 		<p style=float:right>결제할 금액 : <strong id="price">0</strong>원</p>
 		<p style=clear:both></p>
+		<a class="btn btn-primary" style=float:right href="${pageContext.request.contextPath }/reserve/order.do">결제하기</a>
+		<br />
 		<a href="${pageContext.request.contextPath }">홈으로</a>
 	</div>
 	<script>
