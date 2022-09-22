@@ -23,6 +23,7 @@ import com.gura.lug.users.service.UsersService;
 public class UsersController {
 	@Autowired
 	private UsersService service;
+
 	
 	//회원 탈퇴 요청 처리
 	@RequestMapping("/users/delete")
@@ -41,7 +42,7 @@ public class UsersController {
 			 HttpServletRequest request) {
 		//서비스를 이용해서 개인정보를 수정하고 
 		service.updateUser(dto, session);
-		mView.setViewName("redirect:/users/mypage.do");
+		mView.setViewName("redirect:/users/info.do");
 		//개인정보 보기로 리다일렉트 이동 시틴다
 		return mView;
 	}
@@ -61,7 +62,7 @@ public class UsersController {
 	@RequestMapping("/users/updateform")
 	public ModelAndView authUpdateForm(ModelAndView mView, HttpSession session,
 			HttpServletRequest request) {
-		service.getMypage(session, mView);
+		service.getInfo(session, mView);
 		mView.setViewName("users/updateform");
 		return mView;
 	}
@@ -92,6 +93,16 @@ public class UsersController {
 		return mView;
 	}
 	
+	@RequestMapping("/users/info")
+	public ModelAndView authInfo(HttpSession session, ModelAndView mView, 
+			HttpServletRequest request) {
+		
+		service.getInfo(session, mView);
+		
+		mView.setViewName("users/info");
+		return mView;
+	}
+	
 	
 	@RequestMapping("/users/logout")
 	public String logout(HttpSession session) {
@@ -101,7 +112,10 @@ public class UsersController {
 	}
 	
 	@RequestMapping(value = "/users/signup_form", method = RequestMethod.GET)
-	public String signupForm() {
+	public String signupForm(UsersDto dto) {
+		String postcode=dto.getPostcode();
+		String addr=dto.getAddr();
+		String detailAddr=dto.getDetailAddr();
 		
 		return "users/signup_form";
 	}
@@ -159,5 +173,11 @@ public class UsersController {
 	public String agree() {
 		
 		return "users/agree";
+	}
+	
+	@RequestMapping("/users/deleteform")
+	public String deleteform() {
+		
+		return "users/deleteform";
 	}
 }

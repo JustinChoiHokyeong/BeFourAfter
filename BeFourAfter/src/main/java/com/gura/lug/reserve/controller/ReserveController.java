@@ -112,4 +112,10 @@ public class ReserveController {
 		
 		return "redirect:/reserve/list2.do";
 	}
+	
+	@RequestMapping("/reserve/order.do")
+	public String order() {
+		
+		return "reserve/order";
+	}
 }

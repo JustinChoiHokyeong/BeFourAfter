@@ -6,8 +6,13 @@
 <head>
 <meta charset="UTF-8">
 <title>/users/loginform.jsp</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 </head>
 <body>
+            <!-- 네비바 -->
+            <jsp:include page="/WEB-INF/views/funcs/navbar.jsp"></jsp:include>
+            <!-- /네비바 -->
 <div class="container">
 	<h4>Sign in to start your session</h4>
 	<form action="${pageContext.request.contextPath}/users/login.do" method="post">
@@ -21,7 +26,7 @@
 		</c:choose>
 		<div>
 			<label for="id"> </label>
-			<input type="text" name="id" id="id" placeholder="아이디"/>
+			<input type="text" name="id" id="id" placeholder="아이디" autofocus/>
 		</div>
 		<div>
 			<label for="pwd"> </label>

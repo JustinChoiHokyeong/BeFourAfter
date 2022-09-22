@@ -16,11 +16,13 @@ public interface UsersService {
 	public void addUser(UsersDto dto, HttpSession session);
 	public void loginProcess(UsersDto dto, HttpSession session);
 	public void getMypage(HttpSession session, ModelAndView mView);
+	public void getInfo(HttpSession session, ModelAndView mView);
 	public void updateUserPwd(HttpSession session, UsersDto dto, ModelAndView mView);
 	public Map<String, Object> saveProfileImage(HttpServletRequest request, 
 			MultipartFile mFile);
 	public void updateUser(UsersDto dto, HttpSession session);
 	public void deleteUser(HttpSession session, ModelAndView mView);
+
 }
 
 

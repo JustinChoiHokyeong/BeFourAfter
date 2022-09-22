@@ -18,4 +18,5 @@ public interface ReserveService {
 	public void update2(ReserveDto dto, HttpServletRequest request);
 	public void getData(String id, HttpServletRequest request);
 	public void updateData(int num, ModelAndView mView);
+	
 }

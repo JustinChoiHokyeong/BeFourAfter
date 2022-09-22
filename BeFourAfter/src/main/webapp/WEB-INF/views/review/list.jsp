@@ -56,8 +56,9 @@
 	<!-- /네비바 -->
 	<div class="container p-5">
 
-		<div class="container">
-			<br />
+		<div class="container">		<br />
+		<h1>리뷰 목록 입니다.</h1>
+		<div style="width: 100%; min-height: 1px; height: 60px;"></div>
 			<form action="list.do" method="get">
 				<label for="condition">검색조건</label> <select name="condition"
 					id="condition">
@@ -65,7 +66,7 @@
 						${condition eq 'reservetype' ? 'selected' : '' }>예약 타입</option>
 					<option value="title" ${condition eq 'title' ? 'selected' : '' }>제목</option>
 					<option value="rating" ${condition eq 'rating' ? 'selected' : '' }>평점</option>
-				</select> <input type="text" id="keyword" name="keyword" placeholder="검색어..."
+				</select> <input type="text" id="kㅇeyword" name="keyword" placeholder="검색어..."
 					value="${keyword }" />
 				<button type="submit">검색</button>
 			</form>
@@ -74,8 +75,7 @@
 					<strong>${totalRow }</strong> 개의 글이 검색 되었습니다.
 				</p>
 			</c:if>
-			
-			
+
 			<c:choose>
 				<c:when test="${isReserved }">
 					<a href="${pageContext.request.contextPath}/review/upload_form.do">리뷰 업로드 하기</a>
@@ -87,6 +87,7 @@
 			</c:choose>
 				
 			<h1>리뷰 목록 입니다.</h1>
+
 			<div class="row">
 				<c:forEach var="tmp" items="${list }">
 					<div class="col-6 col-md-4 col-lg-3">
