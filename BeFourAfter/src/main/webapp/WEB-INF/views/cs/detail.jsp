@@ -76,7 +76,7 @@
 	  </table>
       <div class="text-end">
          <span><a class="btn text-decoration-none text-dark btn-outline-secondary" href="${pageContext.request.contextPath}/cs/ask.do"><i class="bi bi-list"></i>목록보기</a></span>
-         <c:if test="${dto.writer eq id }">
+         <c:if test="${dto.writer eq id || sessionScope.id eq 'GoodLugg'}">
             <sapn><a class="btn text-decoration-none text-dark btn-outline-secondary" href="${pageContext.request.contextPath}/cs/updateform.do?num=${dto.num }"><i class="bi bi-pencil-fill"></i>수정</a></span>
             <span><a class="btn text-decoration-none text-dark btn-outline-secondary" id="deleteBtn"><i class="bi bi-trash3"></i>삭제</a></span>
          </c:if>
@@ -128,7 +128,7 @@
                               <dt id="udr" class="text-muted float-end ">
                                  <%-- 만일 로그인을 했고 글 작성자가 로그인된 사용자와 같다면 수정, 삭제 링크를 출력한다. --%>
                                  <%-- 답글의 링크를 눌렀을때 해당댓글의 글번호를 얻어오기 위해 data-num 속성에 댓글의 번호 넣어두기 --%>                                 
-                                 <c:if test="${tmp.writer eq sessionScope.id }">
+                                 <c:if test="${tmp.writer eq sessionScope.id || sessionScope.id eq 'GoodLugg'}">
                                     <a data-num="${tmp.num }" class="update-link" href="javascript:">수정</a>
                                     <a data-num="${tmp.num }" class="delete-link" href="javascript:">삭제</a>
                                     <a data-num="${tmp.num }" href="javascript:" class="reply-link">답글</a>
@@ -149,10 +149,10 @@
                               <button type="submit" class="btn btn-outline-secondary">등록</button></div>
                            </form>
                         <%--
-                        	 만일 글 작성자가 로그인한 작성자면 (본인이 작성한 댓글이라면) 댓글 수정 폼도 미리 준비해 놓고  숨겨 둔다.
+                        	 관리자 로그인 시 댓글 수정 폼도 미리 준비해 놓고  숨겨 둔다.
                             javascript 에서 폼을 바로 선택할 수 있도록 댓글 번호를 조합해서 아이디를 부여해 놓았다.
                          --%>   
-                        <c:if test="${sessionScope.id eq 'hyun56' }">
+                        <c:if test="${sessionScope.id eq 'GoodLugg' }">
                            <form id="updateForm${tmp.num }" class="comment-form update-form" action="comment_update.do" method="post">
                               <input type="hidden" name="num" value="${tmp.num }" />
                               <div class="input-group mb-3">
@@ -160,7 +160,6 @@
                               <button type="submit"  class="btn btn-outline-secondary">수정</button></div>
                            </form>
                         </c:if>
-                            
                   </c:otherwise>
                </c:choose>
             </c:forEach>
@@ -172,8 +171,8 @@
          <input type="hidden" name="ref_group" value="${dto.num }"/>
          <!-- 원글의 작성자가 댓글의 대상자가 된다. -->
          <input type="hidden" name="target_id" value="${dto.writer }"/>
-         <!-- 관리자만 댓글 가능하도록 글작성자는 답글만 hyun56 나중에 관리자 아이디로 바꾸기 -->
-         <c:if test="${sessionScope.id eq 'hyun56'}">
+         <!-- 관리자만 댓글 가능하도록 글작성자는 답글만 ID:GoodLugg  -->
+         <c:if test="${sessionScope.id eq 'GoodLugg'}">
        	 <p>답변하기</p>
          <div class="input-group mb-3">
             <textarea class="form-control" style="height:100px;" name="content" ></textarea>

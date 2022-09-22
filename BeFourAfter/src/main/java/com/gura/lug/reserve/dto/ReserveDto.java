@@ -19,6 +19,10 @@ public class ReserveDto {
 	private int basic;
 	private int big;
 	private int over;
+	//수하물 합계
+	private int price;
+	//결제총액
+	private int priceAll;
 	//예약 종류 (출, 입국 서비스)
 	private String reservetype;
 	//페이징
@@ -28,8 +32,8 @@ public class ReserveDto {
 	public ReserveDto() {}
 
 	public ReserveDto(int num, String name, String phone, String id, String rname, String rphone, String addr,
-			String rsdate, String place, int basic, int big, int over, String reservetype, int startRowNum,
-			int endRowNum) {
+			String rsdate, String place, int basic, int big, int over, int price, int priceAll, String reservetype,
+			int startRowNum, int endRowNum) {
 		super();
 		this.num = num;
 		this.name = name;
@@ -43,6 +47,8 @@ public class ReserveDto {
 		this.basic = basic;
 		this.big = big;
 		this.over = over;
+		this.price = price;
+		this.priceAll = priceAll;
 		this.reservetype = reservetype;
 		this.startRowNum = startRowNum;
 		this.endRowNum = endRowNum;
@@ -144,6 +150,22 @@ public class ReserveDto {
 		this.over = over;
 	}
 
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
+	public int getPriceAll() {
+		return priceAll;
+	}
+
+	public void setPriceAll(int priceAll) {
+		this.priceAll = priceAll;
+	}
+
 	public String getReservetype() {
 		return reservetype;
 	}
@@ -167,5 +189,6 @@ public class ReserveDto {
 	public void setEndRowNum(int endRowNum) {
 		this.endRowNum = endRowNum;
 	}
+
 	
 }
