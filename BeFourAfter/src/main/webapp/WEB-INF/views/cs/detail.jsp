@@ -76,7 +76,7 @@
 	  </table>
       <div class="text-end">
          <span><a class="btn text-decoration-none text-dark btn-outline-secondary" href="${pageContext.request.contextPath}/cs/ask.do"><i class="bi bi-list"></i>목록보기</a></span>
-         <c:if test="${dto.writer eq id }">
+         <c:if test="${dto.writer eq id || sessionScope.id eq 'GoodLugg'}">
             <sapn><a class="btn text-decoration-none text-dark btn-outline-secondary" href="${pageContext.request.contextPath}/cs/updateform.do?num=${dto.num }"><i class="bi bi-pencil-fill"></i>수정</a></span>
             <span><a class="btn text-decoration-none text-dark btn-outline-secondary" id="deleteBtn"><i class="bi bi-trash3"></i>삭제</a></span>
          </c:if>
