@@ -21,11 +21,11 @@
 			
 				<a
 					href="${pageContext.request.contextPath }/reserve/leave_insertform.do"><button
-						class="btn">출국 서비스</button></a>	<a
+						class="btn">출국 서비스 예약</button></a>	<a
 					href="${pageContext.request.contextPath }/reserve/ent_insertform.do"><button
-						class="btn">입국 서비스</button></a>  <a
+						class="btn">입국 서비스 예약</button></a>  <a
 					href="${pageContext.request.contextPath }/reserve/list.do"><button
-						class="btn">나의 예약</button></a>
+						class="btn">나의 예약 목록</button></a>
 			</div>
 		</div>
 	</div>

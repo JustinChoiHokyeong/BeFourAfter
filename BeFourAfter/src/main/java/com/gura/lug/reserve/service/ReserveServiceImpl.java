@@ -22,9 +22,9 @@ public class ReserveServiceImpl implements ReserveService{
 	public void getList(HttpServletRequest request, ReserveDto dto) {
 				
 				//한 페이지에 몇개씩 표시할 것인지
-				final int PAGE_ROW_COUNT=5;
+				final int PAGE_ROW_COUNT=10;
 				//하단 페이지를 몇개씩 표시할 것인지
-				final int PAGE_DISPLAY_COUNT=5;
+				final int PAGE_DISPLAY_COUNT=10;
 				
 				//보여줄 페이지의 번호를 일단 1이라고 초기값 지정
 				int pageNum=1;
@@ -44,7 +44,6 @@ public class ReserveServiceImpl implements ReserveService{
 				//ReserveDto 객체에 startRowNum 과 endRowNum 을 담는다.
 				dto.setStartRowNum(startRowNum);
 				dto.setEndRowNum(endRowNum);
-		
 				//글 목록 얻어오기 
 				List<ReserveDto> list=dao.getList(dto);
 				//전체글의 갯수
@@ -62,7 +61,8 @@ public class ReserveServiceImpl implements ReserveService{
 				if(endPageNum > totalPageCount){
 					endPageNum=totalPageCount; //보정해 준다.
 				}
-				//view page 에서 필요한 값을 request 에 담아준다. 
+				//view page 에서 필요한 값을 request 에 담아준다.
+				
 				request.setAttribute("pageNum", pageNum);
 				request.setAttribute("startPageNum", startPageNum);
 				request.setAttribute("endPageNum", endPageNum);
@@ -75,9 +75,9 @@ public class ReserveServiceImpl implements ReserveService{
 	public void getList2(HttpServletRequest request, ReserveDto dto) {
 				
 				//한 페이지에 몇개씩 표시할 것인지
-				final int PAGE_ROW_COUNT=5;
+				final int PAGE_ROW_COUNT=10;
 				//하단 페이지를 몇개씩 표시할 것인지
-				final int PAGE_DISPLAY_COUNT=5;
+				final int PAGE_DISPLAY_COUNT=10;
 				
 				//보여줄 페이지의 번호를 일단 1이라고 초기값 지정
 				int pageNum=1;
@@ -115,7 +115,7 @@ public class ReserveServiceImpl implements ReserveService{
 				if(endPageNum > totalPageCount){
 					endPageNum=totalPageCount; //보정해 준다.
 				}
-				//view page 에서 필요한 값을 request 에 담아준다. 
+				//view page 에서 필요한 값을 request 에 담아준다.
 				request.setAttribute("pageNum", pageNum);
 				request.setAttribute("startPageNum", startPageNum);
 				request.setAttribute("endPageNum", endPageNum);
