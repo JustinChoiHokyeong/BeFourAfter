@@ -69,7 +69,11 @@
 	</delete>
 	
 	
-	
-	
+	<!-- 예약확인 관련 mapper, users의 name , email -->
+	<select id="isReserved" parameterType="string" resultType="string">
+		SELECT DISTINCT name 
+		FROM reserve
+		WHERE name = #{name}
+	</select>
 	
 </mapper>
