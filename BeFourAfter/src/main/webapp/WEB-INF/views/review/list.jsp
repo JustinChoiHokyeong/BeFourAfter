@@ -13,6 +13,7 @@
 <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css'/>
 
 <style>
+
    /* card 이미지 부모요소의 높이 지정 */
    .img-wrapper{
       height: 250px;
@@ -59,22 +60,27 @@
 		<div class="container">		<br />
 		<h1>리뷰 목록 입니다.</h1>
 		<div style="width: 100%; min-height: 1px; height: 60px;"></div>
-			<form action="list.do" method="get">
-				<label for="condition">검색조건</label> <select name="condition"
-					id="condition">
-					<option value="reservetype"
-						${condition eq 'reservetype' ? 'selected' : '' }>예약 타입</option>
-					<option value="title" ${condition eq 'title' ? 'selected' : '' }>제목</option>
-					<option value="rating" ${condition eq 'rating' ? 'selected' : '' }>평점</option>
-				</select> <input type="text" id="kㅇeyword" name="keyword" placeholder="검색어..."
-					value="${keyword }" />
-				<button type="submit">검색</button>
-			</form>
+			<!-- 검색폼  -->
+			<div class="text-end" style="margin-bottom:20px;">
+				<form action="list.do" method="get">
+					<label for="condition" class="visually-hidden">검색</label> 
+					<select class="form-select" style="width: 130px; display: inline;" name="condition" id="condition">
+						<option value="reservetype" ${condition eq 'reservetype' ? 'selected' : '' }>예약 타입</option>
+						<option value="title" ${condition eq 'title' ? 'selected' : '' }>제목</option>
+						<option value="rating" ${condition eq 'rating' ? 'selected' : '' }>평점</option>
+					</select> 
+					<input class="form-select" style="width: 250px; display: inline;" type="text" id="keyword" name="keyword" placeholder="검색어를 입력해주세요" value="${keyword }" />
+					<button class="btn " type="submit">검색</button>
+				</form>
+			</div>
+			
+			<!-- !검색폼  -->
 			<c:if test="${ not empty condition }">
 				<p>
 					<strong>${totalRow }</strong> 개의 글이 검색 되었습니다.
 				</p>
 			</c:if>
+
 
 			<c:choose>
 				<c:when test="${isReserved }">
@@ -92,28 +98,20 @@
 				<c:forEach var="tmp" items="${list }">
 					<div class="col-6 col-md-4 col-lg-3">
 						<div class="card mb-3">
-
-							<a
-								href="${pageContext.request.contextPath}/review/detail.do?num=${tmp.num}&keyword=${encodedK }&condition=${condition}">
+							<a href="${pageContext.request.contextPath}/review/detail.do?num=${tmp.num}&keyword=${encodedK }&condition=${condition}">
 								<div class="img-wrapper">
-									<img class="card-img-top"
-										src="${pageContext.request.contextPath }${tmp.imagePath}" />
+									<img class="card-img-top" src="${pageContext.request.contextPath }${tmp.imagePath}" />
 								</div>
 							</a>
-
 							<div class="card-body">
 								<p class="card-text">${tmp.title}</p>
-								<p class="card-text">
-									by <strong>${tmp.writer}</strong>
-								</p>
-								<p>
-									<small>${tmp.regdate}</small>
-								</p>
-								<p>
-									<small>${tmp.viewCount}</small>
-								</p>
+								<p class="card-text"> by <strong>${tmp.writer}</strong></p>
+								<p> <small>${tmp.regdate}</small></p>
+								<p> <small>${tmp.viewCount}</small></p>
 
-								<c:choose>
+								
+								<p><small>${tmp.reservetype}</small></p>
+                              <c:choose>
                                 <c:when test="${tmp.rating eq '5점' }">
                                    <p>★★★★★</p>
                                  </c:when>
@@ -140,6 +138,9 @@
 					</div>
 				</c:forEach>
 			</div>
+			<a class="btn" href="${pageContext.request.contextPath}/review/upload_form.do" >
+				리뷰 올리기
+			</a>
 			<nav>
 				<ul class="pagination justify-content-center">
 					<c:choose>
@@ -182,9 +183,6 @@
 			</nav>
 		</div>
 	</div>
-
-
-
 
 	<%-- <script>
    // card 이미지의 부모 요소를 선택해서 imgLiquid  동작(jquery plugin 동작) 하기 
