@@ -106,7 +106,7 @@
 			</tbody>
 		</table>
 		</div>
-		<p style=float:right>결제할 금액 : <strong id="price">0</strong>원</p>
+		<p style=float:right>결제할 금액 : ₩<strong id="price">0</strong>원</p>
 		<p style=clear:both></p>
 		<a class="btn" style=float:right href="${pageContext.request.contextPath }/reserve/order.do" onclick="return confirm('결제하시겠습니까?')">결제하기</a>
 		<br />
@@ -157,8 +157,8 @@
 					sum = sum+Number(tmp.getAttribute("data-price"));
 				}
 			}
-			document.querySelector("#price").innerText=sum;
-		}
+			document.querySelector("#price").innerText=sum.toLocaleString('ko-KR');
+			}
 		//페이지 로딩 시점에 일단 한번 호출하고
 		checkSum();
 		//체크박스의 체크상태가 변할때 마다 다시 호출
