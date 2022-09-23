@@ -1,12 +1,14 @@
 package com.gura.lug.review.service;
 
-import java.util.Map;
+
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.web.servlet.ModelAndView;
 
+
 import com.gura.lug.review.dto.ReviewDto;
+
 
 
 public interface ReviewService {
@@ -20,6 +22,7 @@ public interface ReviewService {
 		public void getDetail(ModelAndView mView, ReviewDto dto);
 		//리뷰 글 삭제
 		public void deleteReview(ReviewDto dto, HttpServletRequest request);
+		
 }
 
 

@@ -7,11 +7,7 @@
 <meta charset="UTF-8">
 <title>/review/detail.jsp</title>
 <%-- bootstrap --%>
-
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.css" >
-
-<jsp:include page="/WEB-INF/views/funcs/bs.jsp"></jsp:include>
-
 </head>
 <body>
 <!-- 네비바 -->
@@ -42,19 +38,37 @@
          <p class="card-text">${dto.title}</p>
          <p class="card-text">by <strong>${dto.writer}</strong></p>
          <p><small>${dto.regdate}</small></p>
-         <p><small>${dto.viewCount}</small></p>
-         <p><small>${dto.rating}</small></p>
-      </div>
+				<p>
+					<small>${dto.viewCount}</small>
+				</p>
+				<c:choose>
+					<c:when test="${dto.rating eq '5점' }">
+						<p>★★★★★</p>
+					</c:when>
+					<c:when test="${dto.rating eq '4점' }">
+						<p>★★★★☆</p>
+					</c:when>
+					<c:when test="${dto.rating eq '3점' }">
+						<p>★★★☆☆</p>
+					</c:when>
+					<c:when test="${dto.rating eq '2점' }">
+						<p>★★☆☆☆</p>
+					</c:when>
+					<c:when test="${dto.rating eq '1점' }">
+						<p>★☆☆☆☆</p>
+					</c:when>
+				</c:choose>
+				<p>
+					<small>${dto.reservetype}</small>
+				</p>
+			</div>
    </div>
    
-     
     <div id="liveAlertPlaceholder"></div>
 	<a href="list.do" type="button" class="btn btn-success" id="listBtn">목록보기</a>
 	<c:if test="${dto.writer eq id }">
 			<a href="delete.do?num=${dto.num }" type="button" class="btn btn-primary" id="deleteBtn">삭제</a>
 	</c:if>
-	
-		
 	
    <nav>
       <ul class="pagination justify-content-center">
@@ -85,9 +99,6 @@
       </ul>
    </nav>      
 </div>
-
-
-	
 
 <!-- 네비게이션 -->
 <jsp:include page="/WEB-INF/views/funcs/toTop.jsp"></jsp:include>	
