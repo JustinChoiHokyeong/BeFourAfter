@@ -7,6 +7,32 @@
 <title>/views/users/pwd_updateform.jsp</title>
 <!-- 부트스트랩 -->
 <jsp:include page="/WEB-INF/views/funcs/bs.jsp"></jsp:include>
+<style>
+
+.main {
+    width: 350px;
+    height: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid lightgrey;
+    border-radius: 15px;
+}
+
+.logo {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.account {
+    display: block;
+    margin-bottom: 3px;
+    padding: 3px;
+    border: 1px solid lightgray;
+    border-radius: 3px;
+}
+
 
 </style>
 </head>
@@ -14,37 +40,40 @@
 	<!-- 네비바 -->
 	<jsp:include page="/WEB-INF/views/funcs/navbar.jsp"></jsp:include>
 	<!-- /네비바 -->
-	<h1 class="container p-5">비밀 번호 변경</h1>
-	<div class="container p-5 border" style="width: 800px; ">
+
+	
+	<a href="${pageContext.request.contextPath }/users/mypage.do" style="text-decoration:none"></a>
+	<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="black" class="bi bi-arrow-left-short" viewBox="0 0 16 16">
+	<path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z" /></svg>
+	<p class=border_out01>
+	비밀 번호 변경
+	</p>
+	<div class="main">
+	<h1 class="logo">Good Lugg</h1>
+	
+        <div class="container">
 		
 		<form action="${pageContext.request.contextPath}/users/pwd_update.do"
 			method="post" id="myForm">
 			<div class="container">
-				<label for="pwd">기존 비밀 번호</label> 
-				<input type="password" name="pwd" id="pwd" style="" />
+				<label for="pwd" class="form-label">기존 비밀 번호</label> 
+				<input type="password" name="pwd" id="pwd" class="form-control" aria-describedby="passwordHelpBlock" />
 			</div>
 			<div class="container">
-				<label for="newPwd">새 비밀번호</label> 
-				<input type="password" name="newPwd" id="newPwd" />
+				<label for="newPwd" class="form-label" >새 비밀번호</label> 
+				<input type="password" id="newPwd" class="form-control" aria-describedby="passwordHelpBlock" />
 			</div>
 			<div class="container">
-				<label for="newPwd2">새 비밀번호 확인</label> 
-				<input type="password" id="newPwd2" />
+				<label for="newPwd2" class="form-label" >새 비밀번호 확인</label> 
+				<input type="password" id="newPwd2" class="form-control" aria-describedby="passwordHelpBlock" />
 			</div>
-			
-			<a href="${pageContext.request.contextPath }/users/mypage.do">
-			<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="black" class="bi bi-arrow-left-short" viewBox="0 0 16 16">
-	  		<path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z" /></svg>
-	  		
-			<button type="submit">수정하기</button>
-			<button type="reset">다시 시도</button>
+	  		<br>
+	  		<div class="d-grid gap-2 d-md-block">
+			<button class="btn btn-dark" class="account" type="submit">수정하기</button>
+			<button class="btn btn-dark" class="account" type="reset">다시 시도</button>
 		</form>
+		</div>
 	</div>
-		<!-- 푸터 -->
-	<footer class="container-fluid navbar-fixed-bottom">
-		<jsp:include page="/WEB-INF/views/funcs/footer.jsp"></jsp:include>
-	</footer>
-	<!-- /푸터 -->
 	<script>
 		//폼에 submit 이벤트가 일어났을때 실행할 함수를 등록하고
 		document.querySelector("#myForm").addEventListener("submit",
@@ -58,6 +87,5 @@
 					}
 				});
 	</script>
-	
 </body>
 </html>
