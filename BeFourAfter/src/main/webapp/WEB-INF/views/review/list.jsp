@@ -74,26 +74,12 @@
 				</form>
 			</div>
 			
-			<!-- !검색폼  -->
+			<!-- /검색폼  -->
 			<c:if test="${ not empty condition }">
 				<p>
 					<strong>${totalRow }</strong> 개의 글이 검색 되었습니다.
 				</p>
 			</c:if>
-
-
-			<c:choose>
-				<c:when test="${isReserved }">
-					<a href="${pageContext.request.contextPath}/review/upload_form.do">리뷰 업로드 하기</a>
-					<a href="${pageContext.request.contextPath}/">홈으로 가기</a>
-				</c:when>
-				<c:otherwise>
-					<a href="${pageContext.request.contextPath}/">홈으로 가기</a>
-				</c:otherwise>
-			</c:choose>
-				
-			<h1>리뷰 목록 입니다.</h1>
-
 			<div class="row">
 				<c:forEach var="tmp" items="${list }">
 					<div class="col-6 col-md-4 col-lg-3">
@@ -138,9 +124,15 @@
 					</div>
 				</c:forEach>
 			</div>
-			<a class="btn" href="${pageContext.request.contextPath}/review/upload_form.do" >
-				리뷰 올리기
-			</a>
+			<c:choose>
+				<c:when test="${isReserved }">
+					<a class="btn" href="${pageContext.request.contextPath}/review/upload_form.do">리뷰 올리기</a>
+					<a class="btn" href="${pageContext.request.contextPath}/">홈으로 가기</a>
+				</c:when>
+				<c:otherwise>
+					<a class="btn" href="${pageContext.request.contextPath}/">홈으로 가기</a>
+				</c:otherwise>
+			</c:choose>
 			<nav>
 				<ul class="pagination justify-content-center">
 					<c:choose>

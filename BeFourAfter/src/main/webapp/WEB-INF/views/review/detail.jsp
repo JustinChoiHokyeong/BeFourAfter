@@ -100,9 +100,6 @@
    </nav>      
 </div>
 
-<!-- 네비게이션 -->
-<jsp:include page="/WEB-INF/views/funcs/toTop.jsp"></jsp:include>	
-<!-- /네비게이션  -->
 
 <!-- 푸터 -->
 <footer class="container-fluid navbar-fixed-bottom">
