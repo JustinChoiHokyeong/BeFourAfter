@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>/views/reserve/list2.jsp</title>
-  <jsp:include page="/WEB-INF/views/funcs/bs.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/views/funcs/bs.jsp"></jsp:include>
 <style>
 	.page-ui a{
 		text-decoration: none;
@@ -33,34 +33,15 @@
 		padding: 5px;
 	}
 </style>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 </head>
 <body>
 <body>
 	<!-- 네비바 -->
 	<jsp:include page="/WEB-INF/views/funcs/navbar.jsp"></jsp:include>
 	<!-- /네비바 -->
-            <!--바로가기-->
-            <div>
-                <div class="container p-5">
-                    <div style="width: 100%; min-height: 1px; height: 60px;">
-                        <a href="${pageContext.request.contextPath }/reserve/ent_insertform.do"><button class="btn">입국  서비스</button></a>
-                        <a href="${pageContext.request.contextPath }/reserve/leave_insertform.do"><button class="btn">출국  서비스</button></a>
-                        <div class="btn-group">
-                            <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">  나의 예약
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item"
-                                        href="${pageContext.request.contextPath }/reserve/list.do">출국 예약 확인</a></li>
-                                <li><a class="dropdown-item"
-                                        href="${pageContext.request.contextPath }/reserve/list2.do">입국 예약 확인</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--/바로가기-->
+	<!--바로가기-->
+    <jsp:include page="/WEB-INF/views/funcs/reserveMenu.jsp"></jsp:include>
+	<!--/바로가기-->
 	<!-- 본문 -->
 	<div class="container">
 	<h2>입국서비스 예약 내역</h2>
@@ -120,9 +101,9 @@
 		</div>
 		<p style=float:right>결제할 금액 : <strong id="price">0</strong>원</p>
 		<p style=clear:both></p>
-		<a class="btn btn-primary" style=float:right href="${pageContext.request.contextPath }/reserve/order.do">결제하기</a>
+		<a class="btn" style=float:right href="${pageContext.request.contextPath }/reserve/order.do">결제하기</a>
 		<br />
-		<a href="${pageContext.request.contextPath }">홈으로</a>
+		<a class="btn" href="${pageContext.request.contextPath }">홈으로</a>
 	</div>
 	<script>
 		//모든 체크 박스의 참조값이 담긴 배열

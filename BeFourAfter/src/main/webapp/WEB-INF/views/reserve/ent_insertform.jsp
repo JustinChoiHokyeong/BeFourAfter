@@ -13,25 +13,7 @@
 	<jsp:include page="/WEB-INF/views/funcs/navbar.jsp"></jsp:include>
 	<!-- /네비바 -->
 	<!--바로가기-->
-    <div>
-        <div class="container p-5">
-            <div style="width: 100%; min-height: 1px; height: 60px;">
-                <a href="${pageContext.request.contextPath }/reserve/ent_insertform.do"><button class="btn">입국  서비스</button></a>
-                <a href="${pageContext.request.contextPath }/reserve/leave_insertform.do"><button class="btn">출국  서비스</button></a>
-                <div class="btn-group">
-                    <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">나의 예약</button>
-                    <ul class="dropdown-menu">
-                        <li>
-                        	<a class="dropdown-item" href="${pageContext.request.contextPath }/reserve/list.do">출국 예약 확인</a>
-                        </li>
-                        <li>
-                        	<a class="dropdown-item" href="${pageContext.request.contextPath }/reserve/list2.do">입국 예약 확인</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
+	<jsp:include page="/WEB-INF/views/funcs/reserveMenu.jsp"></jsp:include>
 	<!--/바로가기-->
 	<!-- 본문 -->
 	<div class="bg-light">
