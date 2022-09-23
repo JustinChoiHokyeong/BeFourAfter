@@ -12,7 +12,8 @@
 	}	
 </style>
 </head>
-
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.css">
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css'/>
 <body>
 
 	<!-- 네비바 -->

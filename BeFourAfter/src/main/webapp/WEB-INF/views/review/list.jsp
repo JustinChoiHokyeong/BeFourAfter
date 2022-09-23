@@ -9,9 +9,7 @@
 <meta charset="UTF-8">
 <title>/review/list.jsp</title>
 <%-- bootstrap 읽어오기 --%>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.css">
-<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css'/>
-
+<jsp:include page="/WEB-INF/views/funcs/bs.jsp"></jsp:include>
 <style>
 
    /* card 이미지 부모요소의 높이 지정 */
