@@ -100,14 +100,7 @@ svg{
 						</a>	
 					</td>
 				</tr>
-				<tr class="border">
-					<td>
-						<a href="${pageContext.request.contextPath }/users/test.do" id="tb">
-							<span>테스트</span>
-							<span id="ar" class="fw-bold">></span>
-						</a>
-					</td>
-				</tr>
+
 
 			</tbody>
 		</table>
