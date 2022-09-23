@@ -42,7 +42,13 @@ svg{
 
 	<div class="container p-5">
 		<div>
-			<h1 class="text-center"><a href="javascript:history.back()"><i class="bi bi-arrow-bar-left" ></i></a> 마이 페이지<i class="bi bi-arrow-bar-left opacity-0"></i></h1>
+			<h1 class="text-center">
+				<a href="javascript:history.back()" style="text-decoration: none; color:black">
+					<i class="bi bi-arrow-bar-left"></i>
+				</a> 
+				마이 페이지
+				<i class="bi bi-arrow-bar-left opacity-0"></i><!-- not visible -->
+			</h1>
 		</div>
 	</div>
 	<div class=" p-5 ">
