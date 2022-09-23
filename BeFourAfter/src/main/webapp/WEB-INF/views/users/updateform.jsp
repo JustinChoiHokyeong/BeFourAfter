@@ -60,7 +60,7 @@ function execDaumPostcode() {
 		<a id="profileLink" href="javascript:"> <c:choose>
 						<c:when test="${empty dto.profile }">
 						<img id="profileImage" style="height: 100%, width: 100%;"
-						src="<c:url value='../dd_logo.png'/>">
+						src="<c:url value='../images/로고1.png'/>">
 						</c:when>
 				<c:otherwise>
 					<img id="profileImage"
