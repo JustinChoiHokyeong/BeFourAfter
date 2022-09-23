@@ -50,8 +50,14 @@ public class ReviewDaoImpl implements ReviewDao {
 			
 		}
 
-	
-
-
+		@Override
+		public boolean isReserved(String name){
+			String result=session.selectOne("review.isReserved", name);
+			if(result==null) {
+				return false;
+			}else {
+				return true;
+			}
+		}
 		
 }
