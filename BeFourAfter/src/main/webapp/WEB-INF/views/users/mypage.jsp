@@ -16,7 +16,6 @@
 	height: 100px;
 	border: 1px solid #cecece;
 	border-radius: 50%;
-
 }
 #tb{
 	text-decoration:none;
@@ -57,7 +56,7 @@ svg{
 				<tr>
 					<th><c:choose>
 							<c:when test="${empty dto.profile }">
-								<img id="profileImage" style="height: 100%, width: 100%;" src="<c:url value='../dd_logo.png'/>">
+								<img id="profileImage" style="height: 100%, width: 100%;" src="<c:url value='../images/로고1.png'/>">
 							</c:when>
 							<c:otherwise>
 								<img id="profileImage" src="${pageContext.request.contextPath}${dto.profile}" />
