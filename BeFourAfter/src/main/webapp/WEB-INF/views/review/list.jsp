@@ -57,8 +57,7 @@
 	<!-- /네비바 -->
 	<div class="container p-5">
 
-		<div class="container">		<br />
-		<h1>리뷰 목록 입니다.</h1>
+		<div class="container"><br>
 		<div style="width: 100%; min-height: 1px; height: 60px;"></div>
 			<!-- 검색폼  -->
 			<div class="text-end" style="margin-bottom:20px;">
@@ -85,11 +84,7 @@
 			<c:choose>
 				<c:when test="${isReserved }">
 					<a href="${pageContext.request.contextPath}/review/upload_form.do">리뷰 업로드 하기</a>
-					<a href="${pageContext.request.contextPath}/">홈으로 가기</a>
 				</c:when>
-				<c:otherwise>
-					<a href="${pageContext.request.contextPath}/">홈으로 가기</a>
-				</c:otherwise>
 			</c:choose>
 				
 			<h1>리뷰 목록 입니다.</h1>
@@ -128,19 +123,12 @@
                                     <p>★☆☆☆☆</p>
                                  </c:when>
                               </c:choose>
-
-								<p>
-									<small>${tmp.reservetype}</small>
-								</p>
-
 							</div>
 						</div>
 					</div>
 				</c:forEach>
 			</div>
-			<a class="btn" href="${pageContext.request.contextPath}/review/upload_form.do" >
-				리뷰 올리기
-			</a>
+			
 			<nav>
 				<ul class="pagination justify-content-center">
 					<c:choose>

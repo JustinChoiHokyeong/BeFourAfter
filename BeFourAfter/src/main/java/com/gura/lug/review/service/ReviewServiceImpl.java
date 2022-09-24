@@ -206,7 +206,7 @@ public class ReviewServiceImpl implements ReviewService {
 			//예외를 발생시켜서 응답을 예외 Controller 에서 하도록 한다.
 			throw new NotDeleteException("다른 사람의 리뷰는 삭제할 수 없습니다.");
 		}
-		//본인이 작성한 글이 아니면 아래의 코드가 실행이 안되야 된다. 
+		//본인이 작성한 글이 아니면 아래의 코드가 실행이 안돼야 된다. 
 		reviewDao.delete(dto);
 	}
 	

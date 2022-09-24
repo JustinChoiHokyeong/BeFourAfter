@@ -8,31 +8,41 @@
 <title>/review/detail.jsp</title>
 <%-- bootstrap --%>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.css" >
+<script type="text/javascript">
+	function delBtn(){
+	if (confirm("해당 리뷰를 삭제하시겠습니까?") == true) {
+			//true는 확인버튼을 눌렀을 때 코드 작성
+			location.href="delete.do?num=${dto.num }"
+			alert("리뷰가 삭제되었습니다.")
+		} else {
+			//취소 버튼 눌렀을 때 아무 동작 없이 알림창 없어짐
+			return false;
+		}
+	}
+</script>
 </head>
 <body>
 <!-- 네비바 -->
 <jsp:include page="/WEB-INF/views/funcs/navbar.jsp"></jsp:include>
 <!-- /네비바 -->
 
-<div class="container">
-   <nav>
-      <ul class="breadcrumb">
-         <li class="breadcrumb-item">
-            <a href="${pageContext.request.contextPath }/">Home</a>
-         </li>
-         <li class="breadcrumb-item">
-            <a href="${pageContext.request.contextPath }/review/list.do">리뷰 목록</a>
-         </li>
-         <li class="breadcrumb-item active">상세보기</li>
-      </ul>
-   </nav>
+	
+
+<div class="container-sm">
+
+	<div id="liveAlertPlaceholder"></div>
+	<a href="list.do" type="button" class="btn btn-success" id="listBtn">목록보기</a>
+	<c:if test="${dto.writer eq id }">
+			<a onclick="javascript:delBtn()" type="button" class="btn btn-primary">삭제</a>
+	</c:if>
+
    <c:if test="${ not empty keyword }">
       <p>   
          <strong>${condition }</strong> 조건, 
          <strong>${keyword }</strong> 검색어로 검색된 내용 자세히 보기 
       </p>
    </c:if>
-   <div class="card mb-3">
+   <div class="card col-md-6">
       <img class="card-img-top" src="${pageContext.request.contextPath}${dto.imagePath}"/>
       <div class="card-body">
          <p class="card-text">${dto.title}</p>
@@ -64,11 +74,7 @@
 			</div>
    </div>
    
-    <div id="liveAlertPlaceholder"></div>
-	<a href="list.do" type="button" class="btn btn-success" id="listBtn">목록보기</a>
-	<c:if test="${dto.writer eq id }">
-			<a href="delete.do?num=${dto.num }" type="button" class="btn btn-primary" id="deleteBtn">삭제</a>
-	</c:if>
+    
 	
    <nav>
       <ul class="pagination justify-content-center">
