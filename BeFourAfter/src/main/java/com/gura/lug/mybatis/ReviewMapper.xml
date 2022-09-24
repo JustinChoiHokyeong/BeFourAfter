@@ -21,7 +21,7 @@
 		FROM	
 			(SELECT result1.*, ROWNUM as rnum
 			FROM
-				(SELECT num, writer, title, imagePath, regdate, viewCount, rating, reservetype
+				(SELECT num, writer, title, imagePath, TO_CHAR(regdate,'YY.MM.DD') AS regdate, viewCount, rating, reservetype
 				FROM board_review
 				<include refid="searchCondition"/>
 				ORDER BY num DESC) result1)		
@@ -47,7 +47,7 @@
 		SELECT result1.*
 		FROM
 			(SELECT num, writer, title, imagePath, 
-				TO_CHAR(regdate,'YY.MM.DD HH24:MI') AS regdate, viewCount, rating, reservetype,
+				TO_CHAR(regdate,'YY.MM.DD') AS regdate, viewCount, rating, reservetype,
 				LAG(num, 1, 0) OVER (ORDER BY num DESC) AS prevNum,
 				LEAD(num, 1, 0) OVER (ORDER BY num DESC) AS nextNum
 			FROM board_review

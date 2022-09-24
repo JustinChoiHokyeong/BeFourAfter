@@ -88,10 +88,10 @@
             <fieldset style="max-width: 30%">
                <legend>이용 서비스</legend>
                <label for="reservetype">
-                  <input type="radio" name="reservetype" value="leave" checked="checked"/>출국 서비스
+                  <input type="radio" name="reservetype" value="출국 서비스" checked="checked"/>출국 서비스
                </label>
                <label for="reservetype">
-                  <input type="radio" name="reservetype" value="ent"/>입국 서비스
+                  <input type="radio" name="reservetype" value="입국 서비스"/>입국 서비스
                </label>
             </fieldset>
             </div>
