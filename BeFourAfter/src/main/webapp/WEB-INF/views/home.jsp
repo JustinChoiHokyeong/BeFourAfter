@@ -140,8 +140,8 @@
 
 /**패럴렉스 섹션*/
 #parallax-world-of-ugg .parallax-one {
-    padding-top: 180px;
-    padding-bottom: 180px;
+    padding-top: 210px;
+    padding-bottom: 210px;
     overflow: hidden;
     position: relative;
     width: 100%;
@@ -361,7 +361,7 @@ button.scroll_down:before {
         <section>
             <div class="parallax-one">
 
-                <h1 style="margin-top: 200px;">It's okay to travel with empty hands!</h1>
+                <h1 style="margin-top: 140px;">It's okay to travel with empty hands!</h1>
                 <h2 style="margin-top: 0px">
                     <img class="img-fluid" src="https://i.imgur.com/sSnSXji.png" alt="logo" style="width:700px;;">
                 </h2>
