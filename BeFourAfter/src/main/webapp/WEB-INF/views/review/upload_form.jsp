@@ -70,16 +70,16 @@
             		<legend>평점</legend>
             		<label for="rating" id="rating-exp"><small>5점부터 1점까지 별을 선택해주세요</small></label>
 			            <div class="star-rating" >
-			               <input type="radio" id="5-stars" name="rating" value="5점" v-model="ratings"/>
+			               <input type="radio" id="5-stars" name="rating" value="5" v-model="ratings"/>
 			               <label for="5-stars" class="star">★</label>
-			               <input type="radio" id="4-stars" name="rating" value="4점" v-model="ratings"/>
+			               <input type="radio" id="4-stars" name="rating" value="4" v-model="ratings"/>
 			               <label for="4-stars" class="star">★</label>
-			               <input type="radio" id="3-stars" name="rating" value="3점" v-model="ratings"/>
+			               <input type="radio" id="3-stars" name="rating" value="3" v-model="ratings"/>
 			               <label for="3-stars" class="star">★</label>
-			               <input type="radio" id="2-stars" name="rating" value="2점" v-model="ratings"/>
+			               <input type="radio" id="2-stars" name="rating" value="2" v-model="ratings"/>
 			               <label for="2-stars" class="star">★</label>
-			               <input type="radio" id="1-stars" name="rating" value="1점" v-model="ratings" />
-			               <label for="1-star" class="star">★</label>
+			               <input type="radio" id="1-stars" name="rating" value="1" v-model="ratings"/>
+			               <label for="1-stars" class="star">★</label>
 			            </div>
             	</fieldset>
             </div>
