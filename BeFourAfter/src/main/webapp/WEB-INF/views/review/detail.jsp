@@ -102,9 +102,9 @@
 
 
 <!-- 푸터 -->
-<footer class="container-fluid navbar-fixed-bottom">
-    <jsp:include page="/WEB-INF/views/funcs/footer.jsp"></jsp:include>
-</footer>
+    <footer>
+        <jsp:include page="/WEB-INF/views/funcs/footer.jsp"></jsp:include>
+    </footer>
 <!-- /푸터 -->
 
 </body>

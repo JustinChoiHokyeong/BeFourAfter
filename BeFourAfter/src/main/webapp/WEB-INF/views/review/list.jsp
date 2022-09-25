@@ -8,10 +8,8 @@
 <head>
 <meta charset="UTF-8">
 <title>/review/list.jsp</title>
-<%-- bootstrap 읽어오기 --%>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.css">
-<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css'/>
-
+<!-- 부트스트랩 -->
+<jsp:include page="/WEB-INF/views/funcs/bs.jsp"></jsp:include>
 <style>
 
    /* card 이미지 부모요소의 높이 지정 */
@@ -80,7 +78,7 @@
 					<strong>${totalRow }</strong> 개의 글이 검색 되었습니다.
 				</p>
 			</c:if>
-			<div class="row">
+			<div class="row"  style=" place-content: center;">
 				<c:forEach var="tmp" items="${list }">
 					<div class="col-6 col-md-4 col-lg-3">
 						<div class="card mb-3">
@@ -180,14 +178,10 @@
    // card 이미지의 부모 요소를 선택해서 imgLiquid  동작(jquery plugin 동작) 하기 
    $(".img-wrapper").imgLiquid();
 </script> --%>
-	<!-- 네비게이션 -->
-	<jsp:include page="/WEB-INF/views/funcs/toTop.jsp"></jsp:include>
-	<!-- /네비게이션  -->
-
 	<!-- 푸터 -->
-	<footer class="container-fluid navbar-fixed-bottom">
-		<jsp:include page="/WEB-INF/views/funcs/footer.jsp"></jsp:include>
-	</footer>
+    <footer>
+        <jsp:include page="/WEB-INF/views/funcs/footer.jsp"></jsp:include>
+    </footer>
 	<!-- /푸터 -->
 </body>
 </html>

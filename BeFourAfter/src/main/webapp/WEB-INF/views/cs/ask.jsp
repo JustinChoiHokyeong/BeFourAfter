@@ -33,7 +33,7 @@
 							${condition eq 'title_content' ? 'selected' : '' }>제목+내용</option>
 						<option value="title" ${condition eq 'title' ? 'selected' : '' }>제목</option>
 						<option value="writer" ${condition eq 'writer' ? 'selected' : '' }>작성자</option>
-					</select> <input class="form-select" style="width: 250px; display: inline;"
+					</select> <input class="form-control" style="width: 250px; display: inline;"
 						type="text" id="keyword" name="keyword" placeholder="검색어를 입력해주세요"
 						value="${keyword }" />
 					<button class="btn " type="submit">검색</button>
@@ -121,7 +121,9 @@
 					</c:forEach>
 				</tbody>
 			</table>
-			<br /> <a class="btn" href="insertform.do">새글 작성</a>
+			<div>
+				<a class="btn fs-5" href="insertform.do">새글 작성</a>
+			</div>
 		</div>
 		<div>
 			<ul class="pagination justify-content-center">
@@ -149,14 +151,16 @@
 				</c:if>
 			</ul>
 		</div>
+	</div>
+		
 		<!-- /본문 -->
 		<div style="width: 100%; min-height: 1px; height: 60px;"></div>
 
 	
 		<!-- 푸터 -->
-		<footer class="container-fluid navbar-fixed-bottom">
-			<jsp:include page="/WEB-INF/views/funcs/footer.jsp"></jsp:include>
-		</footer>
+    <footer>
+        <jsp:include page="/WEB-INF/views/funcs/footer.jsp"></jsp:include>
+    </footer>
 		<!-- /푸터 -->
 </body>
 </html>

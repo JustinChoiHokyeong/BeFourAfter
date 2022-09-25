@@ -63,7 +63,9 @@
 
 </div>
 </form>
-
+    <footer>
+        <jsp:include page="/WEB-INF/views/funcs/footer.jsp"></jsp:include>
+    </footer>
 <script>
 	var doc = document;
 	var form1 = doc.getElementById('form1');

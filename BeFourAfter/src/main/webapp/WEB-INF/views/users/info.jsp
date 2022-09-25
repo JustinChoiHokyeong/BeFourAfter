@@ -95,5 +95,8 @@ img {
 	
 				<a href="${pageContext.request.contextPath }/users/updateform.do">개인정보수정</a>
 	</div>
+	    <footer>
+        <jsp:include page="/WEB-INF/views/funcs/footer.jsp"></jsp:include>
+    </footer>
 </body>
 </html>

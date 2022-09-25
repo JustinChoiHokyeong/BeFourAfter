@@ -2,34 +2,69 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<style>
+	#ftr{
+		height: max-content;
+		padding: 50px;
+		justify-content:center;
+		background-color:#00123a;
+		
+	}
+	#sns-icon{
+		text-decoration:none;
+		color:aliceblue;
+	}
+	#sns-list{
+		padding-bottom:20px;
+		text-align: center;
+	}
+	#inform{
+		padding-left:20px;
+		padding-right:20px;
+		color:#cdd5dc;
+		text-align: center;
+	}
+	#inf1{
+	padding-left:5px;
+	padding-right:5px;
+	}
+	#inf2{
+	padding-left:10px;
+	padding-right:10px;
+	}
+</style>
 
-<!-- Footer -->
-<footer class="navbar navbar-light bg-light navbar-expand-xlg mt-auto"
-	style="height: max-content;">
-	<footer class="footer container-fluid sticky-bottom">
-		<div>
-			<p>
-				상호명: Good Lugg! <br> <span>대표: Be Four & After Corp.</span> <span>
-					| </span> <span>사업자등록번호:000-0000-0000</span> <br> <span>주소:
-					인천광역시 중구 공항로 272 인천공항 Gate B 좌측 남자화장실 두번째 좌변기 칸</span><br> <span>개인정보관리책임자:
-					저스틴 초이(Justin Choi) <span>COPYRIGHT&copy; 2022 Travel
-						Lighter Good Lugg! ALL RIGHTS RESERVED.</span>
-				</span><br>
-				<br>
-			</p>
-
-			<!-- 
-            social media icons 
-            facebook, instagram images 통일해서 바꿔야함 
-        -->
-			<div class="sns_img">
-				<a target="_blank" href="https://www.facebook.com"> <img
-					src="https://customkit.co.nz/wp-content/uploads/2019/11/Facebook.png"
-					alt="facebook" style="width: 25px;">
-				</a> <a target="_blank" href="https://www.instagram.com"> <img
-					src="https://customkit.co.nz/wp-content/uploads/2019/11/Instagram.png"
-					alt="insta" style="width: 25px;">
-				</a>
+<footer id="ftr" class="navbar navbar-expand-xlg mt-auto footer sticky-bottom container-expand" >
+<div>
+	<!-- sns icons -->
+	<div id="sns-list">
+		<a id="sns-icon" name="facebook" target="_blank" href="https://www.facebook.com"> 
+		<i class="bi bi-instagram" style="font-size:25px"></i>
+		</a>
+		<a id="sns-icon" name="instagram" target="_blank" href="https://www.instagram.com"> 
+		<i class="bi bi-facebook" style="font-size:25px"></i>
+		</a>
+		<a id="sns-icon" name="twitter" target="_blank" href="https://twitter.com"> 
+		<i class="bi bi-twitter" style="font-size:25px"></i>
+		</a>
+		<a id="sns-icon" name="email" target="_blank" href="mailto:gkwkgo321@gmail.com"> 
+		<i class="bi bi-envelope" style="font-size:25px"></i>
+		</a>
+	</div>
+		<!-- information -->
+		<div id="inform">
+			<div>
+			<span id="inf1">Info</span>
+			<span id="inf1">Support</span>
+			<span id="inf1">Marketing</span>
 			</div>
-	</footer>
+			<div>
+			<span id="inf2">Terms of use</span>
+			<span id="inf2">Privacy Policy</span>
+			</div>
+			<div style="color:grey; padding-top:5px"> 
+				&copy; 2022 Travel Light! Good Lugg!
+			</div>
+		</div>
+</div>
 </footer>

@@ -44,6 +44,9 @@
 		   </form>
 		</div>
 	</div>
+	<footer>
+        <jsp:include page="/WEB-INF/views/funcs/footer.jsp"></jsp:include>
+    </footer>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
 		//체크박스 value넣어주기
