@@ -52,15 +52,12 @@ function execDaumPostcode() {
 </style>
 </head>
 <body>
-            <!-- 네비바 -->
-            <jsp:include page="/WEB-INF/views/funcs/navbar.jsp"></jsp:include>
-            <!-- /네비바 -->
-	<div class="container">
-		</a><h1>개인정보 수정</h1>
+<div class="container">
+	<h1>개인정보 수정</h1>
 		<a id="profileLink" href="javascript:"> <c:choose>
 						<c:when test="${empty dto.profile }">
 						<img id="profileImage" style="height: 100%, width: 100%;"
-						src="<c:url value='../dd_logo.png'/>">
+						src="<c:url value=''/>">
 						</c:when>
 				<c:otherwise>
 					<img id="profileImage"
@@ -68,9 +65,7 @@ function execDaumPostcode() {
 				</c:otherwise>
 			</c:choose>
 		</a> 
-		<%-- location.href="${requestScope.url } --%>
-		<%-- ${pageContext.request.contextPath}/users/update.do --%>
-		<form action="${pageContext.request.contextPath}/users/update.do" method="post">
+		<form action="${pageContext.request.contextPath}/users/update.do" method="post" id="myForm">
 			<input type="hidden" name="profile" value="${ empty dto.profile ? '' : dto.profile}" />
 			<input type="hidden" name="name" value="${dto.name }" />
 			<div>
@@ -84,21 +79,22 @@ function execDaumPostcode() {
 
 			<div>
 				<label for="">주소</label>
-				<input type="text" name="postcode" id="postcode" value="${dto.postcode }">
-				<input type="button" onclick="execDaumPostcode()" value="우편번호 찾기"><br>
-				<input type="text" name="addr" id="addr" value="${dto.addr }"><br>
+				<input type="text" name="postcode" id="postcode" value="${dto.postcode }" readonly="readonly">
+				<input type="button" onclick="execDaumPostcode()" value="우편번호 찾기" readonly="readonly"><br>
+				<input type="text" name="addr" id="addr" value="${dto.addr }" readonly="readonly" ><br>
 				<input type="text" name="detailAddr" id="detailAddr" value="${dto.detailAddr }">
 			</div>
 			<div>
 				<label for="email">이메일</label>
 				<input type="text" name="email" id="email" value="${dto.email }" />
+				<div class="invalid-feedback">이메일 형식을 확인해 주세요</div>
 			</div>
 			<div>
 				<label for="phone">핸드폰 번호</label> <input type="text" name="phone"
 					id="phone" value="${dto.phone }" />
+				<small class="form-text text-muted">숫자로 입력해 주세요</small>
+				<div class="invalid-feedback">'-'없이 번호만 입력해 주세요</div>
 			</div>
-			<a href="${pageContext.request.contextPath }/users/info.do"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="black" class="bi bi-arrow-left-short" viewBox="0 0 16 16">
-  			<path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z"/></svg>
 			<button type="submit">수정</button>
 		</form>
 
@@ -138,6 +134,70 @@ function execDaumPostcode() {
 			document.querySelector("input[name=profile]").value=data.imagePath;
 		});
 	});
+</script>
+
+<script>
+//아이디, 비밀번호, 이메일의 유효성 여부를 관리한 변수 만들고 초기값 대입
+	let isIdValid=false;
+	let isPwdValid=false;
+	let isEmailValid=false;
+	let isNameValid=false;
+	let isPhoneValid=false;
+
+//이메일을 입력했을때 실행할 함수 등록
+document.querySelector("#email").addEventListener("input", function(){
+	document.querySelector("#email").classList.remove("is-valid");
+	document.querySelector("#email").classList.remove("is-invalid");
+	
+	//1. 입력한 이메일을 읽어와서
+	const inputEmail=this.value;
+	//2. 이메일을 검증할 정규 표현식 객체를 만들어서  // /@/;
+	const reg_email=/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
+	
+	//3. 정규표현식 매칭 여부에 따라 분기하기
+	if(reg_email.test(inputEmail)){//만일 매칭된다면
+		isEmailValid=true;
+		document.querySelector("#email").classList.add("is-valid");
+	}else{
+		isEmailValid=false;
+		document.querySelector("#email").classList.add("is-invalid");
+	}
+});
+
+
+//Phone 함수 등록 
+document.querySelector("#phone").addEventListener("input", function(){
+	//일단 is-valid,  is-invalid 클래스를 제거한다.
+	document.querySelector("#phone").classList.remove("is-valid");
+	document.querySelector("#phone").classList.remove("is-invalid");
+	
+	//1. value 값 읽어오기  
+	const inputPhone=this.value;
+	//입력한값을 검증할 정규 표현식
+	const reg_phone=/^(01[0]{1})[0-9]{4}[0-9]{4}$/;
+
+	//만일 입력값이 정규표현식과 매칭되지 않는다면
+	if(reg_phone.test(inputPhone)){
+		isPhonelValid=true;
+		document.querySelector("#phone").classList.add("is-valid");
+	}else{
+		isNameValid=false;
+		document.querySelector("#phone").classList.add("is-invalid");
+	}
+});
+
+
+	//폼에 submit 이벤트가 발생했을때 실행할 함수 등록
+	document.querySelector("#myForm").addEventListener("submit", function(e){
+	//폼 전체의 유효성 여부 알아내기 
+	let isFormValid = isEmailValid && isPhoneValid;
+	if(!isFormValid){//폼이 유효하지 않으면
+	  //폼 전송 막기 
+	  // e.preventDefault();
+	
+	}   
+	});
+
 </script>
 </body>
 </html>

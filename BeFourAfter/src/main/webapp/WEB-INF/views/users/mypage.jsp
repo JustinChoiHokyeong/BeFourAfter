@@ -3,7 +3,6 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
-
 <head>
 <meta charset="UTF-8">
 <title>/views/users/mypage.jsp</title>
@@ -16,7 +15,6 @@
 	height: 100px;
 	border: 1px solid #cecece;
 	border-radius: 50%;
-
 }
 #tb{
 	text-decoration:none;
@@ -35,14 +33,15 @@ svg{
 </head>
 
 <body>
-	<!-- 네비바 -->
-	<jsp:include page="/WEB-INF/views/funcs/navbar.jsp"></jsp:include>
-	<!-- /네비바 -->
-	
-
 	<div class="container p-5">
 		<div>
-			<h1 class="text-center"><a href="javascript:history.back()"><i class="bi bi-arrow-bar-left" ></i></a> 마이 페이지<i class="bi bi-arrow-bar-left opacity-0"></i></h1>
+			<h1 class="text-center">
+				<a href="javascript:history.back()" style="text-decoration: none; color:black">
+					<i class="bi bi-arrow-bar-left"></i>
+				</a> 
+				마이 페이지
+				<i class="bi bi-arrow-bar-left opacity-0"></i><!-- not visible -->
+			</h1>
 		</div>
 	</div>
 	<div class=" p-5 ">
@@ -51,7 +50,7 @@ svg{
 				<tr>
 					<th><c:choose>
 							<c:when test="${empty dto.profile }">
-								<img id="profileImage" style="height: 100%, width: 100%;" src="<c:url value='../dd_logo.png'/>">
+								<img id="profileImage" style="height: 100%, width: 100%;" src="<c:url value='../images/로고1.png'/>">
 							</c:when>
 							<c:otherwise>
 								<img id="profileImage" src="${pageContext.request.contextPath}${dto.profile}" />
@@ -105,11 +104,5 @@ svg{
 			</tbody>
 		</table>
 	</div>
-	<!-- 푸터 -->
-	<footer class="container-fluid navbar-fixed-bottom">
-		<jsp:include page="/WEB-INF/views/funcs/footer.jsp"></jsp:include>
-	</footer>
-	<!-- /푸터 -->
 </body>
-
 </html>

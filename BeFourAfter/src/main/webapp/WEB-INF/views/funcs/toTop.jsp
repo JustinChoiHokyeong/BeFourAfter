@@ -12,19 +12,17 @@
 	right: 15px;
 	bottom: 175px;
 	vertical-align: middle;
-	outline: 0;
-	border: 0;
 	background: transparent;
 	cursor: pointer;
 	z-index: 9999;
+	onfocus:this.blur();
 
 }
 </style>
 </head>
 
 <body>
-	<button id="go-top"><a href="#">위로</a></button>
-	
+	<a href="#" class="btn" type="button" id="go-top">위로</a>
 	<script>
 
 	</script>
