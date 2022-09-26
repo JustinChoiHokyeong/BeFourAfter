@@ -9,7 +9,8 @@
 <head>
 <meta charset="UTF-8">
 <title>/review/list.jsp</title>
-<%-- bootstrap 읽어오기 --%>
+
+<!-- 부트스트랩 -->
 <jsp:include page="/WEB-INF/views/funcs/bs.jsp"></jsp:include>
 <style>
 
@@ -78,14 +79,18 @@
 				</form>
 			</div>
 			
+
+			<!-- /검색폼  -->
 			<c:if test="${ not empty condition }">
 				<p>
 					<strong>${totalRow }</strong> 개의 글이 검색 되었습니다.
 				</p>
 			</c:if>
-			
+
+			<div class="row"  style=" place-content: center;">
 			<br><h1>리뷰 목록 입니다.</h1>
 				<div class="row">
+
 				<c:forEach var="tmp" items="${list }">
 					<div class="col-6 col-md-4 col-lg-3">
 						<div class="card mb-3">
@@ -137,8 +142,17 @@
 					</div>
 				</c:forEach>
 			</div>
-			
-			
+
+			<c:choose>
+				<c:when test="${isReserved }">
+					<a class="btn" href="${pageContext.request.contextPath}/review/upload_form.do">리뷰 올리기</a>
+					<a class="btn" href="${pageContext.request.contextPath}/">홈으로 가기</a>
+				</c:when>
+				<c:otherwise>
+					<a class="btn" href="${pageContext.request.contextPath}/">홈으로 가기</a>
+				</c:otherwise>
+			</c:choose>
+
 			<nav>
 				<ul class="pagination justify-content-center">
 					<c:choose>
@@ -186,14 +200,10 @@
    // card 이미지의 부모 요소를 선택해서 imgLiquid  동작(jquery plugin 동작) 하기 
    $(".img-wrapper").imgLiquid();
 </script> --%>
-	<!-- 네비게이션 -->
-	<jsp:include page="/WEB-INF/views/funcs/toTop.jsp"></jsp:include>
-	<!-- /네비게이션  -->
-
 	<!-- 푸터 -->
-	<footer class="container-fluid navbar-fixed-bottom">
-		<jsp:include page="/WEB-INF/views/funcs/footer.jsp"></jsp:include>
-	</footer>
+    <footer>
+        <jsp:include page="/WEB-INF/views/funcs/footer.jsp"></jsp:include>
+    </footer>
 	<!-- /푸터 -->
 </body>
 </html>

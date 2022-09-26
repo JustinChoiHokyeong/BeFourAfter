@@ -112,8 +112,11 @@
 	      	<button type="submit">리뷰 업로드</button>
 	   	</form>
 	</div>
-	
-	
+
+	    <footer>
+        <jsp:include page="/WEB-INF/views/funcs/footer.jsp"></jsp:include>
+    </footer>
+
 	<script>
 	//폼에 submit 이벤트가 일어났을때 실행할 함수 등록
 	document.querySelector("#upload_form")

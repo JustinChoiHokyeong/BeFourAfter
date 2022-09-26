@@ -94,5 +94,12 @@ svg{
 			</thead>	
 		</table>
 	</div>
+
+	<!-- 푸터 -->
+    <footer>
+        <jsp:include page="/WEB-INF/views/funcs/footer.jsp"></jsp:include>
+    </footer>
+	<!-- /푸터 -->
+
 </body>
 </html>

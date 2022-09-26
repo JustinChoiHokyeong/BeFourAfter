@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>/views/reserve/list2.jsp</title>
+<!-- 부트스트랩 -->
 <jsp:include page="/WEB-INF/views/funcs/bs.jsp"></jsp:include>
 <style>
 	.page-ui a{
@@ -174,12 +175,11 @@
 	</div>
 	<!-- /본문 -->
 	<div style="width: 100%; min-height: 1px; height: 60px;"></div>
-	<!-- 네비게이션 -->
-	<jsp:include page="/WEB-INF/views/funcs/toTop.jsp"></jsp:include>
-	<!-- /네비게이션  -->
+
 	<!-- 푸터 -->
-	<footer class="container-fluid navbar-fixed-bottom">
-		<jsp:include page="/WEB-INF/views/funcs/footer.jsp"></jsp:include>
-	</footer>
+    <footer>
+        <jsp:include page="/WEB-INF/views/funcs/footer.jsp"></jsp:include>
+    </footer>
+    <!-- /푸터 -->
 </body>
 </html>
