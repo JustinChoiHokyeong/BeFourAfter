@@ -3,7 +3,6 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
-
 <head>
 <meta charset="UTF-8">
 <title>/views/users/mypage.jsp</title>
@@ -34,11 +33,6 @@ svg{
 </head>
 
 <body>
-	<!-- 네비바 -->
-	<jsp:include page="/WEB-INF/views/funcs/navbar.jsp"></jsp:include>
-	<!-- /네비바 -->
-	
-
 	<div class="container p-5">
 		<div>
 			<h1 class="text-center">
@@ -110,11 +104,5 @@ svg{
 			</tbody>
 		</table>
 	</div>
-	<!-- 푸터 -->
-	<footer class="container-fluid navbar-fixed-bottom">
-		<jsp:include page="/WEB-INF/views/funcs/footer.jsp"></jsp:include>
-	</footer>
-	<!-- /푸터 -->
 </body>
-
 </html>
