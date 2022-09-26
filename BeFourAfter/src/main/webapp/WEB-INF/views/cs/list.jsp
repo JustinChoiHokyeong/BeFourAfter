@@ -140,9 +140,12 @@
 		</div>
 		<!-- 아코디언 메뉴 -->
 		<!-- 질문버튼 -->
+		<div class="text-end">
+		<br />
 		<a href="${pageContext.request.contextPath}/cs/ask.do">
 			<button class="btn">질문 하기</button>
 		</a>
+		</div>
 		<!-- /질문버튼 -->
 	</div>
 	<!-- 푸터 -->

@@ -10,8 +10,10 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 </head>
 <body>
+<form action="delete.do" method="get" id="form1">
+<div class="container">
 	<h3>탈퇴 안내</h3>
-	<textarea name="" id="">
+	<textarea readonly="readonly">
 	회원탈퇴를 신청하기 전에 안내 사항을 꼭 확인해주세요.
 	
 	탈퇴 후 회원정보 및 개인형 서비스 이용기록은 모두 삭제됩니다.
@@ -23,22 +25,26 @@
 	탈퇴 후에는 아이디 ${id } 로 게시판형 서비스에 남아 있는 게시글은 탈퇴 후 삭제할 수 없습니다.
 	</p>
 	<label> 
-		<input type="checkbox" name="checkbox" id="checkbox">
+		<input type="checkbox" name="chk" id="chk">
 		안내 사항을 모두 확인하였으며, 이에 동의합니다.
 	</label>
-	
-		<br>
-		<a href="javascript:deleteConfirm()">탈퇴하기</a>
+		<button type="button" onclick="javascript:OnSave();">탈퇴</button>
+</div>
+</form>
 
-	</div>
-
-	<script>
-		function deleteConfirm() {
+<script>
+	function OnSave(){
+		var chk = document.querySelectorAll('input[name="chk"]:checked').length;
+		if(chk==0){
+			alert('Good lugg 탈퇴 안내에 대한 동의를 하지 않았습니다');
+			return false;
+		}
 			const isDelete = confirm("${id} 님 탈퇴 하시겠습니까?");
+			
 			if (isDelete) {
 				location.href = "${pageContext.request.contextPath}/users/delete.do";
 			}
-		}
-	</script>
+	}
+</script>
 </body>
 </html>
