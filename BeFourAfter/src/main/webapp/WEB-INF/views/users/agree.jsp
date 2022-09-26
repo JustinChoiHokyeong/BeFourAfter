@@ -43,7 +43,7 @@ body {
       		<a href="${pageContext.request.contextPath }"><img class="img-fluid" src="https://i.imgur.com/CVQ8ugn.png" alt="logo" style="width:100px;;"></a>
    		</h2>
 		</br>
-		<textarea style="width: 800px; height: 130px; display: inline-table; background: ivory; font-weight: 100;" disabled>
+		<textarea style="width: 800px; height: 130px; display: inline-table; background: revert; font-weight: bolder;" disabled>
 여러분을 환영합니다.
 굿럭 서비스 및 제품(이하 ‘서비스’)을 이용해 주셔서 감사합니다.
 본 약관은 다양한 굿럭 서비스의 이용과 관련하여 굿럭 서비스를 제공하는
@@ -55,7 +55,7 @@ body {
 			Good lugg 이용약관 동의(필수)
 		</label>
 		<br></br>
-		<textarea style="width: 800px; height: 130px; display: inline-table; background: ivory; font-weight: 100;" disabled>
+		<textarea style="width: 800px; height: 130px; display: inline-table; background: revert; font-weight: bolder;" disabled>
 여러분을 환영합니다.
 굿럭 서비스 및 제품(이하 ‘서비스’)을 이용해 주셔서 감사합니다.
 본 약관은 다양한 굿럭 서비스의 이용과 관련하여 굿럭 서비스를 제공하는
@@ -68,7 +68,7 @@ body {
 		</label>
 		<br>
 		</br>
-		<textarea style="width: 800px; height: 130px; display: inline-table; background: ivory; font-weight: 100;" disabled>
+		<textarea style="width: 800px; height: 130px; display: inline-table; background: revert; font-weight: bolder;" disabled>
 여러분을 환영합니다.
 굿럭 서비스 및 제품(이하 ‘서비스’)을 이용해 주셔서 감사합니다.
 본 약관은 다양한 굿럭 서비스의 이용과 관련하여 굿럭 서비스를 제공하는
