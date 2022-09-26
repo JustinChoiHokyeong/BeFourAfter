@@ -9,16 +9,11 @@
 <jsp:include page="/WEB-INF/views/funcs/bs.jsp"></jsp:include>
 </head>
 <body>
-	<a href="${pageContext.request.contextPath }/users/mypage.do" style="text-decoration:none"></a>
-	<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="black" class="bi bi-arrow-left-short" viewBox="0 0 16 16">
-	<path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z" /></svg>
-	<p class=border_out01>
-	비밀 번호 변경
-	</p>
-	<div class="main">
-	<h1 class="logo">Good Lugg</h1>
-	
+<!-- 네비바 -->
+<jsp:include page="/WEB-INF/views/funcs/navbar.jsp"></jsp:include>
+<!-- /네비바 -->
         <div class="container">
+        <h1 class="logo">Good Lugg</h1>
 		
 		<form action="${pageContext.request.contextPath}/users/pwd_update.do"
 			method="post" id="myForm">
@@ -36,8 +31,8 @@
 			</div>
 	  		<br>
 	  		<div class="d-grid gap-2 d-md-block">
-			<button class="btn btn-dark" class="account" type="submit">수정하기</button>
-			<button class="btn btn-dark" class="account" type="reset">다시 시도</button>
+			<button class="btn btn-dark" class="account" type="submit">수정</button>
+			<button class="btn btn-dark" class="account" type="button"><a href="${pageContext.request.contextPath }/users/mypage.do">취소</a></button>
 		</form>
 		</div>
 	</div>

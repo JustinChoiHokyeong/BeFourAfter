@@ -52,9 +52,9 @@ svg{
 </style>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 </head>
-	<!-- 네비바 -->
-	<jsp:include page="/WEB-INF/views/funcs/navbar.jsp"></jsp:include>
-	<!-- /네비바 -->
+<!-- 네비바 -->
+<jsp:include page="/WEB-INF/views/funcs/navbar.jsp"></jsp:include>
+<!-- /네비바 -->
 <body>
 	<div class="container p-5">
 		<div>
