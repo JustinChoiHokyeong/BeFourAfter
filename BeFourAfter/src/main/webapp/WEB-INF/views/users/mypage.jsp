@@ -54,7 +54,8 @@ svg{
 		<table class="container" style="width: 800px" >
 			<thead style="text-align:center">
 				<tr>
-					<th><c:choose>
+					<th>
+						<c:choose>
 							<c:when test="${empty dto.profile }">
 								<img id="profileImage" style="height: 100%, width: 100%;" src="<c:url value='../images/로고1.png'/>">
 							</c:when>
@@ -84,7 +85,7 @@ svg{
 				<tr class="border">
 					<td>
 						<a href="${pageContext.request.contextPath }/reserve/list.do" id="tb">
-							<span>예약 내역 확인</span>
+							<span type="button">예약 내역 확인</span>
 							<span id="ar" class="fw-bold">></span>
 						</a> 
 					</td>
@@ -105,10 +106,32 @@ svg{
 						</a>	
 					</td>
 				</tr>
-
-
 			</tbody>
 		</table>
+		<ul class="list-group" style="max-width: 500px;">
+		  <li class="list-group-item"><a href="${pageContext.request.contextPath }/users/info.do" id="tb" >
+							<span >내정보 확인</span>
+							<span id="ar" class="fw-bold">></span>
+						</a></li>
+		  <li class="list-group-item" style="height: 41px"><a href="${pageContext.request.contextPath }/reserve/list.do" id="tb">
+							<span>예약 내역 확인</span>
+							<span class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="ar" style="padding: 0px; color: black; font-weight: bold; border: none;">>
+							</span>
+						</a></li>
+		  <li class="list-group-item"><a href="${pageContext.request.contextPath}/users/pwd_updateform.do" id="tb">
+							<span>비밀번호 변경</span>
+							<span id="ar" class="fw-bold">></span>
+						</a></li>
+		  <li class="list-group-item"><a href="${pageContext.request.contextPath }/users/deleteform.do" id="tb">
+							<span>탈퇴하기</span>
+							<span id="ar" class="fw-bold">></span>
+						</a></li>
+		</ul>
+	</div>
+	<div class="btn-group dropend">
+	  <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+	    <a href="${pageContext.request.contextPath }/users/info.do" id="tb" >내정보 확인</a>
+	  </button>
 	</div>
 	<!-- 푸터 -->
 	<footer class="container-fluid navbar-fixed-bottom">

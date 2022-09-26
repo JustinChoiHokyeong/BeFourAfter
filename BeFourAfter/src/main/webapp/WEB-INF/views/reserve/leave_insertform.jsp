@@ -44,7 +44,7 @@
 			</p>
 			<p>
 				<label for="rsdate">수령 날짜 및 시간</label><br /> <input
-					type="datetime-local" name="rsdate" id="rsdate" value="" />
+					type="datetime-local" name="rsdate" id="rsdate" value="" class=""/>
 			</p>
 			<fieldset style="max-width: 30%">
 				<legend>수령장소</legend>
