@@ -9,6 +9,7 @@
 <head>
 <meta charset="UTF-8">
 <title>/review/list.jsp</title>
+
 <!-- 부트스트랩 -->
 <jsp:include page="/WEB-INF/views/funcs/bs.jsp"></jsp:include>
 <style>

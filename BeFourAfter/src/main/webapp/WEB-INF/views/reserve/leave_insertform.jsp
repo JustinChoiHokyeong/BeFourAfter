@@ -19,7 +19,7 @@
 	<div class="bg-light">
 	<div class="container">
 		<h1>출국서비스</h1>
-		<h2>예약페이지</h2>
+		<h2>예약자 정보</h2>
 		<form action="leave_insert.do" method="post" id="leave_insertform">
 			<input type="hidden" name="leave_insertform" id="leave_insertform" value="leave_insertform"/>
 			<input type="hidden" name="name" id="name" value="${dto.name }"/>
@@ -42,18 +42,19 @@
 					type="checkbox" name="same" value="same" />
 				</label>
 			</p>
-			<p>
-				<label for="rsdate">수령 날짜 및 시간</label><br /> <input
-					type="datetime-local" name="rsdate" id="rsdate" value="" />
-			</p>
+			
 			<fieldset style="max-width: 30%">
-				<legend>수령장소</legend>
+				<legend>수령 장소 및 날짜</legend>
 				<label for="place"> <input type="radio" name="place"
 					value="first" checked="checked" />제 1 터미널
 				</label> <label for="place"> <input type="radio" name="place"
 					value="second" />제 2 터미널
 				</label>
 			</fieldset>
+			<p>
+				<label for="rsdate">수령 날짜 및 시간</label><br /> <input
+					type="datetime-local" name="rsdate" id="rsdate" value="" class=""/>
+			</p>
 			<p>
 				<label for="basic">기본 수하물</label> <input type="number" name="basic"
 					id="basic" value="0" min="0" placeholder="수량입력" /> <br /> <small>(캐리어28인치

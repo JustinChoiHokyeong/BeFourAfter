@@ -12,7 +12,8 @@
 	}	
 </style>
 </head>
-
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.css">
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css'/>
 <body>
 
 	<!-- 네비바 -->
@@ -31,9 +32,6 @@
 						<a href="#2"><button class="btn">요금안내</button></a> 
 						<a href="#3"><button class="btn">취소 및 환불규정</button></a> 
 						<a href="#4"><button class="btn">배송 스케줄</button></a> 
-						<a href="${pageContext.request.contextPath }/reserve/main.do">
-							<button class="btn">예약하기</button>
-						</a>
 					</div>
 				</div>
 			</div>
@@ -168,15 +166,6 @@
 							<li>예약전, 이용하실 숙소 사장님께 짐옮김이 서비스 이용이 가능한지 사전에 확인 바랍니다.</li>
 						</ol>
 					</div>
-				</div>
-			</div>
-		</div>
-		<div>
-			<div class="container p-5">
-				<div style="width: 100%; min-height: 1px; height: 60px;">
-						<a href="${pageContext.request.contextPath }/reserve/main.do">
-							<button class="btn">예약하기</button>
-						</a>
 				</div>
 			</div>
 		</div>

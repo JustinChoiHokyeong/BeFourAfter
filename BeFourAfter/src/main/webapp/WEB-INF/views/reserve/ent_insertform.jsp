@@ -7,6 +7,35 @@
 <meta charset="UTF-8">
 <title>/views/reserve/ent_insertform.jsp</title>
 <jsp:include page="/WEB-INF/views/funcs/bs.jsp"></jsp:include>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+function execDaumPostcode() {
+        new daum.Postcode({
+            oncomplete: function(data) {
+                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                var addr = ''; // 주소 변수
+                var extraAddr = ''; // 참고항목 변수
+
+                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                    addr = data.roadAddress;
+                } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                    addr = data.jibunAddress;
+                }
+
+                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                document.getElementById("addr").value = addr;
+                // 커서를 상세주소 필드로 이동한다.
+                document.getElementById("addr").focus();
+
+                
+            }
+        }).open();
+}
+</script>
 </head>
 <body>
 	<!-- 네비바 -->
@@ -19,7 +48,7 @@
 	<div class="bg-light">
 	<div class="container">
 		<h1>입국서비스</h1>
-		<h2>예약페이지</h2>
+		<h2>예약자 정보</h2>
 		<form action="ent_insert.do" method="post" id="ent_insertform">
 			<input type="hidden" name="ent_insertform" id="ent_insertform" value="ent_insertform"/>
 			<input type="hidden" name="name" id="name" value="${dto.name}"/>
@@ -31,14 +60,9 @@
 			<br />
 			<label for="phone">핸드폰 번호</label>
 			<input type="text" name="phone" id="phone" value="${dto.phone}" disabled/>
-
-			</p>
-			<p>
-				<label for="rsdate">맡기는 날짜 및 시간</label><br /> <input
-					type="datetime-local" name="rsdate" id="rsdate" />
 			</p>
 			<fieldset style="max-width: 30%">
-				<legend>맡길장소</legend>
+				<legend>맡길 장소 및 날짜</legend>
 				<label for="place"> <input type="radio" name="place"
 					value="first" checked="checked" />제 1 터미널
 				</label> <label for="place"> <input type="radio" name="place"
@@ -46,9 +70,14 @@
 				</label>
 			</fieldset>
 			<p>
-				<label for="addr">수하물 보낼 주소</label> <input type="text" name="addr"
-					id="addr" value="" placeholder="주소를 정확히 입력해주세요 (시/군/구 + 상세주소)"
-					style="width: 400px" />
+				<label for="rsdate">맡기는 날짜 및 시간</label><br /> <input
+					type="datetime-local" name="rsdate" id="rsdate" />
+			</p>
+			<div><span style="font-size: 20px;">수하물 보내는 주소</span><br />
+				<input type="button" onclick="execDaumPostcode()" value="주소 검색" readonly="readonly"><br>
+				<input type="text" name="addr" id="addr" placeholder="주소 및 상세 주소" style="width: 500px">
+				<br /><small>Ex) 서울특별시 강남구 테헤란로 124 삼원타워 5층  501호</small><br>
+			</div>
 			</p>
 			<p>
 				<label for="basic">기본 수하물</label> <input type="number" name="basic"

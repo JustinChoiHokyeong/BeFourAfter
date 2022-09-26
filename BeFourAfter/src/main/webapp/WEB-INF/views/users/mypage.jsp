@@ -9,6 +9,19 @@
 <%-- bootstrap 읽어오기 --%>
 <jsp:include page="/WEB-INF/views/funcs/bs.jsp"></jsp:include>
 <style>
+.btn-outline-secondary{
+	--bs-btn-hover-bg: #fff;
+	--bs-btn-hover-color: #000;
+	color: #000;
+	--bs-btn-active-color: #000;
+    --bs-btn-active-bg: #fff;
+    --bs-btn-focus-shadow-rgb: #fff;
+}
+.btn-group-vertical {
+    padding: 6px 30px 6px 30px;
+    width:400px;
+}
+
 /* 프로필 이미지를 작은 원형으로 만든다 */
 #profileImage {
 	width: 100px;
@@ -36,19 +49,16 @@ svg{
 	<div class="container p-5">
 		<div>
 			<h1 class="text-center">
-				<a href="javascript:history.back()" style="text-decoration: none; color:black">
-					<i class="bi bi-arrow-bar-left"></i>
-				</a> 
 				마이 페이지
-				<i class="bi bi-arrow-bar-left opacity-0"></i><!-- not visible -->
 			</h1>
 		</div>
 	</div>
-	<div class=" p-5 ">
+	<div class="container p-5">
 		<table class="container" style="width: 800px" >
 			<thead style="text-align:center">
 				<tr>
-					<th><c:choose>
+					<th>
+						<c:choose>
 							<c:when test="${empty dto.profile }">
 								<img id="profileImage" style="height: 100%, width: 100%;" src="<c:url value='../images/로고1.png'/>">
 							</c:when>
@@ -65,43 +75,23 @@ svg{
 						<p class="text-muted" style="margin-top: -5px">${dto.email }</p>
 					</td>
 				</tr>
-			</thead>
-			<tbody class=" border-top border-bottom fs-4 ">
-				<tr class="border">
-					<td>
-						<a href="${pageContext.request.contextPath }/users/info.do" id="tb" >
-							<span >내정보 확인</span>
-							<span id="ar" class="fw-bold">></span>
-						</a>
-					</td>
-				</tr >
-				<tr class="border">
-					<td>
-						<a href="${pageContext.request.contextPath }/reserve/list.do" id="tb">
-							<span>예약 내역 확인</span>
-							<span id="ar" class="fw-bold">></span>
-						</a> 
-					</td>
-				</tr>
-				<tr class="border">
-					<td>
-						<a href="${pageContext.request.contextPath}/users/pwd_updateform.do" id="tb">
-							<span>비밀번호 변경</span>
-							<span id="ar" class="fw-bold">></span>
-						</a>
-					</td>
-				</tr>
-				<tr class="border">
-					<td>
-						<a href="${pageContext.request.contextPath }/users/deleteform.do" id="tb">
-							<span>탈퇴하기</span>
-							<span id="ar" class="fw-bold">></span>
-						</a>	
-					</td>
-				</tr>
-
-
-			</tbody>
+				<tr>
+				<td style="text-align: -webkit-center;">
+				<div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+						<button class="btn btn-outline-secondary"><a href="${pageContext.request.contextPath }/users/info.do" id="tb" >내정보 확인</a></button>
+						<button class="btn btn-outline-secondary"><a href="${pageContext.request.contextPath }/users/pwd_updateform.do" id="tb" >비밀번호 변경</a></button>
+						<button type="button" class="btn btn-outline-secondary" data-bs-toggle="dropdown" aria-expanded="false">
+					      	예약신청 내역
+					    </button>
+					    <ul class="dropdown-menu dropdown-menu-end">
+					      <li><a class="dropdown-item" href="${pageContext.request.contextPath }/reserve/list.do">출국 신청 내역</a></li>
+					      <li><a class="dropdown-item" href="${pageContext.request.contextPath }/reserve/list2.do">입국 신청 내역</a></li>
+					    </ul>
+						<button class="btn btn-outline-secondary" ><a href="${pageContext.request.contextPath }/users/deleteform.do" id="tb" >탈퇴하기</a></button>
+				</div>
+				</td>
+			</tr>
+			</thead>	
 		</table>
 	</div>
 
