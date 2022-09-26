@@ -131,6 +131,6 @@
 
 		this.submit();
 	};
-</script></
-				body>
+</script>
+</body>
 </html>

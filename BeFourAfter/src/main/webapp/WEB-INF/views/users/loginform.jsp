@@ -10,9 +10,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 </head>
 <body>
-            <!-- 네비바 -->
-            <jsp:include page="/WEB-INF/views/funcs/navbar.jsp"></jsp:include>
-            <!-- /네비바 -->
 <div class="container">
 	<h4>Sign in to start your session</h4>
 	<form action="${pageContext.request.contextPath}/users/login.do" method="post">
