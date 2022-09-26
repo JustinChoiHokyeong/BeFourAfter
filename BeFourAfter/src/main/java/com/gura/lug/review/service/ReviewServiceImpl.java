@@ -2,9 +2,8 @@ package com.gura.lug.review.service;
 
 import java.io.File;
 import java.net.URLEncoder;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -15,7 +14,6 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.gura.lug.exception.NotDeleteException;
-import com.gura.lug.reserve.dao.ReserveDao;
 import com.gura.lug.review.dao.ReviewDao;
 import com.gura.lug.review.dto.ReviewDto;
 import com.gura.lug.users.dao.UsersDao;
@@ -28,7 +26,6 @@ public class ReviewServiceImpl implements ReviewService {
 	@Autowired
 	private UsersDao usersDao;
 
-	
 	//리뷰 이미지 list
 	@Override
 	public void getList(HttpServletRequest request) {
@@ -82,8 +79,6 @@ public class ReviewServiceImpl implements ReviewService {
 				dto.setReservetype(keyword);
 			}else if(condition.equals("title")){ //제목 검색인 경우
 				dto.setTitle(keyword);
-			}else if(condition.equals("rating")){ //평점 검색인 경우
-				dto.setRating(keyword);
 			} // 다른 검색 조건을 추가 하고 싶다면 아래에 else if() 를 계속 추가 하면 된다.
 		}
 		
@@ -133,6 +128,8 @@ public class ReviewServiceImpl implements ReviewService {
 		request.setAttribute("isReserved", isReserved);
 		
 	}
+	
+	
 	
 		
 	
@@ -206,7 +203,7 @@ public class ReviewServiceImpl implements ReviewService {
 			//예외를 발생시켜서 응답을 예외 Controller 에서 하도록 한다.
 			throw new NotDeleteException("다른 사람의 리뷰는 삭제할 수 없습니다.");
 		}
-		//본인이 작성한 글이 아니면 아래의 코드가 실행이 안되야 된다. 
+		//본인이 작성한 글이 아니면 아래의 코드가 실행이 안돼야 된다. 
 		reviewDao.delete(dto);
 	}
 	

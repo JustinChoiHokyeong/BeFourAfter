@@ -17,9 +17,9 @@ public class ReviewDaoImpl implements ReviewDao {
 		//review의 모든 리스트 가져오기
 		@Override
 		public List<ReviewDto> getList(ReviewDto dto) {
-			
-			return session.selectList("review.getList", dto);
+		return session.selectList("review.getList", dto);
 		}
+		
 		
 		//row 의 총 개수 구하기
 		@Override

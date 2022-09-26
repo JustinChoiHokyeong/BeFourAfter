@@ -105,6 +105,7 @@
         <jsp:include page="/WEB-INF/views/funcs/footer.jsp"></jsp:include>
     </footer>
 	<!-- /푸터 -->
+
 	<script>
 		function deleteConfirm() {
 			const isDelete = confirm("${id} 님 탈퇴 하시겠습니까?");
