@@ -70,9 +70,9 @@
 	
 	<!-- 예약확인 관련 mapper -->
 	<select id="isReserved" parameterType="string" resultType="string">
-		SELECT DISTINCT name 
+		SELECT DISTINCT id 
 		FROM reserve
-		WHERE name = #{name}
+		WHERE id = #{id}
 	</select>
 	
 </mapper>
