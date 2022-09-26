@@ -6,9 +6,10 @@
 <head>
 <meta charset="UTF-8">
 <title>/views/reserve/leave_insertform.jsp</title>
-<jsp:include page="/WEB-INF/views/funcs/bs.jsp"></jsp:include>
+
 </head>
 <body>
+<jsp:include page="/WEB-INF/views/funcs/bs.jsp"></jsp:include>
 	<!-- 네비바 -->
 	<jsp:include page="/WEB-INF/views/funcs/navbar.jsp"></jsp:include>
 	<!-- /네비바 -->
