@@ -31,6 +31,8 @@ function execDaumPostcode() {
                 document.getElementById("addr").value = addr;
                 // 커서를 상세주소 필드로 이동한다.
                 document.getElementById("detailAddr").focus();
+
+                
             }
         }).open();
 }
@@ -56,6 +58,7 @@ function execDaumPostcode() {
 		<div>
 			<label class="control-label" for="pwd2">비밀번호 재확인</label>
 			<input class="form-control" type="password" name="pwd2" id="pwd2" placeholder="Confirm Password"/>
+			<div class="invalid-feedback">비밀번호가 일치하지 않습니다</div>
 		</div>
 		<div>
 			<label class="control-label" for="name">이름</label>
@@ -64,10 +67,10 @@ function execDaumPostcode() {
 			<div class="invalid-feedback">이름을 확인해 주세요</div>
 		</div>
 		<div>
-			<input type="text" name="postcode" id="postcode" placeholder="우편번호">
-			<input type="button" onclick="execDaumPostcode()" value="우편번호 찾기"><br>
-			<input type="text" name="addr" id="addr" placeholder="주소"><br>
-			<input type="text" name="detailAddr" id="detailAddr" placeholder="상세주소">
+			<input type="text" name="postcode" id="postcode" placeholder="우편번호" readonly="readonly">
+			<input type="button" onclick="execDaumPostcode()" value="우편번호 찾기" readonly="readonly"><br>
+			<input type="text" name="addr" id="addr" placeholder="주소" readonly="readonly"><br>
+			<input type="text" name="detailAddr" id="detailAddr" placeholder="상세주소" >
 		</div>
 		<div>	
 			<label class="control-label" for="phone">핸드폰 번호</label>
@@ -146,13 +149,18 @@ function execDaumPostcode() {
 			return; //함수를 여기서 종료
 		}
 		
+		document.querySelector("#pwd2").classList.remove("is-valid");
+		document.querySelector("#pwd2").classList.remove("is-invalid");
+		
 		if(pwd != pwd2){//비밀번호와 비밀번호 확인란이 다르면
 			//비밀번호를 잘못 입력한것이다.
 			isPwdValid=false;
-			document.querySelector("#pwd").classList.add("is-invalid");
+
+			document.querySelector("#pwd2").classList.add("is-invalid");
 		}else{
 			isPwdValid=true;
 			document.querySelector("#pwd").classList.add("is-valid");
+			document.querySelector("#pwd2").classList.add("is-valid");
 		}
 	}
 	
@@ -209,7 +217,7 @@ function execDaumPostcode() {
 		//1. value 값 읽어오기  
 		const inputPhone=this.value;
 		//입력한값을 검증할 정규 표현식
-		const reg_phone=/^[0-9]{2,3}[0-9]{3,4}[0-9]{4}/;
+		const reg_phone=/^(01[0]{1})[0-9]{4}[0-9]{4}$/;
 
 		//만일 입력값이 정규표현식과 매칭되지 않는다면
 		if(reg_phone.test(inputPhone)){
