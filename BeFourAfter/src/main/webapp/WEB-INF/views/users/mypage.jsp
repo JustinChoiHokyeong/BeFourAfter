@@ -9,6 +9,14 @@
 <%-- bootstrap 읽어오기 --%>
 <jsp:include page="/WEB-INF/views/funcs/bs.jsp"></jsp:include>
 <style>
+.accordion-button{
+	flex-direction: column;
+}
+.accordion{
+	--bs-accordion-btn-icon-width: 0;
+	--bs-accordion-btn-focus-box-shadow: #fff;
+}
+
 .btn-outline-secondary{
 	--bs-btn-hover-bg: #fff;
 	--bs-btn-hover-color: #000;
@@ -44,7 +52,9 @@ svg{
 </style>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 </head>
-
+	<!-- 네비바 -->
+	<jsp:include page="/WEB-INF/views/funcs/navbar.jsp"></jsp:include>
+	<!-- /네비바 -->
 <body>
 	<div class="container p-5">
 		<div>
@@ -76,19 +86,31 @@ svg{
 					</td>
 				</tr>
 				<tr>
-				<td style="text-align: -webkit-center;">
-				<div class="btn-group-vertical" role="group" aria-label="Vertical button group">
-						<button class="btn btn-outline-secondary"><a href="${pageContext.request.contextPath }/users/info.do" id="tb" >내정보 확인</a></button>
-						<button class="btn btn-outline-secondary"><a href="${pageContext.request.contextPath }/users/pwd_updateform.do" id="tb" >비밀번호 변경</a></button>
-						<button type="button" class="btn btn-outline-secondary" data-bs-toggle="dropdown" aria-expanded="false">
-					      	예약신청 내역
-					    </button>
-					    <ul class="dropdown-menu dropdown-menu-end">
-					      <li><a class="dropdown-item" href="${pageContext.request.contextPath }/reserve/list.do">출국 신청 내역</a></li>
-					      <li><a class="dropdown-item" href="${pageContext.request.contextPath }/reserve/list2.do">입국 신청 내역</a></li>
-					    </ul>
-						<button class="btn btn-outline-secondary" ><a href="${pageContext.request.contextPath }/users/deleteform.do" id="tb" >탈퇴하기</a></button>
-				</div>
+				<td style="text-align: -webkit-center;" >
+					<div class="accordion" id="accordionExample" style="width: 400px;">
+					  <div class="accordion-item" style="padding: 20px;">
+					  	<a href="${pageContext.request.contextPath }/users/info.do" id="tb" >내정보 확인</a>
+					  </div>
+					  <div class="accordion-item" style="padding: 20px;">
+					    <a href="${pageContext.request.contextPath}/users/pwd_updateform.do" id="tb">비밀번호 변경</a>
+					  </div>
+					  <div class="accordion-item">
+						<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree" style="color: #000; background-color: #fff; border:1px solid #dee2e6; border-top:0px; border-bottom:0px; padding: 20px;">
+						       	예약 신청 내역
+						</button>
+					  <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+					      <div class="accordion-body">
+							<a href="${pageContext.request.contextPath }/reserve/list.do" id="tb">출국 신청 내역</a>
+							<br />
+							<br />
+							<a href="${pageContext.request.contextPath }/reserve/list.do" id="tb">입국 신청 내역</a>
+					      </div>
+					    </div>
+					    <div class="accordion-item" style="border:1px solid #dee2e6; padding: 20px;">
+					    	<a href="${pageContext.request.contextPath}/users/deleteform.do" id="tb">회원 탈퇴</a>
+					  </div>
+					  </div>
+					</div>
 				</td>
 			</tr>
 			</thead>	
