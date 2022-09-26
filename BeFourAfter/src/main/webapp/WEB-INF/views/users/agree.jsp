@@ -8,7 +8,6 @@
 <jsp:include page="/WEB-INF/views/funcs/bs.jsp"></jsp:include>
 <style>
 body {
-    overflow: hidden;
     position: relative;
     width: 100%;
     background-image: url(https://i.imgur.com/PgGV6Qh.jpeg);
@@ -36,7 +35,6 @@ body {
 
 </head>
 <body>
-<div class="container">
 <form action="signup_form.do" method="get" id="form1">
 	<div class="container" style="text-align: center; margin-top:50px;">
 		<h2 style="margin-top: 0px">
@@ -90,7 +88,6 @@ body {
 		<button class="btn btn-secondary" type="button" ><a href="${pageContext.request.contextPath }" style="color: white; text-decoration: none;">돌아가기</a></button>
 	</div>
 </form>
-</div>
 <script>
 	var doc = document;
 	var form1 = doc.getElementById('form1');

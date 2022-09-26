@@ -9,7 +9,6 @@
 <jsp:include page="/WEB-INF/views/funcs/bs.jsp"></jsp:include>
 <style>
 body {
-    overflow: hidden;
     position: relative;
     width: 100%;
     background-image: url(https://i.imgur.com/PgGV6Qh.jpeg);
