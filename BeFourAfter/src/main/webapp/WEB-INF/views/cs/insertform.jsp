@@ -57,11 +57,11 @@
 		
 		$("#content").keyup(function (e){
 		    var content = $(this).val();
-		    $("#counter").html("("+content.length+" / 최대 200자)");    //글자수 실시간 카운팅
-		    if (content.length > 100){
-		        alert("최대 200자까지 입력 가능합니다.");
-		        $(this).val(content.substring(0, 200));
-		        $('#counter').html("(200 / 최대 200자)");
+		    $("#counter").html("("+content.length+" / 최대 800자)");    //글자수 실시간 카운팅
+		    if (content.length > 800){
+		        alert("최대 800자까지 입력 가능합니다.");
+		        $(this).val(content.substring(0, 800));
+		        $('#counter').html("(800 / 최대 800자)");
 		    }
 		});
 		
@@ -81,10 +81,10 @@
 			//비밀글 설정해제 시 확인 알림창을 띄운다			
 			if($("#isSecretchbox").is(":checked")==false){
 				let secretCheck=confirm("비밀글 설정 해제시 게시판의 모든 이용자에게 공개됩니다.");
-				if(secretCheck==false){
-					event.preventDefault();
+				if(secretCheck==true){
+					alert("확인을 누르시면 제출됩니다")
 				}else{
-					confirm("확인을 누르시면 제출됩니다")
+					event.preventDefault();
 				}
 			}
 			
