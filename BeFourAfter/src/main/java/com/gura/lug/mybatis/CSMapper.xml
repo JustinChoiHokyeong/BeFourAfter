@@ -4,25 +4,25 @@
 
 	<!-- <![CDATA[]]> 비교연산자 (<)가 xml에 오류를 일으킨다. 그래서 그걸 방지하는 것 -->
 	<select id="getList" parameterType="csDto" resultType="csDto">
-		SELECT *
-		FROM
-			(SELECT result1.*, ROWNUM AS rnum
-			FROM
-				(SELECT num,writer,title,content,viewCount,regdate,isSecret,reserveType
-				FROM board_cs
-				<choose>
-					<when test="title != null and content != null">
-						WHERE title LIKE '%'||#{title}||'%' 
-						OR content LIKE '%'||#{content}||'%'
-					</when>
-					<when test="title != null">
-						WHERE title LIKE '%'||#{title}||'%'
-					</when>
-					<when test="writer != null">
-						WHERE writer LIKE '%'||#{writer}||'%'
-					</when>
-				</choose>
-				ORDER BY num DESC) result1)
+		SELECT result2.*, NVL((SELECT MAX(ROWNUM) FROM comment_cs WHERE ref_group=result2.num), 0) AS commentCount
+      	FROM
+         	(SELECT result1.*, ROWNUM AS rnum
+        	 FROM
+          	 	 (SELECT num,writer,title,content,viewCount,regdate,isSecret,reserveType
+          	 	 FROM board_cs
+					<choose>
+						<when test="title != null and content != null">
+							WHERE title LIKE '%'||#{title}||'%' 
+							OR content LIKE '%'||#{content}||'%'
+						</when>
+						<when test="title != null">
+							WHERE title LIKE '%'||#{title}||'%'
+						</when>
+						<when test="writer != null">
+							WHERE writer LIKE '%'||#{writer}||'%'
+						</when>
+					</choose>
+				ORDER BY num DESC) result1) result2
 		<![CDATA[ 
 		WHERE rnum >= #{startRowNum} AND rnum <= #{endRowNum}
 		]]>

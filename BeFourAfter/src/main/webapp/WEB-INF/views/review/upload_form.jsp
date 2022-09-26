@@ -40,54 +40,80 @@
       .star-rating label:hover ~ label {
         -webkit-text-fill-color: #fffb0093;
       }
+      
+      #rating-exp {
+      	color : #dddddd;
+      }
+      
+      legend {
+      	font-size:  1.4em;
+	    position:  relative;
+      }
+     
+      #tt {
+      	font-size:  1.4em;
+	    position:  relative;
+      }
+      
+      
+	      
 </style></head>
+
 <body>
-	<div class="container">
+	<br>
+	<div class="container-sm">
 	   	<h1>리뷰 업로드 폼</h1>
          <form action="${pageContext.request.contextPath}/review/upload.do" method="post" enctype="multipart/form-data" id="insertForm">
-            <div>
-               <label for="title">리뷰 내용</label>
-               <textarea name="title" id="title" placeholder="솔직한 이용 후기 부탁드립니다 :)"
+            
+            <div class="row">
+            	<fieldset>
+            		<legend>평점</legend>
+            		<label for="rating" id="rating-exp"><small>5점부터 1점까지 별을 선택해주세요</small></label>
+			            <div class="star-rating" >
+			               <input type="radio" id="5-stars" name="rating" value="5" v-model="ratings"/>
+			               <label for="5-stars" class="star">★</label>
+			               <input type="radio" id="4-stars" name="rating" value="4" v-model="ratings"/>
+			               <label for="4-stars" class="star">★</label>
+			               <input type="radio" id="3-stars" name="rating" value="3" v-model="ratings"/>
+			               <label for="3-stars" class="star">★</label>
+			               <input type="radio" id="2-stars" name="rating" value="2" v-model="ratings"/>
+			               <label for="2-stars" class="star">★</label>
+			               <input type="radio" id="1-stars" name="rating" value="1" v-model="ratings"/>
+			               <label for="1-stars" class="star">★</label>
+			            </div>
+            	</fieldset>
+            </div>
+            <br>
+            <div class="row"> 
+            <fieldset style="max-width: 30%">
+               <legend>이용 서비스</legend>
+               <label for="reservetype">
+                  <input type="radio" name="reservetype" value="출국 서비스" checked="checked"/>출국 서비스
+               </label>
+               <label for="reservetype">
+                  <input type="radio" name="reservetype" value="입국 서비스"/>입국 서비스
+               </label>
+            </fieldset>
+            </div>
+	      	<br>
+            <div class="row">
+               <label id="tt" for="title">리뷰 내용</label>
+               <br><br>
+               <textarea class="col-md-6" name="title" id="title" placeholder="솔직한 이용 후기 부탁드립니다 :)"
                cols="40" rows="5" required></textarea> 
             </div>
-            <div>
-               <label for="image">이미지</label>
+            <br>
+            <div class="row">
+               <label id="tt" for="image">이미지 첨부</label>
                <input type="file" name="image" id="image"
                   accept=".jpg, .jpeg, .png, .JPG, .JPEG"/>
             </div>
-            <div>
-            <fieldset style="max-width: 30%">
-               <legend>예약 타입</legend>
-               <label for="reservetype">
-                  <input type="radio" name="reservetype" value="leave" checked="checked"/>출국 서비스
-               </label>
-               <label for="reservetype">
-                  <input type="radio" name="reservetype" value="ent"/>입국 서비스
-               </label>
-            </fieldset>
-            </div>
-            <div>
-            <fieldset style="max-width: 30%" >
-            <legend>평점</legend>
-            <div class="star-rating space-x-4 mx-auto" >
-               <input type="radio" id="5-stars" name="rating" value="5점" v-model="ratings"/>
-               <label for="5-stars" class="star">★</label>
-               <input type="radio" id="4-stars" name="rating" value="4점" v-model="ratings"/>
-               <label for="4-stars" class="star">★</label>
-               <input type="radio" id="3-stars" name="rating" value="3점" v-model="ratings"/>
-               <label for="3-stars" class="star">★</label>
-               <input type="radio" id="2-stars" name="rating" value="2점" v-model="ratings"/>
-               <label for="2-stars" class="star">★</label>
-               <input type="radio" id="1-stars" name="rating" value="1점" v-model="ratings" />
-               <label for="1-star" class="star">★</label>
-            </div>
-               
-            </fieldset>
-	      	</div>
-	      	
+            <br><br>
 	      	<button type="submit">리뷰 업로드</button>
 	   	</form>
 	</div>
+	
+	
 	<script>
 	//폼에 submit 이벤트가 일어났을때 실행할 함수 등록
 	document.querySelector("#upload_form")

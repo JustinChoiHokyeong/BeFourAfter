@@ -81,7 +81,6 @@
             <span><a class="btn text-decoration-none text-dark btn-outline-secondary" id="deleteBtn"><i class="bi bi-trash3"></i>삭제</a></span>
          </c:if>
       </div>
-      
       <!-- 댓글 목록 -->
       <div class="comments" >
          <ul>
