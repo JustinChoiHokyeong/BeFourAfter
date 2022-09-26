@@ -2,16 +2,15 @@
     pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>   
 
-<nav class="navbar navbar-light bg-light navbar-expand-lg" >
-		<div class="container-fluid">
+<nav class="navbar navbar-light bg-primary navbar-expand-lg" >
+		<div class="container-fluid" style=" margin-top: 20px; margin-right: 30px; margin-bottom: 20px">
 		    <a class="navbar-brand" href="${pageContext.request.contextPath}/">
-		      	가벼운 여행 <strong>Good Lugg!</strong>
+		      	<img src="https://i.imgur.com/klC7ezj.png" alt="" style="width:100px" />
 		    </a>
-		    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
-		    	data-bs-target="#navbarNav">
-   				<span class="navbar-toggler-icon"></span>
+		    <button class="navbar-toggler " type="button" data-bs-toggle="collapse"  data-bs-target="#navbarNav" style="border:none">
+   				<span> <img src="https://i.imgur.com/PYuobYS.png" alt="" style="width:50px;"/></span>
     		</button>
-    		<div class="collapse navbar-collapse" id="navbarNav">
+    		<div class="collapse navbar-collapse" id="navbarNav" style="text-align: end">
 			<ul class="navbar-nav me-auto">
 				<li class="nav-item"> <a class="nav-link" href="${pageContext.request.contextPath}/info/info.do">이용 및 요금안내</a></li>
 				<li class="nav-item"> <a class="nav-link" href="${pageContext.request.contextPath}/reserve/main.do">예약 하기</a>
@@ -47,4 +46,4 @@
 		</div>
 	</nav>
 	
-
+	

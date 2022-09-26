@@ -106,10 +106,15 @@ function execDaumPostcode() {
 		</form>
 
 	</div>
+    <footer>
+        <jsp:include page="/WEB-INF/views/funcs/footer.jsp"></jsp:include>
+    </footer>
 
 	<script
 		src="${pageContext.request.contextPath}/resources/js/gura_util.js"></script>
 	<script>
+	
+	
 	//프로필 이미지 링크를 클릭하면 
 	document.querySelector("#profileLink").addEventListener("click", function(){
 		// input type="file" 을 강제 클릭 시킨다. 

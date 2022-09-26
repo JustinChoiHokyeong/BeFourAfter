@@ -183,14 +183,11 @@
 	</div>
 	<!-- /본문 -->
 
-	<!-- 네비게이션 -->
-	<jsp:include page="/WEB-INF/views/funcs/toTop.jsp"></jsp:include>
-	<!-- /네비게이션  -->
 
 	<!-- 푸터 -->
-	<footer class="container-fluid navbar-fixed-bottom">
-		<jsp:include page="/WEB-INF/views/funcs/footer.jsp"></jsp:include>
-	</footer>
+    <footer>
+        <jsp:include page="/WEB-INF/views/funcs/footer.jsp"></jsp:include>
+    </footer>
 	<!-- /푸터 -->
 </body>
 

@@ -68,6 +68,13 @@
 							<th scope="col">등록일</th>
 							<th scope="col">답변</th>
 						</tr>
+
+					</c:forEach>
+				</tbody>
+			</table>
+			<div>
+				<a class="btn fs-5" href="insertform.do">새글 작성</a>
+
 					</thead>
 					<tbody>
 						<c:forEach var="tmp" items="${list}">
@@ -141,7 +148,6 @@
 						</c:forEach>
 					</tbody>
 				</table>
-				<br /> <a class="btn" href="${pageContext.request.contextPath}/cs/insertform.do">새글 작성</a>
 			</div>
 		</div>
 		<div>
@@ -170,17 +176,17 @@
 				</c:if>
 			</ul>
 		</div>
-		</div>
+	</div>
+		
+
 		<!-- /본문 -->
 		<div style="width: 100%; min-height: 1px; height: 60px;"></div>
-		<!-- 네비게이션 -->
-		<jsp:include page="/WEB-INF/views/funcs/toTop.jsp"></jsp:include>
-		<!-- /네비게이션  -->
+
 	
 		<!-- 푸터 -->
-		<footer class="container-fluid navbar-fixed-bottom">
-			<jsp:include page="/WEB-INF/views/funcs/footer.jsp"></jsp:include>
-		</footer>
+    <footer>
+        <jsp:include page="/WEB-INF/views/funcs/footer.jsp"></jsp:include>
+    </footer>
 		<!-- /푸터 -->
 		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
