@@ -10,316 +10,314 @@
 <title>Document</title>
 <!-- 부트스트랩 -->
 <jsp:include page="/WEB-INF/views/funcs/bs.jsp"></jsp:include>
- <style>
-@import url(https://fonts.googleapis.com/css?family=Oswald:300,400,700);
-@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic);
-
-
-#main {
-    width: 100%;
-    padding: 0;
-}
-
-.content-asset p {
-    margin: 0 auto;
-}
-
-.breadcrumb {
-    display: none;
-}
-
-
-.margin-top-10 {
-    padding-top: 10px;
-}
-
-.margin-bot-10 {
-    padding-bottom: 10px;
-}
-
-
-#parallax-world-of-ugg h1 {
-    font-family: 'Oswald', sans-serif;
-    font-size: 24px;
-    font-weight: 400;
-    text-transform: uppercase;
-    color: rgb(248, 248, 248);
-    padding: 0;
-    margin: 0;
-    text-align: center;
-}
-
-#parallax-world-of-ugg h2 {
-    font-family: 'Oswald', sans-serif;
-    font-size: 100px;
-    letter-spacing: 10px;
-    text-align: center;
-    color: white;
-    font-weight: 400;
-    text-transform: uppercase;
-    z-index: 10;
-    opacity: .9;
-}
-
-#parallax-world-of-ugg h3 {
-    font-family: 'Oswald', sans-serif;
-    font-size: 14px;
-    line-height: 0;
-    font-weight: 400;
-    letter-spacing: 8px;
-    text-transform: uppercase;
-    color: black;
-}
-
-#parallax-world-of-ugg p {
-    font-family: 'Source Sans Pro', sans-serif;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 24px;
-}
-
-.first-character {
-    font-weight: 400;
-    float: left;
-    font-size: 84px;
-    line-height: 64px;
-    padding-top: 4px;
-    padding-right: 8px;
-    padding-left: 3px;
-    font-family: 'Source Sans Pro', sans-serif;
-}
-
-.sc {
-    color: #3b8595;
-}
-
-.ny {
-    color: #3d3c3a;
-}
-
-.atw {
-    color: #c48660;
-}
-
-/** 타이틀 섹션*/
-#parallax-world-of-ugg .title {
-    background: white;
-    padding: 60px;
-    margin: 0 auto;
-    text-align: center;
-}
-
-#parallax-world-of-ugg .title h1 {
-    font-size: 35px;
-    letter-spacing: 8px;
-}
-
-/**블럭 섹션*/
-#parallax-world-of-ugg .block {
-    background: white;
-    padding: 60px;
-    width: 820px;
-    margin: 0 auto;
-    text-align: justify;
-}
-
-#parallax-world-of-ugg .block-gray {
-    background: #f2f2f2;
-    padding: 60px;
-}
-
-#parallax-world-of-ugg .section-overlay-mask {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: black;
-    opacity: 0.70;
-}
-
-/**패럴렉스 섹션*/
-#parallax-world-of-ugg .parallax-one {
-    padding-top: 210px;
-    padding-bottom: 210px;
-    overflow: hidden;
-    position: relative;
-    width: 100%;
-    background-image: url(https://i.imgur.com/PgGV6Qh.jpeg);
-    z-index: 0;
-    background-attachment: fixed;
-    background-size: cover;
-    -moz-background-size: cover;
-    -webkit-background-size: cover;
-    background-repeat: no-repeat;
-    background-position: top center;
-    z-index:-1
-}
-
-#parallax-world-of-ugg .parallax-two {
-    padding-top: 200px;
-    padding-bottom: 200px;
-    overflow: hidden;
-    position: relative;
-    width: 100%;
-    background-image: url(https://i.imgur.com/JjmvdXE.jpeg);
-    background-attachment: fixed;
-    background-size: cover;
-    -moz-background-size: cover;
-    -webkit-background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-}
-
-#parallax-world-of-ugg .parallax-three {
-    padding-top: 200px;
-    padding-bottom: 200px;
-    overflow: hidden;
-    position: relative;
-    width: 100%;
-    background-image: url(https://i.imgur.com/L7sLNht.jpeg);
-    background-attachment: fixed;
-    background-size: cover;
-    -moz-background-size: cover;
-    -webkit-background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-}
-
-/**그 외*/
-#parallax-world-of-ugg .line-break {
-    border-bottom: 1px solid black;
-    width: 150px;
-    margin: 0 auto;
-}
-
-#logo {
-    width: 100px;
-}
-
-
-@media screen and (max-width: 959px) and (min-width: 768px) {
-    #parallax-world-of-ugg .block {
-        padding: 40px;
-        width: 620px;
-    }
-}
-
-@media screen and (max-width: 767px) {
-    #parallax-world-of-ugg .block {
-        padding: 30px;
-        width: 420px;
-    }
-
-    #parallax-world-of-ugg h2 {
-        font-size: 30px;
-    }
-
-    #parallax-world-of-ugg .block {
-        padding: 30px;
-    }
-
-    #parallax-world-of-ugg .parallax-one,
-    #parallax-world-of-ugg .parallax-two,
-    #parallax-world-of-ugg .parallax-three {
-        padding-top: 100px;
-        padding-bottom: 100px;
-    }
-}
-
-@media screen and (max-width: 479px) {
-    #parallax-world-of-ugg .block {
-        padding: 30px 15px;
-        width: 290px;
-    }
-}
-
-/**스크롤 다운버튼*/
-button.scroll_down {
-    position: absolute;
-    margin-left: auto;
-    margin-right: auto;
-    left: 0;
-    right: 0;
-    height: 50px;
-    width: 30px;
-    bottom: 60px;
-    background-color: transparent;
-    border: 2px solid white;
-    border-radius: 20px;
-    cursor: pointer;
-    outline: none;
-}
-
-button.scroll_down:before {
-    position: absolute;
-    top: 10px;
-    left: 50%;
-    content: '';
-    width: 6px;
-    height: 6px;
-    margin-left: -3px;
-    background-color: #fff;
-    border-radius: 100%;
-    -webkit-animation: scroll_down_btn-animation 2s infinite;
-    animation: scroll_down_btn-animation 2s infinite;
-    box-sizing: border-box;
-}
-
-@keyframes scroll_down_btn-animation {
-    0% {
-        transform: translate(0, 0);
-        opacity: 0;
-    }
-
-    40% {
-        opacity: 1;
-    }
-
-    80% {
-        transform: translate(0, 20px);
-        opacity: 0;
-    }
-
-    100% {
-        opacity: 0;
-    }
-}
-
-@-webkit-keyframes scroll_down_btn-animation {
-    0% {
-        -webkit-transform: translate(0, 0);
-        transform: translate(0, 0);
-        opacity: 0;
-    }
-
-    40% {
-        opacity: 1;
-    }
-
-    80% {
-        -webkit-transform: translate(0, 20px);
-        transform: translate(0, 20px);
-        opacity: 0;
-    }
-
-    100% {
-        opacity: 0;
-    }
-}
-/**스크롤다운 버튼 끝*/
-.nav-link{
-	color:#cdd5dc;
-	font-family: 'Oswald', sans-serif;
-}
-
-
+<style>
+	@import url(https://fonts.googleapis.com/css?family=Oswald:300,400,700);
+	@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic);
+	
+	
+	#main {
+	    width: 100%;
+	    padding: 0;
+	}
+	
+	.content-asset p {
+	    margin: 0 auto;
+	}
+	
+	.breadcrumb {
+	    display: none;
+	}
+	
+	
+	.margin-top-10 {
+	    padding-top: 10px;
+	}
+	
+	.margin-bot-10 {
+	    padding-bottom: 10px;
+	}
+	
+	
+	#parallax-world-of-ugg h1 {
+	    font-family: 'Oswald', sans-serif;
+	    font-size: 24px;
+	    font-weight: 400;
+	    text-transform: uppercase;
+	    color: rgb(248, 248, 248);
+	    padding: 0;
+	    margin: 0;
+	    text-align: center;
+	}
+	
+	#parallax-world-of-ugg h2 {
+	    font-family: 'Oswald', sans-serif;
+	    font-size: 100px;
+	    letter-spacing: 10px;
+	    text-align: center;
+	    color: white;
+	    font-weight: 400;
+	    text-transform: uppercase;
+	    z-index: 10;
+	    opacity: .9;
+	}
+	
+	#parallax-world-of-ugg h3 {
+	    font-family: 'Oswald', sans-serif;
+	    font-size: 14px;
+	    line-height: 0;
+	    font-weight: 400;
+	    letter-spacing: 8px;
+	    text-transform: uppercase;
+	    color: black;
+	}
+	
+	#parallax-world-of-ugg p {
+	    font-family: 'Source Sans Pro', sans-serif;
+	    font-weight: 400;
+	    font-size: 14px;
+	    line-height: 24px;
+	}
+	
+	.first-character {
+	    font-weight: 400;
+	    float: left;
+	    font-size: 84px;
+	    line-height: 64px;
+	    padding-top: 4px;
+	    padding-right: 8px;
+	    padding-left: 3px;
+	    font-family: 'Source Sans Pro', sans-serif;
+	}
+	
+	.sc {
+	    color: #3b8595;
+	}
+	
+	.ny {
+	    color: #3d3c3a;
+	}
+	
+	.atw {
+	    color: #c48660;
+	}
+	
+	/** 타이틀 섹션*/
+	#parallax-world-of-ugg .title {
+	    background: white;
+	    padding: 60px;
+	    margin: 0 auto;
+	    text-align: center;
+	}
+	
+	#parallax-world-of-ugg .title h1 {
+	    font-size: 35px;
+	    letter-spacing: 8px;
+	}
+	
+	/**블럭 섹션*/
+	#parallax-world-of-ugg .block {
+	    background: white;
+	    padding: 60px;
+	    width: 820px;
+	    margin: 0 auto;
+	    text-align: justify;
+	}
+	
+	#parallax-world-of-ugg .block-gray {
+	    background: #f2f2f2;
+	    padding: 60px;
+	}
+	
+	#parallax-world-of-ugg .section-overlay-mask {
+	    position: absolute;
+	    top: 0;
+	    left: 0;
+	    width: 100%;
+	    height: 100%;
+	    background-color: black;
+	    opacity: 0.70;
+	}
+	
+	/**패럴렉스 섹션*/
+	#parallax-world-of-ugg .parallax-one {
+	    padding-top: 210px;
+	    padding-bottom: 210px;
+	    overflow: hidden;
+	    position: relative;
+	    width: 100%;
+	    background-image: url(https://i.imgur.com/PgGV6Qh.jpeg);
+	    z-index: 0;
+	    background-attachment: fixed;
+	    background-size: cover;
+	    -moz-background-size: cover;
+	    -webkit-background-size: cover;
+	    background-repeat: no-repeat;
+	    background-position: top center;
+	    z-index:-1
+	}
+	
+	#parallax-world-of-ugg .parallax-two {
+	    padding-top: 200px;
+	    padding-bottom: 200px;
+	    overflow: hidden;
+	    position: relative;
+	    width: 100%;
+	    background-image: url(https://i.imgur.com/JjmvdXE.jpeg);
+	    background-attachment: fixed;
+	    background-size: cover;
+	    -moz-background-size: cover;
+	    -webkit-background-size: cover;
+	    background-repeat: no-repeat;
+	    background-position: center center;
+	}
+	
+	#parallax-world-of-ugg .parallax-three {
+	    padding-top: 200px;
+	    padding-bottom: 200px;
+	    overflow: hidden;
+	    position: relative;
+	    width: 100%;
+	    background-image: url(https://i.imgur.com/L7sLNht.jpeg);
+	    background-attachment: fixed;
+	    background-size: cover;
+	    -moz-background-size: cover;
+	    -webkit-background-size: cover;
+	    background-repeat: no-repeat;
+	    background-position: center center;
+	}
+	
+	/**그 외*/
+	#parallax-world-of-ugg .line-break {
+	    border-bottom: 1px solid black;
+	    width: 150px;
+	    margin: 0 auto;
+	}
+	
+	#logo {
+	    width: 100px;
+	}
+	
+	
+	@media screen and (max-width: 959px) and (min-width: 768px) {
+	    #parallax-world-of-ugg .block {
+	        padding: 40px;
+	        width: 620px;
+	    }
+	}
+	
+	@media screen and (max-width: 767px) {
+	    #parallax-world-of-ugg .block {
+	        padding: 30px;
+	        width: 420px;
+	    }
+	
+	    #parallax-world-of-ugg h2 {
+	        font-size: 30px;
+	    }
+	
+	    #parallax-world-of-ugg .block {
+	        padding: 30px;
+	    }
+	
+	    #parallax-world-of-ugg .parallax-one,
+	    #parallax-world-of-ugg .parallax-two,
+	    #parallax-world-of-ugg .parallax-three {
+	        padding-top: 100px;
+	        padding-bottom: 100px;
+	    }
+	}
+	
+	@media screen and (max-width: 479px) {
+	    #parallax-world-of-ugg .block {
+	        padding: 30px 15px;
+	        width: 290px;
+	    }
+	}
+	
+	/**스크롤 다운버튼*/
+	button.scroll_down {
+	    position: absolute;
+	    margin-left: auto;
+	    margin-right: auto;
+	    left: 0;
+	    right: 0;
+	    height: 50px;
+	    width: 30px;
+	    bottom: 60px;
+	    background-color: transparent;
+	    border: 2px solid white;
+	    border-radius: 20px;
+	    cursor: pointer;
+	    outline: none;
+	}
+	
+	button.scroll_down:before {
+	    position: absolute;
+	    top: 10px;
+	    left: 50%;
+	    content: '';
+	    width: 6px;
+	    height: 6px;
+	    margin-left: -3px;
+	    background-color: #fff;
+	    border-radius: 100%;
+	    -webkit-animation: scroll_down_btn-animation 2s infinite;
+	    animation: scroll_down_btn-animation 2s infinite;
+	    box-sizing: border-box;
+	}
+	
+	@keyframes scroll_down_btn-animation {
+	    0% {
+	        transform: translate(0, 0);
+	        opacity: 0;
+	    }
+	
+	    40% {
+	        opacity: 1;
+	    }
+	
+	    80% {
+	        transform: translate(0, 20px);
+	        opacity: 0;
+	    }
+	
+	    100% {
+	        opacity: 0;
+	    }
+	}
+	
+	@-webkit-keyframes scroll_down_btn-animation {
+	    0% {
+	        -webkit-transform: translate(0, 0);
+	        transform: translate(0, 0);
+	        opacity: 0;
+	    }
+	
+	    40% {
+	        opacity: 1;
+	    }
+	
+	    80% {
+	        -webkit-transform: translate(0, 20px);
+	        transform: translate(0, 20px);
+	        opacity: 0;
+	    }
+	
+	    100% {
+	        opacity: 0;
+	    }
+	}
+	/**스크롤다운 버튼 끝*/
+	.nav-link{
+		color:#cdd5dc;
+		font-family: 'Oswald', sans-serif;
+	}
 </style>
 </head>
 
 <body>
 <!-- 네비바 -->
-	<nav class="navbar position-absolute top-0 end-0" style=" text-align: center; margin-top:20px; margin-right:30px; ">
+	<nav class="navbar position-absolute top-0 end-0" style=" text-align: center; margin-top:20px; margin-right:20px; ">
 		<div class="container " style="justify-content: end">
 			<button class="navbar-toggler " type="button" data-bs-toggle="collapse"  data-bs-target="#navbarNav" style="border: none; color: rgb(0 0 0 / 0%);">
 	   			<span class="fs-1"><i class="bi bi-cloud-haze" style="color:white; border:none"></i></span>
@@ -331,7 +329,6 @@ button.scroll_down:before {
 					</li> 
 					<li class="nav-item"> <a class="nav-link fs-3" href="${pageContext.request.contextPath }/review/list.do">리 뷰</a>
 					</li> 
-					</li>
 					<li class="nav-item"> <a class="nav-link fs-3" href="${pageContext.request.contextPath}/cs/list.do">고객 센터</a>
 					</li> 
 				</ul>
@@ -516,7 +513,7 @@ button.scroll_down:before {
       }
       btnScrollDown.addEventListener('click', scrollDown);
   })();
- /**스크롤다운 버튼*/                                                                                                                                                               * ------------------------------------------------------------------------- */
+ /**스크롤다운 버튼*/               
 </script>
 </body>
 

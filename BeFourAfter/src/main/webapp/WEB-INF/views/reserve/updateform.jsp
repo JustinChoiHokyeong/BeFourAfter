@@ -46,229 +46,229 @@ function execDaumPostcode() {
 	<jsp:include page="/WEB-INF/views/funcs/reserveMenu.jsp"></jsp:include>
 	<!--/바로가기-->
 	<!-- 본문 -->
-<div class="bg-light">
-<div class="container">
-<c:choose>
-	<c:when test="${dto.reservetype eq 'leave_insertform'}">
-		<h1>출국서비스 수정</h1>
-		
-		<h2>예약자 정보</h2>
+
+	<div class="bg-light">
 		<div class="container">
-			<form action="update.do" method="post" id="leave_insertform">
-				<input type="hidden" name="leave_insertform" id="leave_insertform" value="leave_insertform"/>
-				<input type="hidden" name="num" id="num" value="${dto.num }"/>
-				<input type="hidden" name="name" id="name" value="${dto.name }"/>
-				<input type="hidden" name="phone" id="phone" value="${dto.phone }"/>
-				<p>
-				<label for="name">예약자 이름</label>
-				<input type="text" name="name" id="name" value="${dto.name }"disabled/>
-				<br />
-				<label for="phone">핸드폰 번호</label>
-				<input type="text" name="phone" id="phone" value="${dto.phone }"disabled/>
-				</p>
-				<p>
-				<label for="rname">수령인 이름</label>
-				<input type="text" name="rname" id="rname" value="${dto.rname }" />
-				<br />
-				<label for="rphone">핸드폰 번호</label>
-				<input type="text" name="rphone" id="rphone" value="${dto.rphone } " maxlength="11" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
-				<br />
-				<label for="same"> <small> 예약자와 동일 </small>
-				<input type="checkbox" name="same" value="same" checked/>
-				</label>
-				</p>
-				<fieldset style="max-width: 30%">
-					<legend>수령 장소 및 날짜</legend>
-					<c:choose>
-						<c:when test="${dto.place eq 'first'}">
-							<label for="place">
-								<input type="radio" name="place" value="first" checked="checked"/>제 1 터미널
-							</label>
-							<label for="place">
-								<input type="radio" name="place" value="second"/>제 2 터미널
-							</label>
-						</c:when>
-						<c:otherwise>
-							<label for="place">
-								<input type="radio" name="place" value="first" />제 1 터미널
-							</label>
-							<label for="place">
-								<input type="radio" name="place" value="second" checked="checked"/>제 2 터미널
-							</label>
-						</c:otherwise>
-					</c:choose>
-				</fieldset>
-				<p>
-					<label for="rsdate">수령 날짜 및 시간</label><br />
-					<input type="datetime-local" name="rsdate" id="rsdate" value="${dto.rsdate }"/>
-				</p>
-				<p>
-				<label for="basic">기본 수하물</label>
-				<input type="number" name="basic" id="basic" value="${dto.basic }" min="0"placeholder="수량입력"/>
-				<br />
-				<small>(캐리어28인치 이하, 백팩, 가방, 20kg 이하)</small>
-				</p>
-				<p>
-				<label for="big">대형 수하물</label>
-				<input type="number" name="big" id="big" value="${dto.big }" min="0"placeholder="수량입력"/>
-				<br />
-				<small>(캐리어28인치 초과, 박스, 골프백, 20kg 초과)</small>
-				</p>
-				<p>
-				<label for="over">25kg 초과</label>
-				<input type="number" name="over" id="over" value="${dto.over }" min="0"placeholder="수량입력"/>
-				<br />
-				<small>(개당 5,000원 추가)</small>
-				</p>
-				<p>
-				<button type="submit" id="submit1">수정</button>
-				</p>
-			</form>
-		</div>
-		<script>
-		// 회원정보 넘기기 수령인 정보에 예약자 정보 
-		var checkbox = document.querySelector("input[name=same]");
-		
-		checkbox.addEventListener('change', function() {
-		   if(checkbox.checked==true){
-			   let name= document.getElementById('name').value;
-			   let phone=document.getElementById('phone').value;
-			   
-			   document.getElementById('rname').value = name;
-			   document.getElementById('rphone').value = phone;
-		   } else {
-			   document.getElementById('rname').value = "";
-			   document.getElementById('rphone').value = "";
-		   }
-		   
-		   });
-		// (출국)입력 되지않은 정보가 있으면 제출 x
-		document.querySelector("#leave_insertform").addEventListener("submit", function(e){
-			let basic=document.querySelector("#basic").value;
-			let big=document.querySelector("#big").value;
-			let over=document.querySelector("#over").value;
-			
-			let rname=document.querySelector("#rname").value;
-			let rphone=document.querySelector("#rphone").value;
-			let rsdate=document.querySelector("#rsdate").value;
-			
-			if(basic+big+over<=0 || rname=="" || rphone=="" || rsdate==""){
-				alert("정보를 모두 입력해주세요.");
-				e.preventDefault();
-			}
-		});
-		
-		var now_utc = Date.now() 
-		var timeOff = new Date().getTimezoneOffset()*60000;
-		var today = new Date(now_utc-timeOff).toISOString().substring(0, 16);
-		document.getElementById("rsdate").setAttribute("min", today);
-		</script>
-	</c:when>
-	<c:otherwise>
-		<h1>입국서비스 수정</h1>
-		
-		<h2>예약자 정보</h2>
-		<div class="container">
-			<form action="update2.do" method="post" id="ent_insertform">
-				<input type="hidden" name="ent_insertform" id="ent_insertform" value="ent_insertform"/>
-				<input type="hidden" name="num" id="num" value="${dto.num }"/>
-				<input type="hidden" name="name" id="name" value="${dto.name }"/>
-				<input type="hidden" name="phone" id="phone" value="${dto.phone }"/>
-				<p>
-				<label for="name">예약자 이름</label>
-				<input type="text" name="name" id="name" value="${dto.name }"disabled/>
-				<br />
-				<label for="phone">핸드폰 번호</label>
-				<input type="text" name="phone" id="phone" value="${dto.phone }"disabled/>
-				</p>
-				<fieldset style="max-width: 30%">
-					<legend>맡길 장소 및 날짜</legend>
-					<c:choose >
-						<c:when test="${dto.place eq 'first'}">
-							<label for="place">
-								<input type="radio" name="place" value="first" checked="checked"/>제 1 터미널
-							</label>
-							<label for="place">
-								<input type="radio" name="place" value="second"/>제 2 터미널
-							</label>
-						</c:when>
-						<c:otherwise>
-							<label for="place">
-								<input type="radio" name="place" value="first" />제 1 터미널
-							</label>
-							<label for="place">
-								<input type="radio" name="place" value="second" checked="checked"/>제 2 터미널
-							</label>
-						</c:otherwise>
-					</c:choose>
-				</fieldset>
-				<p>
-				<label for="rsdate">맡기는 날짜 및 시간</label><br />
-				<input type="datetime-local" name="rsdate" id="rsdate" value="${dto.rsdate }"/>
-				</p>
-				<p>
-				<div><span style="font-size: 20px;">수하물 보내는 주소</span><br />
-					<input type="button" onclick="execDaumPostcode()" value="주소 검색" readonly="readonly"><br>
-					<input type="text" name="addr" id="addr" placeholder="주소 및 상세 주소" value="${dto.addr }" style="width: 500px">
-					<br /><small>Ex) 서울특별시 강남구 테헤란로 124 삼원타워 5층  501호</small><br>
+		<c:choose>
+			<c:when test="${dto.reservetype eq 'leave_insertform'}">
+				<h1>출국서비스</h1>
+				
+				<h2>예약 수정</h2>
+				<div class="container">
+					<form action="update.do" method="post" id="leave_insertform">
+						<input type="hidden" name="leave_insertform" id="leave_insertform" value="leave_insertform"/>
+						<input type="hidden" name="num" id="num" value="${dto.num }"/>
+						<input type="hidden" name="name" id="name" value="${dto.name }"/>
+						<input type="hidden" name="phone" id="phone" value="${dto.phone }"/>
+						<p>
+						<label for="name">예약자 이름</label>
+						<input type="text" name="name" id="name" value="${dto.name }"disabled/>
+						<br />
+						<label for="phone">핸드폰 번호</label>
+						<input type="text" name="phone" id="phone" value="${dto.phone }"disabled/>
+						</p>
+						<p>
+						<label for="rname">수령인 이름</label>
+						<input type="text" name="rname" id="rname" value="${dto.rname }" />
+						<br />
+						<label for="rphone">핸드폰 번호</label>
+						<input type="text" name="rphone" id="rphone" value="${dto.rphone } " maxlength="11" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
+						<br />
+						<label for="same"> <small> 예약자와 동일 </small>
+						<input type="checkbox" name="same" value="same" checked/>
+						</label>
+						</p>
+						<p>
+						<label for="rsdate">수령 날짜 및 시간</label><br />
+						<input type="datetime-local" name="rsdate" id="rsdate" value="${dto.rsdate }"/>
+						</p>
+						<fieldset style="max-width: 30%">
+							<legend>수령장소</legend>
+							<c:choose>
+								<c:when test="${dto.place eq 'first'}">
+									<label for="place">
+										<input type="radio" name="place" value="first" checked="checked"/>제 1 터미널
+									</label>
+									<label for="place">
+										<input type="radio" name="place" value="second"/>제 2 터미널
+									</label>
+								</c:when>
+								<c:otherwise>
+									<label for="place">
+										<input type="radio" name="place" value="first" />제 1 터미널
+									</label>
+									<label for="place">
+										<input type="radio" name="place" value="second" checked="checked"/>제 2 터미널
+									</label>
+								</c:otherwise>
+							</c:choose>
+						</fieldset>
+						<p>
+						<label for="basic">기본 수하물</label>
+						<input type="number" name="basic" id="basic" value="${dto.basic }" min="0"placeholder="수량입력"/>
+						<br />
+						<small>(캐리어28인치 이하, 백팩, 가방, 20kg 이하)</small>
+						</p>
+						<p>
+						<label for="big">대형 수하물</label>
+						<input type="number" name="big" id="big" value="${dto.big }" min="0"placeholder="수량입력"/>
+						<br />
+						<small>(캐리어28인치 초과, 박스, 골프백, 20kg 초과)</small>
+						</p>
+						<p>
+						<label for="over">25kg 초과</label>
+						<input type="number" name="over" id="over" value="${dto.over }" min="0"placeholder="수량입력"/>
+						<br />
+						<small>(개당 5,000원 추가)</small>
+						</p>
+						<p>
+						<button type="submit" id="submit1">수정</button>
+						</p>
+					</form>
 				</div>
-				</p>
-				<p>
-				<label for="basic">기본 수하물</label>
-				<input type="number" name="basic" id="basic" value="${dto.basic}" min="0"plceholder=""/>
-				<br />
-				<small>(캐리어28인치 이하, 백팩, 가방, 20kg 이하)</small>
-				</p>
-				<p>
-				<label for="big">대형 수하물</label>
-				<input type="number" name="big" id="big" value="${dto.big}" min="0"plceholder=""/>
-				<br />
-				<small>(캐리어28인치 초과, 박스, 골프백, 20kg 초과)</small>
-				</p>
-				<p>
-				<label for="over">25kg 초과</label>
-				<input type="number" name="over" id="over" value="${dto.over}" min="0"plceholder=""/>
-				<br />
-				<small>(개당 5,000원 추가)</small>
-				</p>
-				<p>
-				<button type="submit" id="submit2">수정</button>
-				</p>
-			</form>
+				<script>
+				// 회원정보 넘기기 수령인 정보에 예약자 정보 
+				var checkbox = document.querySelector("input[name=same]");
+				
+				checkbox.addEventListener('change', function() {
+				   if(checkbox.checked==true){
+					   let name= document.getElementById('name').value;
+					   let phone=document.getElementById('phone').value;
+					   
+					   document.getElementById('rname').value = name;
+					   document.getElementById('rphone').value = phone;
+				   } else {
+					   document.getElementById('rname').value = "";
+					   document.getElementById('rphone').value = "";
+				   }
+				   
+				   });
+				// (출국)입력 되지않은 정보가 있으면 제출 x
+				document.querySelector("#leave_insertform").addEventListener("submit", function(e){
+					let basic=document.querySelector("#basic").value;
+					let big=document.querySelector("#big").value;
+					let over=document.querySelector("#over").value;
+					
+					let rname=document.querySelector("#rname").value;
+					let rphone=document.querySelector("#rphone").value;
+					let rsdate=document.querySelector("#rsdate").value;
+					
+					if(basic+big+over<=0 || rname=="" || rphone=="" || rsdate==""){
+						alert("정보를 모두 입력해주세요.");
+						e.preventDefault();
+					}
+				});
+				
+				var now_utc = Date.now() 
+				var timeOff = new Date().getTimezoneOffset()*60000;
+				var today = new Date(now_utc-timeOff).toISOString().substring(0, 16);
+				document.getElementById("rsdate").setAttribute("min", today);
+				</script>
+			</c:when>
+			<c:otherwise>
+				<h1>입국서비스</h1>
+				
+				<h2>예약 수정</h2>
+				<div class="container">
+					<form action="update2.do" method="post" id="ent_insertform">
+						<input type="hidden" name="ent_insertform" id="ent_insertform" value="ent_insertform"/>
+						<input type="hidden" name="num" id="num" value="${dto.num }"/>
+						<input type="hidden" name="name" id="name" value="${dto.name }"/>
+						<input type="hidden" name="phone" id="phone" value="${dto.phone }"/>
+						<p>
+						<label for="name">예약자 이름</label>
+						<input type="text" name="name" id="name" value="${dto.name }"disabled/>
+						<br />
+						<label for="phone">핸드폰 번호</label>
+						<input type="text" name="phone" id="phone" value="${dto.phone }"disabled/>
+						</p>
+						<p>
+						<label for="rsdate">맡기는 날짜 및 시간</label><br />
+						<input type="datetime-local" name="rsdate" id="rsdate" value="${dto.rsdate }"/>
+						</p>
+						<fieldset style="max-width: 30%">
+							<legend>맡길장소</legend>
+							<c:choose >
+								<c:when test="${dto.place eq 'first'}">
+									<label for="place">
+										<input type="radio" name="place" value="first" checked="checked"/>제 1 터미널
+									</label>
+									<label for="place">
+										<input type="radio" name="place" value="second"/>제 2 터미널
+									</label>
+								</c:when>
+								<c:otherwise>
+									<label for="place">
+										<input type="radio" name="place" value="first" />제 1 터미널
+									</label>
+									<label for="place">
+										<input type="radio" name="place" value="second" checked="checked"/>제 2 터미널
+									</label>
+								</c:otherwise>
+							</c:choose>
+						</fieldset>
+						<p>
+						<label for="addr">수하물 보낼 주소</label>
+						<input type="text" name="addr" id="addr" value="${dto.addr}" placeholder="주소를 정확히 입력해주세요 (시/군/구 + 상세주소)" style="width: 400px"/>
+						</p>
+						<p>
+						<label for="basic">기본 수하물</label>
+						<input type="number" name="basic" id="basic" value="${dto.basic}" min="0"plceholder=""/>
+						<br />
+						<small>(캐리어28인치 이하, 백팩, 가방, 20kg 이하)</small>
+						</p>
+						<p>
+						<label for="big">대형 수하물</label>
+						<input type="number" name="big" id="big" value="${dto.big}" min="0"plceholder=""/>
+						<br />
+						<small>(캐리어28인치 초과, 박스, 골프백, 20kg 초과)</small>
+						</p>
+						<p>
+						<label for="over">25kg 초과</label>
+						<input type="number" name="over" id="over" value="${dto.over}" min="0"plceholder=""/>
+						<br />
+						<small>(개당 5,000원 추가)</small>
+						</p>
+						<p>
+						<button type="submit" id="submit2">수정</button>
+						</p>
+					</form>
+				</div>
+				
+				<script>
+				
+				// (입국)입력 되지않은 정보가 있으면 제출 x
+				document.querySelector("#ent_insertform").addEventListener("submit", function(e){
+					let basic=document.querySelector("#basic").value;
+					let big=document.querySelector("#big").value;
+					let over=document.querySelector("#over").value;
+					
+					let addr=document.querySelector("#addr").value;
+					let rsdate=document.querySelector("#rsdate").value;
+					
+					if(basic+big+over<=0 || addr=="" || rsdate==""){
+						alert("정보를 모두 입력해주세요.");
+						e.preventDefault();
+					}
+				});
+				
+				var now_utc = Date.now()
+				var timeOff = new Date().getTimezoneOffset()*60000;
+				var today = new Date(now_utc-timeOff).toISOString().substring(0, 16);
+				document.getElementById("rsdate").setAttribute("min", today);
+				</script>
+			</c:otherwise>
+		</c:choose>
 		</div>
-		
-		<script>
-		
-		// (입국)입력 되지않은 정보가 있으면 제출 x
-		document.querySelector("#ent_insertform").addEventListener("submit", function(e){
-			let basic=document.querySelector("#basic").value;
-			let big=document.querySelector("#big").value;
-			let over=document.querySelector("#over").value;
-			
-			let addr=document.querySelector("#addr").value;
-			let rsdate=document.querySelector("#rsdate").value;
-			
-			if(basic+big+over<=0 || addr=="" || rsdate==""){
-				alert("정보를 모두 입력해주세요.");
-				e.preventDefault();
-			}
-		});
-		
-		var now_utc = Date.now()
-		var timeOff = new Date().getTimezoneOffset()*60000;
-		var today = new Date(now_utc-timeOff).toISOString().substring(0, 16);
-		document.getElementById("rsdate").setAttribute("min", today);
-		</script>
-	</c:otherwise>
-</c:choose>
-</div>
-</div>
-<!-- /본문 -->
+	</div>
+	<!-- /본문 -->
+
 	<div style="width: 100%; min-height: 1px; height: 60px;"></div>
 
 	<!-- 푸터 -->
     <footer>
         <jsp:include page="/WEB-INF/views/funcs/footer.jsp"></jsp:include>
     </footer>
+    <!-- /푸터 -->
 </body>
 </html>
