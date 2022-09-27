@@ -65,7 +65,7 @@
 			<tbody class=" border-top border-bottom fs-4 " style="text-align: center">
 				<tr class=>
 					<td>
-						<label> <input type="checkbox" name="checkbox" id="checkbox">
+						<label> <input type="checkbox" name="chk" id="checkbox">
 							<p class="text-dark">안내 사항을 모두 확인하였으며, 이에 동의합니다.</p>
 						</label>
 					</td>
@@ -73,8 +73,8 @@
 				<tr>
 					<td>
 						<div style="align-content: center; font-size: 20px">
-							<button class="btn btn-outline-danger" type="button"><a href="javascript:deleteConfirm()">탈퇴 하기</a></button>
-							<button class="btn btn-outline-success" type="button"><a href="${pageContext.request.contextPath }/users/mypage.do">뒤로 가기</a></button>
+							<a type="button" onclick="javascript:OnSave();">탈퇴 하기</a>
+							<a type="button" href="${pageContext.request.contextPath }/users/mypage.do">뒤로 가기</a>
 						</div>
 					</td>
 				</tr>
@@ -100,7 +100,7 @@
 		if(chk==0){
 			alert('Good lugg 탈퇴 안내에 대한 동의를 하지 않았습니다');
 			return false;
-		}
+		}	
 			const isDelete = confirm("${id} 님 탈퇴 하시겠습니까?");
 			
 			if (isDelete) {
