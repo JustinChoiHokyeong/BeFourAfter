@@ -85,8 +85,10 @@ body {
 			위치기반서비스 이용약관(선택)에 모두 동의합니다.
 		</label>
 		<br><br />
-		<button class="btn btn-primary" type="submit">가입</button>
-		<button class="btn btn-secondary" type="button" ><a href="${pageContext.request.contextPath }" style="color: white; text-decoration: none;">돌아가기</a></button>
+		<div>
+			<button style="border: none; background: none;"><a class="btn-cloud" type="submit" style="color:black">회원가입</a></button>
+			<a class="btn-cloud2" type="button" href="${pageContext.request.contextPath }" style="color: white">돌아가기</a>
+		</div>
 	</div>
 
 </form>
