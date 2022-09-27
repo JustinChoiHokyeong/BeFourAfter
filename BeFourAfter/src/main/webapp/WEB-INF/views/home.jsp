@@ -317,7 +317,7 @@
 
 <body>
 <!-- 네비바 -->
-	<nav class="navbar position-absolute top-0 end-0" style=" text-align: center; margin-top:20px; margin-right:30px; ">
+	<nav class="navbar position-absolute top-0 end-0" style=" text-align: center; margin-top:20px; margin-right:20px; ">
 		<div class="container " style="justify-content: end">
 			<button class="navbar-toggler " type="button" data-bs-toggle="collapse"  data-bs-target="#navbarNav" style="border: none; color: rgb(0 0 0 / 0%);">
 	   			<span class="fs-1"><i class="bi bi-cloud-haze" style="color:white; border:none"></i></span>
@@ -329,7 +329,6 @@
 					</li> 
 					<li class="nav-item"> <a class="nav-link fs-3" href="${pageContext.request.contextPath }/review/list.do">리 뷰</a>
 					</li> 
-					</li>
 					<li class="nav-item"> <a class="nav-link fs-3" href="${pageContext.request.contextPath}/cs/list.do">고객 센터</a>
 					</li> 
 				</ul>
@@ -514,7 +513,7 @@
       }
       btnScrollDown.addEventListener('click', scrollDown);
   })();
- /**스크롤다운 버튼*/                                                                                                                                                               * ------------------------------------------------------------------------- */
+ /**스크롤다운 버튼*/               
 </script>
 </body>
 

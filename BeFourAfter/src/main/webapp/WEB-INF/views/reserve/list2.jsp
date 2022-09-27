@@ -44,8 +44,8 @@
     <jsp:include page="/WEB-INF/views/funcs/reserveMenu.jsp"></jsp:include>
 	<!--/바로가기-->
 	<!-- 본문 -->
-	<div class="container">
-	<h2>입국서비스 예약 내역</h2>
+	<div class="container" style="height: 60vh;">
+	<h2 class="text-center" style="margin-bottom:15px"> <strong>입국 서비스 예약 내역</strong></h2>
 		<div>
 			<table class="table align-middle">
 				<thead>
@@ -174,7 +174,6 @@
 		</ul>
 	</div>
 	<!-- /본문 -->
-	<div style="width: 100%; min-height: 1px; height: 60px;"></div>
 
 	<!-- 푸터 -->
     <footer>

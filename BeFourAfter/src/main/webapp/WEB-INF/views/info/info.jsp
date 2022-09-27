@@ -6,10 +6,7 @@
 <head>
 <jsp:include page="/WEB-INF/views/funcs/bs.jsp"></jsp:include>
 <style>
-	header{
-		position:sticky;
-		top:0;
-	}	
+
 </style>
 </head>
 
@@ -22,12 +19,11 @@
 	<!-- 본문 <-->
 	<div>
 		<!--바로가기-->
-		<header>
 		<div>
-			<div class="container">
+			<div class="container p-5 text-center">
 				<div style="width: 100%; min-height: 1px; height: 40px;">
-					<div class="scroll-container">
-						<a href="#1""><button class="btn">예약방법</button></a> 
+					<div class="scroll-container" >
+						<a href="#1"><button class="btn">예약방법</button></a> 
 						<a href="#2"><button class="btn">요금안내</button></a> 
 						<a href="#3"><button class="btn">취소 및 환불규정</button></a> 
 						<a href="#4"><button class="btn">배송 스케줄</button></a> 
@@ -38,7 +34,6 @@
 				</div>
 			</div>
 		</div>
-		</header>
 		<!--예약방법-->
 		<div class="bg-light" id="1">
 			<div class="container p-5" >
