@@ -8,7 +8,9 @@
 		padding: 50px;
 		justify-content:center;
 		background-color:#00123a;
+		width:100%;
 		bottom: 0px;
+		position: relative;
 	}
 	#sns-icon{
 		text-decoration:none;
