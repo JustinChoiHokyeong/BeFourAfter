@@ -5,8 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>/views/users/signup_form.jsp</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.css" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+<jsp:include page="/WEB-INF/views/funcs/bs.jsp"></jsp:include>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
 function execDaumPostcode() {
@@ -39,6 +38,9 @@ function execDaumPostcode() {
 </script>
 </head>
 <body>
+<!-- 네비바 -->
+<jsp:include page="/WEB-INF/views/funcs/navbar.jsp"></jsp:include>
+<!-- /네비바 -->
 <div class="container">
 	<h1>GOOD LUGG 계정 만들기</h1>
 	<form class="animate__animated animate__bounceInDown" action="${pageContext.request.contextPath}/users/signup.do" method="post" id="myForm">
@@ -68,22 +70,24 @@ function execDaumPostcode() {
 		</div>
 		<div>
 			<input type="text" name="postcode" id="postcode" placeholder="우편번호" readonly="readonly">
-			<input type="button" onclick="execDaumPostcode()" value="우편번호 찾기" readonly="readonly"><br>
+			<input class="btn btn-outline-seceondary"type="button" onclick="execDaumPostcode()" value="주소 검색" readonly="readonly"><br>
 			<input type="text" name="addr" id="addr" placeholder="주소" readonly="readonly"><br>
 			<input type="text" name="detailAddr" id="detailAddr" placeholder="상세주소" >
 		</div>
 		<div>	
 			<label class="control-label" for="phone">핸드폰 번호</label>
 			<input class="form-control" type="text" name="phone" id="phone" maxlength="11" placeholder="00000000000"/>
-			<small class="form-text text-muted">숫자로 입력해 주세요</small>
 			<div class="invalid-feedback">'-'없이 번호만 입력해 주세요</div>
+			<small class="form-text text-muted">숫자로 입력해 주세요</small>
+			
 		</div>
 		<div>
 			<label class="control-label" for="email">이메일</label>
 			<input class="form-control" type="text" name="email" id="email" placeholder="Email"/>
 			<div class="invalid-feedback">이메일 형식을 확인해 주세요</div>
 		</div>
-		<button class="btn btn-primary" type="submit" >가입</button>
+		<button class="btn btn-outline-success" type="submit" >가입</button>
+		<button class="btn btn-outline-danger" type="button"><a href="${pageContext.request.contextPath }/users/agree.do">뒤로가기</a></button>
 	</form>
 </div>
     <footer>

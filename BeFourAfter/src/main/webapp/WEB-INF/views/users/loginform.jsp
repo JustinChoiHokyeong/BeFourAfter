@@ -6,35 +6,60 @@
 <head>
 <meta charset="UTF-8">
 <title>/users/loginform.jsp</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.css" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+<jsp:include page="/WEB-INF/views/funcs/bs.jsp"></jsp:include>
+<style>
+body {
+    position: relative;
+    width: 100%;
+    background-image: url(https://i.imgur.com/PgGV6Qh.jpeg);
+    z-index: 0;
+    background-attachment: fixed;
+    background-size: cover;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top center;
+    z-index:-1
+}
+.parallax-one h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 100px;
+    letter-spacing: 10px;
+    text-align: center;
+    color: white;
+    font-weight: 400;
+    text-transform: uppercase;
+    z-index: 10;
+    opacity: .9;
+}
+</style>
 </head>
 <body>
-<div class="container">
-	<h4>Sign in to start your session</h4>
-	<form action="${pageContext.request.contextPath}/users/login.do" method="post">
-		<c:choose>
-			<c:when test="${ empty param.url }">
-				<input type="hidden" name="url" value="${pageContext.request.contextPath}/"/>
-			</c:when>
-			<c:otherwise>
-				<input type="hidden" name="url" value="${param.url }"/>
-			</c:otherwise>
-		</c:choose>
-		<div>
-			<label for="id"> </label>
-			<input type="text" name="id" id="id" placeholder="아이디" autofocus/>
-		</div>
-		<div>
-			<label for="pwd"> </label>
-			<input type="password" name="pwd" id="pwd" placeholder="비밀번호"/>
-		</div>
-		<button type="submit">로그인</button>
-		<a href="${pageContext.request.contextPath}/users/agree.do">회원가입</a>
-	</form>
+<div class="parallax-one" style="padding:0px;">
+	<h2 style="margin-top: 200px">
+       <a href="${pageContext.request.contextPath }"><img class="img-fluid" src="https://i.imgur.com/CVQ8ugn.png" alt="logo" style="width:100px;;"></a>
+   	</h2>
+   	<form style="text-align: -webkit-center; margin-bottom: 150px;"action="${pageContext.request.contextPath}/users/login.do" method="post">
+					<c:choose>
+						<c:when test="${ empty param.url }">
+							<input type="hidden" name="url" value="${pageContext.request.contextPath}/"/>
+						</c:when>
+						<c:otherwise>
+							<input type="hidden" name="url" value="${param.url }"/>
+						</c:otherwise>
+					</c:choose>
+					<div style="margin:5px;">
+						<label for="id"></label>
+						<input class="form-control" type="text" name="id" id="id" autofocus placeholder="아이디" style="width: 300px"/>
+					</div>
+					<div>
+						<label for="pwd"></label>
+						<input class="form-control" type="password" name="pwd" id="pwd" placeholder="비밀번호" style="width: 300px"/>
+					</div>
+					<br />
+					<button class="btn btn-primary" type="submit">로그인</button>
+					<button class="btn btn-secondary" type="button"><a href="${pageContext.request.contextPath}/users/agree.do" style="color: white; text-decoration: unset;">회원가입</a></button>
+				</form>
 </div>
-    <footer>
-        <jsp:include page="/WEB-INF/views/funcs/footer.jsp"></jsp:include>
-    </footer>
 </body>
 </html>

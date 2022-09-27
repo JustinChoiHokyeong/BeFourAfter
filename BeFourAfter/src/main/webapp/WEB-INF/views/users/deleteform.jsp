@@ -7,16 +7,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-.left { 10px;
-	float: left;
-}
-
-.right { 10px;
-	float: right;
-	font-size: 16px;
-	text-align: center;
-}
-
 .text-dark {
 	font-size: 16px
 }
@@ -35,9 +25,10 @@
 </head>
 <body>
 
-	<!-- 네비바 -->
-	<jsp:include page="/WEB-INF/views/funcs/navbar.jsp"></jsp:include>
-	<!-- /네비바 -->
+<!-- 네비바 -->
+<jsp:include page="/WEB-INF/views/funcs/navbar.jsp"></jsp:include>
+<!-- /네비바 -->
+
 	<!-- 본문 -->
 	<div class="container p-5">
 		<div>
@@ -81,14 +72,9 @@
 				</tr>
 				<tr>
 					<td>
-
-						<div class="left">
-							<a href="${pageContext.request.contextPath }/users/mypage.do">
-								<i class="bi bi-arrow-left-short"></i>
-							</a>
-						</div>
-						<div class="right">
-							<a class="btn" href="javascript:deleteConfirm()">탈퇴하기</a>
+						<div style="align-content: center; font-size: 20px">
+							<button class="btn btn-outline-danger" type="button"><a href="javascript:deleteConfirm()">탈퇴 하기</a></button>
+							<button class="btn btn-outline-success" type="button"><a href="${pageContext.request.contextPath }/users/mypage.do">뒤로 가기</a></button>
 						</div>
 					</td>
 				</tr>
