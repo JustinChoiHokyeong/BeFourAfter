@@ -2,9 +2,8 @@ package com.gura.lug.review.service;
 
 import java.io.File;
 import java.net.URLEncoder;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -17,12 +16,16 @@ import org.springframework.web.servlet.ModelAndView;
 import com.gura.lug.exception.NotDeleteException;
 import com.gura.lug.review.dao.ReviewDao;
 import com.gura.lug.review.dto.ReviewDto;
+import com.gura.lug.users.dao.UsersDao;
+
 
 @Service
 public class ReviewServiceImpl implements ReviewService {
 	@Autowired
 	private ReviewDao reviewDao;
-	
+	@Autowired
+	private UsersDao usersDao;
+
 	//리뷰 이미지 list
 	@Override
 	public void getList(HttpServletRequest request) {
@@ -76,8 +79,6 @@ public class ReviewServiceImpl implements ReviewService {
 				dto.setReservetype(keyword);
 			}else if(condition.equals("title")){ //제목 검색인 경우
 				dto.setTitle(keyword);
-			}else if(condition.equals("rating")){ //평점 검색인 경우
-				dto.setRating(keyword);
 			} // 다른 검색 조건을 추가 하고 싶다면 아래에 else if() 를 계속 추가 하면 된다.
 		}
 		
@@ -109,19 +110,29 @@ public class ReviewServiceImpl implements ReviewService {
 		request.setAttribute("list", list);	//리뷰 list
 		request.setAttribute("totalRow", totalRow);
 		
+		
+		//로그인 안되었을 땐, 무조건 예약 여부 false임
+		boolean isReserved=false;
+		
+		//로그인이 되었다면 id를 이용해서,  
+		String id=(String)request.getSession().getAttribute("id");
+		//id가 존재하면
+		if(id!=null) {
+			//users 테이블에서 name을 읽어온다.
+			String id2=usersDao.getData(id).getId();
+			//로그인된 사용자가 예약자인지 여부를 읽어와서 
+			isReserved=reviewDao.isReserved(id2);
+			//로그인된 사용자가 예약자인지 아닌지 여부를 전달하기 
+			request.setAttribute("isReserved", isReserved);
+		}
+		
+		
+		
 	}
 	
-		//갤러리 detail 페이지에 필요한 data를 ModelAndView 에 저장
-		public void getDetail(ModelAndView mView, ReviewDto dto) {
-			//dao 로 해당 게시글 num 에 해당하는 데이터(dto)를 가져온다.
-			ReviewDto dto2 = reviewDao.getData(dto);
-			//ModelAndView 에 가져온 ReviewDto 를 담는다.
-			mView.addObject("dto", dto2);
-			//조회수 올리기
-			reviewDao.addViewCount(dto2.getNum());
-			
-			
-		}
+	
+	
+		
 	
 	//이미지 추가 - 이미지 업로드 & db 저장
 	@Override
@@ -193,9 +204,22 @@ public class ReviewServiceImpl implements ReviewService {
 			//예외를 발생시켜서 응답을 예외 Controller 에서 하도록 한다.
 			throw new NotDeleteException("다른 사람의 리뷰는 삭제할 수 없습니다.");
 		}
-		//본인이 작성한 글이 아니면 아래의 코드가 실행이 안되야 된다. 
+		//본인이 작성한 글이 아니면 아래의 코드가 실행이 안돼야 된다. 
 		reviewDao.delete(dto);
 	}
+	
+	//갤러리 detail 페이지에 필요한 data를 ModelAndView 에 저장
+	public void getDetail(ModelAndView mView, ReviewDto dto) {
+		//dao 로 해당 게시글 num 에 해당하는 데이터(dto)를 가져온다.
+		ReviewDto dto2 = reviewDao.getData(dto);
+		//ModelAndView 에 가져온 ReviewDto 를 담는다.
+		mView.addObject("dto", dto2);
+		//조회수 올리기
+		reviewDao.addViewCount(dto2.getNum());
+				
+				
+	}
+	
 	
 }
 

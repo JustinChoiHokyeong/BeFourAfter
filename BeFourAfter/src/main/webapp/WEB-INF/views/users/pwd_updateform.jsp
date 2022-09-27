@@ -18,6 +18,7 @@
 			<label for="pwd">기존 비밀 번호</label>
 			<input type="password" name="pwd" id="pwd"/>
 		</div>
+
 		<div>
 			<label for="newPwd">새 비밀번호</label>
 			<input type="password" name="newPwd" id="newPwd"/>
@@ -41,5 +42,6 @@
 		}
 	});
 </script>
+
 </body>
 </html>

@@ -5,8 +5,15 @@
 
 <head>
 <jsp:include page="/WEB-INF/views/funcs/bs.jsp"></jsp:include>
+<style>
+	header{
+		position:sticky;
+		top:0;
+	}	
+</style>
 </head>
-
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.css">
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css'/>
 <body>
 
 	<!-- 네비바 -->
@@ -16,27 +23,24 @@
 	<!-- 본문 <-->
 	<div>
 		<!--바로가기-->
+		<header>
 		<div>
-			<div class="container p-5">
-				<div style="width: 100%; min-height: 1px; height: 60px;">
+			<div class="container">
+				<div style="width: 100%; min-height: 1px; height: 40px;">
 					<div class="scroll-container">
 						<a href="#1""><button class="btn">예약방법</button></a> 
 						<a href="#2"><button class="btn">요금안내</button></a> 
 						<a href="#3"><button class="btn">취소 및 환불규정</button></a> 
 						<a href="#4"><button class="btn">배송 스케줄</button></a> 
-						<a href="${pageContext.request.contextPath }/reserve/main.do">
-							<button class="btn">예약하기</button>
-						</a>
 					</div>
 				</div>
 			</div>
 		</div>
-		<!--/바로가기-->
-		<div style="width: 100%; min-height: 1px; height: 60px;"></div>
+		</header>
 		<!--예약방법-->
-		<div class="bg-light">
-			<div class="container p-5">
-				<div id="1">
+		<div class="bg-light" id="1">
+			<div class="container p-5" >
+				<div >
 					<h3>예약방법</h3>
 					<div>
 						<div>
@@ -51,12 +55,10 @@
 				</div>
 			</div>
 		</div>
-		<!--/예약방법-->
-		<div style="width: 100%; min-height: 1px; height: 60px;"></div>
 		<!--요금안내-->
-		<div>
-			<div class="container p-5">
-				<div id="2">
+		<div id="2">
+			<div class="container p-5" >
+				<div >
 					<h3>요금안내</h3>
 					<div>
 						<div>
@@ -101,12 +103,10 @@
 				</div>
 			</div>
 		</div>
-		<!--/요금안내-->
-		<div style="width: 100%; min-height: 1px; height: 60px;"></div>
 		<!--취소 및 환불규정-->
-		<div class="bg-light">
+		<div class="bg-light" id="3">
 			<div class="container p-5">
-				<div id="3">
+				<div >
 					<h3>취소 및 환불규정</h3>
 					<table>
 						<thead>
@@ -123,12 +123,10 @@
 				</div>
 			</div>
 		</div>
-		<!--/취소 및 환불규정-->
-		<div style="width: 100%; min-height: 1px; height: 60px;"></div>
 		<!-- 배송 스케줄-->
-		<div>
+		<div id="4">
 			<div class="container p-5">
-				<div id="4">
+				<div >
 					<h3>배송 스케줄</h3>
 					<div>
 						<h4>입국</h4>
@@ -158,8 +156,6 @@
 				</div>
 			</div>
 		</div>
-		<!-- /배송 스케줄-->
-		<div style="width: 100%; min-height: 1px; height: 60px;"></div>
 		<!--기타-->
 		<div class="bg-light">
 			<div class="container p-5">
@@ -173,28 +169,14 @@
 				</div>
 			</div>
 		</div>
-		<!--/기타-->
-		<div style="width: 100%; min-height: 1px; height: 60px;"></div>
-		<div>
-			<div class="container p-5">
-				<div style="width: 100%; min-height: 1px; height: 60px;">
-						<a href="${pageContext.request.contextPath }/reserve/main.do">
-							<button class="btn">예약하기</button>
-						</a>
-				</div>
-			</div>
-		</div>
 	</div>
 	<!-- /본문 -->
 
-	<!-- 네비게이션 -->
-	<jsp:include page="/WEB-INF/views/funcs/toTop.jsp"></jsp:include>
-	<!-- /네비게이션  -->
 
 	<!-- 푸터 -->
-	<footer class="container-fluid navbar-fixed-bottom">
-		<jsp:include page="/WEB-INF/views/funcs/footer.jsp"></jsp:include>
-	</footer>
+    <footer>
+        <jsp:include page="/WEB-INF/views/funcs/footer.jsp"></jsp:include>
+    </footer>
 	<!-- /푸터 -->
 </body>
 

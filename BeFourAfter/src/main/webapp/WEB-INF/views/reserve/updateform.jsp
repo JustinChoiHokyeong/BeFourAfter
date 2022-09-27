@@ -8,39 +8,51 @@
 <title>Insert title here</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+function execDaumPostcode() {
+        new daum.Postcode({
+            oncomplete: function(data) {
+                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                var addr = ''; // 주소 변수
+                var extraAddr = ''; // 참고항목 변수
+
+                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                    addr = data.roadAddress;
+                } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                    addr = data.jibunAddress;
+                }
+
+                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                document.getElementById("addr").value = addr;
+                // 커서를 상세주소 필드로 이동한다.
+                document.getElementById("addr").focus();
+
+                
+            }
+        }).open();
+}
+</script>
 </head>
 <body>
-<!-- 네비바 -->
+	<!-- 네비바 -->
 	<jsp:include page="/WEB-INF/views/funcs/navbar.jsp"></jsp:include>
 	<!-- /네비바 -->
-<!--바로가기-->
-            <div>
-                <div class="container p-5">
-                    <div style="width: 100%; min-height: 1px; height: 60px;">
-                        <a href="${pageContext.request.contextPath }/reserve/ent_insertform.do"><button class="btn">입국  서비스</button></a>
-                        <a href="${pageContext.request.contextPath }/reserve/leave_insertform.do"><button class="btn">출국  서비스</button></a>
-                        <div class="btn-group">
-                            <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">  나의 예약
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item"
-                                        href="${pageContext.request.contextPath }/reserve/list.do">출국 예약 확인</a></li>
-                                <li><a class="dropdown-item"
-                                        href="${pageContext.request.contextPath }/reserve/list2.do">입국 예약 확인</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--/바로가기-->
+	<!--바로가기-->
+	<jsp:include page="/WEB-INF/views/funcs/reserveMenu.jsp"></jsp:include>
+	<!--/바로가기-->
 	<!-- 본문 -->
 <div class="bg-light">
 <div class="container">
 <c:choose>
 	<c:when test="${dto.reservetype eq 'leave_insertform'}">
-		<h1>출국서비스</h1>
+		<h1>출국서비스 수정</h1>
 		
-		<h2>예약 수정</h2>
+		<h2>예약자 정보</h2>
 		<div class="container">
 			<form action="update.do" method="post" id="leave_insertform">
 				<input type="hidden" name="leave_insertform" id="leave_insertform" value="leave_insertform"/>
@@ -65,12 +77,8 @@
 				<input type="checkbox" name="same" value="same" checked/>
 				</label>
 				</p>
-				<p>
-				<label for="rsdate">수령 날짜 및 시간</label><br />
-				<input type="datetime-local" name="rsdate" id="rsdate" value="${dto.rsdate }"/>
-				</p>
 				<fieldset style="max-width: 30%">
-					<legend>수령장소</legend>
+					<legend>수령 장소 및 날짜</legend>
 					<c:choose>
 						<c:when test="${dto.place eq 'first'}">
 							<label for="place">
@@ -90,6 +98,10 @@
 						</c:otherwise>
 					</c:choose>
 				</fieldset>
+				<p>
+					<label for="rsdate">수령 날짜 및 시간</label><br />
+					<input type="datetime-local" name="rsdate" id="rsdate" value="${dto.rsdate }"/>
+				</p>
 				<p>
 				<label for="basic">기본 수하물</label>
 				<input type="number" name="basic" id="basic" value="${dto.basic }" min="0"placeholder="수량입력"/>
@@ -153,9 +165,9 @@
 		</script>
 	</c:when>
 	<c:otherwise>
-		<h1>입국서비스</h1>
+		<h1>입국서비스 수정</h1>
 		
-		<h2>예약 수정</h2>
+		<h2>예약자 정보</h2>
 		<div class="container">
 			<form action="update2.do" method="post" id="ent_insertform">
 				<input type="hidden" name="ent_insertform" id="ent_insertform" value="ent_insertform"/>
@@ -169,12 +181,8 @@
 				<label for="phone">핸드폰 번호</label>
 				<input type="text" name="phone" id="phone" value="${dto.phone }"disabled/>
 				</p>
-				<p>
-				<label for="rsdate">맡기는 날짜 및 시간</label><br />
-				<input type="datetime-local" name="rsdate" id="rsdate" value="${dto.rsdate }"/>
-				</p>
 				<fieldset style="max-width: 30%">
-					<legend>맡길장소</legend>
+					<legend>맡길 장소 및 날짜</legend>
 					<c:choose >
 						<c:when test="${dto.place eq 'first'}">
 							<label for="place">
@@ -195,8 +203,15 @@
 					</c:choose>
 				</fieldset>
 				<p>
-				<label for="addr">수하물 보낼 주소</label>
-				<input type="text" name="addr" id="addr" value="${dto.addr}" placeholder="주소를 정확히 입력해주세요 (시/군/구 + 상세주소)" style="width: 400px"/>
+				<label for="rsdate">맡기는 날짜 및 시간</label><br />
+				<input type="datetime-local" name="rsdate" id="rsdate" value="${dto.rsdate }"/>
+				</p>
+				<p>
+				<div><span style="font-size: 20px;">수하물 보내는 주소</span><br />
+					<input type="button" onclick="execDaumPostcode()" value="주소 검색" readonly="readonly"><br>
+					<input type="text" name="addr" id="addr" placeholder="주소 및 상세 주소" value="${dto.addr }" style="width: 500px">
+					<br /><small>Ex) 서울특별시 강남구 테헤란로 124 삼원타워 5층  501호</small><br>
+				</div>
 				</p>
 				<p>
 				<label for="basic">기본 수하물</label>
@@ -250,12 +265,10 @@
 </div>
 <!-- /본문 -->
 	<div style="width: 100%; min-height: 1px; height: 60px;"></div>
-	<!-- 네비게이션 -->
-	<jsp:include page="/WEB-INF/views/funcs/toTop.jsp"></jsp:include>
-	<!-- /네비게이션  -->
+
 	<!-- 푸터 -->
-	<footer class="container-fluid navbar-fixed-bottom">
-		<jsp:include page="/WEB-INF/views/funcs/footer.jsp"></jsp:include>
-	</footer>
+    <footer>
+        <jsp:include page="/WEB-INF/views/funcs/footer.jsp"></jsp:include>
+    </footer>
 </body>
 </html>

@@ -81,7 +81,6 @@
             <span><a class="btn text-decoration-none text-dark btn-outline-secondary" id="deleteBtn"><i class="bi bi-trash3"></i>삭제</a></span>
          </c:if>
       </div>
-      
       <!-- 댓글 목록 -->
       <div class="comments" >
          <ul>
@@ -181,6 +180,10 @@
          </c:if>
       </form>
    </div>
+	<footer>
+    	<jsp:include page="/WEB-INF/views/funcs/footer.jsp"></jsp:include>
+	</footer>
+   
    <script src="${pageContext.request.contextPath}/resources/js/gura_util.js"></script>
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
    <script>

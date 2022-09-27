@@ -86,6 +86,9 @@ function execDaumPostcode() {
 		<button class="btn btn-primary" type="submit" >가입</button>
 	</form>
 </div>
+    <footer>
+        <jsp:include page="/WEB-INF/views/funcs/footer.jsp"></jsp:include>
+    </footer>
 <script src="${pageContext.request.contextPath}/resources/js/gura_util.js"></script>
 <script>
 	//아이디, 비밀번호, 이메일의 유효성 여부를 관리한 변수 만들고 초기값 대입

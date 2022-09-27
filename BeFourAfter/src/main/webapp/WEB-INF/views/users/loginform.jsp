@@ -33,5 +33,8 @@
 		<a href="${pageContext.request.contextPath}/users/agree.do">회원가입</a>
 	</form>
 </div>
+    <footer>
+        <jsp:include page="/WEB-INF/views/funcs/footer.jsp"></jsp:include>
+    </footer>
 </body>
 </html>

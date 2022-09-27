@@ -38,7 +38,7 @@ img {
 				<c:choose>
 						<c:when test="${empty dto.profile }">
 						<img id="profileImage" style="height: 100%, width: 100%;"
-						src="<c:url value='../dd_logo.png'/>">
+						src="<c:url value='../images/로고1.png'/>">
 						</c:when>
 						<c:otherwise>
 							<img id="profileImage"
@@ -86,5 +86,8 @@ img {
 </form>
 	<a href="${pageContext.request.contextPath }/users/updateform.do">개인정보수정</a>
 	</div>
+	    <footer>
+        <jsp:include page="/WEB-INF/views/funcs/footer.jsp"></jsp:include>
+    </footer>
 </body>
 </html>
