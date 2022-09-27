@@ -119,13 +119,14 @@ public class ReviewServiceImpl implements ReviewService {
 		//id가 존재하면
 		if(id!=null) {
 			//users 테이블에서 name을 읽어온다.
-			String name=usersDao.getData(id).getName();
+			String id2=usersDao.getData(id).getId();
 			//로그인된 사용자가 예약자인지 여부를 읽어와서 
-			isReserved=reviewDao.isReserved(name);
+			isReserved=reviewDao.isReserved(id2);
+			//로그인된 사용자가 예약자인지 아닌지 여부를 전달하기 
+			request.setAttribute("isReserved", isReserved);
 		}
 		
-		//로그인된 사용자가 예약자인지 아닌지 여부를 전달하기 
-		request.setAttribute("isReserved", isReserved);
+		
 		
 	}
 	

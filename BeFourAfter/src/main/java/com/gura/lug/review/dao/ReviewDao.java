@@ -21,5 +21,5 @@ public interface ReviewDao {
 		//글 삭제
 		public void delete(ReviewDto dto);
 		
-		public boolean isReserved(String name);
+		public boolean isReserved(String id);
 }

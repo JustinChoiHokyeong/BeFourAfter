@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>/views/reserve/leave_insertform.jsp</title>
+
 <jsp:include page="/WEB-INF/views/funcs/bs.jsp"></jsp:include>
 <style>
 .input-group-text {
@@ -24,51 +25,86 @@
 </style>
 </head>
 <body style="background-color: rgb(226, 226, 226)">
+	
+</head>
+<body>
+<jsp:include page="/WEB-INF/views/funcs/bs.jsp"></jsp:include>
 	<!-- 네비바 -->
 	<jsp:include page="/WEB-INF/views/funcs/navbar.jsp"></jsp:include>
 	<!-- /네비바 -->
-	<div>
-		<!--바로가기-->
-		<jsp:include page="/WEB-INF/views/funcs/reserveMenu.jsp"></jsp:include>
-		<!--/바로가기-->
-		<!-- 본문 -->
-		<div class="container" style="padding: 0 50px 50px 50px;">
-			<div>
-				<h1 class="text-center" style="margin: 0 30px 30px 30px;">출국
-					서비스</h1>
-				<div class="container" style="width: 600px; height: 600px">
-					<h3 class="text-center" style="margin: 20 0 5 0;">예약 정보</h3>
-					<form action="leave_insert.do" method="post" id="leave_insertform"
-						style="text-align: -webkit-center;">
-						<input class="form-control" type="hidden" name="leave_insertform"
-							id="leave_insertform" value="leave_insertform" /> <input
-							type="hidden" name="name" id="name" value="${dto.name }" /> <input
-							type="hidden" name="phone" id="phone" value="${dto.phone }" /> <input
-							type="hidden" name="id" id="id" value="${dto.id }" />
+	<!--바로가기-->
+	<jsp:include page="/WEB-INF/views/funcs/reserveMenu.jsp"></jsp:include>
+	<!--/바로가기-->
+	<!-- 본문 -->
+	<div class="bg-light">
+	<div class="container">
+		<h1>출국서비스</h1>
+		<h2>예약자 정보</h2>
+		<form action="leave_insert.do" method="post" id="leave_insertform">
+			<input type="hidden" name="leave_insertform" id="leave_insertform" value="leave_insertform"/>
+			<input type="hidden" name="name" id="name" value="${dto.name }"/>
+			<input type="hidden" name="phone" id="phone" value="${dto.phone }"/>
+			<input type="hidden" name="id" id="id" value="${dto.id }"/>
+			<p>
+			<label for="name">예약자 이름</label>
+			<input type="text" name="name" id="name" value="${dto.name }" disabled/>
+			<br />
+			<label for="phone">핸드폰 번호</label>
+			<input type="text" name="phone" id="phone" value="${dto.phone }" disabled/>
 
-						<div class="input-group">
-							<span class="input-group-text" for="name">예약자 이름</span> <input
-								class="form-control" type="text" name="name" id="name"
-								value="${dto.name }" disabled />
-						</div>
-						<div class="input-group">
-							<span class="input-group-text" for="name">핸드폰 번호</span> <input
-								class="form-control" type="text" name="phone" id="phone"
-								value="${dto.phone }" disabled />
-						</div>
-						<div class="input-group">
-							<label class="input-group-text" for="rname">수령인 이름</label> <input
-								class="form-control" type="text" name="rname" id="rname"
-								value="" /> <br /> <label class="input-group-text" for="same">
-								예약자와 동일 <input name="same" value="same" class="form-control form-check-input" type="checkbox" 
-								 style="margin-left: 5px; margin-top: 0; padding: 8px;" />
-							</label>
-						</div>
-						<div class="input-group">
-							<label class="input-group-text" for="rphone">핸드폰 번호</label> <input
-								class="form-control" type="text" name="rphone" id="rphone"
-								value="" maxlength="11"
-								oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
+			</p>
+			<p>
+				<label for="rname">수령인 이름</label> <input type="text" name="rname"
+					id="rname" value="" /> <br /> <label for="rphone">핸드폰 번호</label>
+				<input type="text" name="rphone" id="rphone" value="" maxlength="11"
+					oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
+				<br /> <label for="same"> <small> 예약자와 동일 </small> <input
+					type="checkbox" name="same" value="same" />
+				</label>
+			</p>
+			
+			<fieldset style="max-width: 30%">
+				<legend>수령 장소 및 날짜</legend>
+				<label for="place"> <input type="radio" name="place"
+					value="first" checked="checked" />제 1 터미널
+				</label> <label for="place"> <input type="radio" name="place"
+					value="second" />제 2 터미널
+				</label>
+			</fieldset>
+			<p>
+				<label for="rsdate">수령 날짜 및 시간</label><br /> <input
+					type="datetime-local" name="rsdate" id="rsdate" value="" class=""/>
+			</p>
+			<p>
+				<label for="basic">기본 수하물</label> <input type="number" name="basic"
+					id="basic" value="0" min="0" placeholder="수량입력" /> <br /> <small>(캐리어28인치
+					이하, 백팩, 가방, 20kg 이하)</small>
+			</p>
+			<p>
+				<label for="big">대형 수하물</label> <input type="number" name="big"
+					id="big" value="0" min="0" placeholder="수량입력" /> <br /> <small>(캐리어28인치
+					초과, 박스, 골프백, 20kg 초과)</small>
+			</p>
+			<p>
+				<label for="over">25kg 초과</label> <input type="number" name="over"
+					id="over" value="0" min="0" placeholder="수량입력" /> <br /> <small>(개당
+					5,000원 추가)</small>
+			</p>
+			<p>
+				<label for="agree"> <small> 개인정보수집 동의 </small> <input
+					type="checkbox" name="agree" value="" id="agree" />
+				</label>
+			</p>
+			<p>
+				<button type="submit" class="btn">예약</button>
+			</p>
+			
+		</form>
+	</div>
+		</div>
+	<!-- /본문 -->
+	<div style="width: 100%; min-height: 1px; height: 60px;"></div>
+
 
 						</div>
 						<div class="input-group">

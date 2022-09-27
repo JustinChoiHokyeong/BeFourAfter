@@ -95,13 +95,24 @@
 			<h2 class="accordion-header" id="headingFour">
 				<button class="accordion-button collapsed" type="button"
 					data-bs-toggle="collapse" data-bs-target="#collapseFour"
+
 					aria-expanded="false" aria-controls="collapseFour">[지역] 서울 말고 다른 지역에서도 신청할 수 있나요?</button>
+
+					aria-expanded="false" aria-controls="collapseFour">[예약] 당일날 서비스를 이용하고 싶어요</button>
+
 			</h2>
 			<div id="collapseFour" class="accordion-collapse collapse"
 				aria-labelledby="headingFour" data-bs-parent="#accordionExample">
 				<div class="accordion-body">
+
 					<strong>굿럭의 서비스 지역입니다.</strong> <br><br>
 					<p>현재 수도권을 제외한 다른 지역에서는 서비스를 제공하고 있지 않습니다. 추후 서비스 확대를 위해 노력하겠습니다.</p>
+
+					<strong>당일날 서비스 이용이 가능한가요?</strong> <br />
+					<br />
+					<p>당일 서비스는 입/출국 최소 6시간 전에 전화나 카카오톡으로 문의를 주셔야 스케줄 확인 후 서비스 이용이 가능합니다.</p>
+					<p> 단, 스케줄 상 예약이 차있어 서비스 이용이 불가능 할 수 있다는 점 미리 말씀드립니다.</p>
+
 
 
 				</div>
@@ -111,13 +122,34 @@
 			<h2 class="accordion-header" id="headingFive">
 				<button class="accordion-button collapsed" type="button"
 					data-bs-toggle="collapse" data-bs-target="#collapseFive"
+
 					aria-expanded="false" aria-controls="collapseFive">[운송] 굿럭 운송 서비스는 호텔이나 숙소에서도 가능한가요?</button>
+
+					aria-expanded="false" aria-controls="collapseFive">[서비스] 입국 서비스 이용 방법</button>
+
 			</h2>
 			<div id="collapseFive" class="accordion-collapse collapse"
 				aria-labelledby="headingFive" data-bs-parent="#accordionExample">
 				<div class="accordion-body">
+
 					<strong>굿럭의 운송 서비스 안내입니다.</strong> <br><br>
 					<p>굿럭 운송 서비스는 고객님의 집과 제휴호텔 이외에도 짐을 맡길 수 있는 어느 숙소이든지 이용이 가능합니다.</p>
+
+					<strong>입국 서비스 이용 방법</strong>
+					<br><br />
+						<ol>
+							<li>홈페이지를 통해 입국 예약 신청 시 담당자가 확인 후 연락을 드립니다.</li>
+								<p>이용 시간은 입국심사를 마친 예상 시간을 입력해주세요</p>
+								<p>	(ex. 입국시간07시 +입국심사 1시간예상 = 08시 입력)</p>
+							<li>서비스 신청 후 결제 까지 완료해야 예약이 확정됩니다.</li>
+							<br>					
+							<li>입국 후 지정된 장소에서 물품 전달하기.(장소는 문자로 전달)</li>
+							<br>
+							<li>배송은 빠르면 당일, 늦어도 1~2일 정도 소요됩니다.</li>
+								<p>(단, 교통상황에 따라 배송시간이 달라질 수 있다는 점 양해 바랍니다.)</p>
+							
+						</ol>
+
 				</div>
 			</div>
 		</div>
@@ -125,26 +157,50 @@
 			<h2 class="accordion-header" id="headingSix">
 				<button class="accordion-button collapsed" type="button"
 					data-bs-toggle="collapse" data-bs-target="#collapseSix"
+
 					aria-expanded="false" aria-controls="collapseSix">[운송] 짐이 파손되거나 분실되면 어떡하나요?</button>
+
+					aria-expanded="false" aria-controls="collapseSix">[서비스] 출국 서비스 이용 방법</button>
+
 			</h2>
 			<div id="collapseSix" class="accordion-collapse collapse"
 				aria-labelledby="headingSix" data-bs-parent="#accordionExample">
 				<div class="accordion-body">
+
 					<strong>분실 및 손실에 대한 답변입니다.</strong> <br><br>
 					<p>
 						수하물의 분실 및 손실이 발생한 경우, 굿럭의 실수로 발생한 것이 입증 되어야 하며, 입증시 보상의 최대 금액은 500,000원 입니다.
 						<br />
 						상세한 내용은 주문 신청시 약관을 참조해 주시거나 대표 이메일 혹은 전화 문의 바랍니다.
 					</p>
+
+					<strong>출국 서비스 이용 방법</strong>
+					<br><br />
+						<ol>
+							<li>홈페이지를 통해 출국 예약 신청 시 담당자가 확인 후 연락을 드립니다.</li>
+							<br>
+							<li>서비스 신청 후 결제 까지 완료해야 예약이 확정됩니다.</li>
+							<br>
+							<li>이용 당일 오전에 안내받은 시간까지 가방을 숙소 프론트에 맡기고 [가방은여행중] 에서 픽업 예정이라고 미리 말씀 부탁드리겠습니다. </li>
+								<p>단, 이용 당일 안내 받으신 시간까지 가방이 맡겨져 있지않을 경우 예약이 취소 될 수 있으며, 이 경우에는 환불이 불가합니다.</p>
+							<br>
+							<li>안내받은 장소와 시간에 맞춰 물품 픽업하기</li>
+								<p>(단, 교통상황에 따라 배송시간이 달라질 경우 미리 연락 드리겠습니다.)</p>
+						</ol>
+
 				</div>
 			</div>
 		</div>
 		<!-- 아코디언 메뉴 -->
 		<!-- 질문버튼 -->
-		<div class="text-end">
+		<div class="text-center">
 		<br />
 		<a href="${pageContext.request.contextPath}/cs/ask.do">
+
 			<button class="btn">1:1 질문하기</button>
+
+			<button class="btn">문의하기</button>
+
 		</a>
 		</div>
 		<!-- /질문버튼 -->

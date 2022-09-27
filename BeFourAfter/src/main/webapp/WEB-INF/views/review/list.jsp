@@ -9,6 +9,7 @@
 <head>
 <meta charset="UTF-8">
 <title>/review/list.jsp</title>
+
 <!-- 부트스트랩 -->
 <jsp:include page="/WEB-INF/views/funcs/bs.jsp"></jsp:include>
 <style>
@@ -57,6 +58,7 @@
 <body>
 	<div class="container p-5">
 		<div class="container"><br>
+		<br><h1>리뷰 목록 입니다.</h1>
 		<div style="width: 100%; min-height: 1px; height: 60px;"></div>
 			<div class="text-end" style="margin-bottom:20px;">
 				<!-- 업로드 버튼  -->
@@ -87,7 +89,7 @@
 			</c:if>
 
 			<div class="row"  style=" place-content: center;">
-			<br><h1>리뷰 목록 입니다.</h1>
+			
 				<div class="row">
 
 				<c:forEach var="tmp" items="${list }">

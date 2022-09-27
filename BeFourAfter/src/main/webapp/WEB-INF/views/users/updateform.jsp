@@ -143,10 +143,7 @@ function execDaumPostcode() {
 
 <script>
 //아이디, 비밀번호, 이메일의 유효성 여부를 관리한 변수 만들고 초기값 대입
-	let isIdValid=false;
-	let isPwdValid=false;
 	let isEmailValid=false;
-	let isNameValid=false;
 	let isPhoneValid=false;
 
 //이메일을 입력했을때 실행할 함수 등록
@@ -183,10 +180,10 @@ document.querySelector("#phone").addEventListener("input", function(){
 
 	//만일 입력값이 정규표현식과 매칭되지 않는다면
 	if(reg_phone.test(inputPhone)){
-		isPhonelValid=true;
+		isPhoneValid=true;
 		document.querySelector("#phone").classList.add("is-valid");
 	}else{
-		isNameValid=false;
+		isPhoneValid=false;
 		document.querySelector("#phone").classList.add("is-invalid");
 	}
 });
@@ -196,13 +193,21 @@ document.querySelector("#phone").addEventListener("input", function(){
 	document.querySelector("#myForm").addEventListener("submit", function(e){
 	//폼 전체의 유효성 여부 알아내기 
 	let isFormValid = isEmailValid && isPhoneValid;
-	if(!isFormValid){//폼이 유효하지 않으면
-	  //폼 전송 막기 
-	  // e.preventDefault();
 	
-	}   
-	});
+	if(!isPhoneValid){
+        document.querySelector("#phone").focus();
+     }else if(!isEmailValid){//만일 이메일이 유효하지 않는다면
+           //비밀번호 입력란에 포커스 주기
+          document.querySelector("#email").focus();
+     }
 
+     if(!isFormValid){//폼이 유효하지 않으면
+        //폼 전송 막기 
+        e.preventDefault();
+     }
+
+  });
+	
 </script>
 </body>
 </html>

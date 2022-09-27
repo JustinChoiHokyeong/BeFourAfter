@@ -5,67 +5,93 @@
 <head>
 <meta charset="UTF-8">
 <title>/views/users/agree.jsp</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.css" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+<jsp:include page="/WEB-INF/views/funcs/bs.jsp"></jsp:include>
 <style>
-.container {
-	width: 70%;
-	height: 70%;
+body {
+    position: relative;
+    width: 100%;
+    background-image: url(https://i.imgur.com/PgGV6Qh.jpeg);
+    z-index: 0;
+    background-attachment: fixed;
+    background-size: cover;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top center;
+    z-index:-1
+}
+.container h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 100px;
+    letter-spacing: 10px;
+    text-align: center;
+    color: white;
+    font-weight: 400;
+    text-transform: uppercase;
+    z-index: 10;
+    opacity: .9;
 }
 </style>
 
 </head>
 <body>
 <form action="signup_form.do" method="get" id="form1">
-<div class="container">
 
-	<h1>Good lugg 회원가입</h1>
-	
-	<label>
-		<input type="checkbox" name="all" id="all">
-		Good lugg 이용약관, 개인정보 수집 및 이용, 위치기반서비스 이용약관(선택)에 모두 동의합니다.
-	</label>
-<br></br>
-	<label>
-		<input type="checkbox" name="c1" id="c1"> 
-		Good lugg 이용약관 동의(필수)
-	</label>
-<br>
-		<textarea name="" id="">여러분을 환영합니다.
-		굿럭 서비스 및 제품(이하 ‘서비스’)을 이용해 주셔서 감사합니다. 본 약관은 다양한 굿럭 서비스의 이용과 관련하여 굿럭 서비스를 제공하는 굿럭 주식회사(이하 ‘굿럭’)와 이를 이용하는 굿럭 서비스 회원(이하 ‘회원’) 또는 비회원과의 관계를 설명하며, 아울러 여러분의 굿럭 서비스 이용에 도움이 될 수 있는 유익한 정보를 포함하고 있습니다.
+	<div class="container" style="text-align: center; margin-top:50px;">
+		<h2 style="margin-top: 0px">
+      		<a href="${pageContext.request.contextPath }"><img class="img-fluid" src="https://i.imgur.com/CVQ8ugn.png" alt="logo" style="width:100px;;"></a>
+   		</h2>
+		</br>
+		<textarea style="width: 800px; height: 130px; display: inline-table; background: revert; font-weight: bolder;" disabled>
+여러분을 환영합니다.
+굿럭 서비스 및 제품(이하 ‘서비스’)을 이용해 주셔서 감사합니다.
+본 약관은 다양한 굿럭 서비스의 이용과 관련하여 굿럭 서비스를 제공하는
+굿럭 주식회사(이하 ‘굿럭’)와 이를 이용하는 굿럭 서비스 회원(이하 ‘회원’) 또는 비회원과의 관계를 설명하며, 아울러 여러분의 굿럭 서비스 이용에 도움이 될 수 있는 유익한 정보를 포함하고 있습니다.
 		</textarea>
-		
-<br></br> 			
-	
-	<label>
-		<input type="checkbox" name="c2" id="c2"> 
-		개인정보 수집 및 이용 동의(필수)
-	</label>
-<br>
-		<textarea name="" id="">여러분을 환영합니다.
-		굿럭 서비스 및 제품(이하 ‘서비스’)을 이용해 주셔서 감사합니다. 본 약관은 다양한 굿럭 서비스의 이용과 관련하여 굿럭 서비스를 제공하는 굿럭 주식회사(이하 ‘굿럭’)와 이를 이용하는 굿럭 서비스 회원(이하 ‘회원’) 또는 비회원과의 관계를 설명하며, 아울러 여러분의 굿럭 서비스 이용에 도움이 될 수 있는 유익한 정보를 포함하고 있습니다.
+		<br>
+		<label style="text-align:left;">
+			<input type="checkbox" name="c1" id="c1"> 
+			Good lugg 이용약관 동의(필수)
+		</label>
+		<br></br>
+		<textarea style="width: 800px; height: 130px; display: inline-table; background: revert; font-weight: bolder;" disabled>
+여러분을 환영합니다.
+굿럭 서비스 및 제품(이하 ‘서비스’)을 이용해 주셔서 감사합니다.
+본 약관은 다양한 굿럭 서비스의 이용과 관련하여 굿럭 서비스를 제공하는
+굿럭 주식회사(이하 ‘굿럭’)와 이를 이용하는 굿럭 서비스 회원(이하 ‘회원’) 또는 비회원과의 관계를 설명하며, 아울러 여러분의 굿럭 서비스 이용에 도움이 될 수 있는 유익한 정보를 포함하고 있습니다.		
 		</textarea>
-   				
-<br></br>			
+		<br>
+		<label>
+			<input type="checkbox" name="c2" id="c2"> 
+			개인정보 수집 및 이용 동의(필수)
+		</label>
+		<br>
+		</br>
+		<textarea style="width: 800px; height: 130px; display: inline-table; background: revert; font-weight: bolder;" disabled>
+여러분을 환영합니다.
+굿럭 서비스 및 제품(이하 ‘서비스’)을 이용해 주셔서 감사합니다.
+본 약관은 다양한 굿럭 서비스의 이용과 관련하여 굿럭 서비스를 제공하는
+굿럭 주식회사(이하 ‘굿럭’)와 이를 이용하는 굿럭 서비스 회원(이하 ‘회원’) 또는 비회원과의 관계를 설명하며, 아울러 여러분의 굿럭 서비스 이용에 도움이 될 수 있는 유익한 정보를 포함하고 있습니다.		
+		</textarea>
+		<br>
+		<label>
+			<input type="checkbox" name="c3" id="c3"> 
+			위치기반서비스 이용약관 동의(선택)
+		</label>
+		<br>
+		<label>
+			<input type="checkbox" name="all" id="all">
+			Good lugg 이용약관, 개인정보 수집 및 이용<br />
+			위치기반서비스 이용약관(선택)에 모두 동의합니다.
+		</label>
+		<br><br />
+		<div>
+			<button style="border: none; background: none;"><a class="btn-cloud" type="submit" style="color:black">회원가입</a></button>
+			<a class="btn-cloud2" type="button" href="${pageContext.request.contextPath }" style="color: white">돌아가기</a>
+		</div>
+	</div>
 
-	<label>
-		<input type="checkbox" name="c3" id="c3"> 
-		위치기반서비스 이용약관 동의(선택)
-	</label>
-<br>
-	<textarea name="" id="">여러분을 환영합니다.
-	굿럭 서비스 및 제품(이하 ‘서비스’)을 이용해 주셔서 감사합니다. 본 약관은 다양한 굿럭 서비스의 이용과 관련하여 굿럭 서비스를 제공하는 굿럭 주식회사(이하 ‘굿럭’)와 이를 이용하는 굿럭 서비스 회원(이하 ‘회원’) 또는 비회원과의 관계를 설명하며, 아울러 여러분의 굿럭 서비스 이용에 도움이 될 수 있는 유익한 정보를 포함하고 있습니다.
-	</textarea>
-
-<br></br>
-	<input type="submit" value="확인">
-	<input type="reset" value="취소">
-
-</div>
 </form>
-    <footer>
-        <jsp:include page="/WEB-INF/views/funcs/footer.jsp"></jsp:include>
-    </footer>
 <script>
 	var doc = document;
 	var form1 = doc.getElementById('form1');

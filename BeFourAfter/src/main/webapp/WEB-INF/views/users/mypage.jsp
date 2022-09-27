@@ -9,6 +9,27 @@
 <%-- bootstrap 읽어오기 --%>
 <jsp:include page="/WEB-INF/views/funcs/bs.jsp"></jsp:include>
 <style>
+.accordion-button{
+	flex-direction: column;
+}
+.accordion{
+	--bs-accordion-btn-icon-width: 0;
+	--bs-accordion-btn-focus-box-shadow: #fff;
+}
+
+.btn-outline-secondary{
+	--bs-btn-hover-bg: #fff;
+	--bs-btn-hover-color: #000;
+	color: #000;
+	--bs-btn-active-color: #000;
+    --bs-btn-active-bg: #fff;
+    --bs-btn-focus-shadow-rgb: #fff;
+}
+.btn-group-vertical {
+    padding: 6px 30px 6px 30px;
+    width:400px;
+}
+
 /* 프로필 이미지를 작은 원형으로 만든다 */
 #profileImage {
 	width: 100px;
@@ -25,91 +46,92 @@
  	float:right;
  	margin-right:20px;
 }
-svg{
+body {
 
+    position: relative;
+    width: 100%;
+    background-image: url(https://i.imgur.com/PgGV6Qh.jpeg);
+    z-index: 0;
+    background-attachment: fixed;
+    background-size: cover;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top center;
+    z-index:-1
+}
+.accordion-item{
+	border: 20px solid #dee2e6;
 }
 </style>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 </head>
-
-<body>
-	<div class="container p-5">
-		<div>
-			<h1 class="text-center">
-				<a href="javascript:history.back()" style="text-decoration: none; color:black">
-					<i class="bi bi-arrow-bar-left"></i>
-				</a> 
-				마이 페이지
-				<i class="bi bi-arrow-bar-left opacity-0"></i><!-- not visible -->
-			</h1>
+<!-- 네비바 -->
+	<jsp:include page="/WEB-INF/views/funcs/navbar2.jsp"></jsp:include>
+<!-- /네비바 -->
+<body class="float">
+	<div class="parallax-one">
+		<div class="container" style="padding: 20px;">
+		
+			<table class="container" style="width: 800px" >
+				<thead style="text-align:center">
+					<tr>
+						<th>
+							<c:choose>
+								<c:when test="${empty dto.profile }">
+									<img id="profileImage" style="height: 100%, width: 100%;" src="<c:url value='../images/로고1.png'/>">
+								</c:when>
+								<c:otherwise>
+									<img id="profileImage" src="${pageContext.request.contextPath}${dto.profile}" />
+								</c:otherwise>
+							</c:choose>
+						</th>
+					</tr>
+					<tr>
+						<td>
+							<strong class="fs-4">${id }님</strong> 
+							<br /> 
+							<p class="text-muted" style="margin-top: -5px">${dto.email }</p>
+						</td>
+					</tr>
+					<tr>
+					<td style="text-align: -webkit-center;" >
+						<div class="accordion" id="accordionExample" style="width: 250px;">
+						  <div class="accordion-item" style="padding: 20px; border-top-left-radius: 100px; border-top-right-radius: 100px; border-bottom-width: 0px; background: linear-gradient(90deg, white, rgb(82 124 184 / 50%));">					 
+						   	<a href="${pageContext.request.contextPath }/users/info.do" id="tb" >내정보 확인</a>
+						  </div>
+						  <div class="accordion-item" style="padding: 20px; border-bottom-width: 0px; background: linear-gradient(90deg, white, rgb(82 124 184 / 50%));">
+						    <a href="${pageContext.request.contextPath}/users/pwd_updateform.do" id="tb">비밀번호 변경</a>
+						  </div>
+						  <div class="accordion-item" style="border-bottom-right-radius: 80px; border-bottom-left-radius: 80px; background: linear-gradient(90deg, white, rgb(82 124 184 / 50%));">
+							<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree" style="color: #000; background: none; border:none; border-top:0px; border-bottom:0px; padding: 20px;">
+							       	예약 신청 내역
+							</button>
+						  <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#collapseThree">
+						      <div class="accordion-body">
+								<a href="${pageContext.request.contextPath }/reserve/list.do" id="tb">출국 신청 내역</a>
+								<br />
+								<br />
+								<a href="${pageContext.request.contextPath }/reserve/list.do" id="tb">입국 신청 내역</a>
+						      </div>
+						    </div>
+						    <div class="accordion-item" style="padding: 20px; border:none; background: none; border-bottom-left-radius: 80px; border-bottom-right-radius: 80px;">
+						    	<a href="${pageContext.request.contextPath}/users/deleteform.do" id="tb">회원 탈퇴</a>
+						  </div>
+						  </div>
+						</div>
+					</td>
+				</tr>
+				</thead>	
+			</table>
 		</div>
 	</div>
-	<div class=" p-5 ">
-		<table class="container" style="width: 800px" >
-			<thead style="text-align:center">
-				<tr>
-					<th><c:choose>
-							<c:when test="${empty dto.profile }">
-								<img id="profileImage" style="height: 100%, width: 100%;" src="<c:url value='../images/로고1.png'/>">
-							</c:when>
-							<c:otherwise>
-								<img id="profileImage" src="${pageContext.request.contextPath}${dto.profile}" />
-							</c:otherwise>
-						</c:choose>
-					</th>
-				</tr>
-				<tr>
-					<td>
-						<strong class="fs-4">${id }님</strong> 
-						<br /> 
-						<p class="text-muted" style="margin-top: -5px">${dto.email }</p>
-					</td>
-				</tr>
-			</thead>
-			<tbody class=" border-top border-bottom fs-4 ">
-				<tr class="border">
-					<td>
-						<a href="${pageContext.request.contextPath }/users/info.do" id="tb" >
-							<span >내정보 확인</span>
-							<span id="ar" class="fw-bold">></span>
-						</a>
-					</td>
-				</tr >
-				<tr class="border">
-					<td>
-						<a href="${pageContext.request.contextPath }/reserve/list.do" id="tb">
-							<span>예약 내역 확인</span>
-							<span id="ar" class="fw-bold">></span>
-						</a> 
-					</td>
-				</tr>
-				<tr class="border">
-					<td>
-						<a href="${pageContext.request.contextPath}/users/pwd_updateform.do" id="tb">
-							<span>비밀번호 변경</span>
-							<span id="ar" class="fw-bold">></span>
-						</a>
-					</td>
-				</tr>
-				<tr class="border">
-					<td>
-						<a href="${pageContext.request.contextPath }/users/deleteform.do" id="tb">
-							<span>탈퇴하기</span>
-							<span id="ar" class="fw-bold">></span>
-						</a>	
-					</td>
-				</tr>
-
-
-			</tbody>
-		</table>
-	</div>
-
-	<!-- 푸터 -->
-    <footer>
-        <jsp:include page="/WEB-INF/views/funcs/footer.jsp"></jsp:include>
-    </footer>
-	<!-- /푸터 -->
-
 </body>
+<!-- 푸터 -->
+		<footer>
+    		<jsp:include page="/WEB-INF/views/funcs/footer2.jsp"></jsp:include>
+		</footer>
+		<!-- /푸터 -->
+
+	
+
 </html>

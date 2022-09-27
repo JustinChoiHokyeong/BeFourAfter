@@ -3,6 +3,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>   
 
 <nav class="navbar navbar-dark  navbar-expand-lg" style="padding:0;">
+
 	<div class="container-fluid" style="padding:20px 20px; background-color:#00123a;">
 	      	<a href="${pageContext.request.contextPath}/home.do">
 	      		<img src="https://i.imgur.com/cYddGt3.png" alt="logo" style="width:150px" />
@@ -42,4 +43,4 @@
 	</div>
 </nav>
 	
-	
+

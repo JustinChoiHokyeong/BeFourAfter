@@ -7,16 +7,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-.left { 10px;
-	float: left;
-}
-
-.right { 10px;
-	float: right;
-	font-size: 16px;
-	text-align: center;
-}
-
 .text-dark {
 	font-size: 16px
 }
@@ -34,9 +24,11 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 </head>
 <body>
-	<!-- 네비바 -->
-	<jsp:include page="/WEB-INF/views/funcs/navbar.jsp"></jsp:include>
-	<!-- /네비바 -->
+
+<!-- 네비바 -->
+<jsp:include page="/WEB-INF/views/funcs/navbar.jsp"></jsp:include>
+<!-- /네비바 -->
+
 	<!-- 본문 -->
 	<div class="container p-5">
 		<div>
@@ -73,21 +65,16 @@
 			<tbody class=" border-top border-bottom fs-4 " style="text-align: center">
 				<tr class=>
 					<td>
-						<label> <input type="checkbox" name="checkbox" id="checkbox">
+						<label> <input type="checkbox" name="chk" id="checkbox">
 							<p class="text-dark">안내 사항을 모두 확인하였으며, 이에 동의합니다.</p>
 						</label>
 					</td>
 				</tr>
 				<tr>
 					<td>
-
-						<div class="left">
-							<a href="${pageContext.request.contextPath }/users/mypage.do">
-								<i class="bi bi-arrow-left-short"></i>
-							</a>
-						</div>
-						<div class="right">
-							<a class="btn" href="javascript:deleteConfirm()">탈퇴하기</a>
+						<div style="align-content: center; font-size: 20px">
+							<a type="button" onclick="javascript:OnSave();">탈퇴 하기</a>
+							<a type="button" href="${pageContext.request.contextPath }/users/mypage.do">뒤로 가기</a>
 						</div>
 					</td>
 				</tr>
@@ -106,13 +93,20 @@
     </footer>
 	<!-- /푸터 -->
 
-	<script>
-		function deleteConfirm() {
+
+<script>
+	function OnSave(){
+		var chk = document.querySelectorAll('input[name="chk"]:checked').length;
+		if(chk==0){
+			alert('Good lugg 탈퇴 안내에 대한 동의를 하지 않았습니다');
+			return false;
+		}	
 			const isDelete = confirm("${id} 님 탈퇴 하시겠습니까?");
+			
 			if (isDelete) {
 				location.href = "${pageContext.request.contextPath}/users/delete.do";
 			}
-		}
-	</script>
+	}
+</script>
 </body>
 </html>
