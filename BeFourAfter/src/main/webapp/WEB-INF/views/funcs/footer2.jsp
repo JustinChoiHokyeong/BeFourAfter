@@ -5,17 +5,20 @@
 <style>
 	#ftr{
 		height: max-content;
-		padding: 50px;
+		padding: 10px;
 		justify-content:center;
 		background-color:#00123a;
 		bottom: 0px;
+		width:100%;
+		position: relative;
+		
 	}
 	#sns-icon{
 		text-decoration:none;
 		color:aliceblue;
 	}
 	#sns-list{
-		padding-bottom:20px;
+		padding-bottom:5px;
 		text-align: center;
 	}
 	#inform{
