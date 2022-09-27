@@ -118,7 +118,7 @@ small{
 				<input class="form-control" type="text" name="postcode" id="postcode" placeholder="우편번호" readonly="readonly" style="width: 200px; display: inline;">
 				<input class="btn-cloud3" type="button" onclick="execDaumPostcode()" value="주소 검색" readonly="readonly" style="padding: 10px; margin-bottom: 6px;  color: white; border: none;">
 				<input class="form-control" type="text" name="addr" id="addr" placeholder="주소" readonly="readonly">
-				<input class="form-control" type="text" name="detailAddr" id="detailAddr" placeholder="상세주소" >
+				<input class="form-control" type="text" name="detailAddr" id="detailAddr" placeholder="상세주소">
 			</div>
 			<div>	
 				<label class="control-label" for="phone">핸드폰 번호</label>

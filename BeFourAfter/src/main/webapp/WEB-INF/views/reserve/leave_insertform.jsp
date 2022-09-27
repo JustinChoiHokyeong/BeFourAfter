@@ -7,6 +7,25 @@
 <meta charset="UTF-8">
 <title>/views/reserve/leave_insertform.jsp</title>
 
+<jsp:include page="/WEB-INF/views/funcs/bs.jsp"></jsp:include>
+<style>
+.input-group-text {
+	justify-content: center;
+	background-color: lightgray;
+	border: 1px solid grey;
+}
+
+.form-control {
+	border: 1px solid grey;
+}
+
+.input-group {
+	margin-bottom: 5px;
+}
+</style>
+</head>
+<body style="background-color: rgb(226, 226, 226)">
+	
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/funcs/bs.jsp"></jsp:include>
@@ -87,10 +106,70 @@
 	<div style="width: 100%; min-height: 1px; height: 60px;"></div>
 
 
+						</div>
+						<div class="input-group">
+							<label class="input-group-text" for="rsdate">수령 날짜 및 시간</label> <input
+								class="form-control" type="datetime-local" name="rsdate"
+								id="rsdate" value="" />
+						</div>
+
+
+						<fieldset>
+							<h3 class="text-center" style="margin-top: 48px">수령 장소</h3>
+							<label class="input-group-text" for="place"
+								style="margin-bottom: 5px;"> <input type="radio"
+								name="place" value="first" checked="checked" /> <span
+								style="margin-right: 100px;">제 1 터미널</span> <input type="radio"
+								name="place" value="second" /> <span>제 2 터미널</span>
+							</label>
+						</fieldset>
+						<div class="input-group">
+							<label class="input-group-text" for="basic" style="width: 120px;">기본
+								수하물</label> <input class="form-control " type="number" name="basic"
+								id="basic" value="0" min="0" placeholder="수량입력" /> <label
+								class="input-group-text text-center" for="basic"
+								style="width: 320px"> <small style="font-size: x-small;">(캐리어28인치
+									이하, 백팩, 가방, 20kg 이하)</small>
+							</label>
+						</div>
+						<div class="input-group">
+							<label class="input-group-text" for="big" style="width: 120px;">대형
+								수하물</label> <input class="form-control" type="number" name="big"
+								id="big" value="0" min="0" placeholder="수량입력" /> <label
+								class="input-group-text text-center" for="big"
+								style="width: 320px"> <small style="font-size: x-small;">(캐리어28인치
+									초과, 박스, 골프백, 20kg 초과)</small>
+							</label>
+						</div>
+						<div class="input-group">
+							<label class="input-group-text" for="over" style="width: 120px;">25kg
+								초과</label> <input class="form-control" type="number" name="over"
+								id="over" value="0" min="0" placeholder="수량입력" /> <label
+								class="input-group-text" for="over" style="width: 320px">
+								<small style="font-size: x-small;">(25kg 초과 물품 개당 5,000원
+									추가)</small>
+							</label>
+						</div>
+						<div>
+							<label class="input-group-text" for="agree"> 개인정보수집 동의 <input
+								class="form-control form-check-input" type="checkbox" name="agree" value=""
+								id="agree"  type="checkbox" 
+								 style="margin-left: 5px; margin-top: 0; padding: 8px;" />
+							</label>
+						</div>
+						<button type="submit" class="btn"
+							style="padding: 5px 30px 5px 30px; margin-top: 10px; background-color: white; border: grey 1px solid;">예약</button>
+					</form>
+				</div>
+			</div>
+		</div>
+		<!-- /본문 -->
+	</div>
+
 	<!-- 푸터 -->
-    <footer>
-        <jsp:include page="/WEB-INF/views/funcs/footer.jsp"></jsp:include>
-    </footer>
+	<footer>
+		<jsp:include page="/WEB-INF/views/funcs/footer.jsp"></jsp:include>
+	</footer>
 	<!-- /푸터 -->
 </body>
 <script>
@@ -115,33 +194,31 @@
 	var checkbox2 = document.querySelector("input[name=agree]");
 
 	//3. 입력 되지않은 정보가 있으면 제출 x
-	document.querySelector("#leave_insertform").addEventListener(
-			"submit",
-			function(e) {
-				let basic = document.querySelector("#basic").value;
-				let big = document.querySelector("#big").value;
-				let over = document.querySelector("#over").value;
+	document.querySelector("#leave_insertform").addEventListener("submit", function(e) {
+		let basic = document.querySelector("#basic").value;
+		let big = document.querySelector("#big").value;
+		let over = document.querySelector("#over").value;
 
-				let rname = document.querySelector("#rname").value;
-				let rphone = document.querySelector("#rphone").value;
-				let rsdate = document.querySelector("#rsdate").value;
+		let rname = document.querySelector("#rname").value;
+		let rphone = document.querySelector("#rphone").value;
+		let rsdate = document.querySelector("#rsdate").value;
 
-				if (basic + big + over <= 0 || rname == "" || rphone == ""
-						|| rsdate == "") {
-					alert("정보를 모두 입력해주세요.");
-					e.preventDefault();
-				}
+		if (basic + big + over <= 0 || rname == "" || rphone == "" || rsdate == "") {
+			alert("정보를 모두 입력해주세요.");
+			e.preventDefault();
+		}
 
-				if (checkbox2.checked != true) {
-					alert("개인정보 제공에 동의를 해주세요.");
-					e.preventDefault();
-				}
+		if (checkbox2.checked != true) {
+			alert("개인정보 제공에 동의를 해주세요.");
+			e.preventDefault();
+		}
 
-			});
+	});
 
 	var now_utc = Date.now()
 	var timeOff = new Date().getTimezoneOffset() * 60000;
 	var today = new Date(now_utc - timeOff).toISOString().substring(0, 16);
 	document.getElementById("rsdate").setAttribute("min", today);
 </script>
+
 </html>
