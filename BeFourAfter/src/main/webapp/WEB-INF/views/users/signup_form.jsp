@@ -203,7 +203,7 @@ function execDaumPostcode() {
 		const reg_name=/^[가-힣a-zA-Z]+$/;
 		//만일 입력값이 정규표현식과 매칭되지 않는다면
 		if(reg_name.test(inputName)){
-			isNamelValid=true;
+			isNameValid=true;
 			document.querySelector("#name").classList.add("is-valid");
 		}else{
 			isNameValid=false;
@@ -224,25 +224,45 @@ function execDaumPostcode() {
 
 		//만일 입력값이 정규표현식과 매칭되지 않는다면
 		if(reg_phone.test(inputPhone)){
-			isPhonelValid=true;
+			isPhoneValid=true;
 			document.querySelector("#phone").classList.add("is-valid");
 		}else{
-			isNameValid=false;
+			isPhoneValid=false;
 			document.querySelector("#phone").classList.add("is-invalid");
 		}
 	});
 	
 	        
 	   //폼에 submit 이벤트가 발생했을때 실행할 함수 등록
-    	document.querySelector("#myForm").addEventListener("submit", function(e){
-       //폼 전체의 유효성 여부 알아내기 
-       let isFormValid = isIdValid && isPwdValid && isEmailValid ;
+   	document.querySelector("#myForm").addEventListener("submit", function(e){
+       //폼 전체의 유효성 여부 알아내기  
+       let isFormValid = isIdValid && isPwdValid && isEmailValid && isNameValid && isPhoneValid;
+
+       //만일 아이디가 유효하지 않는다면
+       if(!isIdValid){
+            //아이디 입력란에 포커스 주기
+            document.querySelector("#id").focus();
+       }else if(!isPwdValid){//만일 비밀번호가 유효하지 않는다면
+            //비밀번호 입력란에 포커스 주기
+            document.querySelector("#pwd").focus();
+       }else if(!isNameValid){
+          document.querySelector("#name").focus();
+       }else if(!isPhoneValid){
+          document.querySelector("#phone").focus();
+       }else if(!isEmailValid){//만일 이메일이 유효하지 않는다면
+             //비밀번호 입력란에 포커스 주기
+            document.querySelector("#email").focus();
+       }
+
        if(!isFormValid){//폼이 유효하지 않으면
           //폼 전송 막기 
           e.preventDefault();
-       }   
+       }
+
     });
 	   
+	   
+
 </script>
 </body>
 </html>

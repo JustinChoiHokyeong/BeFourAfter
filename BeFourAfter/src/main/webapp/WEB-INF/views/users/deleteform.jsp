@@ -34,6 +34,7 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 </head>
 <body>
+
 	<!-- 네비바 -->
 	<jsp:include page="/WEB-INF/views/funcs/navbar.jsp"></jsp:include>
 	<!-- /네비바 -->
@@ -106,13 +107,20 @@
     </footer>
 	<!-- /푸터 -->
 
-	<script>
-		function deleteConfirm() {
+
+<script>
+	function OnSave(){
+		var chk = document.querySelectorAll('input[name="chk"]:checked').length;
+		if(chk==0){
+			alert('Good lugg 탈퇴 안내에 대한 동의를 하지 않았습니다');
+			return false;
+		}
 			const isDelete = confirm("${id} 님 탈퇴 하시겠습니까?");
+			
 			if (isDelete) {
 				location.href = "${pageContext.request.contextPath}/users/delete.do";
 			}
-		}
-	</script>
+	}
+</script>
 </body>
 </html>
