@@ -25,7 +25,7 @@
          <div class="text-muted text-center fs-6">상품에 대한 문의를 남기는 공간입니다
             해당 게시판의 성격과 다른 글은 사전동의 없이 담당 게시판으로 이동될 수 있습니다.</div>
          <div class="text-muted text-center fs-6">배송관련, 주문(취소/교환/환불)관련
-            문의 및 요청사항의 마이페이지 내 1:1문의에 남겨주세요</div>
+            문의 및 요청사항은 1:1문의를 통해 남겨주세요</div>
          <br />
          <br />
          <div style="clear: both;"></div>
