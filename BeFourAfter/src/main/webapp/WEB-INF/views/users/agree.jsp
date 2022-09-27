@@ -36,6 +36,7 @@ body {
 </head>
 <body>
 <form action="signup_form.do" method="get" id="form1">
+
 	<div class="container" style="text-align: center; margin-top:50px;">
 		<h2 style="margin-top: 0px">
       		<a href="${pageContext.request.contextPath }"><img class="img-fluid" src="https://i.imgur.com/CVQ8ugn.png" alt="logo" style="width:100px;;"></a>
@@ -89,6 +90,7 @@ body {
 			<a class="btn-cloud2" type="button" href="${pageContext.request.contextPath }" style="color: white">돌아가기</a>
 		</div>
 	</div>
+
 </form>
 <script>
 	var doc = document;
