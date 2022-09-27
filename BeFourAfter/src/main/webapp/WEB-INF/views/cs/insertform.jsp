@@ -33,7 +33,7 @@
 		         <label for="content">내용</label>
 		         <textarea class="form-control" style="height:300px;" name="content" id="content"></textarea>
 		      </div>
-     		  <div class="text-muted text-end" id="counter">글자 수 (0 / 200자)</div>
+     		  <div class="text-muted text-end" id="counter">글자 수 (0 / 800자)</div>
 		      <div class="mb-3 form-check">
 		         <input type="hidden" name="isSecret" id="isSecret"/>
 		         <input class="form-check-input" type="checkbox" id="isSecretchbox"/>
