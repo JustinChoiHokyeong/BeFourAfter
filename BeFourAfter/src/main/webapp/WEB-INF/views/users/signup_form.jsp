@@ -36,63 +36,109 @@ function execDaumPostcode() {
         }).open();
 }
 </script>
+<style>
+body {
+    position: relative;
+    width: 100%;
+    background-image: url(https://i.imgur.com/PgGV6Qh.jpeg);
+    z-index: 0;
+    background-attachment: fixed;
+    background-size: cover;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top center;
+    z-index:-1
+}
+.parallax-one h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 100px;
+    letter-spacing: 10px;
+    text-align: center;
+    color: white;
+    font-weight: 400;
+    text-transform: uppercase;
+    z-index: 10;
+    opacity: .9;
+}
+small{
+	color: white;
+}
+.control-label{
+	color: seashell;
+    font-size: larger;
+}
+.form-control{
+	background: round;
+    border-width: initial;
+    background-color: seashell;
+}
+.form-control:focus {
+    color: black;
+    background-color: aliceblue;
+    border-color: azure;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 25%);
+}
+
+</style>
 </head>
 <body>
-<!-- 네비바 -->
-<jsp:include page="/WEB-INF/views/funcs/navbar.jsp"></jsp:include>
-<!-- /네비바 -->
 <div class="container">
-	<h1>GOOD LUGG 계정 만들기</h1>
-	<form class="animate__animated animate__bounceInDown" action="${pageContext.request.contextPath}/users/signup.do" method="post" id="myForm">
-		
-		<div>
-			<label class="control-label" for="id">아이디</label>
-			<input class="form-control" type="text" name="id" id="id" placeholder="ID" autofocus/>
-			<small class="form-text text-muted">5~10자의 영문소문자, 숫자만 사용 가능합니다</small>
-			<div class="invalid-feedback">사용할 수 없는 아이디입니다</div>
-		</div>
-		<div>
-			<label class="control-label" for="pwd">비밀번호</label>
-			<input class="form-control" type="password" name="pwd" id="pwd" placeholder="Password"/>
-			<small class="form-text text-muted">5글자~10글자 이내로 입력해 주세요</small>
-			<div class="invalid-feedback">비밀번호를 확인해 주세요</div>
-		</div>
-		<div>
-			<label class="control-label" for="pwd2">비밀번호 재확인</label>
-			<input class="form-control" type="password" name="pwd2" id="pwd2" placeholder="Confirm Password"/>
-			<div class="invalid-feedback">비밀번호가 일치하지 않습니다</div>
-		</div>
-		<div>
-			<label class="control-label" for="name">이름</label>
-			<input class="form-control" type="text" name="name" id="name" placeholder="Name"/>
-			<small class="form-text text-muted">한글과 영문명으로 입력해 주세요</small>
-			<div class="invalid-feedback">이름을 확인해 주세요</div>
-		</div>
-		<div>
-			<input type="text" name="postcode" id="postcode" placeholder="우편번호" readonly="readonly">
-			<input class="btn btn-outline-seceondary"type="button" onclick="execDaumPostcode()" value="주소 검색" readonly="readonly"><br>
-			<input type="text" name="addr" id="addr" placeholder="주소" readonly="readonly"><br>
-			<input type="text" name="detailAddr" id="detailAddr" placeholder="상세주소" >
-		</div>
-		<div>	
-			<label class="control-label" for="phone">핸드폰 번호</label>
-			<input class="form-control" type="text" name="phone" id="phone" maxlength="11" placeholder="00000000000"/>
-			<div class="invalid-feedback">'-'없이 번호만 입력해 주세요</div>
-			<small class="form-text text-muted">숫자로 입력해 주세요</small>
+	<div class="parallax-one" style="padding:0px;">
+		<h2 style="margin-top:0px">
+	       <a href="${pageContext.request.contextPath }"><img class="img-fluid" src="https://i.imgur.com/CVQ8ugn.png" alt="logo" style="width:100px;;"></a>
+	   	</h2>
+		<form class="animate__animated animate__bounceInDown" action="${pageContext.request.contextPath}/users/signup.do" method="post" id="myForm" style="width: 400px; margin: auto; font-weight: 600;">
 			
-		</div>
-		<div>
-			<label class="control-label" for="email">이메일</label>
-			<input class="form-control" type="text" name="email" id="email" placeholder="Email"/>
-			<div class="invalid-feedback">이메일 형식을 확인해 주세요</div>
-		</div>
-		<button class="btn btn-outline-success" type="submit" >가입</button>
-		<button class="btn btn-outline-danger" type="button"><a href="${pageContext.request.contextPath }/users/agree.do">뒤로가기</a></button>
-	</form>
+			<div>
+				<label class="control-label" for="id">아이디</label>
+				<input class="form-control" type="text" name="id" id="id" placeholder="ID" autofocus/>
+				<small >5~10자의 영문소문자, 숫자만 사용 가능합니다</small>
+				<div class="invalid-feedback">사용할 수 없는 아이디입니다</div>
+			</div>
+			<div>
+				<label class="control-label" for="pwd">비밀번호</label>
+				<input class="form-control" type="password" name="pwd" id="pwd" placeholder="Password"/>
+				<small >5글자~10글자 이내로 입력해 주세요</small>
+				<div class="invalid-feedback">비밀번호를 확인해 주세요</div>
+			</div>
+			<div>
+				<label class="control-label" for="pwd2">비밀번호 재확인</label>
+				<input class="form-control" type="password" name="pwd2" id="pwd2" placeholder="Confirm Password"/>
+				<div class="invalid-feedback">비밀번호가 일치하지 않습니다</div>
+			</div>
+			<div>
+				<label class="control-label" for="name">이름</label>
+				<input class="form-control" type="text" name="name" id="name" placeholder="Name"/>
+				<small >한글과 영문명으로 입력해 주세요</small>
+				<div class="invalid-feedback">이름을 확인해 주세요</div>
+			</div>
+			<div>
+				<input class="form-control" type="text" name="postcode" id="postcode" placeholder="우편번호" readonly="readonly" style="width: 200px; display: inline;">
+				<input class="btn-cloud3" type="button" onclick="execDaumPostcode()" value="주소 검색" readonly="readonly" style="padding: 10px; margin-bottom: 6px;  color: white; border: none;">
+				<input class="form-control" type="text" name="addr" id="addr" placeholder="주소" readonly="readonly">
+				<input class="form-control" type="text" name="detailAddr" id="detailAddr" placeholder="상세주소" >
+			</div>
+			<div>	
+				<label class="control-label" for="phone">핸드폰 번호</label>
+				<input class="form-control" type="text" name="phone" id="phone" maxlength="11" placeholder="01000000000"/>
+				<div class="invalid-feedback">'-'없이 번호만 입력해 주세요</div>
+				<small>숫자로 입력해 주세요</small>
+				
+			</div>
+			<div>
+				<label class="control-label" for="email">이메일</label>
+				<input class="form-control" type="text" name="email" id="email" placeholder="Email" style="margin-bottom: 5px;"/>
+				<div class="invalid-feedback">이메일 형식을 확인해 주세요</div>
+			</div><br />
+			<div style="text-align: center;">
+				<button class="btn-cloud" type="submit" style="border: none; color: black;">가입하기</button>
+				<button class="btn-cloud2" type="button" style="border: none; "><a href="${pageContext.request.contextPath }/users/agree.do" style="color: white; text-decoration: none;">뒤로가기</a></button>
+			</div>
+		</form>
+	</div>	
 </div>
-    <footer>
-        <jsp:include page="/WEB-INF/views/funcs/footer.jsp"></jsp:include>
-    </footer>
 <script src="${pageContext.request.contextPath}/resources/js/gura_util.js"></script>
 <script>
 	//아이디, 비밀번호, 이메일의 유효성 여부를 관리한 변수 만들고 초기값 대입

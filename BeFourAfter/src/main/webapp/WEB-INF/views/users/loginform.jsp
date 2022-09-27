@@ -54,11 +54,11 @@ body {
 					</div>
 					<div>
 						<label for="pwd"></label>
-						<input class="form-control" type="password" name="pwd" id="pwd" placeholder="비밀번호" style="width: 300px"/>
+						<input class="form-control" type="password" name="pwd" id="pwd" placeholder="비밀번호" style="width: 300px; margin-bottom: 10px;" />
 					</div>
 					<br />
-					<button class="btn btn-primary" type="submit">로그인</button>
-					<button class="btn btn-secondary" type="button"><a href="${pageContext.request.contextPath}/users/agree.do" style="color: white; text-decoration: unset;">회원가입</a></button>
+					<button style="background: none; border: none;"><a class="btn-cloud" type="submit" style="color: black;">로그인</a></button>
+					<a class="btn-cloud3" type="button" href="${pageContext.request.contextPath}/users/agree.do" style="color: white; text-decoration: unset;">회원가입</a>
 				</form>
 </div>
 </body>
