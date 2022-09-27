@@ -9,13 +9,16 @@
 <jsp:include page="/WEB-INF/views/funcs/bs.jsp"></jsp:include>
 <style>
 .input-group-text {
-   justify-content: center;
-   background-color: lightgray;
-   border: 1px solid grey;
+    justify-content: center;
+    background-color: ;
+    border: 1px solid black;
+    background: bisque;
 }
-
 .form-control {
-   border: 1px solid grey;
+   background:none;
+   justify-content: center;
+   background: none;
+   border: 1px solid black;
 }
 
 .input-group {
@@ -32,12 +35,25 @@
       <jsp:include page="/WEB-INF/views/funcs/reserveMenu.jsp"></jsp:include>
       <!--/바로가기-->
       <!-- 본문 -->
-      <div class="container" style="padding: 0 50px 50px 50px;">
+      <div class="container" style="padding: 0px 50px 50px 50px;
+    background: none;
+    box-shadow: 5px 5px 5px 5px grey;
+    width: 600px;
+    height: 720px;
+    margin-bottom: 50px;
+    margin-right: 35%;
+    background-image: url('https://pixabay.com/get/g6cfc64d3614d90c12122103043a28041573c7326396c1f1ca6f969bb6cf0a55673bab018adf5ea5ad1c894475e727f63ac6b8dbfc251b5d11b404494c8943e12b54020f408fdb183e4fbc980e2a10f27_1280.jpg');
+    background-size: cover;
+    position: relative;">
          <div>
-            <h1 class="text-center" style="margin: 0 30px 30px 30px;">출국
+            <h1 class="text-center" style=" margin: 0px 30px 30px 30px;
+										    padding-top: 20px;
+										    padding-left: 80px;">출국
                서비스</h1>
-            <div class="container" style="width: 600px; height: 600px">
-               <h3 class="text-center" style="margin: 20 0 5 0;">예약 정보</h3>
+            <div class="container" style="width: 540px;
+										  height: 600px;
+										  padding-left: 50px;">
+               <h3 style="padding-left: 180px;">예약 정보</h3>
                <form action="leave_insert.do" method="post" id="leave_insertform"
                   style="text-align: -webkit-center;">
                   <input class="form-control" type="hidden" name="leave_insertform"
@@ -49,19 +65,27 @@
                   <div class="input-group">
                      <span class="input-group-text" for="name">예약자 이름</span> <input
                         class="form-control" type="text" name="name" id="name"
-                        value="${dto.name }" disabled />
+                        value="${dto.name }" disabled style="background: none;"/>
                   </div>
                   <div class="input-group">
                      <span class="input-group-text" for="name">핸드폰 번호</span> <input
                         class="form-control" type="text" name="phone" id="phone"
-                        value="${dto.phone }" disabled />
+                        value="${dto.phone }" disabled style="background: none;"/>
                   </div>
                   <div class="input-group">
                      <label class="input-group-text" for="rname">수령인 이름</label> <input
                         class="form-control" type="text" name="rname" id="rname"
-                        value="" /> <br /> <label class="input-group-text" for="same">
-                        예약자와 동일 <input name="same" value="same" class="form-control form-check-input" type="checkbox" 
-                         style="margin-left: 5px; margin-top: 0; padding: 8px;" />
+                        value="" /> <br /> <label class="input-group-text" for="same" style="background: none;">
+                        예약자와 동일 <input name="same" value="same" type="checkbox" 
+                         style="margin-left: 5px;
+							    margin-top: 0;
+							    padding: 8px;
+							    background: unsetset;
+							    accent-color: crimson;
+							    border: 1px solid black;
+							    mix-blend-mode: multiply;
+							    width: 20px;
+							    height: 20px;" />
                      </label>
                   </div>
                   <div class="input-group">
@@ -79,21 +103,21 @@
 
 
                   <fieldset>
-                     <h3 class="text-center" style="margin-top: 48px">수령 장소</h3>
+                     <h3 class="text-center" style="margin-top: 48px;">수령 장소</h3>
                      <label class="input-group-text" for="place"
-                        style="margin-bottom: 5px;"> <input type="radio"
-                        name="place" value="first" checked="checked" /> <span
+                        style="margin-bottom: 5px; background: none;"> <input type="radio"
+                        name="place" value="first" checked="checked" style="accent-color: crimson;"/> <span
                         style="margin-right: 100px;">제 1 터미널</span> <input type="radio"
-                        name="place" value="second" /> <span>제 2 터미널</span>
+                        name="place" value="second" style="accent-color: crimson;"/> <span>제 2 터미널</span>
                      </label>
                   </fieldset>
                   <div class="input-group">
-                     <label class="input-group-text" for="basic" style="width: 120px;">기본
+                     <label class="input-group-text" for="basic" style="width: 120px; ">기본
                         수하물</label> <input class="form-control " type="number" name="basic"
                         id="basic" value="0" min="0" placeholder="수량입력" /> <label
                         class="input-group-text text-center" for="basic"
-                        style="width: 320px"> <small style="font-size: x-small;">(캐리어28인치
-                           이하, 백팩, 가방, 20kg 이하)</small>
+                        style="width: 280px; background: none; border: 1px solid black;"> <small style="font-size: 13px">캐리어28인치
+                           이하, 백팩, 가방, 20kg 이하</small>
                      </label>
                   </div>
                   <div class="input-group">
@@ -101,33 +125,40 @@
                         수하물</label> <input class="form-control" type="number" name="big"
                         id="big" value="0" min="0" placeholder="수량입력" /> <label
                         class="input-group-text text-center" for="big"
-                        style="width: 320px"> <small style="font-size: x-small;">(캐리어28인치
-                           초과, 박스, 골프백, 20kg 초과)</small>
+                        style="width: 280px; background: none; border: 1px solid black;"> <small style="font-size: 13px">캐리어28인치
+                           초과, 박스, 골프백, 20kg 초과</small>
                      </label>
                   </div>
                   <div class="input-group">
                      <label class="input-group-text" for="over" style="width: 120px;">25kg
                         초과</label> <input class="form-control" type="number" name="over"
                         id="over" value="0" min="0" placeholder="수량입력" /> <label
-                        class="input-group-text" for="over" style="width: 320px">
-                        <small style="font-size: x-small;">(25kg 초과 물품 개당 5,000원
-                           추가)</small>
+                        class="input-group-text" for="over" style="width: 280px; background: none; border: 1px solid black;">
+                        <small style="font-size: 14px">25kg 초과 물품 개당 5,000원
+                           추가</small>
                      </label>
                   </div>
                   <div>
-                     <label class="input-group-text" for="agree"> 개인정보수집 동의 <input
-                        class="form-control form-check-input" type="checkbox" name="agree" value=""
+                     <label class="input-group-text" for="agree" style="background: none;"> 개인정보수집 동의 <input
+                        type="checkbox" name="agree" value=""
                         id="agree"  type="checkbox" 
-                         style="margin-left: 5px; margin-top: 0; padding: 8px;" />
+                         style="margin-left: 5px;
+							    margin-top: 0;
+							    padding: 8px;
+							    background: unsetset;
+							    accent-color: crimson;
+							    border: 1px solid black;
+							    mix-blend-mode: multiply;
+							    width: 20px;
+							    height: 20px;" />
                      </label>
                   </div>
                   <button type="submit" class="btn"
-                     style="padding: 5px 30px 5px 30px; margin-top: 10px; background-color: white; border: grey 1px solid;">예약</button>
+                     style="padding: 5px 30px 5px 30px; margin-top: 10px; background:none; border: black 1px solid;">예약</button>
                </form>
             </div>
          </div>
       </div>
-      <!-- /본문 -->
    </div>
 
    <!-- 푸터 -->
