@@ -111,7 +111,7 @@ body {
 								<a href="${pageContext.request.contextPath }/reserve/list.do" id="tb">출국 신청 내역</a>
 								<br />
 								<br />
-								<a href="${pageContext.request.contextPath }/reserve/list.do" id="tb">입국 신청 내역</a>
+								<a href="${pageContext.request.contextPath }/reserve/list2.do" id="tb">입국 신청 내역</a>
 						      </div>
 						    </div>
 						    <div class="accordion-item" style="padding: 20px; border:none; background: none; border-bottom-left-radius: 80px; border-bottom-right-radius: 80px;">

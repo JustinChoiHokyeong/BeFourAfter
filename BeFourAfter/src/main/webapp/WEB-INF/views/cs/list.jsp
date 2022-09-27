@@ -196,8 +196,6 @@
 
          <button class="btn" style="text-decoration: none">1:1 질문하기</button>
 
-         <button class="btn"style= "text-decoration: none">문의하기</button>
-
       </a>
       </div>
       <!-- /질문버튼 -->

@@ -7,10 +7,9 @@
 <jsp:include page="/WEB-INF/views/funcs/bs.jsp"></jsp:include>
 <style>
 
-   header{
-   	  width:100%
-      position:sticky;
-      top:0;
+   #fixmenu{
+   	  position:sticky;
+	  top:0;
    }   
    .img1{
       height:50px;
@@ -55,10 +54,10 @@
    <!-- 본문 <-->
    <div>
       <!--바로가기-->
-		<div>
+		<div id="fixmenu">
 			<div class="container p-5 text-center">
-				<div style="width: 100%; min-height: 1px; height: 40px;">
-					<div class="scroll-container" >
+				<div style="width: 100%; min-height: 1px; height: 40px;" >
+					<div class="scroll-container">
 						<a href="#1"><button class="btn">예약방법</button></a> 
 						<a href="#2"><button class="btn">요금안내</button></a> 
 						<a href="#3"><button class="btn">취소 및 환불규정</button></a> 
