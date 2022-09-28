@@ -36,7 +36,7 @@
 #profileImage {
    width: 100px;
    height: 100px;
-   border: 0px solid black;
+   border: 1px solid #cecece;
    border-radius: 50%;
 }
 
@@ -82,34 +82,33 @@ body {
 <body class="float">
    <div class="parallax-one">
       <div class="container" style="padding: 20px;">
-         <table style="text-align: center; margin: auto; margin-top: 80px; margin-bottom: 80px;">
-            <thead>
-               <tr>
-                  <th></th>
-                  <th></th>
-               </tr>
-            </thead>
-            <tbody>
-               <tr>
-                  <td>
-                  <div>
-                     <c:choose>
-                          <c:when test="${empty dto.profile }">
-                              <img id="profileImage" style="height: 100%, width: 100%;"
-                                 src="<c:url value='../images/로고2.png'/>">
-                          </c:when>
-                          <c:otherwise>
-                              <img id="profileImage" src="${pageContext.request.contextPath}${dto.profile}" />
-                          </c:otherwise>
-                        </c:choose>
-                        <br />
-                        <strong class="fs-4">${id }님</strong> <br />
-                        <p class="text" style="margin-top: -5px">${dto.email }</p>
-                        </div>
-                        <fieldset>
-                        <legend style="border-top: 1px solid black;"></legend>
-                  		<div text align="left">                        
-                  		<table> 
+      	<table style="text-align: center; margin: auto; margin-top: 80px; margin-bottom: 80px;">
+      		<thead>
+      			<tr>
+      				<th></th>
+      				<th></th>
+      			</tr>
+      		</thead>
+      		<tbody>
+      			<tr>
+      				<td>
+      				<div>
+      					<c:choose>
+		                    <c:when test="${empty dto.profile }">
+		                        <img id="profileImage" style="height: 100%, width: 100%;"
+		                           src="<c:url value='../images/로고1.png'/>">
+		                    </c:when>
+		                    <c:otherwise>
+		                        <img id="profileImage" src="${pageContext.request.contextPath}${dto.profile}" />
+		                    </c:otherwise>
+	                  	</c:choose>
+	                  	<br />
+	                  	<strong class="fs-4">${id }님</strong> <br />
+                  		<p class="text" style="margin-top: -5px">${dto.email }</p>
+                  		</div>
+                  		<fieldset>
+                        <legend style="border-top: 1px solid white;"></legend>
+                        <table> 
                            <tr>
                               <th>이름</th>
                               <td>${dto.name }</td>
@@ -126,14 +125,11 @@ body {
                               <th>가입일</th>
                               <td>${dto.regdate }</td>
                            </tr>
-                           
                         </table>
-                        </div>
                      </fieldset>
-                     
-                  </td>
-                  <td>
-                     <td style="text-align: -webkit-center; padding-left: 50px;">
+      				</td>
+      				<td>
+      					<td style="text-align: -webkit-center; padding-left: 50px;">
                               <div class="accordion" id="accordionExample" style="width: 250px;">
                                  <div class="accordion-item" style="padding: 20px; border-top-left-radius: 100px; border-top-right-radius: 100px; border-bottom-width: 0px; background: linear-gradient(90deg, white, rgb(82 124 184/ 50%));">
                                     <a href="${pageContext.request.contextPath }/users/updateform.do" id="tb">내정보 수정</a>
@@ -143,8 +139,8 @@ body {
                                  </div>
                                  <div class="accordion-item" style="border-bottom-right-radius: 80px; border-bottom-left-radius: 80px; background: linear-gradient(90deg, white, rgb(82 124 184/ 50%));">
                                     <button class="accordion" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree" style="color: #000; background: none; border:none; border-top:0px; border-bottom:0px; padding: 20px;">
-                                             예약 신청 내역
-                               </button>
+					                              예약 신청 내역
+					                </button>
                                     <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#collapseThree">
                                        <div class="accordion-body">
                                           <a href="${pageContext.request.contextPath }/reserve/list.do" id="tb">출국 신청 내역</a>
@@ -159,9 +155,9 @@ body {
                               </div>
                            </td>
                       </td>
-               </tr>
-            </tbody>
-         </table>
+      			</tr>
+      		</tbody>
+      	</table>
       </div>
    </div>
 </body>

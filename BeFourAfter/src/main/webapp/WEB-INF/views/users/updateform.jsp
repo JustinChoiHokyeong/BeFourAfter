@@ -65,7 +65,7 @@ function execDaumPostcode() {
 				</c:otherwise>
 			</c:choose>
 		</a> 
-		<form action="${pageContext.request.contextPath}/users/mypage.do" method="post" id="myForm">
+		<form action="${pageContext.request.contextPath}/users/update.do" method="post" id="myForm">
 			<input type="hidden" name="profile" value="${ empty dto.profile ? '' : dto.profile}" />
 			<input type="hidden" name="name" value="${dto.name }" />
 			<div>

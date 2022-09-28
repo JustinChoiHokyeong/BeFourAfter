@@ -25,12 +25,15 @@
          <div class="text-muted text-center fs-6">상품에 대한 문의를 남기는 공간입니다
             해당 게시판의 성격과 다른 글은 사전동의 없이 담당 게시판으로 이동될 수 있습니다.</div>
          <div class="text-muted text-center fs-6">배송관련, 주문(취소/교환/환불)관련
-            문의 및 요청사항은 1:1문의를 통해 남겨주세요</div>
+
+            문의 및 요청사항의 마이페이지 내 1:1문의에 남겨주세요</div>
          <br />
          <br />
          <div style="clear: both;"></div>
          <div class="text-end">
             <form action="ask.do" method="get" id="search">
+            <span><a class="btn text-start" href="${pageContext.request.contextPath}/cs/insertform.do">새글 작성</a></span>
+
                <label for="condition" class="visually-hidden">검색</label> <select
                   class="form-select" style="width: 130px; display: inline;"
                   name="condition" id="condition">
@@ -141,7 +144,7 @@
                   </c:forEach>
                </tbody>
             </table>
-            <br /> <a class="btn" href="${pageContext.request.contextPath}/cs/insertform.do">새글 작성</a>
+
          </div>
       </div>
       <div>
@@ -173,9 +176,11 @@
       </div>
       <!-- /본문 -->
       <div style="width: 100%; min-height: 1px; height: 60px;"></div>
+
       <!-- 네비게이션 -->
       <jsp:include page="/WEB-INF/views/funcs/toTop.jsp"></jsp:include>
       <!-- /네비게이션  -->
+
    
       <!-- 푸터 -->
       <footer class="container-fluid navbar-fixed-bottom">
