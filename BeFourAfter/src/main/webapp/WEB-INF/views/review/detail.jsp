@@ -7,10 +7,20 @@
 <head>
 <meta charset="UTF-8">
 <title>/review/detail.jsp</title>
-
-<!-- 부트스트랩 -->
-<jsp:include page="/WEB-INF/views/funcs/bs.jsp"></jsp:include>
-
+<%-- bootstrap --%>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.css" >
+<script type="text/javascript">
+	function delBtn(){
+	if (confirm("해당 리뷰를 삭제하시겠습니까?") == true) {
+			//true는 확인버튼을 눌렀을 때 코드 작성
+			location.href="delete.do?num=${dto.num }"
+			alert("리뷰가 삭제되었습니다.")
+		} else {
+			//취소 버튼 눌렀을 때 아무 동작 없이 알림창 없어짐
+			return false;
+		}
+	}
+</script>
 <style>
 	#star{
       	color:#FFB81C;
@@ -19,10 +29,10 @@
 </style>
 </head>
 <body>
-
 <!-- 네비바 -->
 <jsp:include page="/WEB-INF/views/funcs/navbar.jsp"></jsp:include>
 <!-- /네비바 -->
+
 	
 
 <div class="container-sm">
@@ -125,18 +135,7 @@
         <jsp:include page="/WEB-INF/views/funcs/footer.jsp"></jsp:include>
     </footer>
 <!-- /푸터 -->
-<script type="text/javascript">
-	function delBtn(){
-	if (confirm("해당 리뷰를 삭제하시겠습니까?") == true) {
-			//true는 확인버튼을 눌렀을 때 코드 작성
-			location.href="delete.do?num=${dto.num }"
-			alert("리뷰가 삭제되었습니다.")
-		} else {
-			//취소 버튼 눌렀을 때 아무 동작 없이 알림창 없어짐
-			return false;
-		}
-	}
-</script>
+
 </body>
 </html>
 

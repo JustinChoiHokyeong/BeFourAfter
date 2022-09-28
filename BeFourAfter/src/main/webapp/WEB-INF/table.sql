@@ -56,9 +56,7 @@ CREATE TABLE board_cs(
 	title VARCHAR2(100) NOT NULL,
 	content CLOB NOT NULL,
 	viewcount NUMBER, --조회수
-	regdate DATE NOT NULL,
-	isSecret VARCHAR2(10),
-	reserveType VARCHAR2(50)
+	regdate DATE NOT NULL
 );
 
 CREATE SEQUENCE board_cs_seq; 

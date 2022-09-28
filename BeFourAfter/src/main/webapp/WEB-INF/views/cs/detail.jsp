@@ -24,9 +24,6 @@
 </style>
 </head>
 <body>
-	<!-- 네비바 -->
-	<jsp:include page="/WEB-INF/views/funcs/navbar.jsp"></jsp:include>
-	<!-- /네비바 -->
    <div class="container">
       <div class="p-5">
       </div>
