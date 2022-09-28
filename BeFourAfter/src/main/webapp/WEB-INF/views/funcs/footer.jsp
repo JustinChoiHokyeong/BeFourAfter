@@ -8,7 +8,9 @@
 		padding: 50px;
 		justify-content:center;
 		background-color:#00123a;
+		width:100%;
 		bottom: 0px;
+		position: relative;
 	}
 	#sns-icon{
 		text-decoration:none;
@@ -38,16 +40,16 @@
 <div>
 	<!-- sns icons -->
 	<div id="sns-list">
-		<a id="sns-icon" name="facebook" target="_blank" href="https://www.facebook.com"> 
+		<a id="sns-icon" name="facebook" target="_blank" href="https://www.instagram.com"> 
 		<i class="bi bi-instagram" style="font-size:25px"></i>
 		</a>
-		<a id="sns-icon" name="instagram" target="_blank" href="https://www.instagram.com"> 
+		<a id="sns-icon" name="instagram" target="_blank" href="https://www.facebook.com"> 
 		<i class="bi bi-facebook" style="font-size:25px"></i>
 		</a>
 		<a id="sns-icon" name="twitter" target="_blank" href="https://twitter.com"> 
 		<i class="bi bi-twitter" style="font-size:25px"></i>
 		</a>
-		<a id="sns-icon" name="email" target="_blank" href="mailto:gkwkgo321@gmail.com"> 
+		<a id="sns-icon" name="email" target="_blank" href="mailto:chhk7449@gmail.com"> 
 		<i class="bi bi-envelope" style="font-size:25px"></i>
 		</a>
 	</div>

@@ -64,7 +64,7 @@
 				<!-- 업로드 버튼  -->
 				<c:choose>
 					<c:when test="${isReserved }">
-						<a class="btn btn-primary" href="${pageContext.request.contextPath}/review/upload_form.do">리뷰 업로드 하기</a><br>
+						<a class="btn " href="${pageContext.request.contextPath}/review/upload_form.do">리뷰 업로드 하기</a><br>
 					</c:when>
 				</c:choose>
 				<br>
@@ -76,10 +76,10 @@
 						<option value="title" ${condition eq 'title' ? 'selected' : '' }>제목</option>
 					</select> 
 					<input class="form-control" style="width: 250px; display: inline;" type="text" id="keyword" name="keyword" placeholder="검색어를 입력해주세요" value="${keyword }" />
-					<button class="btn btn-primary" type="submit">검색</button>
+					<button class="btn" type="submit">검색</button>
 				</form>
 			</div>
-			
+		
 
 			<!-- /검색폼  -->
 			<c:if test="${ not empty condition }">
@@ -196,7 +196,7 @@
 			</nav>
 		</div>
 	</div>
-
+</div>
 	<%-- <script>
    // card 이미지의 부모 요소를 선택해서 imgLiquid  동작(jquery plugin 동작) 하기 
    $(".img-wrapper").imgLiquid();

@@ -28,7 +28,8 @@
 			<input type="password" id="newPwd2"/>
 		</div>
 		<button type="submit">수정하기</button>
-		<button type="reset">돌아가기</button>
+		<button type="reset">지우고 다시 입력</button>
+		<a href="${pageContext.request.contextPath}/users/mypage.do">마이페이지로 돌아가기</a>
 	</form>
 <script>
 	//폼에 submit 이벤트가 일어났을때 실행할 함수를 등록하고 

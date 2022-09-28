@@ -31,27 +31,13 @@ body {
     z-index: 10;
     opacity: .9;
 }
-
-.parallax-one h2 {
-    font-family: 'Oswald', sans-serif;
-    font-size: 100px;
-    letter-spacing: 10px;
-    text-align: center;
-    color: white;
-    font-weight: 400;
-    text-transform: uppercase;
-    z-index: 10;
-    opacity: .9;
-}
-
 </style>
 
 </head>
 <body>
 <form action="signup_form.do" method="get" id="form1">
-<div class="container">
-	<div class="parallax-one" style="text-align: center; margin-top:50px;">
-	
+
+	<div class="container" style="text-align: center; margin-top:50px;">
 		<h2 style="margin-top: 0px">
       		<a href="${pageContext.request.contextPath }"><img class="img-fluid" src="https://i.imgur.com/CVQ8ugn.png" alt="logo" style="width:100px;;"></a>
    		</h2>
@@ -95,7 +81,8 @@ body {
 		<br>
 		<label>
 			<input type="checkbox" name="all" id="all">
-			<b>Good lugg 이용약관(선택)에 모두 동의합니다.</b>
+			Good lugg 이용약관, 개인정보 수집 및 이용<br />
+			위치기반서비스 이용약관(선택)에 모두 동의합니다.
 		</label>
 		<br><br />
 		<div>
@@ -103,7 +90,6 @@ body {
 			<a class="btn-cloud2" type="button" href="${pageContext.request.contextPath }" style="color: white">돌아가기</a>
 		</div>
 	</div>
-</div>
 
 </form>
 <script>
