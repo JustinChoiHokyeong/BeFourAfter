@@ -94,6 +94,13 @@ function execDaumPostcode() {
 								class="form-control" type="datetime-local" name="rsdate"
 								id="rsdate" value="" />
 						</div>
+						<div class="input-group"><label class="input-group-text" type="button">수하물 보내는 주소</label>
+							<input class="form-control" type="button" onclick="execDaumPostcode()" value="주소 검색" readonly="readonly"><br>
+						</div>
+						<div>
+							<input class="form-control" type="text" name="addr" id="addr" placeholder="주소 및 상세 주소">
+							<small style="float: left;">Ex) 서울특별시 강남구 테헤란로 124 삼원타워 5층  501호</small><br>
+						</div>
 						<fieldset>
 							<h3 class="text-center" style="margin-top: 48px">맡길 장소</h3>
 							<label class="input-group-text" for="place"
